@@ -10,6 +10,7 @@
   "description": "",
   "dependencies": {
     "@playwright/test": "^1.52.0",
+    "electron": "^36.1.0",
     "playwright": "^1.52.0"
   }
 }

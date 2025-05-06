@@ -1,6 +1,6 @@
-const path = require("path");
 const { chromium } = require("playwright");
 const fs = require("fs");
+const  selectFile  = require("./utils/selectFile");
 
 const douyin = require("./script/douyin");
 const kuaishou = require("./script/kuaishou");
@@ -8,6 +8,8 @@ const kuaishou = require("./script/kuaishou");
 const STATE_PATH = "./cache.json";
 
 (async () => {
+  const filePath = await selectFile();
+
   const browser = await chromium.launch({ headless: false });
 
   const context = fs.existsSync(STATE_PATH)
@@ -16,7 +18,7 @@ const STATE_PATH = "./cache.json";
 
   const params = {
     browser,
-    filePath: path.join(__dirname, "./demo.mp4"),
+    filePath: filePath,
     title: "我的王者精彩瞬间222",
     desc: "我的王者精彩瞬间，亮瞎全场 #王者荣耀",
     imitate: true,
@@ -33,5 +35,5 @@ const STATE_PATH = "./cache.json";
 
   console.log("所有平台分发完毕！");
 
-  await browser.close();
+  // await browser.close();
 })();
