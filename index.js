@@ -1,6 +1,6 @@
 const { chromium } = require("playwright");
 const fs = require("fs");
-const  selectFile  = require("./utils/selectFile");
+const path = require("path");
 
 const douyin = require("./script/douyin");
 const kuaishou = require("./script/kuaishou");
@@ -8,7 +8,7 @@ const kuaishou = require("./script/kuaishou");
 const STATE_PATH = "./cache.json";
 
 (async () => {
-  const filePath = await selectFile();
+  const filePath = path.join(__dirname, "./demo.mp4");
 
   const browser = await chromium.launch({ headless: false });
 
@@ -21,7 +21,7 @@ const STATE_PATH = "./cache.json";
     filePath: filePath,
     title: "我的王者精彩瞬间222",
     desc: "我的王者精彩瞬间，亮瞎全场 #王者荣耀",
-    imitate: true,
+    imitate: false,
     saveState: async () => {
       await context.storageState({ path: STATE_PATH });
       console.log("浏览器状态已保存");

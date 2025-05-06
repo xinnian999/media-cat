@@ -2,20 +2,20 @@
   "cookies": [
     {
       "name": "gd_random",
-      "value": "eyJtYXRjaCI6ZmFsc2UsInBlcmNlbnQiOjAuNTM1NjMzNTk4Mjk1NzA4OX0=.lHo6/YMhBu3VmofXDDPbFEToQ36x9ox3c9L/WinKnyk=",
+      "value": "eyJwZXJjZW50IjowLjQwODk3NTUxMzkzOTY0MDQsIm1hdGNoIjpmYWxzZX0=.z8zyaxgOcA6NsLIgK81A96BVVb5lM9K/Dr/hDhU5vhY=",
       "domain": "creator.douyin.com",
       "path": "/goofy/douyin_creator_pc/creator_pc_vmok_common/vmok-manifest.json",
-      "expires": 1747126154.646325,
+      "expires": 1747141182.432928,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "gd_random",
-      "value": "eyJtYXRjaCI6ZmFsc2UsInBlcmNlbnQiOjAuMzIzMDQ1MTkxMDU2NzU5OX0=.4DmqIqE8RRMyq/T+tirnZN50tJpYwmVmQ/66NStXWj8=",
+      "value": "eyJtYXRjaCI6ZmFsc2UsInBlcmNlbnQiOjAuMDMwMjA2MTQ0NDExMjkzMX0=.7oFi/C5pORiOPXaAkR5qGz/VVLTZ0r1Zb3ww8hBtNCk=",
       "domain": "creator.douyin.com",
       "path": "/goofy/douyin_creator_pc",
-      "expires": 1747126164.931522,
+      "expires": 1747141192.883323,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Lax"
@@ -25,57 +25,47 @@
       "value": "2906,33638",
       "domain": "creator.douyin.com",
       "path": "/",
-      "expires": 1746780512,
+      "expires": 1746795555,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "ttwid",
-      "value": "1%7CMctbbl7LGpgjET6lIxLrNMc5fc_BiyakSFzPh347qGs%7C1746521313%7Cb5c1d42ebb4d627222bbc4272b5a06c96d5cd5601979ac0f28798ab3dffb27f6",
+      "value": "1%7C5nQuIfgubj-MWK40H4m05bTJk-1vCkUXW55iZvH-Q-4%7C1746536358%7C5522401a4ffbb28f4e2160d5ab1af38ccad9f4c14eaf95e340350a4433010799",
       "domain": ".bytedance.com",
       "path": "/",
-      "expires": 1778057313.472755,
+      "expires": 1778072356.431922,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "passport_csrf_token",
-      "value": "eb534bd7f7563ecd4e2b090f6b05995a",
+      "value": "69c55f63b4b5a5eaa7d6339d41ccde7e",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705313.737815,
+      "expires": 1751720356.704838,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "passport_csrf_token_default",
-      "value": "eb534bd7f7563ecd4e2b090f6b05995a",
+      "value": "69c55f63b4b5a5eaa7d6339d41ccde7e",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705313.737984,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
-    },
-    {
-      "name": "biz_trace_id",
-      "value": "0df85bae",
-      "domain": ".douyin.com",
-      "path": "/",
-      "expires": -1,
+      "expires": 1751720356.704886,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "__security_mc_1_s_sdk_crypt_sdk",
-      "value": "56d9de5d-4e7d-9ed6",
+      "value": "e27ec5c9-47fc-bfd6",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705317.041702,
+      "expires": 1751720357.537145,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -85,27 +75,37 @@
       "value": "2",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705357.651025,
+      "expires": 1751720382.772073,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "biz_trace_id",
+      "value": "3bcee284",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": -1,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "sdk_source_info",
-      "value": "7e276470716a68645a606960273f276364697660272927676c715a6d6069756077273f276364697660272927666d776a68605a607d71606b766c6a6b5a7666776c7571273f275e58272927666a6b766a69605a696c6061273f27636469766027292762696a6764695a7364776c6467696076273f275e592772606761776c73607759275827292771273f27363137323436343730333132342778",
+      "value": "7e276470716a68645a606960273f276364697660272927676c715a6d6069756077273f276364697660272927666d776a68605a607d71606b766c6a6b5a7666776c7571273f275e58272927666a6b766a69605a696c6061273f27636469766027292762696a6764695a7364776c6467696076273f275e592772606761776c73607759275827292771273f27343232343336333630333132342778",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1746521617.360784,
+      "expires": 1746536661.854779,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "bit_env",
-      "value": "zYiih4n2umlPxB1TWYegzSy9lme4ObMDXa5qqC5lEEEgkNSkWFrlDJQfN7IQL9ERx280E9gyf-YwJd_A8umskK2WkVeFDKlABw8m5i6FkKjEHBlsns31ZRGABjFfhDfC1BcLQJn3N5GfaWkEAxSraHTEi2-bXO6tG_EEiGo_lYbGXI2vvbH9w3BWVmIceMAECFK6B0oWjgUfBF7gLuopzjQa8_AOV3RgOulQvSj03z9W_1Lu4cJWEp3_PChJXigEpakKKUX2wyWJspIhxZyOnYnqmsNHOU502086AI7z8rwzUe5FvqZVRsKknVde7iQ-HsihsXKOaqAim_OFADrOwgAA9zOEi3KuZqb5_33-5epLsiK86Lr_spUPIzMWlAksv0gXe-b7l_NzG4uVs8GlJkDsH1sGqw8WgO7Xbmh7n9rUd7sq5LyIH2iB3q-j8VXvELQj1qioG9JTclotDmVsPf5bvBct82g4eQ1J-mDgZyT-zvNKSygBUja9qZl8v_2EAT_DO1rFRaIQqmbiUqvjrFYcBLH1tzo8uRfGJQrt6AM%3D",
+      "value": "JrNnyMXRZQgXmRQN0uHd4EFTTaDnMOcW6AeVRrpaHkXubcifMsU_4vW1tRIsmjAffY64DtI0gEUadWXQCtfAPdl2UpC99osUi1EL0FsP54GewNrmKQtmDqnl_AmIYYaX38U4fAuWTyBNGBfWVc5gUYttXDIpQKEWvTqyArk1fQaT9A3KgDeg_OZ3hes57wTEq1wnFGWNpdHTyLFP7kglvEyDhXkVKc2NtnyqSyFe9uGa8Eh2ITTFGXV__xKmesFUHBfCsNmDv08UqJL7z1-nAMZAXN1sqQrKc-AOZnFfE57tFAlKATHXPFYnbIK81hbMQ6EHMRKMmpcAn-D1re-kvQW7C8XwJ8Z4DI4eLhPdlAzucdbdVlwSMIKIeQOf_ocNDR4pNygLJv6Mi1ewG-YiAyvogJQSCz6lOMrG8lTzo8-OBC2f9KPvRwcA9hzCwFg8GrqMjJM0ckAZen56dvBrVrf8uOE4FoCyCbordOlL5smI04cfn67fvSLF01hroavgmHZILl126jx3ZdZpo-870pe28Q2C1vcsufHGZlGLdNg%3D",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1746521617.360962,
+      "expires": 1746536661.854912,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -115,47 +115,27 @@
       "value": "eyJwX2luIjoiZjI5MTM1NDU4NzM0MjU0Njk1YmRjODI4NjE4MmRiNThkYmQ1OWRlOTJiOWYzMTcyNjczNjA4YjEyMjYwNWRlMSJ9",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1746521617.361203,
+      "expires": 1746536661.855057,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "passport_auth_mix_state",
-      "value": "54s8p5xxg7ndglmvosa2sskxhof8dhad",
+      "value": "inlcnwgv770i38go5mycu4ftczfk94vnwazgf5z047ii5mqf",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1746521557.361564,
+      "expires": 1746536601.855289,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
-      "name": "passport_mfa_token",
-      "value": "CjXSxFZIqJQLJ6d2XNU2ZSLkRVpWziglPMsOQwHSOm%2BzyuHdFJzZk%2BVn5MWfDcLyFtGoQt%2BhjRpKCjwAAAAAAAAAAAAATvYsad%2FBJHpZVgTj8zXYg%2BtvQlJCaL%2Bg5EcFzCtB0jOEFQMbs1CKS32p0AtW03BD5KAQ8tLwDRj2sdFsIAIiAQPQUqc2",
-      "domain": ".douyin.com",
-      "path": "/",
-      "expires": 1751705352.82488,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
-      "name": "d_ticket",
-      "value": "11370b97a7ebaa928b8bafbaa67cd5b40fc39",
-      "domain": ".douyin.com",
-      "path": "/",
-      "expires": 1778057352.824926,
-      "httpOnly": true,
-      "secure": false,
-      "sameSite": "Lax"
-    },
-    {
       "name": "passport_assist_user",
-      "value": "Cj3jonXRpT1los_Wv9-y3O2kgKbXhnvU156KDJll_NzAUche99-sWI-uXeAnXmW_mV9o2bOKERtmv5FmqEJjGkoKPAAAAAAAAAAAAABO9nGd-zdlqTgUW3P-u5Qsp2Yy2qzsl1LW6I8GugkmzWMKxVJn8QER_efqD4kJdh78IhDx0vANGImv1lQgASIBA-BLxRc%3D",
+      "value": "Cj3hQ94ell4UHCRw1tEUMksl29uUSLzEip7rWAgb_-QPUeqzI2E9zjzwLxBi54xcljCwL-X-p6h-dvladEj_GkoKPAAAAAAAAAAAAABO9nGd-zdlqTgUW3P-u5Qsp2Yy2qzsl1LW6I8GugkmzWMKxVJn8QER_efqD4kJdh78IhCZ0_ANGImv1lQgASIBA3FErp4%3D",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1781081353.430546,
+      "expires": 1781096381.464454,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -165,67 +145,67 @@
       "value": "ZWwiLrTJnxf-XNcNSGWysPEkYzLUbPEvYgYqvnV4Coc",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1756889353.430593,
+      "expires": 1756904381.464549,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "sid_guard",
-      "value": "b6051e957bdfbba282825d9d30a7c555%7C1746521353%7C5184000%7CSat%2C+05-Jul-2025+08%3A49%3A13+GMT",
+      "value": "b4df21a9d2d7e852f358b17ba1a34ee9%7C1746536383%7C5184000%7CSat%2C+05-Jul-2025+12%3A59%3A43+GMT",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1777625353.430623,
+      "expires": 1777640381.464673,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "uid_tt",
-      "value": "7132ed717a00e9550f7c8afc57b117dc",
+      "value": "6b0d846fd17160677925e57266f6204d",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430651,
+      "expires": 1751720381.464769,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "uid_tt_ss",
-      "value": "7132ed717a00e9550f7c8afc57b117dc",
+      "value": "6b0d846fd17160677925e57266f6204d",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430678,
+      "expires": 1751720381.464809,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "sid_tt",
-      "value": "b6051e957bdfbba282825d9d30a7c555",
+      "value": "b4df21a9d2d7e852f358b17ba1a34ee9",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430732,
+      "expires": 1751720381.464841,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "sessionid",
-      "value": "b6051e957bdfbba282825d9d30a7c555",
+      "value": "b4df21a9d2d7e852f358b17ba1a34ee9",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430829,
+      "expires": 1751720381.464867,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "sessionid_ss",
-      "value": "b6051e957bdfbba282825d9d30a7c555",
+      "value": "b4df21a9d2d7e852f358b17ba1a34ee9",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430863,
+      "expires": 1751720381.464975,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -235,34 +215,34 @@
       "value": "false",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430894,
+      "expires": 1751720381.465052,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "sid_ucp_v1",
-      "value": "1.0.0-KDIxNDA1M2UwZDZlYjAzOTU1YWFlYzBiMGZhNTBjYzE2NTBkYzIxZTcKHwixxpjQ9AIQiZrnwAYY2hYgDDDzjfXYBTgHQPQHSAQaAmxmIiBiNjA1MWU5NTdiZGZiYmEyODI4MjVkOWQzMGE3YzU1NQ",
+      "value": "1.0.0-KDg5OWJkMzRjNjE4YjJlN2Q1ZTMwMTVhM2IzMWRjOWQ5NWJjZmNjOTEKHwixxpjQ9AIQv4_owAYY2hYgDDDzjfXYBTgHQPQHSAQaAmxmIiBiNGRmMjFhOWQyZDdlODUyZjM1OGIxN2JhMWEzNGVlOQ",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430922,
+      "expires": 1751720381.465111,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "ssid_ucp_v1",
-      "value": "1.0.0-KDIxNDA1M2UwZDZlYjAzOTU1YWFlYzBiMGZhNTBjYzE2NTBkYzIxZTcKHwixxpjQ9AIQiZrnwAYY2hYgDDDzjfXYBTgHQPQHSAQaAmxmIiBiNjA1MWU5NTdiZGZiYmEyODI4MjVkOWQzMGE3YzU1NQ",
+      "value": "1.0.0-KDg5OWJkMzRjNjE4YjJlN2Q1ZTMwMTVhM2IzMWRjOWQ5NWJjZmNjOTEKHwixxpjQ9AIQv4_owAYY2hYgDDDzjfXYBTgHQPQHSAQaAmxmIiBiNGRmMjFhOWQyZDdlODUyZjM1OGIxN2JhMWEzNGVlOQ",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705353.430955,
+      "expires": 1751720381.465168,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "x-web-secsdk-uid",
-      "value": "da4991d7-72a9-4f75-83ad-0c43533d989f",
+      "value": "8233f7f3-dec3-48b7-b888-9638bf0c08d0",
       "domain": "creator.douyin.com",
       "path": "/",
       "expires": -1,
@@ -275,14 +255,14 @@
       "value": "undefined",
       "domain": ".creator.douyin.com",
       "path": "/",
-      "expires": 1747126154,
+      "expires": 1747141182,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "csrf_session_id",
-      "value": "c5f2e8049af000f1f55202d24caa7cc9",
+      "value": "87777801df2e1f40e33b5f5ace01479a",
       "domain": "creator.douyin.com",
       "path": "/",
       "expires": -1,
@@ -292,10 +272,10 @@
     },
     {
       "name": "ttwid",
-      "value": "1%7CMctbbl7LGpgjET6lIxLrNMc5fc_BiyakSFzPh347qGs%7C1746521355%7C84bdbd347c4f32103bc35ad6e97508b3a0ef04db2029b2d5d44e50008c6e6cd5",
+      "value": "1%7C5nQuIfgubj-MWK40H4m05bTJk-1vCkUXW55iZvH-Q-4%7C1746536384%7Ced3af6418511496dd004dbdcf5af145ee2c143e442439bf42b41d700f8c21cfb",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1778057354.666584,
+      "expires": 1778072382.447715,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -305,27 +285,57 @@
       "value": "2",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705356.459115,
+      "expires": 1751720382.761224,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
-      "name": "csrf_session_id",
-      "value": "c5f2e8049af000f1f55202d24caa7cc9",
-      "domain": "summon.bytedance.com",
-      "path": "/",
-      "expires": -1,
-      "httpOnly": false,
-      "secure": true,
-      "sameSite": "None"
-    },
-    {
       "name": "_bd_ticket_crypt_cookie",
-      "value": "53d9b0be0f5ad9988fd9998965b28b01",
+      "value": "0c22b4c88c69c1f5962a29fbce0056bf",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1751705356.984978,
+      "expires": 1751720382.7638,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__security_mc_1_s_sdk_sign_data_key_web_protect",
+      "value": "cb6498cb-42f3-8d0e",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1751720382.765922,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__security_mc_1_s_sdk_cert_key",
+      "value": "7db2d358-4885-99dd",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1751720382.766085,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__security_server_data_status",
+      "value": "1",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1751720382.768478,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bd_ticket_guard_client_data",
+      "value": "eyJiZC10aWNrZXQtZ3VhcmQtdmVyc2lvbiI6MiwiYmQtdGlja2V0LWd1YXJkLWl0ZXJhdGlvbi12ZXJzaW9uIjoxLCJiZC10aWNrZXQtZ3VhcmQtcmVlLXB1YmxpYy1rZXkiOiJCQ1c2L1BhMWdobTM1dU9JcjZieHZWbEcrRUhRNHh0QkFPZXFhWExobjBvNWEweUhoUHNxMVlvbXBtelBWOVZud0RraXhmYzIvblE0YXRLNjRteEtlcHc9IiwiYmQtdGlja2V0LWd1YXJkLXdlYi12ZXJzaW9uIjoyfQ%3D%3D",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1751720382.771962,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -341,61 +351,31 @@
       "sameSite": "Lax"
     },
     {
-      "name": "__security_mc_1_s_sdk_sign_data_key_web_protect",
-      "value": "72c44489-4a39-a2fc",
-      "domain": ".douyin.com",
+      "name": "csrf_session_id",
+      "value": "87777801df2e1f40e33b5f5ace01479a",
+      "domain": "summon.bytedance.com",
       "path": "/",
-      "expires": 1751705357.399669,
+      "expires": -1,
       "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
-    },
-    {
-      "name": "__security_mc_1_s_sdk_cert_key",
-      "value": "e34cdfd3-4418-86ac",
-      "domain": ".douyin.com",
-      "path": "/",
-      "expires": 1751705357.399907,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
-    },
-    {
-      "name": "__security_server_data_status",
-      "value": "1",
-      "domain": ".douyin.com",
-      "path": "/",
-      "expires": 1751705357.405107,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
-    },
-    {
-      "name": "bd_ticket_guard_client_data",
-      "value": "eyJiZC10aWNrZXQtZ3VhcmQtdmVyc2lvbiI6MiwiYmQtdGlja2V0LWd1YXJkLWl0ZXJhdGlvbi12ZXJzaW9uIjoxLCJiZC10aWNrZXQtZ3VhcmQtcmVlLXB1YmxpYy1rZXkiOiJCSHNWTUdlVEwvckEvZzBWLzBnSXlWem5zTWNCTGQxNkZ3RWxJS3ZEUStVWHpvb3UzUzdTRXdSeHh2Z3RoVkJSbnp0eS8wa1daei9zSDQzSHNSc3RLV1U9IiwiYmQtdGlja2V0LWd1YXJkLXdlYi12ZXJzaW9uIjoyfQ%3D%3D",
-      "domain": ".douyin.com",
-      "path": "/",
-      "expires": 1751705357.650811,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
+      "secure": true,
+      "sameSite": "None"
     },
     {
       "name": "odin_tt",
-      "value": "837360a84acd897d9ae4c75f18fd25b748eeb5a8dc8cafbbc4b7112c0e21bd315f450ab83626ef27d26cfe5452df3da109271566f347d882376ec7794e50865b",
+      "value": "5696607edf68af6dabe7117e900d68466c3d118d0d03829d347517e2e709519233ac97225adb3e5b9cebbb556c6b964c4fcaecca2c390745e06f7332b23cfd61",
       "domain": ".douyin.com",
       "path": "/",
-      "expires": 1778057363.894585,
+      "expires": 1778072393.904345,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "did",
-      "value": "web_1c2f49440ac91ef7fe4eb6343a4b184999ff",
+      "value": "web_201d093229ff54c8e52d774c0170a5d999d0",
       "domain": ".kuaishou.com",
       "path": "/",
-      "expires": 1781081376.659789,
+      "expires": 1781096401.95068,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -405,7 +385,7 @@
       "value": "1000452753377",
       "domain": ".kuaishou.com",
       "path": "/",
-      "expires": 1747817407.516856,
+      "expires": 1747832432.837683,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -415,17 +395,17 @@
       "value": "1000452753377",
       "domain": "id.kuaishou.com",
       "path": "/",
-      "expires": 1748335807.326746,
+      "expires": 1748350832.790734,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "passToken",
-      "value": "ChNwYXNzcG9ydC5wYXNzLXRva2VuEsABcV3ZaKSAg_Ljz7slkahqvxtkA9GOrQsjuh3sgM2B_oVjbnj0HjqU3jB20dnuYKrvKH20wVnPGTjK2gvHY_9VK7sntgoCtwf_inS2F2ZhsM4jqGw2QvQ1qcyXzIqt1N_br1VtteegYUpqqA1az_Qh0neOy5Dj-P6pP52QsDPIc75ibLkjtbqKU5azNqXRm8i8BNOFlw6KvS3ZqMol4fPePVmIwkEkQU9DWWmH4CFAIN94oJK-oKuDK8XAlN1XK40cGhKg_o5KaBBN5LxbmRWQRwGOczwiIEIE1nwIj6aH1uYcoUX1XqOcjqf5tEum4mobTRDs5q6MKAUwAQ",
+      "value": "ChNwYXNzcG9ydC5wYXNzLXRva2VuEsABXbk1wf9f6DS0sjD9fVGZ5tArOJ-G7DCFYlZTp4JGO1lNhVH6gvWvGXw2DsncvuPod0C-hbwWWreQOdp5aN1Zf6ZRhL5sUC_KKTGx_fRoWfSa7vi3h_yqtBCxBU5IexFxrZ3-K3FHqJKHH-QNbzrbf91u5u3y9pnkI5zJqPaK_qwp58drunELKTZKSh0trhDjFfHCYXKvfikwFvF7YBHFd6EgyiyXEr1VL-bUXT9EAxN1rJxTWr6XHsa8VLgvnrghGhLciG6Gyc9HkZ9gfUBBWjyoFgciIPLQSezw_N8iJBsVy2Z0WKJoak3_KjwO_wG-gTJPAgSUKAUwAQ",
       "domain": "id.kuaishou.com",
       "path": "/",
-      "expires": 1748335807.326916,
+      "expires": 1748350832.79092,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -435,7 +415,7 @@
       "value": "1418322537",
       "domain": ".kuaishou.com",
       "path": "/",
-      "expires": 1747817407.516774,
+      "expires": 1747832432.83756,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -445,27 +425,27 @@
       "value": "1418322537",
       "domain": "id.kuaishou.com",
       "path": "/",
-      "expires": 1748335807.32688,
+      "expires": 1748350832.790879,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "kuaishou.web.cp.api_st",
-      "value": "ChZrdWFpc2hvdS53ZWIuY3AuYXBpLnN0ErABnIYawzKF2A0CWsUof5i3chX3T5w26fmbGYYSV1ON0Ptb2St9ZcvJqpYS-YcsWfjAQGP3qGLU6oj9KjdC9ogrnVZIWIjc5Kk0B8PfDl2HvT7x5soJR0ZYIBZv6s_6CDO2y_6eQ3eD_--UO1jNTtCj6aTJOc_iFRyjhPrPOYna4BMYdZJlpEpVdg6pL3qWCQhNV9MJmnn2m--F1ako7OZmrzbL4JCahh1DZBZ5AXwpuE8aEtBwTT-DsbKtpMb7Pz5JKso76SIgCT4e-ENTcWulCp_UaLMk2xBtUJ6Xub3VqmJdyRDyP70oBTAB",
+      "value": "ChZrdWFpc2hvdS53ZWIuY3AuYXBpLnN0ErABY0DaQGNqv6GEqD6jnmJfwVnFFuSEMZH6J_oFyCPHsUbm-9-BGQK_8br3IknF-YGQsBVZ6LcxcYTFFPbYMBILtu1EAShpC77oE4uQazz-ryBc0ENowp1qMAvE_AHls0jve0A-OHRQwVbHZ7vm5SnecX_nH3Eor8vHANL-jdmS13lJ7XZS71_6OMXIMcDPkr8BoYPBDwqyF4viaJ1hoP4X9Yhua8MQybUcECCPVPg-0xEaEr107Lui-h8tgb9_bpuB5sOhZiIgeyMEFMAi-WCXAkZ96o-SrHbdTB8QnyixZkuD9Idy7VMoBTAB",
       "domain": ".kuaishou.com",
       "path": "/",
-      "expires": 1747817407.51688,
+      "expires": 1747832432.837766,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "kuaishou.web.cp.api_ph",
-      "value": "0551b87642b52c699fbfc4d78560764f438e",
+      "value": "6f14d0701bda74a0151990bd4be66de0e371",
       "domain": ".kuaishou.com",
       "path": "/",
-      "expires": 1747817407.516903,
+      "expires": 1747832432.837793,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -473,37 +453,8 @@
   ],
   "origins": [
     {
-      "origin": "https://cp.kuaishou.com",
-      "localStorage": [
-        {
-          "name": "LOAD_DEVICE_INCREASE_ID",
-          "value": "3"
-        },
-        {
-          "name": "OTHER_DEVICE_INCREASE_ID",
-          "value": "32"
-        },
-        {
-          "name": "WEBLOGGER_CUSTOM_INCREAMENT_ID_KEY",
-          "value": "3"
-        },
-        {
-          "name": "refresh_last_time_0x0810",
-          "value": "1746521376468"
-        },
-        {
-          "name": "WEBLOGGER_INCREAMENT_ID_KEY",
-          "value": "16"
-        }
-      ]
-    },
-    {
       "origin": "https://creator.douyin.com",
       "localStorage": [
-        {
-          "name": "security-sdk/s_sdk_sign_data_key/token",
-          "value": "{\"key\":\"security-sdk/s_sdk_sign_data_key/token\",\"data\":\"{\\\"ts_sign\\\":\\\"#+bF3rmV8ahsIWd7ewXL4KKYi3NwiMwSkMiHVXY2DlimmdwWYf93phQmXQYO+KzogCiuq+D97T/9q0+0zep/+eQ5iQz+QYnaV7wcYwJ0LXumIUgVmYYfsK/8xmMnJQaVe/P4uojzkMcxpe/cPxEwlzqqlvvtearRcZnIrjB9DlCubtIsTORQRPeFPuwvwz8uplwu+9NmJKRSxWBC78ZSy/VGYoMPgfuaHFDK1Web3vpExu4fxvxjcOPJyOucM9gyr70+/ieJ+Tvk8lU07S8YvAiKJXeAbfazbqBFka5BTFgGAbf1TPcKKheJXxIuzmRleOKMyKlfE1lt6l+i/ES2FgM05i466X8oEZzKVS95DDdoOAz8eC+UueUueehExIcMDLx4yFJckdrL4sBa+JZZp8S+SBVc/cQOHjGKBDBQHf94GywS0A0d3uHG2C18VAwx0XXOK1PXI1dTj5og3BrZ2bydZhTlcqTsPL+h5pAL5SBfDEnjbhfGFFYmYR0zCIcxoPW5gz1jR3BYSBwEgGdhRR3oQFqdfl0ZKO+QUS00Gxnxd3p4PQPAkLmc37GioviPilT5QQLny5G9EuFfUxCpxxA78325odcdJX92lme/WWOQw4bK6lwX69i8ZPV4AncyxawU+bg2y21/0XGjQXpQM7z6L2kd7/1PtAc7C6320FlU0jX8ZNBku5WF11itLSEv3dGVaKfLWQI0bzf3ADkgs90SKPu422y70jZH8H4Z9pHDBbgCJP7m4P4ASzzZnsSMrXsK3RKEHsnmg4PaKHDnUG9HE0y3ygr3zFuedxslnQneMdRO9Ypfda7zOpG5KAyQ28TVs6vw2QvEF9R8pD7A80/hcN28jr6T/EC+Dxskbd3SY1Q2Nvsz8kW7Ywfu3Xy/6ZpS3zGRFYk3WsQBKue06IKztdnTQ4M4PanqYYkWLFkYjZJslO5QDTkL0llVUTSYZrF0y7pqNbx5jJHt3/oCnJEVNvX/yBcd+9moNtFcL8U6QnJVWhwSK3BYGwUfFv9Si2lwrMYdDrDwldMHd97tU7RoYGNhI/+WcluHQeD2a3P2cACPxO5KMBCGofGJr3NAEIKZqaJytAQ/Su5ojQjA4HnWWE+0ZqKf+BKO6tAKD/jjJllnlHy3/1XgMDeJHHE/L/xY/5kHGyjWKOsIEuoBbEWuGuhVje+nEQBno43ziMjfTk32+EeaQp14YYSIJ60FEvfcLU3AeMuiZR6lfGdFIfqjB\\\",\\\"ticket\\\":\\\"eyJNYXJrSWQiOjAsIlR5cGUiOjEsIkFwcElkIjoxMTI4LCJVc2VySWQiOjEwMDAyNjE2NDAxNywiVGltZXN0YW1wIjoxNzQ2NTIxMzU4NTUxfQ==\\\",\\\"client_cert\\\":\\\"-----BEGIN CERTIFICATE-----\\\\nMIICGTCCAb+gAwIBAgIVAJN8qurhVk4EAxdtexg84+wRSSHhMAoGCCqGSM49BAMC\\\\nMDExCzAJBgNVBAYTAkNOMSIwIAYDVQQDDBl0aWNrZXRfZ3VhcmRfY2FfZWNkc2Ff\\\\nMjU2MB4XDTI1MDUwNjA4NDkxOFoXDTM1MDUwNjE2NDkxOFowJzELMAkGA1UEBhMC\\\\nQ04xGDAWBgNVBAMMD2JkX3RpY2tldF9ndWFyZDBZMBMGByqGSM49AgEGCCqGSM49\\\\nAwEHA0IABFhJ+cYffLp0CsIs5KxWrzeJ5dy65TPyKbiShXqp+l3nyzE+IidKLwLy\\\\ntTvhl5wsjQnHWZbqnaU6ri30SIZI40ajgb0wgbowDgYDVR0PAQH/BAQDAgWgMDEG\\\\nA1UdJQQqMCgGCCsGAQUFBwMBBggrBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwME\\\\nMCkGA1UdDgQiBCD1dGQ6yblmo+f6gGoDmmSQn+heBWscCMUMo7K9S+TWpzArBgNV\\\\nHSMEJDAigCAypWfqjmRIEo3MTk1Ae3MUm0dtU3qk0YDXeZSXeyJHgzAdBgNVHREE\\\\nFjAUghJjcmVhdG9yLmRvdXlpbi5jb20wCgYIKoZIzj0EAwIDSAAwRQIgIZsp8rwq\\\\nzZUw2aIm7OXmLA8w+ktE8hflwCnHnQKM4BECIQCkMBFveKPKA1KnnyqIxjPgT1b+\\\\nClq5tNOSncMQLE2zMQ==\\\\n-----END CERTIFICATE-----\\\\n\\\"}\",\"createTime\":1746521358215,\"expireTime\":4102444799000}"
-        },
         {
           "name": "login_type_from_login",
           "value": "\"\""
@@ -518,7 +469,7 @@
         },
         {
           "name": "__msuuid__",
-          "value": "eddd7273-fd97-41eb-a8f1-24ccfc7d2a1f"
+          "value": "37132652-0022-470c-ab8a-a7e785654a17"
         },
         {
           "name": "CREATOR_LAYOUT_CONFIG",
@@ -526,7 +477,7 @@
         },
         {
           "name": "SLARDARpassport_token_beat",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMjEwNDc4NzM0MTclMjIsJTIyZGV2aWNlSWQlMjI6JTIyZDIxNGNhOWQtZGFmZS00YWExLWJlYWEtMmEwMzVlZjI5NThkJTIyLCUyMmV4cGlyZXMlMjI6MTc1NDI5NzM1NjM3OSU3RA=="
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjEwNDc4NzM0MTclMjIsJTIyZGV2aWNlSWQlMjI6JTIyNDNlNzE5YWEtM2Y1Yi00ZjIxLTkyODQtYzBjMjA3MDFhZjYwJTIyLCUyMmV4cGlyZXMlMjI6MTc1NDMxMjM4Mzc0NSU3RA=="
         },
         {
           "name": "__tea_cache_first_2906",
@@ -534,15 +485,15 @@
         },
         {
           "name": "__tea_cache_tokens_5231",
-          "value": "{\"web_id\":\"7501252044888540691\",\"user_unique_id\":\"7501252044888540691\",\"timestamp\":1746521357531,\"_type_\":\"default\"}"
+          "value": "{\"web_id\":\"7501316598428452390\",\"user_unique_id\":\"7501316598428452390\",\"timestamp\":1746536383882,\"_type_\":\"default\"}"
         },
         {
           "name": "ztsdk_tcc_config",
-          "value": "{\"value\":{\"ztsdk_config\":{\"6383\":[{\"aid\":6383,\"scene\":\"web_protect\",\"certType\":\"cookie\",\"consumerPathList\":[\"/aweme/v1/web/comment/list/reply/\",\"/aweme/v1/web/comment/list/\",\"/aweme/v2/web/comment/list/reply/\"],\"signVersion\":2}]}},\"expire\":1746542913811}"
+          "value": "{\"value\":{\"ztsdk_config\":{\"6383\":[{\"aid\":6383,\"scene\":\"web_protect\",\"certType\":\"cookie\",\"consumerPathList\":[\"/aweme/v1/web/comment/list/reply/\",\"/aweme/v1/web/comment/list/\",\"/aweme/v2/web/comment/list/reply/\"],\"signVersion\":2}]}},\"expire\":1746557956476}"
         },
         {
           "name": "__tea_sdk_ab_version_2906",
-          "value": "{\"data\":{\"assistantImage\":{\"val\":1,\"vid\":\"90116780\"},\"chapter_sync_reach\":{\"val\":1,\"vid\":\"12379159\"},\"chapter_video_status\":{\"val\":2,\"vid\":\"90953361\"},\"co_create_new_role\":{\"val\":true,\"vid\":\"90611581\"},\"collection_enable_set_secret_status\":{\"val\":1,\"vid\":\"90124858\"},\"cover_editor_interaction_opti\":{\"val\":2,\"vid\":\"90599399\"},\"cover_h265_ffmpeg_capture\":{\"val\":true,\"vid\":\"90166065\"},\"creatorDynamicConfigV2\":{\"val\":{\"dynamicSliceRule\":{\"highSize\":10485760,\"lowNormalThreshold\":200,\"lowSize\":3145728,\"normalHighThreshold\":400,\"normalSize\":5242880},\"enableDynamicSlice\":true,\"enableRouteSelect\":false},\"vid\":\"12189008\"},\"creator_comment_manage\":{\"val\":1,\"vid\":\"90613695\"},\"creator_danmaku_manage\":{\"val\":{\"menus_show\":1},\"vid\":\"90118007\"},\"creator_data_bullet_analysis\":{\"val\":{\"bullet_analysis_tab_show\":2},\"vid\":\"90128271\"},\"creator_data_new\":{\"val\":true,\"vid\":\"90081040\"},\"creator_data_progress_analysis\":{\"val\":{\"fans_analysis_tab_show\":1},\"vid\":\"90128191\"},\"creator_pc\":{\"val\":{\"tab_ab_show_new_home\":1},\"vid\":\"90109488\"},\"creator_pc_1_3_intell_chapter\":{\"val\":1,\"vid\":\"90122502\"},\"creator_pc_clip\":{\"val\":{\"capcut\":1},\"vid\":\"90119963\"},\"creator_pc_cover_min_size\":{\"val\":2,\"vid\":\"90126311\"},\"creator_pc_data_center\":{\"val\":{\"is_new_live_content\":1},\"vid\":\"90111860\"},\"creator_pc_data_center_new_list\":{\"val\":1,\"vid\":\"90625082\"},\"creator_pc_game_mounted_anchor_reedit\":{\"val\":1,\"vid\":\"90122407\"},\"creator_pc_game_mounted_anchor_revision_v2\":{\"val\":2,\"vid\":\"90125303\"},\"creator_pc_game_mounted_game_activity_profit\":{\"val\":3,\"vid\":\"90127201\"},\"creator_pc_home\":{\"val\":{\"interactive_show_type\":2},\"vid\":\"90111556\"},\"creator_pc_image_music_optimization\":{\"val\":1,\"vid\":\"90962255\"},\"creator_pc_mission\":{\"val\":{\"visible\":1},\"vid\":\"90112463\"},\"creator_pc_modify_item_entrance\":{\"val\":1,\"vid\":\"90128660\"},\"creator_pc_new_cover_text\":{\"val\":true,\"vid\":\"90125008\"},\"creator_pc_org\":{\"val\":{\"new_org\":1},\"vid\":\"90123271\"},\"creator_pc_org_home\":{\"val\":{\"new_home\":1},\"vid\":\"90112354\"},\"creator_pc_recommend_cover_opt\":{\"val\":true,\"vid\":\"90127437\"},\"creator_pc_tab_ab\":{\"val\":{\"account_show\":2},\"vid\":\"90092974\"},\"creator_pc_upload_cancel_btn\":{\"val\":0,\"vid\":\"90173282\"},\"creator_pc_upload_progress_detail\":{\"val\":1,\"vid\":\"90173281\"},\"creator_pc_video_music_optimization\":{\"val\":1,\"vid\":\"90945842\"},\"creator_pc_work_detail_version\":{\"val\":1,\"vid\":\"90356254\"},\"creator_publish_cover_check\":{\"val\":1,\"vid\":\"90122334\"},\"creator_school_nav\":{\"val\":{\"nav_type\":1},\"vid\":\"90081895\"},\"creator_upload_async\":{\"val\":1,\"vid\":\"90324260\"},\"creator_upload_cancel\":{\"val\":1,\"vid\":\"90124601\"},\"creator_uploader_tos_direct\":{\"val\":1,\"vid\":\"90126365\"},\"data_cover_rate\":{\"val\":{\"is_show_cover_rate\":true},\"vid\":\"90121311\"},\"dict\":{\"val\":{\"canShowUserDeclaration\":true},\"vid\":\"90114001\"},\"douyin\":{\"val\":{\"aweme_chapter\":{\"model\":{\"endpoint_id\":\"mse-20240219151718-zffgr\",\"name\":\"skylark-pro\",\"version\":\"2.0\"}}},\"vid\":\"8733397\"},\"douyin_cover_imagelayer_editable\":{\"val\":true,\"vid\":\"90111484\"},\"douyin_outer_progress_enbale\":{\"val\":1,\"vid\":\"90118893\"},\"douyin_pc_creator_image_text\":{\"val\":true,\"vid\":\"90093311\"},\"editor_filter\":{\"val\":true,\"vid\":\"90122909\"},\"enableChapterSelfMade\":{\"val\":1,\"vid\":\"90940916\"},\"enable_open_platform_cover_sync\":{\"val\":1,\"vid\":\"12225602\"},\"enhance_cover_check_dual\":{\"val\":1,\"vid\":\"90906860\"},\"getCaptureCacheOptAB\":{\"val\":1,\"vid\":\"12355318\"},\"is_new_loki\":{\"val\":1,\"vid\":\"90975626\"},\"is_show_pc_content_analysis\":{\"val\":{\"enabled\":1},\"vid\":\"90118423\"},\"is_show_tagged_page\":{\"val\":true,\"vid\":\"90992719\"},\"maxReadConcurrent\":{\"val\":3,\"vid\":\"12294554\"},\"new_recommend_chapter_enable\":{\"val\":1,\"vid\":\"8733397\"},\"openReadConcurrent\":{\"val\":true,\"vid\":\"12294554\"},\"quick_fill\":{\"val\":true,\"vid\":\"90997687\"},\"recommend_chapter_async_link\":{\"val\":1,\"vid\":\"90129292\"},\"recommend_chapter_pre_generation\":{\"val\":0,\"vid\":\"8733397\"},\"refine_cover_tool\":{\"val\":2,\"vid\":\"90120266\"},\"show_activity_tag\":{\"val\":true,\"vid\":\"90102355\"},\"show_info\":{\"val\":1,\"vid\":\"90126292\"},\"show_intellect_chapter_entry\":{\"val\":1,\"vid\":\"90094899\"},\"slardar_filter\":{\"val\":true,\"vid\":\"90122697\"},\"star_task_new\":{\"val\":true,\"vid\":\"11779583\"},\"table_tab\":{\"val\":\"contribute\",\"vid\":\"90094565\"},\"test\":{\"val\":true,\"vid\":\"90082519\"},\"title_permission_new\":{\"val\":1,\"vid\":\"90111481\"}},\"uuid\":\"100026164017\",\"timestamp\":1746521361732,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[\"90613695\",\"90112463\",\"12355318\",\"90118893\",\"90111481\",\"90124858\",\"90126311\",\"90906860\",\"90975626\",\"90945842\",\"90962255\",\"90611581\",\"90940916\",\"90997687\",\"12225602\",\"11779583\",\"12433909\",\"12379159\",\"12189008\",\"12294554\"]}"
+          "value": "{\"data\":{\"assistantImage\":{\"val\":1,\"vid\":\"90116780\"},\"chapter_sync_reach\":{\"val\":1,\"vid\":\"12379159\"},\"chapter_video_status\":{\"val\":2,\"vid\":\"90953361\"},\"co_create_new_role\":{\"val\":true,\"vid\":\"90611581\"},\"collection_enable_set_secret_status\":{\"val\":1,\"vid\":\"90124858\"},\"cover_editor_interaction_opti\":{\"val\":2,\"vid\":\"90599399\"},\"cover_h265_ffmpeg_capture\":{\"val\":true,\"vid\":\"90166065\"},\"creatorDynamicConfigV2\":{\"val\":{\"dynamicSliceRule\":{\"highSize\":10485760,\"lowNormalThreshold\":200,\"lowSize\":3145728,\"normalHighThreshold\":400,\"normalSize\":5242880},\"enableDynamicSlice\":true,\"enableRouteSelect\":false},\"vid\":\"12189008\"},\"creator_comment_manage\":{\"val\":1,\"vid\":\"90613695\"},\"creator_danmaku_manage\":{\"val\":{\"menus_show\":1},\"vid\":\"90118007\"},\"creator_data_bullet_analysis\":{\"val\":{\"bullet_analysis_tab_show\":2},\"vid\":\"90128271\"},\"creator_data_new\":{\"val\":true,\"vid\":\"90081040\"},\"creator_data_progress_analysis\":{\"val\":{\"fans_analysis_tab_show\":1},\"vid\":\"90128191\"},\"creator_pc\":{\"val\":{\"tab_ab_show_new_home\":1},\"vid\":\"90109488\"},\"creator_pc_1_3_intell_chapter\":{\"val\":1,\"vid\":\"90122502\"},\"creator_pc_clip\":{\"val\":{\"capcut\":1},\"vid\":\"90119963\"},\"creator_pc_cover_min_size\":{\"val\":2,\"vid\":\"90126311\"},\"creator_pc_data_center\":{\"val\":{\"is_new_live_content\":1},\"vid\":\"90111860\"},\"creator_pc_data_center_new_list\":{\"val\":1,\"vid\":\"90625082\"},\"creator_pc_game_mounted_anchor_reedit\":{\"val\":1,\"vid\":\"90122407\"},\"creator_pc_game_mounted_anchor_revision_v2\":{\"val\":2,\"vid\":\"90125303\"},\"creator_pc_game_mounted_game_activity_profit\":{\"val\":3,\"vid\":\"90127201\"},\"creator_pc_home\":{\"val\":{\"interactive_show_type\":2},\"vid\":\"90111556\"},\"creator_pc_image_music_optimization\":{\"val\":1,\"vid\":\"90962255\"},\"creator_pc_mission\":{\"val\":{\"visible\":1},\"vid\":\"90112463\"},\"creator_pc_modify_item_entrance\":{\"val\":1,\"vid\":\"90128660\"},\"creator_pc_new_cover_text\":{\"val\":true,\"vid\":\"90125008\"},\"creator_pc_org\":{\"val\":{\"new_org\":1},\"vid\":\"90123271\"},\"creator_pc_org_home\":{\"val\":{\"new_home\":1},\"vid\":\"90112354\"},\"creator_pc_recommend_cover_opt\":{\"val\":true,\"vid\":\"90127437\"},\"creator_pc_tab_ab\":{\"val\":{\"account_show\":2},\"vid\":\"90092974\"},\"creator_pc_upload_cancel_btn\":{\"val\":0,\"vid\":\"90173282\"},\"creator_pc_upload_progress_detail\":{\"val\":1,\"vid\":\"90173281\"},\"creator_pc_video_music_optimization\":{\"val\":1,\"vid\":\"90945842\"},\"creator_pc_work_detail_version\":{\"val\":1,\"vid\":\"90356254\"},\"creator_publish_cover_check\":{\"val\":1,\"vid\":\"90122334\"},\"creator_school_nav\":{\"val\":{\"nav_type\":1},\"vid\":\"90081895\"},\"creator_upload_async\":{\"val\":1,\"vid\":\"90324260\"},\"creator_upload_cancel\":{\"val\":1,\"vid\":\"90124601\"},\"creator_uploader_tos_direct\":{\"val\":1,\"vid\":\"90126365\"},\"data_cover_rate\":{\"val\":{\"is_show_cover_rate\":true},\"vid\":\"90121311\"},\"dict\":{\"val\":{\"canShowUserDeclaration\":true},\"vid\":\"90114001\"},\"douyin\":{\"val\":{\"aweme_chapter\":{\"model\":{\"endpoint_id\":\"mse-20240219151718-zffgr\",\"name\":\"skylark-pro\",\"version\":\"2.0\"}}},\"vid\":\"8733397\"},\"douyin_cover_imagelayer_editable\":{\"val\":true,\"vid\":\"90111484\"},\"douyin_outer_progress_enbale\":{\"val\":1,\"vid\":\"90118893\"},\"douyin_pc_creator_image_text\":{\"val\":true,\"vid\":\"90093311\"},\"editor_filter\":{\"val\":true,\"vid\":\"90122909\"},\"enableChapterSelfMade\":{\"val\":1,\"vid\":\"90940916\"},\"enable_open_platform_cover_sync\":{\"val\":1,\"vid\":\"12225602\"},\"enhance_cover_check_dual\":{\"val\":1,\"vid\":\"90906860\"},\"getCaptureCacheOptAB\":{\"val\":1,\"vid\":\"12355318\"},\"is_new_loki\":{\"val\":1,\"vid\":\"90975626\"},\"is_show_pc_content_analysis\":{\"val\":{\"enabled\":1},\"vid\":\"90118423\"},\"is_show_tagged_page\":{\"val\":true,\"vid\":\"90992719\"},\"maxReadConcurrent\":{\"val\":3,\"vid\":\"12294554\"},\"new_recommend_chapter_enable\":{\"val\":1,\"vid\":\"8733397\"},\"openReadConcurrent\":{\"val\":true,\"vid\":\"12294554\"},\"quick_fill\":{\"val\":true,\"vid\":\"90997687\"},\"recommend_chapter_async_link\":{\"val\":1,\"vid\":\"90129292\"},\"recommend_chapter_pre_generation\":{\"val\":0,\"vid\":\"8733397\"},\"refine_cover_tool\":{\"val\":2,\"vid\":\"90120266\"},\"show_activity_tag\":{\"val\":true,\"vid\":\"90102355\"},\"show_info\":{\"val\":1,\"vid\":\"90126292\"},\"show_intellect_chapter_entry\":{\"val\":1,\"vid\":\"90094899\"},\"slardar_filter\":{\"val\":true,\"vid\":\"90122697\"},\"star_task_new\":{\"val\":true,\"vid\":\"11779583\"},\"table_tab\":{\"val\":\"contribute\",\"vid\":\"90094565\"},\"test\":{\"val\":true,\"vid\":\"90082519\"},\"title_permission_new\":{\"val\":1,\"vid\":\"90111481\"}},\"uuid\":\"100026164017\",\"timestamp\":1746536387279,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[\"90613695\",\"90112463\",\"12355318\",\"90118893\",\"90111481\",\"90124858\",\"90126311\",\"90906860\",\"90975626\",\"90945842\",\"90962255\",\"90611581\",\"90940916\",\"90997687\",\"12225602\",\"11779583\",\"12433909\",\"12379159\",\"12189008\",\"12294554\"]}"
         },
         {
           "name": "hasGenIntellChapters_v2",
@@ -550,7 +501,11 @@
         },
         {
           "name": "security-sdk/s_sdk_server_cert_key",
-          "value": "{\"cert\":\"-----BEGIN CERTIFICATE-----\\nMIIEfTCCBCKgAwIBAgIUXWdS2tzmSoewCWfKFyiWMrJqs/0wCgYIKoZIzj0EAwIw\\nMTELMAkGA1UEBhMCQ04xIjAgBgNVBAMMGXRpY2tldF9ndWFyZF9jYV9lY2RzYV8y\\nNTYwIBcNMjIxMTE4MDUyMDA2WhgPMjA2OTEyMzExNjAwMDBaMCQxCzAJBgNVBAYT\\nAkNOMRUwEwYDVQQDEwxlY2llcy1zZXJ2ZXIwWTATBgcqhkjOPQIBBggqhkjOPQMB\\nBwNCAASE2llDPlfc8Rq+5J5HXhg4edFjPnCF3Ua7JBoiE/foP9m7L5ELIcvxCgEx\\naRCHbQ8kCCK/ArZ4FX/qCobZAkToo4IDITCCAx0wDgYDVR0PAQH/BAQDAgWgMDEG\\nA1UdJQQqMCgGCCsGAQUFBwMBBggrBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwME\\nMCkGA1UdDgQiBCABydxqGrVEHhtkCWTb/vicGpDZPFPDxv82wiuywUlkBDArBgNV\\nHSMEJDAigCAypWfqjmRIEo3MTk1Ae3MUm0dtU3qk0YDXeZSXeyJHgzCCAZQGCCsG\\nAQUFBwEBBIIBhjCCAYIwRgYIKwYBBQUHMAGGOmh0dHA6Ly9uZXh1cy1wcm9kdWN0\\naW9uLmJ5dGVkYW5jZS5jb20vYXBpL2NlcnRpZmljYXRlL29jc3AwRgYIKwYBBQUH\\nMAGGOmh0dHA6Ly9uZXh1cy1wcm9kdWN0aW9uLmJ5dGVkYW5jZS5uZXQvYXBpL2Nl\\ncnRpZmljYXRlL29jc3AwdwYIKwYBBQUHMAKGa2h0dHA6Ly9uZXh1cy1wcm9kdWN0\\naW9uLmJ5dGVkYW5jZS5jb20vYXBpL2NlcnRpZmljYXRlL2Rvd25sb2FkLzQ4RjlD\\nMEU3QjBDNUE3MDVCOTgyQkU1NTE3MDVGNjQ1QzhDODc4QTguY3J0MHcGCCsGAQUF\\nBzAChmtodHRwOi8vbmV4dXMtcHJvZHVjdGlvbi5ieXRlZGFuY2UubmV0L2FwaS9j\\nZXJ0aWZpY2F0ZS9kb3dubG9hZC80OEY5QzBFN0IwQzVBNzA1Qjk4MkJFNTUxNzA1\\nRjY0NUM4Qzg3OEE4LmNydDCB5wYDVR0fBIHfMIHcMGygaqBohmZodHRwOi8vbmV4\\ndXMtcHJvZHVjdGlvbi5ieXRlZGFuY2UuY29tL2FwaS9jZXJ0aWZpY2F0ZS9jcmwv\\nNDhGOUMwRTdCMEM1QTcwNUI5ODJCRTU1MTcwNUY2NDVDOEM4NzhBOC5jcmwwbKBq\\noGiGZmh0dHA6Ly9uZXh1cy1wcm9kdWN0aW9uLmJ5dGVkYW5jZS5uZXQvYXBpL2Nl\\ncnRpZmljYXRlL2NybC80OEY5QzBFN0IwQzVBNzA1Qjk4MkJFNTUxNzA1RjY0NUM4\\nQzg3OEE4LmNybDAKBggqhkjOPQQDAgNJADBGAiEAqMjT5ADMdGMeaImoJK4J9jzE\\nLqZ573rNjsT3k14pK50CIQCLpWHVKWi71qqqrMjiSDvUhpyO1DpTPRHlavPRuaNm\\nww==\\n-----END CERTIFICATE-----\",\"sn\":\"533240336124694022040808462028007165443034493949\",\"createdTime\":1746521317267}"
+          "value": "{\"cert\":\"-----BEGIN CERTIFICATE-----\\nMIIEfTCCBCKgAwIBAgIUXWdS2tzmSoewCWfKFyiWMrJqs/0wCgYIKoZIzj0EAwIw\\nMTELMAkGA1UEBhMCQ04xIjAgBgNVBAMMGXRpY2tldF9ndWFyZF9jYV9lY2RzYV8y\\nNTYwIBcNMjIxMTE4MDUyMDA2WhgPMjA2OTEyMzExNjAwMDBaMCQxCzAJBgNVBAYT\\nAkNOMRUwEwYDVQQDEwxlY2llcy1zZXJ2ZXIwWTATBgcqhkjOPQIBBggqhkjOPQMB\\nBwNCAASE2llDPlfc8Rq+5J5HXhg4edFjPnCF3Ua7JBoiE/foP9m7L5ELIcvxCgEx\\naRCHbQ8kCCK/ArZ4FX/qCobZAkToo4IDITCCAx0wDgYDVR0PAQH/BAQDAgWgMDEG\\nA1UdJQQqMCgGCCsGAQUFBwMBBggrBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwME\\nMCkGA1UdDgQiBCABydxqGrVEHhtkCWTb/vicGpDZPFPDxv82wiuywUlkBDArBgNV\\nHSMEJDAigCAypWfqjmRIEo3MTk1Ae3MUm0dtU3qk0YDXeZSXeyJHgzCCAZQGCCsG\\nAQUFBwEBBIIBhjCCAYIwRgYIKwYBBQUHMAGGOmh0dHA6Ly9uZXh1cy1wcm9kdWN0\\naW9uLmJ5dGVkYW5jZS5jb20vYXBpL2NlcnRpZmljYXRlL29jc3AwRgYIKwYBBQUH\\nMAGGOmh0dHA6Ly9uZXh1cy1wcm9kdWN0aW9uLmJ5dGVkYW5jZS5uZXQvYXBpL2Nl\\ncnRpZmljYXRlL29jc3AwdwYIKwYBBQUHMAKGa2h0dHA6Ly9uZXh1cy1wcm9kdWN0\\naW9uLmJ5dGVkYW5jZS5jb20vYXBpL2NlcnRpZmljYXRlL2Rvd25sb2FkLzQ4RjlD\\nMEU3QjBDNUE3MDVCOTgyQkU1NTE3MDVGNjQ1QzhDODc4QTguY3J0MHcGCCsGAQUF\\nBzAChmtodHRwOi8vbmV4dXMtcHJvZHVjdGlvbi5ieXRlZGFuY2UubmV0L2FwaS9j\\nZXJ0aWZpY2F0ZS9kb3dubG9hZC80OEY5QzBFN0IwQzVBNzA1Qjk4MkJFNTUxNzA1\\nRjY0NUM4Qzg3OEE4LmNydDCB5wYDVR0fBIHfMIHcMGygaqBohmZodHRwOi8vbmV4\\ndXMtcHJvZHVjdGlvbi5ieXRlZGFuY2UuY29tL2FwaS9jZXJ0aWZpY2F0ZS9jcmwv\\nNDhGOUMwRTdCMEM1QTcwNUI5ODJCRTU1MTcwNUY2NDVDOEM4NzhBOC5jcmwwbKBq\\noGiGZmh0dHA6Ly9uZXh1cy1wcm9kdWN0aW9uLmJ5dGVkYW5jZS5uZXQvYXBpL2Nl\\ncnRpZmljYXRlL2NybC80OEY5QzBFN0IwQzVBNzA1Qjk4MkJFNTUxNzA1RjY0NUM4\\nQzg3OEE4LmNybDAKBggqhkjOPQQDAgNJADBGAiEAqMjT5ADMdGMeaImoJK4J9jzE\\nLqZ573rNjsT3k14pK50CIQCLpWHVKWi71qqqrMjiSDvUhpyO1DpTPRHlavPRuaNm\\nww==\\n-----END CERTIFICATE-----\",\"sn\":\"533240336124694022040808462028007165443034493949\",\"createdTime\":1746536357641}"
+        },
+        {
+          "name": "SLARDARdouyin_creator",
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjllNDhmMzIyLTMwZTktNDMwZi1hMWYxLTEwZGRlMzA5OTMyMyUyMiwlMjJkZXZpY2VJZCUyMjolMjIzNjRhYTRlNS0yZGUxLTQ1NTAtYTUyZS1kNGM3NDM4M2M3MzYlMjIsJTIyZXhwaXJlcyUyMjoxNzU0MzEyMzgxOTM3JTdE"
         },
         {
           "name": "__tea_cache_first_1661",
@@ -565,28 +520,20 @@
           "value": "false"
         },
         {
-          "name": "SLARDARdouyin_creator",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMmI3M2E4NzljLTU0ZWMtNGY4MC04OGEyLWViNTg3NzNkNzg2MyUyMiwlMjJkZXZpY2VJZCUyMjolMjJmOGFiOTVjNy1hMjM1LTRmNzUtYjU2MS1mNjQ4NzMyNWRlODQlMjIsJTIyZXhwaXJlcyUyMjoxNzU0Mjk3MzU0NTk1JTdE"
-        },
-        {
           "name": "https://creator.douyin.com-operation",
           "value": "false"
         },
         {
-          "name": "security-sdk/s_sdk_pub_key",
-          "value": "{\"key\":\"security-sdk/s_sdk_pub_key\",\"data\":\"-----BEGIN PUBLIC KEY-----\\r\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEWEn5xh98unQKwizkrFavN4nl3Lrl\\r\\nM/IpuJKFeqn6XefLMT4iJ0ovAvK1O+GXnCyNCcdZluqdpTquLfRIhkjjRg==\\r\\n-----END PUBLIC KEY-----\\r\\n\",\"createTime\":1746521358066,\"expireTime\":4102444799000}"
-        },
-        {
           "name": "__tea_cache_tokens_408314",
-          "value": "{\"web_id\":\"7501252040070022667\",\"user_unique_id\":\"7501252040070022667\",\"timestamp\":1746521357656,\"_type_\":\"default\"}"
+          "value": "{\"web_id\":\"7501316601921701403\",\"user_unique_id\":\"7501316601921701403\",\"timestamp\":1746536383881,\"_type_\":\"default\"}"
         },
         {
           "name": "security-sdk/s_sdk_cert_key",
-          "value": "{\"data\":\"pub.BHsVMGeTL/rA/g0V/0gIyVznsMcBLd16FwElIKvDQ+UXzoou3S7SEwRxxvgthVBRnzty/0kWZz/sH43HsRstKWU=\"}"
+          "value": "{\"data\":\"pub.BCW6/Pa1ghm35uOIr6bxvVlG+EHQ4xtBAOeqaXLhn0o5a0yHhPsq1YompmzPV9VnwDkixfc2/nQ4atK64mxKepw=\"}"
         },
         {
           "name": "__tea_cache_tokens_1661",
-          "value": "{\"web_id\":\"1312536105157204163\",\"user_unique_id\":\"100026164017\",\"timestamp\":1746521354986,\"_type_\":\"default\"}"
+          "value": "{\"web_id\":\"2909411113161084138\",\"user_unique_id\":\"100026164017\",\"timestamp\":1746536382460,\"_type_\":\"default\"}"
         },
         {
           "name": "hasConfirmIntellChapters_v2",
@@ -594,23 +541,19 @@
         },
         {
           "name": "__tea_cache_tokens_2414",
-          "value": "{\"web_id\":\"7501252054603384339\",\"user_unique_id\":\"7501252054603384339\",\"timestamp\":1746521361910,\"_type_\":\"default\"}"
-        },
-        {
-          "name": "SLARDARmfa_web",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMmRhZWYyNjcxLTNmM2EtNDQ3ZS1hYzUzLTlhYjlkNWE3ZmMyZCUyMiwlMjJkZXZpY2VJZCUyMjolMjI3ZWU2NWRhYi1iZmJmLTQzNTktODE0Mi1lMmIyMzU2OTYzNzElMjIsJTIyZXhwaXJlcyUyMjoxNzU0Mjk3MzM2NzA2JTdE"
+          "value": "{\"web_id\":\"7501316612855924261\",\"user_unique_id\":\"7501316612855924261\",\"timestamp\":1746536387396,\"_type_\":\"default\"}"
         },
         {
           "name": "security-sdk/s_sdk_crypt_sdk",
-          "value": "{\"data\":\"{\\\"ec_privateKey\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgDIKIhk7OdvMo7+8Sy2O96ekM/YqYvrGQhWn+IzkYwoOhRANCAAR7FTBnky/6wP4NFf9ICMlc57DHAS3dehcBJSCrw0PlF86KLt0u0hMEccb4LYVQUZ87cv9JFmc/7B+Nx7EbLSll\\\\n-----END PRIVATE KEY-----\\\",\\\"ec_publicKey\\\":\\\"-----BEGIN PUBLIC KEY-----\\\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEexUwZ5Mv+sD+DRX/SAjJXOewxwEt3XoXASUgq8ND5RfOii7dLtITBHHG+C2FUFGfO3L/SRZnP+wfjcexGy0pZQ==\\\\n-----END PUBLIC KEY-----\\\",\\\"ec_csr\\\":\\\"\\\"}\"}"
+          "value": "{\"data\":\"{\\\"ec_privateKey\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg8DWYLE/PR7dH3Ss1oWLFqKJKLIQLcbvs2x40HBUwhJKhRANCAAQluvz2tYIZt+bjiK+m8b1ZRvhB0OMbQQDnqmly4Z9KOWtMh4T7KtWKJqZsz1fVZ8A5IsX3Nv50OGrSuuJsSnqc\\\\n-----END PRIVATE KEY-----\\\",\\\"ec_publicKey\\\":\\\"-----BEGIN PUBLIC KEY-----\\\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJbr89rWCGbfm44ivpvG9WUb4QdDjG0EA56ppcuGfSjlrTIeE+yrViiambM9X1WfAOSLF9zb+dDhq0rribEp6nA==\\\\n-----END PUBLIC KEY-----\\\",\\\"ec_csr\\\":\\\"\\\"}\"}"
         },
         {
           "name": "__tea_cache_tokens_2906",
-          "value": "{\"user_unique_id\":\"100026164017\",\"web_id\":\"7501251849883895350\",\"timestamp\":1746521355667,\"_type_\":\"default\"}"
+          "value": "{\"user_unique_id\":\"100026164017\",\"web_id\":\"7501316482563851827\",\"timestamp\":1746536383029,\"_type_\":\"default\"}"
         },
         {
           "name": "__tea_cache_tokens_2562",
-          "value": "{\"web_id\":\"7501252065072170515\",\"user_unique_id\":\"7501252065072170515\",\"timestamp\":1746521362209,\"_type_\":\"default\"}"
+          "value": "{\"web_id\":\"7501316610919532041\",\"user_unique_id\":\"100026164017\",\"timestamp\":1746536387602,\"_type_\":\"default\"}"
         },
         {
           "name": "__tea_cache_first_5231",
@@ -621,56 +564,44 @@
           "value": "1"
         },
         {
-          "name": "pulish_h_cover_edit_log",
-          "value": "{\"is_cover_edit\":\"\",\"cover_timestamp\":0,\"video_cover_source\":\"\",\"is_cover_template\":0,\"cover_tab_name\":\"\",\"cover_template_id\":\"\",\"is_text_template\":0,\"text_template_id\":\"\",\"text_template_content\":\"\",\"is_text\":0,\"text_num\":0,\"text_content\":\"\",\"is_use_sticker\":0,\"sticker_id\":\"\",\"sticker_tab_name\":\"\",\"is_use_filter\":0,\"filter_id\":\"\",\"filter_tab_name\":\"\"}"
-        },
-        {
           "name": "",
           "value": ""
         },
         {
-          "name": "security-sdk/s_sdk_pri_key",
-          "value": "{\"key\":\"security-sdk/s_sdk_pri_key\",\"data\":\"-----BEGIN PRIVATE KEY-----\\r\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgxsofPjp+ORXAvCBi\\r\\nsrketTHRo1ugUdBxHRUkpu0zuXWhRANCAARYSfnGH3y6dArCLOSsVq83ieXcuuUz\\r\\n8im4koV6qfpd58sxPiInSi8C8rU74ZecLI0Jx1mW6p2lOq4t9EiGSONG\\r\\n-----END PRIVATE KEY-----\\r\\n\",\"createTime\":1746521358066,\"expireTime\":4102444799000}"
-        },
-        {
           "name": "publish_form_cache:100026164017",
-          "value": "{\"cache\":{\"coverCheckInfo\":{\"logData\":{\"recommendCoverAB\":2,\"uid\":\"100026164017\"},\"isEnable\":true,\"problemList\":[],\"hProblemList\":[],\"status\":1,\"hProblemConclusion\":\"\",\"problemConclusion\":\"\"},\"doubleCover\":{\"variantSlotUri\":{\"vertical\":\"\",\"horizontal\":\"\"}},\"longStatus\":2,\"longFileInfo\":{\"name\":\"demo.mp4\",\"size\":58906809,\"rawFile\":{\"path\":\"demo.mp4\"},\"duration\":90.871,\"height\":720,\"width\":1600,\"vid\":\"v0200fg10000d0csq4vog65phgs32qhg\",\"uri\":\"tos-aliec1oss-v-0000/osje5DiYg4jSMZCRADaJz3gEBfAXiAQaxBL0OE\",\"file\":{\"path\":\"demo.mp4\"},\"type\":\"video/mp4\",\"shouldConvert\":false,\"isWebReady\":true,\"lastModified\":1746502131866,\"isProgressive\":true,\"isParsed\":true,\"msg\":\"moov found\",\"canGetFrame\":true,\"createTime\":\"1904/1/1 00:00:00\",\"modifyTime\":\"1904/1/1 00:00:00\",\"timeScale\":1000,\"isFragmented\":false,\"tracks\":[{\"type\":\"audio\",\"timeScale\":48000,\"codec\":\"mp4a.40.5\"},{\"type\":\"video\",\"timeScale\":90000,\"codec\":\"avc1.64002a\",\"width\":1600,\"height\":720,\"pictureWidth\":1600,\"pictureHeight\":720,\"displayWidth\":1600,\"displayHeight\":720}],\"pictureWidth\":1600,\"pictureHeight\":720,\"displayWidth\":1600,\"displayHeight\":720,\"videoRotate\":0,\"bitrate\":5185.9721143158995,\"isH265\":false,\"videoCodec\":\"avc1.64002a\",\"_isCached\":true,\"source\":\"upload\"},\"longFileMetaInfo\":{\"lastModified\":1746502131866,\"name\":\"demo.mp4\",\"size\":58906809,\"type\":\"video/mp4\",\"isProgressive\":true,\"isParsed\":true,\"msg\":\"moov found\",\"canGetFrame\":true,\"createTime\":\"1904/1/1 00:00:00\",\"modifyTime\":\"1904/1/1 00:00:00\",\"duration\":90.871,\"timeScale\":1000,\"isFragmented\":false,\"tracks\":[{\"type\":\"audio\",\"timeScale\":48000,\"codec\":\"mp4a.40.5\"},{\"type\":\"video\",\"timeScale\":90000,\"codec\":\"avc1.64002a\",\"width\":1600,\"height\":720,\"pictureWidth\":1600,\"pictureHeight\":720,\"displayWidth\":1600,\"displayHeight\":720}],\"width\":1600,\"height\":720,\"pictureWidth\":1600,\"pictureHeight\":720,\"displayWidth\":1600,\"displayHeight\":720,\"videoRotate\":0,\"bitrate\":5185.9721143158995,\"isH265\":false,\"videoCodec\":\"avc1.64002a\",\"_isCached\":true},\"recommendServerInfo\":{\"res\":[],\"times\":[]},\"recommendCoverList\":[],\"recommendCoverInfo\":{\"isFromRecommend\":false,\"isDefaultSelect\":false,\"isRecommendClickFrom\":\"\",\"selectInfo\":{},\"editingInfo\":{}},\"recommendCoverTime\":0,\"coverInfo\":{},\"coverUrl\":\"\",\"coverHorizontalInfo\":null,\"coverHorizontalUrl\":\"\",\"pasterInfo\":null,\"stateInfo\":null,\"croppedCoverInfo\":null,\"uploadBackgroundInfo\":null,\"uploadPasterInfo\":null,\"uploadCoverStateInfo\":null,\"xiguaCoverInfo\":{\"posterDelay\":0},\"xiguaPasterInfo\":null,\"xiguaStateInfo\":null,\"xiguaUploadCoverStateInfo\":null,\"xiguaUploadBackgroundInfo\":null,\"xiguaUploadPasterInfo\":null,\"editXigua\":false,\"coverSource\":\"\",\"previewVideoList\":[{\"isCurrent\":true},{\"coverUrl\":\"https://p3-sign.douyinpic.com/tos-cn-p-0015/oMkYDfyVDATmFaUAXGEIxeIaYBCQLI4glr9UCA~tplv-dy-resize-walign-adapt-aq:540:q75.webp?lk3s=138a59ce&x-expires=1747728000&x-signature=13uurWCmlzij%2FUjKN6tTLvfdBlY%3D&from=327834062&s=PackSourceEnum_PUBLISH&se=false&sc=cover&biz_tag=aweme_video&l=20250506164921B70F1BD7B8971E365842\",\"isTiming\":false,\"isPreview\":false,\"isCurrent\":false,\"isLiveReplay\":false},{\"coverUrl\":\"https://p3-sign.douyinpic.com/tos-cn-p-0015/oYxArpyINHJzMBa9guCOvNhxfAAerA5B5SOH4E~tplv-dy-resize-walign-adapt-aq:540:q75.webp?lk3s=138a59ce&x-expires=1747728000&x-signature=jgiRjyL3nn4Igv%2Fo0AHJUsyFjWA%3D&from=327834062&s=PackSourceEnum_PUBLISH&se=false&sc=cover&biz_tag=aweme_video&l=20250506164921B70F1BD7B8971E365842\",\"isTiming\":false,\"isPreview\":false,\"isCurrent\":false,\"isLiveReplay\":false},{\"coverUrl\":\"https://p3-sign.douyinpic.com/tos-cn-p-0015/okdqnbVPADMCQ2BQWClgeBgqIE9gAxgySAafwO~tplv-dy-resize-walign-adapt-aq:540:q75.webp?lk3s=138a59ce&x-expires=1747728000&x-signature=8mGPinTw2%2B8ed9%2Fa4g9b3yrD0Ik%3D&from=327834062&s=PackSourceEnum_PUBLISH&se=false&sc=cover&biz_tag=aweme_video&l=20250506164921B70F1BD7B8971E365842\",\"isTiming\":false,\"isPreview\":false,\"isCurrent\":false,\"isLiveReplay\":false},{\"coverUrl\":\"https://p3-sign.douyinpic.com/tos-cn-p-0015/ocnLXCPjQBZylIDaWb9qA6JA9j9S6g1rCTAfek~tplv-dy-resize-walign-adapt-aq:720:q75.webp?lk3s=138a59ce&x-expires=1747728000&x-signature=jks67Z19XNEVcBC%2FW4F4w5hmUfU%3D&from=327834062&s=PackSourceEnum_PUBLISH&se=false&sc=cover&biz_tag=aweme_video&l=20250506164921B70F1BD7B8971E365842\",\"isTiming\":false,\"isPreview\":false,\"isCurrent\":false,\"isLiveReplay\":false},{\"coverUrl\":\"https://p3-sign.douyinpic.com/tos-cn-p-0015/b9229d18457642e997e1c9766fa1b4db~tplv-dy-resize-walign-adapt-aq:540:q75.webp?lk3s=138a59ce&x-expires=1747728000&x-signature=nQNVUclet%2FiWOClFoeDHWaNPKEY%3D&from=327834062&s=PackSourceEnum_PUBLISH&se=false&sc=cover&biz_tag=aweme_video&l=20250506164921B70F1BD7B8971E365842\",\"isTiming\":false,\"isPreview\":false,\"isCurrent\":false,\"isLiveReplay\":false},{\"coverUrl\":\"https://p3-sign.douyinpic.com/tos-cn-p-0015/50080979098f4d44beec1f0e75ea56f2~tplv-dy-resize-walign-adapt-aq:540:q75.webp?lk3s=138a59ce&x-expires=1747728000&x-signature=8jJrUWbVZfLiRmlZioZthPg%2FQl0%3D&from=327834062&s=PackSourceEnum_PUBLISH&se=false&sc=cover&biz_tag=aweme_video&l=20250506164921B70F1BD7B8971E365842\",\"isTiming\":false,\"isPreview\":false,\"isCurrent\":false,\"isLiveReplay\":false}],\"selectedItem\":null,\"starWithComp\":false,\"scheduleTime\":-1,\"scheduleItemId\":\"\",\"rawScheduleInfo\":null,\"anchorType\":-11,\"anchorId\":\"\",\"anchorPayload\":\"\",\"anchorExtra\":null,\"anchorTipChecked\":false,\"cartDraftId\":\"\",\"cartGoodsList\":[],\"xiguaSyncSwitch\":false,\"xiguaTitle\":\"\",\"xiguaPartnerJoinStatus\":1,\"xiguaClaimIsOriginal\":false,\"preReview\":false,\"hotspot\":\"\",\"mix\":-2,\"mixInfo\":{},\"mixId\":null,\"mixType\":0,\"mixOriginInfo\":{},\"mixOrder\":1,\"playletId\":null,\"playletType\":10,\"playletOriginInfo\":{},\"playletOrder\":null,\"playletInfo\":{},\"fromRecommend\":null,\"musicInfo\":{\"musicId\":null,\"musicName\":\"执着✨创作的原声\",\"author\":\"执着✨\",\"isPGC\":false,\"source\":0},\"recommendImgStr\":\"\",\"cancelEncode\":false,\"download\":1,\"sourceInfo\":{},\"shouldReplaySync\":false,\"visibilityType\":0,\"knowlId\":\"\",\"knowlOrder\":0,\"knowlInfo\":null,\"coInfo\":[],\"formChapterDots\":[],\"formChapterAbstract\":\"\",\"payVideoInfo\":{\"isOpen\":false,\"agreementChecked\":false,\"showConfig\":false,\"productTitle\":\"@执着✨的付费视频\",\"defaultTitle\":\"@执着✨的付费视频\",\"trialTime\":15,\"trialStartTime\":0,\"trialTimeType\":2},\"payVideoCoverInfo\":{\"coverType\":0},\"textResult\":{\"text\":\"我的王者精彩瞬间，亮瞎全场 #王者荣耀\",\"textExtra\":[],\"activity\":[],\"caption\":\"\"},\"itemTitle\":\"我的王者精彩瞬间222\",\"sync\":0}}"
+          "value": "null"
         },
         {
           "name": "xmst",
-          "value": "55pyORvyb_lshOZ7QXSTYWsktdUOaZqGSUNoX9Fb6EuSa3tb-tlGNablkTl70-TSFhecyFtJiwV9ULMAxvALwJy7Ul0AVfAwe7RuTt9xVsdlXU_L9aGSlgzJ1gNDfyAipbK5yLR8EPFXLuCI96JUGw3kOVC_QcJibMV3fKkIt4yEFMuKBzZiHSbq"
+          "value": "oGxfeFUgWcnGHbVAO0nvtB5dVbHe4TSY8rt8iCIkokY4Vt5qz4u5LTakBes1tc3flLwti1CspMaAlKM4HLcPAJiqMRvQxVj23BJ3sKeMmhqoZ7E-iDmfkgNOXeSqU79OZlfA4TXBjphf2OISEfphU9SH9QiNMAwAKktbSm5aBBWt4EMV5VrwxvNT"
         },
         {
           "name": "web_secsdk_runtime_cache",
-          "value": "{\"userAgentCheckReport\":[\"userAgentCheckReportcompute\"],\"userPluginCheckReport\":[\"userPluginCheckReportcompute\",\"userPluginCheckReportexcuteAsync\"],\"userFingerPrint\":[\"userFingerPrintcompute\",\"userFingerPrintexcuteAsync\"],\"sensitiveEncrypt\":[\"mon.zijieapi.com//monitor_web/settings/browser-settingscompute\",\"mssdk.bytedance.com//web/r/tokencompute\",\"creator.douyin.com//ttwid/check/compute\",\"creator.douyin.com//goofy/douyin_creator_pc/creator_pc_vmok_common/vmok-manifest.jsoncompute\",\"abtestvm.bytedance.com//service/2/abtest_config/compute\",\"mcs.snssdk.com//tobidcompute\",\"creator.amemv.com//api/v1/workspace/feature_gates/valuescompute\",\"mon.zijieapi.com//monitor_browser/collect/batch/compute\",\"creator.douyin.com//web/api/creator/mcn/account_base_infocompute\",\"mcs.snssdk.com//listcompute\",\"creator.douyin.com//aweme/v1/creator/msg/topcompute\",\"creator.douyin.com//aweme/v1/creator/user_message/unread_count/compute\",\"creator.douyin.com//aweme/v1/creator/user_message/notice/compute\",\"creator.douyin.com//goofy/douyin_creator_pc/home/index.htmlcompute\",\"creator.douyin.com//web/api/v1/im/token/compute\",\"mcs.zijieapi.com//listcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/builder-runtime.be05ab61.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8273.ef42936c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/5729.95d3d92c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/9542.5c9cc2f0.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/3127.10f81266.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8516.206ec830.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/1224.0c2756e4.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8761.659c0d89.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6267.75e12b04.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6759.ab769dae.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8555.4a94bcc5.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4732.470eec08.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/3176.8021f0aa.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/3631.4d9369bf.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/5526.55ed8e9a.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/home.a57ac868.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/8273.ae7a96f7.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/4732.acab050b.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/home.56e9e72a.csscompute\",\"lf3-beecdn.bytetos.com//obj/ies-fe-bee/bee_prod/biz_181/bee_prod_181_bee_publish_1017.jsoncompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/lib-echarts.a539d564.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/7877.b4d1769d.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/555.64b6a156.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/4593.34982d50.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4593.b5433df2.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/1140.9aa57e2a.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/1897.ddf3cdba.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4785.e87f05cf.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/4166.950e612e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6051.4424522e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/async/9819.bb4a0a62.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/9819.149dc34e.jscompute\",\"creator.douyin.com//aweme/v1/creator/income/category/summary/compute\",\"creator.douyin.com//aweme/v1/creator/data/overview/billboardcompute\",\"creator.douyin.com//web/api/creator/material/center/billboardcompute\",\"creator.douyin.com//web/api/creator/school/coursecompute\",\"creator.douyin.com//aweme/v1/creator/homepage/app/module/compute\",\"creator.douyin.com//web/api/v2/creator/activity/pc/listcompute\",\"creator.douyin.com//web/api/v2/creator/activity/tags/querycompute\",\"creator.douyin.com//web/api/creator/inspiration/activities/compute\",\"creator.douyin.com//aweme/v1/creator/data/guidecompute\",\"creator.douyin.com//aweme/v1/creator/homepage/modulecompute\",\"creator.douyin.com//webcast/api/platform_following/outside/room/v1/live_statuscompute\",\"creator.douyin.com//goofy/douyin_creator_pc/vmok/author-tag/vmok-manifest.jsoncompute\",\"creator.douyin.com//aweme/v1/creator/mission/user_summarycompute\",\"sso.douyin.com//passport/token/beat/sso/web/compute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4454.25575c3c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/3413.fc2d46a8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/7157.124e20fc.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/1604.9ca4c9b8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/async/8395.ee25ea34.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/8395.884fc688.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/css/lib-semi.7ed8c1b0.csscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/css/async/__federation_expose_author_tag.10017fc9.csscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-react.78c2763d.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-polyfill.a6e44cb6.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-semi.7f996341.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-lodash.6993a011.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-axios.2266308b.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/527.6d5402ca.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/176.bea091d9.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/async/__federation_expose_author_tag.b49d6322.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/vmok-remote-entry.59713f0a.jscompute\",\"mcs.zijieapi.com//webidcompute\",\"creator.douyin.com//account/api/v1/cert/rolescompute\",\"creator.douyin.com//account/api/v1/user/account/infocompute\",\"lf3-beecdn.bytetos.com//obj/ies-fe-bee/bee_prod/biz_181/bee_prod_181_bee_publish_1343.jsoncompute\",\"creator.douyin.com//aweme/janus/creator/data/overview/all/compute\",\"creator.douyin.com//web/api/creator/item/listcompute\",\"creator.douyin.com//aweme/v1/creator/notice/comment/compute\",\"creator.douyin.com//aweme/v1/creator/im/user_token/compute\",\"creator.douyin.com//aweme/v1/creator/im/user_token/v2/compute\",\"mssdk.bytedance.com//web/commoncompute\",\"imapi.snssdk.com//v2/message/get_by_user_initcompute\",\"creator.douyin.com//content/micro-modulecompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/builder-runtime.48821665.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/5375.5353cf4e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/douyin_content_index_micro_new.e610c657.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/upload/side-code/xg-worker.pQVYlUBL.min.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1931.495edeee.jscompute\",\"lf3-short.ibytedapm.com//slardar/fe/sdk-web/plugins/common-monitors.0.11.1.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-local-video-sdk.f4578a52.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-moment.13064318.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-byted-uploader.80b9157e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-editor-kit.db3f7442.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-fabric.d043a7cd.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-lodash.f2de8141.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/710.d73d1255.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7205.d9aa0c7b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4939.16b4eaa5.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4890.f7555349.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7639.a6b1157b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/6031.0156257f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/2520.cd9ff091.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7185.5ae2c9b1.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/9.28eb3f8f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/9103.9b382d6f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/2592.5fd6cfd3.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/634.33e0d46a.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7740.8465b26b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5835.2817a234.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/738.e4644aac.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/2994.b13873e7.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4620.e6b1f948.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/6788.8c1d6c80.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4911.f9e3bbd9.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/107.54924276.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1772.a6930e2b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7708.a308ff80.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/903.df61c68b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3528.01efa312.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7915.0d3ec7f1.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3028.4b1bb149.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/813.3b900a8f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7367.77b2b35b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3806.aa4f5660.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/714.9977add9.jscompute\",\"creator.douyin.com//live/api/anchor/get_create_info/compute\",\"creator.douyin.com//api/v2/douyin/charge/permission/compute\",\"creator.douyin.com//api/v2/douyin/charge/recommend/config/compute\",\"creator.douyin.com//api/v2/douyin/charge/creator/offline_config/compute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/assets/worker.cbc4d572.jscompute\",\"creator.douyin.com//aweme/mid/video/sts2/compute\",\"creator.douyin.com//web/api/media/banner/info/compute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/bach_preview.pngcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_after_effect_v6.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_face_v11.1.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_face_extra_v14.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_matting_v14.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_matting_video_v1.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/nodehub_image_saliency_v1.0_size0.modelcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-date-fns.4a689924.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-ies-webcast-gamecp-cross-end-browser.e8db0f10.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-lottie-web.1dd18cab.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-semi2.f74bc1d3.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3045.63dc2afa.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4830.63cc3640.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5882.cca9463b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3772.d6647d97.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7621.23ccff88.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7027.27ab1fd0.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8299.7d3d4b3c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4293.7e3e5d79.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5525.8e8e9e1b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/666.1e10f66f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/6851.bc11388e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/9499.dec0b75c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8354.43e76851.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/214.845f8ab8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1865.c1047a1e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8234.7318a5ea.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4532.cbe12cfa.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5190.2d9ddeee.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3590.5d5a91b8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/73.cd8b4aa5.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4621.f5745609.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8417.78ed2872.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7854.ff08d3f2.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1016.341e7459.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/641.13ddef2f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5320.d3824571.jscompute\",\"creator.douyin.com//janus/douyin/creator/pc/work_listcompute\",\"creator.douyin.com//web/api/media/sync/income/compute\",\"creator.douyin.com//web/api/media/user/anchor/listcompute\",\"creator.douyin.com//webcast/gamecp/promote/pre_checkcompute\",\"creator.douyin.com//aweme/v1/flashmob/rank/compute\",\"creator.douyin.com//aweme/v1/co/settingscompute\",\"creator.douyin.com//aweme/v1/hotspot/recommend/compute\",\"creator.douyin.com//web/api/mix/list/compute\",\"creator.douyin.com//aweme/v1/open/publish/limit_app_groups/compute\",\"creator.douyin.com//aweme/v3/user_declaration/suggestion/compute\",\"creator.douyin.com//web/api/media/activity/get/compute\",\"creator.douyin.com//goofy_worker/jwtcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/assets/WebCodecsCaptureWorker.worker.c40a1fd6.jscompute\",\"creator.douyin.com//aweme/v1/post_assistant/fast_detect/pre_checkcompute\",\"creator.douyin.com//aweme/v1/life/video_api/post/permission/compute\",\"creator.douyin.com//aweme/v1/life/video_api/search/poi/compute\",\"creator.douyin.com//web/api/media/upload/auth/v5/compute\",\"vod.bytedanceapi.com//compute\",\"edge-aliec1-oss.bytecdn.cn//upload/v1/tos-aliec1oss-v-0000/osje5DiYg4jSMZCRADaJz3gEBfAXiAQaxBL0OEcompute\",\"creator.douyin.com//aweme/v1/search/challengesug/compute\",\"creator.douyin.com//goofy/douyin_creator_pc/data-center-creator/index.htmlcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6524.1a3bd1ce.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/410.fa98576f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4370.f9689ef9.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/data-center-creator.68b8d32c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/data-center-creator.34b7d7dd.csscompute\",\"creator.douyin.com//aweme/v1/post_assistant/fast_detect/pollcompute\",\"creator.douyin.com//web/api/media/video/enable/compute\",\"creator.douyin.com//web/api/media/video/transend/compute\"]}"
+          "value": "{\"userAgentCheckReport\":[\"userAgentCheckReportcompute\"],\"userPluginCheckReport\":[\"userPluginCheckReportcompute\",\"userPluginCheckReportexcuteAsync\"],\"userFingerPrint\":[\"userFingerPrintcompute\",\"userFingerPrintexcuteAsync\"],\"sensitiveEncrypt\":[\"mon.zijieapi.com//monitor_web/settings/browser-settingscompute\",\"mssdk.bytedance.com//web/r/tokencompute\",\"mon.zijieapi.com//monitor_browser/collect/batch/compute\",\"creator.douyin.com//ttwid/check/compute\",\"abtestvm.bytedance.com//service/2/abtest_config/compute\",\"mcs.snssdk.com//tobidcompute\",\"creator.amemv.com//api/v1/workspace/feature_gates/valuescompute\",\"creator.douyin.com//goofy/douyin_creator_pc/creator_pc_vmok_common/vmok-manifest.jsoncompute\",\"creator.douyin.com//web/api/creator/mcn/account_base_infocompute\",\"mcs.snssdk.com//listcompute\",\"creator.douyin.com//aweme/v1/creator/msg/topcompute\",\"creator.douyin.com//aweme/v1/creator/user_message/unread_count/compute\",\"creator.douyin.com//aweme/v1/creator/user_message/notice/compute\",\"creator.douyin.com//goofy/douyin_creator_pc/home/index.htmlcompute\",\"mcs.zijieapi.com//listcompute\",\"creator.douyin.com//web/api/v1/im/token/compute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/builder-runtime.be05ab61.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8273.ef42936c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/5729.95d3d92c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/9542.5c9cc2f0.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/3127.10f81266.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8516.206ec830.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/1224.0c2756e4.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8761.659c0d89.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6267.75e12b04.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6759.ab769dae.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/8555.4a94bcc5.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4732.470eec08.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/3176.8021f0aa.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/3631.4d9369bf.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/5526.55ed8e9a.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/home.a57ac868.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/8273.ae7a96f7.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/4732.acab050b.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/home.56e9e72a.csscompute\",\"lf3-beecdn.bytetos.com//obj/ies-fe-bee/bee_prod/biz_181/bee_prod_181_bee_publish_1017.jsoncompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/lib-echarts.a539d564.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/7877.b4d1769d.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/555.64b6a156.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/4593.34982d50.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4593.b5433df2.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/1140.9aa57e2a.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/1897.ddf3cdba.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4785.e87f05cf.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/4166.950e612e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6051.4424522e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/async/9819.bb4a0a62.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/9819.149dc34e.jscompute\",\"creator.douyin.com//webcast/api/platform_following/outside/room/v1/live_statuscompute\",\"creator.douyin.com//aweme/v1/creator/income/category/summary/compute\",\"creator.douyin.com//aweme/v1/creator/data/overview/billboardcompute\",\"creator.douyin.com//web/api/creator/material/center/billboardcompute\",\"creator.douyin.com//web/api/creator/school/coursecompute\",\"creator.douyin.com//aweme/v1/creator/homepage/app/module/compute\",\"creator.douyin.com//web/api/v2/creator/activity/pc/listcompute\",\"creator.douyin.com//web/api/v2/creator/activity/tags/querycompute\",\"creator.douyin.com//web/api/creator/inspiration/activities/compute\",\"creator.douyin.com//aweme/v1/creator/data/guidecompute\",\"creator.douyin.com//aweme/v1/creator/homepage/modulecompute\",\"creator.douyin.com//goofy/douyin_creator_pc/vmok/author-tag/vmok-manifest.jsoncompute\",\"creator.douyin.com//aweme/v1/creator/mission/user_summarycompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4454.25575c3c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/3413.fc2d46a8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/7157.124e20fc.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/1604.9ca4c9b8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/async/8395.ee25ea34.csscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/async/8395.884fc688.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/css/lib-semi.7ed8c1b0.csscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/css/async/__federation_expose_author_tag.10017fc9.csscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-react.78c2763d.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-polyfill.a6e44cb6.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-semi.7f996341.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-lodash.6993a011.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/lib-axios.2266308b.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/527.6d5402ca.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/176.bea091d9.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/static/js/async/__federation_expose_author_tag.b49d6322.jscompute\",\"lf-fe-douyin-account.amemv.com//obj/ies-douyin-account-fe/ies/douyin_creator_certification/vmok-remote-entry.59713f0a.jscompute\",\"mcs.zijieapi.com//webidcompute\",\"sso.douyin.com//passport/token/beat/sso/web/compute\",\"creator.douyin.com//aweme/janus/creator/data/overview/all/compute\",\"creator.douyin.com//web/api/creator/item/listcompute\",\"lf3-beecdn.bytetos.com//obj/ies-fe-bee/bee_prod/biz_181/bee_prod_181_bee_publish_1343.jsoncompute\",\"creator.douyin.com//account/api/v1/cert/rolescompute\",\"creator.douyin.com//account/api/v1/user/account/infocompute\",\"creator.douyin.com//aweme/v1/creator/notice/comment/compute\",\"creator.douyin.com//aweme/v1/creator/im/user_token/compute\",\"creator.douyin.com//content/micro-modulecompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/builder-runtime.48821665.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/5375.5353cf4e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/douyin_content_index_micro_new.e610c657.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/upload/side-code/xg-worker.pQVYlUBL.min.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1931.495edeee.jscompute\",\"lf3-short.ibytedapm.com//slardar/fe/sdk-web/plugins/common-monitors.0.11.1.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-local-video-sdk.f4578a52.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-moment.13064318.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-byted-uploader.80b9157e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-editor-kit.db3f7442.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-fabric.d043a7cd.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-lodash.f2de8141.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/710.d73d1255.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7205.d9aa0c7b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4939.16b4eaa5.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4890.f7555349.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7639.a6b1157b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/6031.0156257f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/2520.cd9ff091.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7185.5ae2c9b1.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/9.28eb3f8f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/9103.9b382d6f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/2592.5fd6cfd3.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/634.33e0d46a.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7740.8465b26b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5835.2817a234.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/738.e4644aac.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/2994.b13873e7.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4620.e6b1f948.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/6788.8c1d6c80.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4911.f9e3bbd9.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/107.54924276.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1772.a6930e2b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7708.a308ff80.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/903.df61c68b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3528.01efa312.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7915.0d3ec7f1.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3028.4b1bb149.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/813.3b900a8f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7367.77b2b35b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3806.aa4f5660.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/714.9977add9.jscompute\",\"creator.douyin.com//live/api/anchor/get_create_info/compute\",\"creator.douyin.com//api/v2/douyin/charge/permission/compute\",\"creator.douyin.com//api/v2/douyin/charge/recommend/config/compute\",\"creator.douyin.com//api/v2/douyin/charge/creator/offline_config/compute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/assets/worker.cbc4d572.jscompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/bach_preview.pngcompute\",\"creator.douyin.com//aweme/mid/video/sts2/compute\",\"mssdk.bytedance.com//web/commoncompute\",\"creator.douyin.com//web/api/media/banner/info/compute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_after_effect_v6.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_face_v11.1.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_face_extra_v14.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_matting_v14.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/tt_matting_video_v1.0_size0.modelcompute\",\"lf3-static.bytednsdoc.com//obj/eden-cn/aseh7nulanuvs/nodehub_image_saliency_v1.0_size0.modelcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-date-fns.4a689924.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-ies-webcast-gamecp-cross-end-browser.e8db0f10.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-lottie-web.1dd18cab.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/lib-semi2.f74bc1d3.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3045.63dc2afa.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4830.63cc3640.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5882.cca9463b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3772.d6647d97.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7621.23ccff88.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7027.27ab1fd0.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8299.7d3d4b3c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4293.7e3e5d79.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5525.8e8e9e1b.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/666.1e10f66f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/6851.bc11388e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/9499.dec0b75c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8354.43e76851.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/214.845f8ab8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1865.c1047a1e.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8234.7318a5ea.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4532.cbe12cfa.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5190.2d9ddeee.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/3590.5d5a91b8.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/73.cd8b4aa5.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/4621.f5745609.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/8417.78ed2872.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/7854.ff08d3f2.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/1016.341e7459.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/641.13ddef2f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/js/async/5320.d3824571.jscompute\",\"creator.douyin.com//janus/douyin/creator/pc/work_listcompute\",\"creator.douyin.com//web/api/media/sync/income/compute\",\"creator.douyin.com//webcast/gamecp/promote/pre_checkcompute\",\"creator.douyin.com//web/api/media/user/anchor/listcompute\",\"creator.douyin.com//aweme/v1/flashmob/rank/compute\",\"creator.douyin.com//aweme/v1/co/settingscompute\",\"creator.douyin.com//aweme/v1/hotspot/recommend/compute\",\"creator.douyin.com//web/api/mix/list/compute\",\"creator.douyin.com//aweme/v1/open/publish/limit_app_groups/compute\",\"creator.douyin.com//aweme/v3/user_declaration/suggestion/compute\",\"creator.douyin.com//web/api/media/activity/get/compute\",\"creator.douyin.com//goofy_worker/jwtcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin-creator-content-new/micro/static/assets/WebCodecsCaptureWorker.worker.c40a1fd6.jscompute\",\"creator.douyin.com//web/api/media/upload/auth/v5/compute\",\"creator.douyin.com//aweme/v1/post_assistant/fast_detect/pre_checkcompute\",\"creator.douyin.com//aweme/v1/life/video_api/post/permission/compute\",\"creator.douyin.com//aweme/v1/life/video_api/search/poi/compute\",\"vod.bytedanceapi.com//compute\",\"tos-ali-hbzjk-cu-hl.douyin.com//upload/v1/tos-cn-v-0015c003-alinc2/ok8DEjFhweaIDaRaBQDAEfN47dQABCYBRAE5f8compute\",\"creator.douyin.com//goofy/douyin_creator_pc/data-center-creator/index.htmlcompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/6524.1a3bd1ce.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/410.fa98576f.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/4370.f9689ef9.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/js/data-center-creator.68b8d32c.jscompute\",\"lf-fe-creator.douyinstatic.com//obj/douyn-creator-scm-cdn/douyin_creator/fe/pc/static/css/data-center-creator.34b7d7dd.csscompute\",\"creator.douyin.com//aweme/v1/search/challengesug/compute\",\"creator.douyin.com//aweme/v1/post_assistant/fast_detect/pollcompute\",\"creator.douyin.com//web/api/media/video/enable/compute\",\"creator.douyin.com//web/api/media/video/transend/compute\"]}"
         },
         {
           "name": "dtrait-sdk/s_sdk_server_cert_key",
-          "value": "eyJjZW50cmFsUnNhUHViIjoiTFMwdExTMUNSVWRKVGlCU1UwRWdVRlZDVEVsRElFdEZXUzB0TFMwdENrMUpTVUpEWjB0RFFWRkZRWEEyZDJrMFJYSnpNWE5wZDJaS1oxRXhaRzB2VWtkVVNVWm1hMHN4U3pOcU4zaE1VVkpIWnl0bU5tNHlaVFJUV1dsb2FHMEthR1J4VVZkWFQxUnZXVzluY2tFd1YyNUphWGRHYVdkUGVIaEdiRzFRUWtsR2VraFVLMnhGZEZBMk1WWlpNMlY1U3pSd2MxWlVRV2hMZDNaR1Z6WldaQXBSUVhsWlFXTTBPWGxpVDNsRVNHbEljRXB6Um1NeFJGaEZVR0o1Y3psSmFtcHhaRTV2YTBOSVZtNXVSekZrVDFCaFREY3JWM05YUVVWRlprSlRUMWc0Q2xKRGVXeG5UbEZEWldSS1FuWnhjVWxVZDBoTWJsTmlVMUJtY1V3NVpHNXNVMUE1Y0M5YWNYTklTV3RXZUhKeFZtNXJLM0ZLU2pJdksyZ3JZM0ZpWkdJS1NrMTJiM2huU21Kc2IyRnlOMnMwTW1kRGN6TjNNMDlQVVc1c1MyVjBhMllyZWlzNGVXaEJVVlI0VEVGS05VbFlNazkwYTNBcmFEUlZTbkIyV21zMVlncHFOVFZCVW1seFJuWk5kR3hWWlVaT0wzQlZiRXBYTWtsSWFIUXpaVFI2Y21GUlNVUkJVVUZDQ2kwdExTMHRSVTVFSUZKVFFTQlFWVUpNU1VNZ1MwVlpMUzB0TFMwSyIsImNlbnRyYWxWZXJzaW9uIjoiZDEiLCJ1cmxWZXJzaW9uIjoiMS4wLjI2IiwiZFRyYWl0VmVyc2lvbiI6MCwiY3JlYXRlZFRpbWUiOjE3NDY1MjEzMTM4MzZ9"
+          "value": "eyJjZW50cmFsUnNhUHViIjoiTFMwdExTMUNSVWRKVGlCU1UwRWdVRlZDVEVsRElFdEZXUzB0TFMwdENrMUpTVUpEWjB0RFFWRkZRWEEyZDJrMFJYSnpNWE5wZDJaS1oxRXhaRzB2VWtkVVNVWm1hMHN4U3pOcU4zaE1VVkpIWnl0bU5tNHlaVFJUV1dsb2FHMEthR1J4VVZkWFQxUnZXVzluY2tFd1YyNUphWGRHYVdkUGVIaEdiRzFRUWtsR2VraFVLMnhGZEZBMk1WWlpNMlY1U3pSd2MxWlVRV2hMZDNaR1Z6WldaQXBSUVhsWlFXTTBPWGxpVDNsRVNHbEljRXB6Um1NeFJGaEZVR0o1Y3psSmFtcHhaRTV2YTBOSVZtNXVSekZrVDFCaFREY3JWM05YUVVWRlprSlRUMWc0Q2xKRGVXeG5UbEZEWldSS1FuWnhjVWxVZDBoTWJsTmlVMUJtY1V3NVpHNXNVMUE1Y0M5YWNYTklTV3RXZUhKeFZtNXJLM0ZLU2pJdksyZ3JZM0ZpWkdJS1NrMTJiM2huU21Kc2IyRnlOMnMwTW1kRGN6TjNNMDlQVVc1c1MyVjBhMllyZWlzNGVXaEJVVlI0VEVGS05VbFlNazkwYTNBcmFEUlZTbkIyV21zMVlncHFOVFZCVW1seFJuWk5kR3hWWlVaT0wzQlZiRXBYTWtsSWFIUXpaVFI2Y21GUlNVUkJVVUZDQ2kwdExTMHRSVTVFSUZKVFFTQlFWVUpNU1VNZ1MwVlpMUzB0TFMwSyIsImNlbnRyYWxWZXJzaW9uIjoiZDEiLCJ1cmxWZXJzaW9uIjoiMS4wLjI2IiwiZFRyYWl0VmVyc2lvbiI6MCwiY3JlYXRlZFRpbWUiOjE3NDY1MzYzNTcxMjN9"
         },
         {
           "name": "SLARDARdouyin_creator_longvideo",
-          "value": "{\"userId\":\"100026164017\",\"deviceId\":\"53d06667-085a-44e8-9856-98e3a4260159\"}"
+          "value": "{\"userId\":\"100026164017\",\"deviceId\":\"82eb665d-d5de-48a3-b3f9-3a47310422fc\"}"
         },
         {
           "name": "security-sdk/s_sdk_sign_data_key/web_protect",
-          "value": "{\"data\":\"{\\\"ticket\\\":\\\"hash.VrZALcjOhNYIunEDatlzGdGkBKyPzey+pEekR/I8pnU=\\\",\\\"ts_sign\\\":\\\"ts.2.fb0ca749c18be641bc674f760796241a33d2be2e059ad3500235da55f66fa569c4fbe87d2319cf05318624ceda14911ca406dedbebeddb2e30fce8d4fa02575d\\\",\\\"client_cert\\\":\\\"pub.BHsVMGeTL/rA/g0V/0gIyVznsMcBLd16FwElIKvDQ+UXzoou3S7SEwRxxvgthVBRnzty/0kWZz/sH43HsRstKWU=\\\",\\\"log_id\\\":\\\"202505061649137F3E5C66EC3830178C44\\\",\\\"create_time\\\":1746521353}\"}"
+          "value": "{\"data\":\"{\\\"ticket\\\":\\\"hash.fLVOvLnFOCC7rLavhcz3OVtzlQ/AKITJj5isG6B1+CQ=\\\",\\\"ts_sign\\\":\\\"ts.2.da2ad2c7743f88ef6fdf8aeb7d4e622bdb6ae1a5a66fd89d7ba5f71144ee5b39c4fbe87d2319cf05318624ceda14911ca406dedbebeddb2e30fce8d4fa02575d\\\",\\\"client_cert\\\":\\\"pub.BCW6/Pa1ghm35uOIr6bxvVlG+EHQ4xtBAOeqaXLhn0o5a0yHhPsq1YompmzPV9VnwDkixfc2/nQ4atK64mxKepw=\\\",\\\"log_id\\\":\\\"20250506205943C8DE264A9A5C6E31910E\\\",\\\"create_time\\\":1746536383}\"}"
         },
         {
           "name": "SLARDARuc_secure_sdk",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMjNmZjVjNTAwLWU0ZDYtNDZmMC1hYWMxLWE4MjVkNmMzYmQzZSUyMiwlMjJkZXZpY2VJZCUyMjolMjI5ZjZkOWJkNC0yMDMxLTQzN2EtOTA1Ni05ZGU2OWEwZGRmNTElMjIsJTIyZXhwaXJlcyUyMjoxNzU0Mjk3MzU0OTcxJTdE"
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjU5NGEwNzZkLTJjMWUtNGVhOS04MTc2LTRmYTRiNGRmYTZkNyUyMiwlMjJkZXZpY2VJZCUyMjolMjIxMDk3YTVmYi04OTNjLTRhNjgtYTJjYi0yNDAyODc2MTU3YTklMjIsJTIyZXhwaXJlcyUyMjoxNzU0MzEyMzgyNDU0JTdE"
         },
         {
           "name": "SLARDARuc_dtrait_sdk",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMjMyNGUxZWNiLTZhOGItNDg1My1hMmVlLTM0ODk0OWRkZGY3ZSUyMiwlMjJkZXZpY2VJZCUyMjolMjIxNDIxOTk3ZC0yNWRkLTQ3OTEtYmI3Ni1mZWQxODI4NDY3MDElMjIsJTIyZXhwaXJlcyUyMjoxNzU0Mjk3MzU1MzM5JTdE"
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjE0NjUwNzdlLTczOWEtNDY3My05NTBlLWU2MDdkZThlYTcxYiUyMiwlMjJkZXZpY2VJZCUyMjolMjI0YTkzNDFiOS1iMDMxLTQwN2EtOGJhYy0yZGE2MzIxZGE4NDUlMjIsJTIyZXhwaXJlcyUyMjoxNzU0MzEyMzgyNjE5JTdE"
         },
         {
           "name": "web_runtime_security_uid",
-          "value": "da4991d7-72a9-4f75-83ad-0c43533d989f"
-        },
-        {
-          "name": "pulish_v_cover_edit_log",
-          "value": "{\"is_cover_edit\":\"\",\"cover_timestamp\":0,\"video_cover_source\":\"\",\"is_cover_template\":0,\"cover_tab_name\":\"\",\"cover_template_id\":\"\",\"is_text_template\":0,\"text_template_id\":\"\",\"text_template_content\":\"\",\"is_text\":0,\"text_num\":0,\"text_content\":\"\",\"is_use_sticker\":0,\"sticker_id\":\"\",\"sticker_tab_name\":\"\",\"is_use_filter\":0,\"filter_id\":\"\",\"filter_tab_name\":\"\"}"
+          "value": "8233f7f3-dec3-48b7-b888-9638bf0c08d0"
         },
         {
           "name": "__tea_cache_first_2562",
@@ -687,19 +618,44 @@
       ]
     },
     {
+      "origin": "https://cp.kuaishou.com",
+      "localStorage": [
+        {
+          "name": "LOAD_DEVICE_INCREASE_ID",
+          "value": "3"
+        },
+        {
+          "name": "OTHER_DEVICE_INCREASE_ID",
+          "value": "45"
+        },
+        {
+          "name": "WEBLOGGER_CUSTOM_INCREAMENT_ID_KEY",
+          "value": "3"
+        },
+        {
+          "name": "refresh_last_time_0x0810",
+          "value": "1746536401887"
+        },
+        {
+          "name": "WEBLOGGER_INCREAMENT_ID_KEY",
+          "value": "41"
+        }
+      ]
+    },
+    {
       "origin": "https://lf-zt.douyin.com",
       "localStorage": [
         {
           "name": "security-sdk/s_sdk_cert_key",
-          "value": "{\"data\":\"pub.BHsVMGeTL/rA/g0V/0gIyVznsMcBLd16FwElIKvDQ+UXzoou3S7SEwRxxvgthVBRnzty/0kWZz/sH43HsRstKWU=\"}"
+          "value": "{\"data\":\"pub.BCW6/Pa1ghm35uOIr6bxvVlG+EHQ4xtBAOeqaXLhn0o5a0yHhPsq1YompmzPV9VnwDkixfc2/nQ4atK64mxKepw=\"}"
         },
         {
           "name": "security-sdk/s_sdk_sign_data_key/web_protect",
-          "value": "{\"data\":\"{\\\"ticket\\\":\\\"hash.VrZALcjOhNYIunEDatlzGdGkBKyPzey+pEekR/I8pnU=\\\",\\\"ts_sign\\\":\\\"ts.2.fb0ca749c18be641bc674f760796241a33d2be2e059ad3500235da55f66fa569c4fbe87d2319cf05318624ceda14911ca406dedbebeddb2e30fce8d4fa02575d\\\",\\\"client_cert\\\":\\\"pub.BHsVMGeTL/rA/g0V/0gIyVznsMcBLd16FwElIKvDQ+UXzoou3S7SEwRxxvgthVBRnzty/0kWZz/sH43HsRstKWU=\\\",\\\"log_id\\\":\\\"202505061649137F3E5C66EC3830178C44\\\",\\\"create_time\\\":1746521353}\"}"
+          "value": "{\"data\":\"{\\\"ticket\\\":\\\"hash.fLVOvLnFOCC7rLavhcz3OVtzlQ/AKITJj5isG6B1+CQ=\\\",\\\"ts_sign\\\":\\\"ts.2.da2ad2c7743f88ef6fdf8aeb7d4e622bdb6ae1a5a66fd89d7ba5f71144ee5b39c4fbe87d2319cf05318624ceda14911ca406dedbebeddb2e30fce8d4fa02575d\\\",\\\"client_cert\\\":\\\"pub.BCW6/Pa1ghm35uOIr6bxvVlG+EHQ4xtBAOeqaXLhn0o5a0yHhPsq1YompmzPV9VnwDkixfc2/nQ4atK64mxKepw=\\\",\\\"log_id\\\":\\\"20250506205943C8DE264A9A5C6E31910E\\\",\\\"create_time\\\":1746536383}\"}"
         },
         {
           "name": "security-sdk/s_sdk_crypt_sdk",
-          "value": "{\"data\":\"{\\\"ec_privateKey\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgDIKIhk7OdvMo7+8Sy2O96ekM/YqYvrGQhWn+IzkYwoOhRANCAAR7FTBnky/6wP4NFf9ICMlc57DHAS3dehcBJSCrw0PlF86KLt0u0hMEccb4LYVQUZ87cv9JFmc/7B+Nx7EbLSll\\\\n-----END PRIVATE KEY-----\\\",\\\"ec_publicKey\\\":\\\"-----BEGIN PUBLIC KEY-----\\\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEexUwZ5Mv+sD+DRX/SAjJXOewxwEt3XoXASUgq8ND5RfOii7dLtITBHHG+C2FUFGfO3L/SRZnP+wfjcexGy0pZQ==\\\\n-----END PUBLIC KEY-----\\\",\\\"ec_csr\\\":\\\"\\\"}\"}"
+          "value": "{\"data\":\"{\\\"ec_privateKey\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg8DWYLE/PR7dH3Ss1oWLFqKJKLIQLcbvs2x40HBUwhJKhRANCAAQluvz2tYIZt+bjiK+m8b1ZRvhB0OMbQQDnqmly4Z9KOWtMh4T7KtWKJqZsz1fVZ8A5IsX3Nv50OGrSuuJsSnqc\\\\n-----END PRIVATE KEY-----\\\",\\\"ec_publicKey\\\":\\\"-----BEGIN PUBLIC KEY-----\\\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJbr89rWCGbfm44ivpvG9WUb4QdDjG0EA56ppcuGfSjlrTIeE+yrViiambM9X1WfAOSLF9zb+dDhq0rribEp6nA==\\\\n-----END PUBLIC KEY-----\\\",\\\"ec_csr\\\":\\\"\\\"}\"}"
         }
       ]
     },
@@ -712,11 +668,11 @@
         },
         {
           "name": "SLARDARintelligent_customer_service_web",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMjcyMDg1NTczNDgzNDI3OTIyNTMlMjIsJTIyZGV2aWNlSWQlMjI6JTIyYjIxMmZmNWEtMjZhZi00NmRmLWIzNmItMmU1YzhjMzIyNGM1JTIyLCUyMmV4cGlyZXMlMjI6MTc1NDI5NzM1NzI5OCU3RA=="
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjcyMDg1NTczNDgzNDI3OTIyNTMlMjIsJTIyZGV2aWNlSWQlMjI6JTIyZDJkNWI5MTEtMTQ1OC00ODdlLWFjZmMtMWUzOTVkYzMwMGU5JTIyLCUyMmV4cGlyZXMlMjI6MTc1NDMxMjM4NTI5MCU3RA=="
         },
         {
           "name": "__tea_sdk_ab_version_3479",
-          "value": "{\"data\":{\"helpcenter\":{\"val\":{\"useHelpcenter\":true},\"vid\":\"90081862\"},\"im_emoticons\":{\"val\":{\"im_use_emoticons\":true},\"vid\":\"90093519\"},\"im_input_suggest\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"\"}},\"vid\":\"90097040\"},\"im_input_suggest_111\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236013\"}},\"vid\":\"90096811\"},\"im_input_suggest_41\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"\"}},\"vid\":\"90097007\"},\"im_input_suggest_44\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236659\"}},\"vid\":\"90096809\"},\"im_input_suggest_57\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236406\"}},\"vid\":\"90096810\"},\"im_input_suggest_76\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236713\"}},\"vid\":\"90096808\"},\"manual_connet_tip\":{\"val\":true,\"vid\":\"90170245\"},\"show_satisfaction_toast\":{\"val\":{\"show_satisfaction_toast\":true},\"vid\":\"90098964\"},\"show_unread_message_card\":{\"val\":{\"show_unread_message_card\":\"true\"},\"vid\":\"90125067\"}},\"uuid\":\"7208557348342792253\",\"timestamp\":1746521357427,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[]}"
+          "value": "{\"data\":{\"helpcenter\":{\"val\":{\"useHelpcenter\":true},\"vid\":\"90081862\"},\"im_emoticons\":{\"val\":{\"im_use_emoticons\":true},\"vid\":\"90093519\"},\"im_input_suggest\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"\"}},\"vid\":\"90097040\"},\"im_input_suggest_111\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236013\"}},\"vid\":\"90096811\"},\"im_input_suggest_41\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"\"}},\"vid\":\"90097007\"},\"im_input_suggest_44\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236659\"}},\"vid\":\"90096809\"},\"im_input_suggest_57\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236406\"}},\"vid\":\"90096810\"},\"im_input_suggest_76\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236713\"}},\"vid\":\"90096808\"},\"manual_connet_tip\":{\"val\":true,\"vid\":\"90170245\"},\"show_satisfaction_toast\":{\"val\":{\"show_satisfaction_toast\":true},\"vid\":\"90098964\"},\"show_unread_message_card\":{\"val\":{\"show_unread_message_card\":\"true\"},\"vid\":\"90125067\"}},\"uuid\":\"7208557348342792253\",\"timestamp\":1746536385443,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[]}"
         },
         {
           "name": "__tea_cache_first_3479",
@@ -724,11 +680,11 @@
         },
         {
           "name": "SLARDARcard_factory",
-          "value": "JTdCJTIydXNlcklkJTIyOiUyMjAzYmJkOTI5LTBhYmUtNDhmYy05NTE2LThjYmY2MDIxMGNmMyUyMiwlMjJkZXZpY2VJZCUyMjolMjJlNGY2YWQzZS03NjE2LTRlZjYtYWQ2MS05MzNlNWQ5M2EzNjYlMjIsJTIyZXhwaXJlcyUyMjoxNzU0Mjk3MzU2Njk3JTdE"
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjgyN2I1ZTk4LWNhYTctNDEwZS1hOGIyLTk5ODJkMTAxODU2NCUyMiwlMjJkZXZpY2VJZCUyMjolMjI3YTJjNzFkYi1hMjMwLTRiZWUtYjk4Zi0zZWM5OTU5YzBkNmQlMjIsJTIyZXhwaXJlcyUyMjoxNzU0MzEyMzg0OTcxJTdE"
         },
         {
           "name": "__tea_cache_tokens_3479",
-          "value": "{\"web_id\":\"7501252036924786187\",\"user_unique_id\":\"7208557348342792253\",\"timestamp\":1746521357289,\"_type_\":\"default\"}"
+          "value": "{\"web_id\":\"7501316605004285478\",\"user_unique_id\":\"7208557348342792253\",\"timestamp\":1746536385286,\"_type_\":\"default\"}"
         },
         {
           "name": "__tea_cache_first_2970",
@@ -736,7 +692,7 @@
         },
         {
           "name": "__tea_cache_tokens_2970",
-          "value": "{\"web_id\":\"7501252041387198006\",\"user_unique_id\":\"7208557348342792253\",\"timestamp\":1746521357290,\"_type_\":\"default\"}"
+          "value": "{\"web_id\":\"7501316603939374601\",\"user_unique_id\":\"7208557348342792253\",\"timestamp\":1746536385286,\"_type_\":\"default\"}"
         }
       ]
     },
