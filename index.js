@@ -15,11 +15,14 @@ const filePath = path.join(__dirname, "./demo.mp4"); // 使用相对路径构造
     filePath,
     title: "我的王者精彩瞬间222",
     desc: "我的王者精彩瞬间，亮瞎全场 #王者荣耀",
+    imitate: true,
   };
 
-  // await douyin(params);
+  await douyin(params);
 
   await kuaishou(params);
 
-  // await browser.close();
+  console.log("所有平台分发完毕！");
+
+  await browser.close();
 })();

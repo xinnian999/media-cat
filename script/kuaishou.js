@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const STATE_PATH = "./auth/kuaishou.json";
 
-const sh = async ({ filePath, browser, desc }) => {
+const sh = async ({ filePath, browser, desc, imitate }) => {
   // 判断是否已有登录状态文件
   const context = fs.existsSync(STATE_PATH)
     ? await browser.newContext({ storageState: STATE_PATH })
@@ -50,6 +50,11 @@ const sh = async ({ filePath, browser, desc }) => {
   });
 
   await page.waitForTimeout(2000);
+
+  if (imitate) {
+    console.log("快手 -- 模拟流程完毕，跳过发布步骤");
+    return;
+  }
 
   await page.click("._button_3a3lq_1:has-text('发布')");
 

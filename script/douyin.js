@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const STATE_PATH = "./auth/douyin.json";
 
-const sh = async ({ filePath, browser, title, desc }) => {
+const sh = async ({ filePath, browser, title, desc, imitate }) => {
   // 判断是否已有登录状态文件
   const context = fs.existsSync(STATE_PATH)
     ? await browser.newContext({ storageState: STATE_PATH })
@@ -52,6 +52,12 @@ const sh = async ({ filePath, browser, title, desc }) => {
 
   await page.waitForTimeout(2000);
 
+  // 如果 imitate 为 true，则不发布
+  if (imitate) {
+    console.log("抖音 -- 模拟流程完毕，跳过发布步骤");
+    return;
+  }
+
   await page.getByRole("button", { name: "发布", exact: true }).click();
 
   //可能会出现风控验证，需要手动处理
@@ -67,7 +73,7 @@ const sh = async ({ filePath, browser, title, desc }) => {
     timeout: 0, // 无限等待
   });
 
-  console.log('抖音 -- 上传完成');
+  console.log("抖音 -- 上传完成");
 };
 
 module.exports = sh;
