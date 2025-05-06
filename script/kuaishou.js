@@ -1,26 +1,21 @@
-const fs = require("fs");
-
-const STATE_PATH = "./auth/kuaishou.json";
-
-const sh = async ({ filePath, browser, desc, imitate }) => {
-  // 判断是否已有登录状态文件
-  const context = fs.existsSync(STATE_PATH)
-    ? await browser.newContext({ storageState: STATE_PATH })
-    : await browser.newContext();
-
+const sh = async ({ filePath, context, desc, imitate, saveState }) => {
   const page = await context.newPage();
+
   await page.goto("https://cp.kuaishou.com/");
 
-  if (!fs.existsSync(STATE_PATH)) {
+  await page.waitForTimeout(5000); // 等待页面完全渲染
+
+  // 判断是否需要登录
+  const isUnLogin = await page.locator('a:has-text("立即登录")').isVisible();
+
+  if (isUnLogin) {
     console.log("请在浏览器中登录快手账号...");
 
     await page.waitForSelector('div:has-text("发布作品")', {
       timeout: 0, // 无限等待
     });
 
-    await context.storageState({ path: STATE_PATH }); // 保存登录状态
-
-    console.log("登录状态已保存，下次会自动登录");
+    await saveState();
   } else {
     console.log("已加载登录状态，自动登录成功");
   }

@@ -1,26 +1,21 @@
-const fs = require("fs");
-
-const STATE_PATH = "./auth/douyin.json";
-
-const sh = async ({ filePath, browser, title, desc, imitate }) => {
-  // 判断是否已有登录状态文件
-  const context = fs.existsSync(STATE_PATH)
-    ? await browser.newContext({ storageState: STATE_PATH })
-    : await browser.newContext();
-
+const sh = async ({ filePath, title, desc, imitate, context, saveState }) => {
   const page = await context.newPage();
+
   await page.goto("https://creator.douyin.com/");
 
-  // 如果是首次登录，给你 30 秒手动扫码登录
-  if (!fs.existsSync(STATE_PATH)) {
+  await page.waitForTimeout(5000); // 等待页面完全渲染
+
+  // 判断是否需要登录
+  const isUnLogin = await page.locator('span:has-text("扫码登录")').isVisible();
+
+  if (isUnLogin) {
     console.log("请在浏览器中登录抖音账号...");
 
     await page.waitForSelector('button:has-text("发布视频")', {
       timeout: 0, // 无限等待
     });
 
-    await context.storageState({ path: STATE_PATH });
-    console.log("登录状态已保存，下次会自动登录");
+    await saveState();
   } else {
     console.log("已加载登录状态，自动登录成功");
   }
