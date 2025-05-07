@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-
     <div class="box">
       <form
         class="form"
@@ -54,5 +53,29 @@
       </form>
     </div>
 
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const defaultValues = {
+          desc: "这是默认描述",
+          tag1: "搞笑",
+          tag2: "生活",
+          tag3: "热门",
+          imitate: true,
+        };
+
+        const form = document.querySelector(".form");
+
+        for (const [name, value] of Object.entries(defaultValues)) {
+          const field = form.elements[name];
+          if (!field) continue;
+
+          if (field.type === "checkbox") {
+            field.checked = Boolean(value);
+          } else {
+            field.value = value;
+          }
+        }
+      });
+    </script>
   </body>
 </html>
