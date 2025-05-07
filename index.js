@@ -22,8 +22,8 @@ const STATE_PATH = "./cache.json";
       title: "",
       desc: "",
       filePath: path.join(__dirname, "./server/public/demo.mp4"),
+      imitate: false,
     },
-    imitate: false,
     saveState: async () => {
       await context.storageState({ path: STATE_PATH });
       console.log("浏览器状态已保存");

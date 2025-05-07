@@ -1,6 +1,6 @@
 const log = require("../utils/log");
 
-const sh = async ({ info, imitate, context, saveState }) => {
+const sh = async ({ info, context, saveState }) => {
   const page = await context.newPage();
 
   await page.goto("https://cp.kuaishou.com/");
@@ -59,7 +59,7 @@ const sh = async ({ info, imitate, context, saveState }) => {
 
   await page.waitForTimeout(2000);
 
-  if (imitate) {
+  if (info.imitate) {
     await log(page, "快手 -- 模拟流程完毕，跳过发布步骤");
     return;
   }

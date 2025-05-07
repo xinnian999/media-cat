@@ -3,7 +3,9 @@ const log = async (page, msg) => {
 
   await page.evaluate((msg) => {
     const id = "__my_logger__";
+    
     let box = document.getElementById(id);
+
     if (!box) {
       box = document.createElement("div");
       box.id = id;
@@ -25,6 +27,7 @@ const log = async (page, msg) => {
         `;
       document.body.appendChild(box);
     }
+
     const line = document.createElement("div");
     line.textContent = msg;
     box.appendChild(line);

@@ -23,10 +23,12 @@ function createServer({ port = 3000, setInfo } = {}) {
     // 上传接口
     app.post("/upload", upload.single("file"), (req, res) => {
       if (!req.file) return res.status(400).send("No file uploaded.");
-      const { title, desc } = req.body;
 
-      if (title) setInfo({ title });
-      if (desc) setInfo({ desc });
+      setInfo(req.body);
+
+      if (req.body.imitate === "on") {
+        setInfo({ imitate: true });
+      }
 
       res.send(`
         <h1>确认信息</h1>
@@ -35,6 +37,7 @@ function createServer({ port = 3000, setInfo } = {}) {
         <p>文件类型: ${req.file.mimetype}</p>
         <p>标题: ${req.body.title}</p>
         <p>描述: ${req.body.desc}</p>
+        <p>模拟流程: ${req.body.imitate}</p>
       `);
     });
 

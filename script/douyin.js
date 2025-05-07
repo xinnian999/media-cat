@@ -1,6 +1,6 @@
 const log = require("../utils/log");
 
-const sh = async ({ info, imitate, context, saveState }) => {
+const sh = async ({ info, context, saveState }) => {
   const page = await context.newPage();
 
   await page.goto("https://creator.douyin.com/");
@@ -60,7 +60,7 @@ const sh = async ({ info, imitate, context, saveState }) => {
   await page.waitForTimeout(2000);
 
   // 如果 imitate 为 true，则不发布
-  if (imitate) {
+  if (info.imitate) {
     log(page, "抖音 -- 模拟流程完毕，跳过发布步骤");
     return;
   }

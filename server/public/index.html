@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- <h1>上传文件</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <input type="file" name="file" />
-      <button type="submit">上传</button>
-    </form> -->
-
     <div class="box">
       <form
         class="form"
@@ -20,12 +14,29 @@
         method="POST"
         enctype="multipart/form-data"
       >
-        <input placeholder="视频标题" class="input" type="text" name="title" />
-        <textarea placeholder="视频描述" class="input" rows="3" name="desc"></textarea>
+        <div class="logo">短视频分发矩阵</div>
+        <input placeholder="视频标题" class="input" type="text" name="title" required />
+        <textarea
+          placeholder="视频描述"
+          class="input"
+          rows="3"
+          name="desc"
+        ></textarea>
 
-        <input type="file" name="file" />
+        <input type="file" name="file" required />
 
-        <button type="submit">提交</button>
+        <!-- From Uiverse.io by vishnupprajapat -->
+        <div class="checkbox-wrapper-46">
+          <input type="checkbox" id="cbx-46" class="inp-cbx" name="imitate" />
+          <label for="cbx-46" class="cbx"
+            ><span>
+              <svg viewBox="0 0 12 10" height="10px" width="12px">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
+            ><span>跳过上传</span>
+          </label>
+        </div>
+
+        <button type="submit">开始分发</button>
       </form>
     </div>
   </body>

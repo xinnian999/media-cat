@@ -1,6 +1,6 @@
 const log = require("../utils/log");
 
-const sh = async ({ context }) => {
+const sh = async ({ context ,info}) => {
   const page = await context.newPage();
 
   await page.goto("http://localhost:3000");
@@ -12,6 +12,11 @@ const sh = async ({ context }) => {
   await page.waitForSelector('h1:has-text("确认信息")', {
     timeout: 0, // 无限等待
   });
+
+  // console.log(info);
+  // await page.waitForSelector('h1:has-text("确认信息111")', {
+  //   timeout: 0, // 无限等待
+  // });
 
   await log(page, "信息已录入，即将开始脚本。。。");
 };
