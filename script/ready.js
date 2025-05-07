@@ -13,7 +13,7 @@ const sh = async ({ context ,info}) => {
     timeout: 0, // 无限等待
   });
 
-  // console.log(info);
+  console.log(info);
   // await page.waitForSelector('h1:has-text("确认信息111")', {
   //   timeout: 0, // 无限等待
   // });

@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 
-function createServer({ port = 3000, setInfo } = {}) {
+function createServer({ port = 3000, info, setInfo } = {}) {
   return new Promise((resolve, reject) => {
     const app = express();
 
@@ -26,9 +26,15 @@ function createServer({ port = 3000, setInfo } = {}) {
 
       setInfo(req.body);
 
-      if (req.body.imitate === "on") {
-        setInfo({ imitate: true });
-      }
+      Object.keys(req.body).forEach((key) => {
+        if (key === "imitate") {
+          setInfo({ imitate: req.body[key] === "on" });
+        }
+
+        if (key.includes("tag")) {
+          setInfo({ tags: [...info.tags, req.body[key]] });
+        }
+      });
 
       res.send(`
         <h1>确认信息</h1>

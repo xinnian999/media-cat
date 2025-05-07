@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+
     <div class="box">
       <form
         class="form"
@@ -15,13 +16,26 @@
         enctype="multipart/form-data"
       >
         <div class="logo">短视频分发矩阵</div>
-        <input placeholder="视频标题" class="input" type="text" name="title" required />
         <textarea
           placeholder="视频描述"
           class="input"
           rows="3"
           name="desc"
         ></textarea>
+
+        <div class="tag-wrapper">
+          <div class="tag-label">标签1</div>
+          <input type="text" name="tag1" required />
+        </div>
+        <div class="tag-wrapper">
+          <div class="tag-label">标签2</div>
+          <input type="text" name="tag2" required />
+        </div>
+
+        <div class="tag-wrapper">
+          <div class="tag-label">标签3</div>
+          <input type="text" name="tag3" required />
+        </div>
 
         <input type="file" name="file" required />
 
@@ -39,5 +53,6 @@
         <button type="submit">开始分发</button>
       </form>
     </div>
+
   </body>
 </html>

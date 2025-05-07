@@ -36,19 +36,16 @@ const sh = async ({ info, context, saveState }) => {
   await log(page, "导入视频");
   await page.setInputFiles('input[type="file"]', info.filePath);
 
-  // 写入标题
-  await log(page, "写入标题");
-  await page
-    .getByRole("textbox", { name: "填写作品标题，为作品获得更多流量" })
-    .click();
-  await page
-    .getByRole("textbox", { name: "填写作品标题，为作品获得更多流量" })
-    .fill(info.title);
-
   // 写入简介
   await log(page, "写入简介");
   await page.locator(".zone-container").click();
   await page.locator(".zone-container").fill(info.desc);
+
+  // 写入标签
+  // await log(page, "写入标签");
+  // await page
+  //   .locator(".zone-container")
+  //   .fill(info.desc + " " + info.tags.join(" "));
 
   // 发布
   await log(page, "等待视频导入完成");

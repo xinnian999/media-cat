@@ -22,7 +22,8 @@ const STATE_PATH = "./cache.json";
       title: "",
       desc: "",
       filePath: path.join(__dirname, "./server/public/demo.mp4"),
-      imitate: false,
+      imitate: true,
+      tags: [],
     },
     saveState: async () => {
       await context.storageState({ path: STATE_PATH });
@@ -33,7 +34,11 @@ const STATE_PATH = "./cache.json";
     },
   };
 
-  await createServer({ port: 3000, setInfo: params.setInfo });
+  await createServer({
+    port: 3000,
+    info: params.info,
+    setInfo: params.setInfo,
+  });
 
   await ready(params);
 
