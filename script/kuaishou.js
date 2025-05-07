@@ -51,6 +51,18 @@ const sh = async ({ info, context, saveState }) => {
 
   await page.locator("#work-description-edit").fill(info.desc);
 
+  // 写入标签
+  await log(page, "写入标签");
+  const input = page.locator("#work-description-edit"); // 假设是 contenteditable 区域
+  await input.click(); // 先 focus
+  await input.type(" "); // 先 focus
+  async function runSerially() {
+    for (const tag of info.tags) {
+      await input.type(`#${tag} `);
+    }
+  }
+  await runSerially();
+
   // 等待视频导入完成
   await log(page, "等待视频导入完成");
   await page.waitForSelector('span:has-text("预览作品")', {

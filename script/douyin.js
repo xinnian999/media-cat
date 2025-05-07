@@ -42,10 +42,15 @@ const sh = async ({ info, context, saveState }) => {
   await page.locator(".zone-container").fill(info.desc);
 
   // 写入标签
-  // await log(page, "写入标签");
-  // await page
-  //   .locator(".zone-container")
-  //   .fill(info.desc + " " + info.tags.join(" "));
+  await log(page, "写入标签");
+  const input = page.locator(".zone-container"); // 假设是 contenteditable 区域
+  await input.click(); // 先 focus
+  async function runSerially() {
+    for (const tag of info.tags) {
+      await input.type(`#${tag} `);
+    }
+  }
+  await runSerially();
 
   // 发布
   await log(page, "等待视频导入完成");
