@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <title>文件上传</title>
+
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>上传文件</h1>
+    <!-- <h1>上传文件</h1>
     <form action="/upload" method="POST" enctype="multipart/form-data">
       <input type="file" name="file" />
       <button type="submit">上传</button>
-    </form>
+    </form> -->
+
+    <div class="box">
+      <form
+        class="form"
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input placeholder="视频标题" class="input" type="text" name="title" />
+        <textarea placeholder="视频描述" class="input" rows="3" name="desc"></textarea>
+
+        <input type="file" name="file" />
+
+        <button type="submit">提交</button>
+      </form>
+    </div>
   </body>
 </html>

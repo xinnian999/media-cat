@@ -30,7 +30,7 @@ const log = async (page, msg) => {
     box.appendChild(line);
   }, msg);
 
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(3000);
 };
 
 module.exports = log;

@@ -1,6 +1,6 @@
 const log = require("../utils/log");
 
-const sh = async ({ filePath, title, desc, imitate, context, saveState }) => {
+const sh = async ({ info, imitate, context, saveState }) => {
   const page = await context.newPage();
 
   await page.goto("https://creator.douyin.com/");
@@ -29,29 +29,29 @@ const sh = async ({ filePath, title, desc, imitate, context, saveState }) => {
   }
 
   // 点击“发布视频”
-  await page.getByRole("button", { name: "发布视频" }).click();
   await log(page, "点击“发布视频”按钮");
+  await page.getByRole("button", { name: "发布视频" }).click();
 
   // 导入视频
-  await page.setInputFiles('input[type="file"]', filePath);
-  await log(page, "开始导入视频");
+  await log(page, "导入视频");
+  await page.setInputFiles('input[type="file"]', info.filePath);
 
   // 写入标题
+  await log(page, "写入标题");
   await page
     .getByRole("textbox", { name: "填写作品标题，为作品获得更多流量" })
     .click();
   await page
     .getByRole("textbox", { name: "填写作品标题，为作品获得更多流量" })
-    .fill(title);
-  await log(page, "写入标题成功");
+    .fill(info.title);
 
   // 写入简介
+  await log(page, "写入简介");
   await page.locator(".zone-container").click();
-  await page.locator(".zone-container").fill(desc);
-  await log(page, "写入简介成功");
+  await page.locator(".zone-container").fill(info.desc);
 
   // 发布
-  await log(page, "正在等待视频导入完成");
+  await log(page, "等待视频导入完成");
   await page.waitForSelector('div:has-text("重新上传")', {
     timeout: 0, // 无限等待
   });
@@ -68,21 +68,23 @@ const sh = async ({ filePath, title, desc, imitate, context, saveState }) => {
   await log(page, "点击发布按钮，开始发布");
   await page.getByRole("button", { name: "发布", exact: true }).click();
 
+  await page.waitForTimeout(3000); // 等待上传完成
+
   //可能会出现风控验证，需要手动处理
   const hasVerify = await page
     .locator('div:has-text("接收短信验证码")')
     .isVisible();
+
   if (hasVerify) {
-    console.log("出现风控验证，请手动处理");
+    await log(page, "出现风控验证，请手动处理");
   }
 
   // 检验是否上传成功
   await page.waitForSelector('div:has-text("作品管理")', {
     timeout: 0, // 无限等待
   });
-  await log(page, "抖音发布成功！");
 
-  console.log("抖音 -- 上传完成");
+  await log(page, "抖音发布成功！");
 };
 
 module.exports = sh;

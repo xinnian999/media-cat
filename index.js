@@ -1,15 +1,15 @@
 const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
+const createServer = require("./server");
 
+const ready = require("./script/ready");
 const douyin = require("./script/douyin");
 const kuaishou = require("./script/kuaishou");
 
 const STATE_PATH = "./cache.json";
 
 (async () => {
-  const filePath = path.join(__dirname, "./demo.mp4");
-
   const browser = await chromium.launch({ headless: false });
 
   const context = fs.existsSync(STATE_PATH)
@@ -17,17 +17,25 @@ const STATE_PATH = "./cache.json";
     : await browser.newContext();
 
   const params = {
-    browser,
-    filePath: filePath,
-    title: "我的王者精彩瞬间222",
-    desc: "我的王者精彩瞬间，亮瞎全场 #王者荣耀",
+    context,
+    info: {
+      title: "",
+      desc: "",
+      filePath: path.join(__dirname, "./server/public/demo.mp4"),
+    },
     imitate: false,
     saveState: async () => {
       await context.storageState({ path: STATE_PATH });
       console.log("浏览器状态已保存");
     },
-    context
+    setInfo: (data) => {
+      Object.assign(params.info, data);
+    },
   };
+
+  await createServer({ port: 3000, setInfo: params.setInfo });
+
+  await ready(params);
 
   await douyin(params);
 
