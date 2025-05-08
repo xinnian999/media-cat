@@ -1,4 +1,11 @@
-const { app, BrowserWindow, dialog, ipcMain, globalShortcut } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  dialog,
+  ipcMain,
+  globalShortcut,
+} = require("electron");
+
 const path = require("path");
 
 let win;
@@ -13,7 +20,6 @@ function createWindow() {
       webSecurity: false, // 禁用 Web 安全策略，允许加载本地文件
     },
   });
-  win.webContents.openDevTools();
 
   win.loadURL("http://localhost:5173"); // 假设是 Vue 项目的本地服务器地址
 }
@@ -29,7 +35,7 @@ app.whenReady().then(() => {
     return result.filePaths[0]; // 返回选择的文件路径
   });
 
-  globalShortcut.register('F12', () => {
+  globalShortcut.register("F12", () => {
     if (!win.webContents.isDevToolsOpened()) {
       win.webContents.openDevTools();
     }

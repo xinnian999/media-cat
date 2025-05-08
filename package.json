@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "electron main.js",
+    "dev": "electron main.js",
+    "dev:ui": "pnpm -C ui dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

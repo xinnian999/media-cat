@@ -1,10 +1,9 @@
 <template>
   <a-layout class="layout-demo">
-    <a-layout-sider collapsible breakpoint="xl" @collapse="onCollapse">
-      <div class="logo">{{ isCollapsed ? '琳' : '小琳自媒矩阵' }}</div>
+    <a-layout-sider>
+      <div class="logo">小琳自媒矩阵</div>
       <a-menu
-        :default-open-keys="['1']"
-        :default-selected-keys="['0_3']"
+        :default-selected-keys="['/']"
         :style="{ width: '100%' }"
         @menu-item-click="onClickMenuItem"
       >
@@ -31,23 +30,13 @@
 </template>
 <script setup>
 import { routes } from './router'
-import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 
-const isCollapsed = ref(false)
 const router = useRouter()
-
-const onCollapse = (collapsed) => {
-  isCollapsed.value = collapsed
-}
 
 const onClickMenuItem = (key) => {
   router.push(key)
 }
-
-watchEffect(() => {
-  console.log(isCollapsed.value)
-})
 </script>
 <style scoped>
 .layout-demo {
@@ -77,5 +66,4 @@ watchEffect(() => {
   background: var(--color-bg-3);
   padding: 12px;
 }
-
 </style>
