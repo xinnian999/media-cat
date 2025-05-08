@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout-demo">
     <a-layout-sider collapsible breakpoint="xl" @collapse="onCollapse">
-      <div class="logo"><span v-show="!isCollapsed">小琳媒体矩阵</span></div>
+      <div class="logo">{{ isCollapsed ? '琳' : '小琳自媒矩阵' }}</div>
       <a-menu
         :default-open-keys="['1']"
         :default-selected-keys="['0_3']"

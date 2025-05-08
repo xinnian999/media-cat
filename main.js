@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, ipcMain } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain, globalShortcut } = require("electron");
 const path = require("path");
 
 let win;
@@ -27,6 +27,12 @@ app.whenReady().then(() => {
     });
 
     return result.filePaths[0]; // 返回选择的文件路径
+  });
+
+  globalShortcut.register('F12', () => {
+    if (!win.webContents.isDevToolsOpened()) {
+      win.webContents.openDevTools();
+    }
   });
 });
 
