@@ -19,6 +19,15 @@ const routes = [
       icon: 'icon-arrow-rise',
     },
   },
+  {
+    path: '/account',
+    name: 'account',
+    component: () => import('../views/Account.vue'),
+    meta: {
+      title: '账号管理',
+      icon: 'icon-user-group',
+    },
+  },
 ]
 
 const router = createRouter({

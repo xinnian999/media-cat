@@ -12,6 +12,8 @@ const startUi = require("./utils/startUi");
 
 const play = require("./index");
 
+const bindAccount = require("./script/bindAccount");
+
 let win;
 
 async function createWindow() {
@@ -43,6 +45,10 @@ app.whenReady().then(() => {
 
   ipcMain.handle("play", (e, data) => {
     return play(data);
+  });
+
+  ipcMain.handle("bindAccount", (e, url) => {
+    return bindAccount(url);
   });
 
   globalShortcut.register("F12", () => {
