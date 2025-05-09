@@ -8,6 +8,8 @@ const {
 
 const path = require("path");
 
+const play = require("./index");
+
 let win;
 
 function createWindow() {
@@ -33,6 +35,10 @@ app.whenReady().then(() => {
     });
 
     return result.filePaths[0]; // 返回选择的文件路径
+  });
+
+  ipcMain.handle("play", (e, data) => {
+    return play(data);
   });
 
   globalShortcut.register("F12", () => {

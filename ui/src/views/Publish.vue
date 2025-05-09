@@ -58,8 +58,9 @@ const form = reactive({
   ],
 })
 
-const handleSubmit = (data) => {
-  console.log(data)
+const handleSubmit = async (data) => {
+  const safeData = JSON.parse(JSON.stringify(data))
+  await window.electron.invoke('play', safeData)
 }
 
 const openFileDialog = async () => {

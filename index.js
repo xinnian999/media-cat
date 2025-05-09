@@ -9,7 +9,9 @@ const kuaishou = require("./script/kuaishou");
 
 const STATE_PATH = "./cache.json";
 
-(async () => {
+const play = async (data) => {
+  console.log('play.data',data);
+  
   const browser = await chromium.launch({ headless: false });
 
   const context = fs.existsSync(STATE_PATH)
@@ -49,4 +51,6 @@ const STATE_PATH = "./cache.json";
   console.log("所有平台分发完毕！");
 
   // await browser.close();
-})();
+};
+
+module.exports = play;
