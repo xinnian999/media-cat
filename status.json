@@ -1,0 +1,148 @@
+{
+  "cookies": [
+    {
+      "name": "did",
+      "value": "web_f23547236fd712daa79ba15fa765ecb1e1d4",
+      "domain": ".kuaishou.com",
+      "path": "/",
+      "expires": 1781347001.938648,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bUserId",
+      "value": "1000452753377",
+      "domain": ".kuaishou.com",
+      "path": "/",
+      "expires": 1748083019.819172,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bUserId",
+      "value": "1000452753377",
+      "domain": "id.kuaishou.com",
+      "path": "/",
+      "expires": 1748601419.740666,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "passToken",
+      "value": "ChNwYXNzcG9ydC5wYXNzLXRva2VuEsAB4mYWQeciV3QCw5SwoadZvFAVBdRnt4NNkyh9RfdEtPO4JOEenQ4WguLAzAT_TxVkkyih2q_QrhqNB2XLyvZr4udpIOmIC3OFhRQJc2C7Ud1gD5mC7sUMx0Q6rAKXm6MZTKi8QDefwN2u79f15Lv9SYhrYwm16wogfSKV5vqEfqCcNHV9-djuXvPTP2JWILf86Wr1spd2yW6XIU91rLTtrOgvd_V5oBgn2nR1fOGXlLMmhhtacTREreUcWPL4oglFGhIJBRfr_qpOzqtFszTciGp_TnYiIE884ZfDCUgxAJHzxIpv1eUUyQ1EmPRKyCtkNCS7N1f7KAUwAQ",
+      "domain": "id.kuaishou.com",
+      "path": "/",
+      "expires": 1748601419.740999,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "userId",
+      "value": "1418322537",
+      "domain": ".kuaishou.com",
+      "path": "/",
+      "expires": 1748083019.818977,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "userId",
+      "value": "1418322537",
+      "domain": "id.kuaishou.com",
+      "path": "/",
+      "expires": 1748601419.740933,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kuaishou.web.cp.api_st",
+      "value": "ChZrdWFpc2hvdS53ZWIuY3AuYXBpLnN0ErABNTR0iSGViO0APNkR8BhZF5txPRflmhU3mqXtynUiNXP3b-ZoMWsIMbMODpsLFfr6WUho3inCSEo8JSgDV18V-3S81_lfpT-kwDiVqxMUlqjDmcg28d5D7k3ZyIza67dKVngHb1MyLtjNGig_fi480jCvhz_mDblcmxj6tF_v3Dx3s14T_MbO8sPokOJzdTffxlekDNwQjHPgffciMCRkYuUAyToLrfYyOalagQB_hJUaEoOplg42yKcN8PedlpH0JT1RzSIgt1x4kqbfWEZui_euuvsPXj9gIV3mNcaVFZMQIJQ-B1MoBTAB",
+      "domain": ".kuaishou.com",
+      "path": "/",
+      "expires": 1748083019.819217,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "kuaishou.web.cp.api_ph",
+      "value": "ddc3c006000e5daa2b3943f59c1a8d7813fd",
+      "domain": ".kuaishou.com",
+      "path": "/",
+      "expires": 1748083019.81926,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://cp.kuaishou.com",
+      "localStorage": [
+        {
+          "name": "LOAD_DEVICE_INCREASE_ID",
+          "value": "3"
+        },
+        {
+          "name": "OTHER_DEVICE_INCREASE_ID",
+          "value": "31"
+        },
+        {
+          "name": "WEBLOGGER_CUSTOM_INCREAMENT_ID_KEY",
+          "value": "3"
+        },
+        {
+          "name": "refresh_last_time_0x0810",
+          "value": "1746787001853"
+        },
+        {
+          "name": "WEBLOGGER_INCREAMENT_ID_KEY",
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "origin": "https://passport.kuaishou.com",
+      "localStorage": [
+        {
+          "name": "WEBLOGGER_CHANNEL_SEQ_ID_NORMAL",
+          "value": "13"
+        },
+        {
+          "name": "OTHER_DEVICE_INCREASE_ID",
+          "value": "18"
+        },
+        {
+          "name": "WEBLOGGER_V2_SEQ_ID_showEvent",
+          "value": "9"
+        },
+        {
+          "name": "LOAD_DEVICE_INCREASE_ID",
+          "value": "3"
+        },
+        {
+          "name": "WEBLOGGER_CUSTOM_INCREAMENT_ID_KEY",
+          "value": "16"
+        },
+        {
+          "name": "WEBLOGGER_V2_SEQ_ID_clickEvent",
+          "value": "2"
+        },
+        {
+          "name": "WEBLOGGER_INCREAMENT_ID_KEY",
+          "value": "13"
+        },
+        {
+          "name": "WEBLOGGER_V2_SEQ_ID_taskEvent",
+          "value": "2"
+        }
+      ]
+    }
+  ]
+}

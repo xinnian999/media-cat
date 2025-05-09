@@ -1,10 +1,13 @@
 {
   "name": "auto-media",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "dev": "electron main.js",
     "dev:ui": "pnpm -C ui dev",
+    "build": "pnpm build:ui && pnpm dist",
+    "dist": "electron-builder",
+    "build:ui": "pnpm -C ui build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,6 +19,19 @@
     "playwright": "^1.52.0"
   },
   "devDependencies": {
-    "electron": "^36.2.0"
+    "electron": "^36.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.yourdomain.yourapp",
+    "productName": "小琳分发矩阵",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png"
+    }
   }
 }

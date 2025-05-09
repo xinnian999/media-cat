@@ -6,6 +6,8 @@ const {
   globalShortcut,
 } = require("electron");
 
+const readJson = require("./script/readJson");
+
 const path = require("path");
 
 const startUi = require("./utils/startUi");
@@ -15,6 +17,8 @@ const play = require("./index");
 const bindAccount = require("./script/bindAccount");
 
 let win;
+
+const isDev = !app.isPackaged;
 
 async function createWindow() {
   win = new BrowserWindow({
@@ -27,9 +31,13 @@ async function createWindow() {
     },
   });
 
-  await startUi();
+  if (isDev) {
+    await startUi();
 
-  win.loadURL("http://localhost:5173"); // 假设是 Vue 项目的本地服务器地址
+    win.loadURL("http://localhost:5173"); 
+  } else {
+    win.loadFile(path.join(__dirname, "ui/dist/index.html"));
+  }
 }
 
 app.whenReady().then(() => {
@@ -47,8 +55,12 @@ app.whenReady().then(() => {
     return play(data);
   });
 
-  ipcMain.handle("bindAccount", (e, url) => {
-    return bindAccount(url);
+  ipcMain.handle("bindAccount",async (e, url) => {
+    await bindAccount(url);
+  });
+
+  ipcMain.handle("profile", () => {
+    return readJson(path.join(__dirname, "./profile.json"));
   });
 
   globalShortcut.register("F12", () => {

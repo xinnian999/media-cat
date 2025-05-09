@@ -8,7 +8,7 @@ const kuaishou = require("./script/kuaishou");
 const STATE_PATH = "./cache.json";
 
 const play = async (data) => {
-  
+
   const browser = await chromium.launch({ headless: false });
 
   const context = fs.existsSync(STATE_PATH)
@@ -22,12 +22,12 @@ const play = async (data) => {
       filePath: path.join(__dirname, "./server/public/demo.mp4"),
       imitate: true,
       tags: [],
-      ...data
+      ...data,
     },
     saveState: async () => {
       await context.storageState({ path: STATE_PATH });
       console.log("浏览器状态已保存");
-    }
+    },
   };
 
   await douyin(params);

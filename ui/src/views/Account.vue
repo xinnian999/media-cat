@@ -9,33 +9,58 @@
       </template>
 
       <template #extra>
-        <a-button  size="small" @click="bind(item.url)">绑定账号</a-button>
+        <a-button size="small" @click="bind(item.platform)">{{ profile[item.platform] ? '切换' : '绑定' }}账号</a-button>
       </template>
 
       <div class="content">
-        <div class="empty">未绑定账号</div>
+        <div v-if="profile[item.platform]" class="account-info">
+          <div class="avatar">
+            <img :src="profile[item.platform].avatar" alt="avatar" />
+          </div>
+          <div class="info">
+            <div class="username">{{ profile[item.platform].username }}</div>
+          </div>
+        </div>
+        <div class="empty" v-else>未绑定账号</div>
       </div>
     </a-card>
   </div>
 </template>
 
 <script setup>
+import douyin from '@/assets/douyin.ico'
+import kuaishou from '@/assets/kuaishou.ico'
+import { Message } from '@arco-design/web-vue'
+import { ref, onMounted } from 'vue'
+
 const items = [
   {
     label: '抖音',
-    icon: '/douyin.ico',
-    url: 'https://creator.douyin.com/'
+    icon: douyin,
+    platform: 'douyin',
   },
   {
     label: '快手',
-    icon: '/kuaishou.ico',
-    url: 'https://creator.kuaishou.com/'
+    icon: kuaishou,
+    platform: 'kuaishou',
   },
 ]
 
-const bind = (url) => {
-  window.electron.invoke('bindAccount', url)
+const profile = ref({})
+
+const refreshProfile = () => {
+  window.electron.invoke('profile').then((res) => {
+    profile.value = res
+  })
 }
+
+const bind = async (platform) => {
+  await window.electron.invoke('bindAccount', platform)
+  Message.success('绑定成功')
+  refreshProfile()
+}
+
+onMounted(refreshProfile)
 </script>
 
 <style lang="scss">
@@ -56,6 +81,32 @@ const bind = (url) => {
   .account-item {
     .content {
       height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .account-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        .avatar {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .username {
+          font-size: 16px;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
 
       .empty {
         font-size: 16px;
