@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout-demo">
     <a-layout-sider>
-      <div class="logo">小琳自媒矩阵</div>
+      <div class="logo">小琳分发矩阵</div>
       <a-menu
         :default-selected-keys="['/']"
         :style="{ width: '100%' }"

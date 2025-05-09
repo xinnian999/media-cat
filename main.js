@@ -8,11 +8,13 @@ const {
 
 const path = require("path");
 
+const startUi = require("./utils/startUi");
+
 const play = require("./index");
 
 let win;
 
-function createWindow() {
+async function createWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -22,6 +24,8 @@ function createWindow() {
       webSecurity: false, // 禁用 Web 安全策略，允许加载本地文件
     },
   });
+
+  await startUi();
 
   win.loadURL("http://localhost:5173"); // 假设是 Vue 项目的本地服务器地址
 }

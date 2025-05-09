@@ -1,16 +1,13 @@
 const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
-const createServer = require("./server");
 
-const ready = require("./script/ready");
 const douyin = require("./script/douyin");
 const kuaishou = require("./script/kuaishou");
 
 const STATE_PATH = "./cache.json";
 
 const play = async (data) => {
-  console.log('play.data',data);
   
   const browser = await chromium.launch({ headless: false });
 
@@ -21,28 +18,17 @@ const play = async (data) => {
   const params = {
     context,
     info: {
-      title: "",
       desc: "",
       filePath: path.join(__dirname, "./server/public/demo.mp4"),
       imitate: true,
       tags: [],
+      ...data
     },
     saveState: async () => {
       await context.storageState({ path: STATE_PATH });
       console.log("浏览器状态已保存");
-    },
-    setInfo: (data) => {
-      Object.assign(params.info, data);
-    },
+    }
   };
-
-  await createServer({
-    port: 3000,
-    info: params.info,
-    setInfo: params.setInfo,
-  });
-
-  await ready(params);
 
   await douyin(params);
 

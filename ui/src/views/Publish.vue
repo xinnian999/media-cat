@@ -47,6 +47,7 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { deepClone } from '@/utils'
 
 const form = reactive({
   url: '',
@@ -58,9 +59,12 @@ const form = reactive({
   ],
 })
 
-const handleSubmit = async (data) => {
-  const safeData = JSON.parse(JSON.stringify(data))
-  await window.electron.invoke('play', safeData)
+const handleSubmit = async () => {
+  const values = deepClone({
+    ...form,
+    tags: form.tags.map((tag) => tag.value),
+  })
+  await window.electron.invoke('play', values)
 }
 
 const openFileDialog = async () => {
