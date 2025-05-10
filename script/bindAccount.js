@@ -1,14 +1,8 @@
-const fs = require("fs");
-const path = require("path");
 const { chromium } = require("playwright");
+const readJson = require("./readJson");
+const writeJson = require("./writeJson");
 
-const PROFILE_PATH = path.resolve(__dirname, "../profile.json");
-
-// 动态读取 profile.json 文件
-let profileData = {};
-if (fs.existsSync(PROFILE_PATH)) {
-  profileData = JSON.parse(fs.readFileSync(PROFILE_PATH, "utf-8"));
-}
+const profileData = readJson("cache/profile.json");
 
 // 配置平台映射
 const platformMap = {
@@ -44,7 +38,7 @@ const bindAccount = async (platform = "douyin") => {
   });
 
   // 保存浏览器状态
-  await context.storageState({ path: "./status.json" });
+  await context.storageState({ path: "./cache/status.json" });
 
   // 提取账户信息
   const userInfo = await page.evaluate(
@@ -64,8 +58,7 @@ const bindAccount = async (platform = "douyin") => {
 
   console.log("修改后的用户信息：", profileData); // 打印修改后的 profileData
 
-  // 确保直接写入文件
-  fs.writeFileSync(PROFILE_PATH, JSON.stringify(profileData, null, 2));
+  writeJson("cache/profile.json", profileData);
 
   console.log("✅ 用户信息已保存:", userInfo);
 

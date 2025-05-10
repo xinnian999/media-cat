@@ -1,6 +1,6 @@
 <template>
   <div class="account-list">
-    <a-card v-for="item in items" :key="item.label" class="account-item">
+    <a-card v-for="item in platforms" :key="item.label" class="account-item">
       <template #title>
         <div class="title">
           <img :src="item.icon" alt="icon" />
@@ -28,30 +28,16 @@
 </template>
 
 <script setup>
-import douyin from '@/assets/douyin.ico'
-import kuaishou from '@/assets/kuaishou.ico'
 import { Message } from '@arco-design/web-vue'
 import { ref, onMounted } from 'vue'
+import platforms from '@/assets/platforms'
 
-const items = [
-  {
-    label: '抖音',
-    icon: douyin,
-    platform: 'douyin',
-  },
-  {
-    label: '快手',
-    icon: kuaishou,
-    platform: 'kuaishou',
-  },
-]
 
 const profile = ref({})
 
-const refreshProfile = () => {
-  window.electron.invoke('profile').then((res) => {
-    profile.value = res
-  })
+const refreshProfile = async () => {
+  const res = await window.electron.invoke('profile')
+  profile.value = res
 }
 
 const bind = async (platform) => {

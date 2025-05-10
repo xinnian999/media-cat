@@ -2,13 +2,9 @@ const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
 
-const douyin = require("./script/douyin");
-const kuaishou = require("./script/kuaishou");
-
-const STATE_PATH = "./cache.json";
+const STATE_PATH = "./cache/status.json";
 
 const play = async (data) => {
-
   const browser = await chromium.launch({ headless: false });
 
   const context = fs.existsSync(STATE_PATH)
@@ -19,7 +15,7 @@ const play = async (data) => {
     context,
     info: {
       desc: "",
-      filePath: path.join(__dirname, "./server/public/demo.mp4"),
+      url: path.join(__dirname, "./server/public/demo.mp4"),
       imitate: true,
       tags: [],
       ...data,
@@ -30,9 +26,14 @@ const play = async (data) => {
     },
   };
 
-  await douyin(params);
 
-  await kuaishou(params);
+  const scripts = data.platform.map(async (plat) => {
+    const script = require(`./script/${plat}`);
+    
+    return await script(params);
+  });
+
+  await Promise.all(scripts);
 
   console.log("所有平台分发完毕！");
 

@@ -34,7 +34,7 @@ const sh = async ({ info, context, saveState }) => {
 
   // 导入视频
   await log(page, "导入视频");
-  await page.setInputFiles('input[type="file"]', info.filePath);
+  await page.setInputFiles('input[type="file"]', info.url);
 
   await page.waitForTimeout(3000);
 

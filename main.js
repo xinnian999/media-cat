@@ -23,7 +23,7 @@ const isDev = !app.isPackaged;
 async function createWindow() {
   win = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 600, 
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true, // 开启 Node.js 集成
@@ -34,7 +34,7 @@ async function createWindow() {
   if (isDev) {
     await startUi();
 
-    win.loadURL("http://localhost:5173"); 
+    win.loadURL("http://localhost:5173");
   } else {
     win.loadFile(path.join(__dirname, "ui/dist/index.html"));
   }
@@ -55,12 +55,12 @@ app.whenReady().then(() => {
     return play(data);
   });
 
-  ipcMain.handle("bindAccount",async (e, url) => {
+  ipcMain.handle("bindAccount", async (e, url) => {
     await bindAccount(url);
   });
 
   ipcMain.handle("profile", () => {
-    return readJson(path.join(__dirname, "./profile.json"));
+    return readJson("cache/profile.json");
   });
 
   globalShortcut.register("F12", () => {

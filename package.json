@@ -24,7 +24,7 @@
   },
   "build": {
     "appId": "com.yourdomain.yourapp",
-    "productName": "小琳分发矩阵",
+    "productName": "自媒体神器",
     "win": {
       "target": "nsis",
       "icon": "build/icon.png"
