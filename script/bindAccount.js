@@ -1,6 +1,8 @@
 const { chromium } = require("playwright");
 const readJson = require("./readJson");
 const writeJson = require("./writeJson");
+const fs = require("fs");
+const path = require("path");
 
 const profileData = readJson("cache/profile.json");
 
@@ -36,6 +38,12 @@ const bindAccount = async (platform = "douyin") => {
   await page.waitForSelector(publishBtnEL, {
     timeout: 0, // 无限等待
   });
+
+  // 确保 cache 目录存在
+  const cacheDir = path.resolve(__dirname, "cache");
+  if (!fs.existsSync(cacheDir)) {
+    fs.mkdirSync(cacheDir, { recursive: true });
+  }
 
   // 保存浏览器状态
   await context.storageState({ path: "./cache/status.json" });
