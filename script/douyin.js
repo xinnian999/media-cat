@@ -8,25 +8,10 @@ const sh = async ({ info, context, saveState }) => {
   await log(page, "开始分发抖音");
 
   await log(page, "正在等待页面完全渲染");
-
-  await page.waitForTimeout(3000); // 等待页面完全渲染
-
-  await log(page, "页面完全渲染，开始登录");
-
-  // 判断是否需要登录
-  const isUnLogin = await page.locator('span:has-text("扫码登录")').isVisible();
-
-  if (isUnLogin) {
-    log(page, "请在浏览器中登录抖音账号...");
-
-    await page.waitForSelector('button:has-text("发布视频")', {
-      timeout: 0, // 无限等待
-    });
-
-    await saveState();
-  } else {
-    log(page, "已加载登录状态，自动登录成功");
-  }
+  
+  await page.waitForSelector('button:has-text("发布视频")', {
+    timeout: 0, // 无限等待
+  });
 
   // 点击“发布视频”
   await log(page, "点击“发布视频”按钮");

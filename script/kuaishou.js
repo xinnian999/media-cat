@@ -9,24 +9,9 @@ const sh = async ({ info, context, saveState }) => {
 
   await log(page, "等待页面完全渲染");
 
-  await page.waitForTimeout(3000); // 等待页面完全渲染
-
-  await log(page, "页面完全渲染，开始登录");
-
-  // 判断是否需要登录
-  const isUnLogin = await page.locator('a:has-text("立即登录")').isVisible();
-
-  if (isUnLogin) {
-    await log(page, "请在浏览器中登录快手账号...");
-
-    await page.waitForSelector('div:has-text("发布作品")', {
-      timeout: 0, // 无限等待
-    });
-
-    await saveState();
-  } else {
-    await log(page, "已加载登录状态，自动登录成功");
-  }
+  await page.waitForSelector('div:has-text("发布作品")', {
+    timeout: 0, // 无限等待
+  });
 
   // 点击“发布视频”
   await log(page, "点击“发布视频”");

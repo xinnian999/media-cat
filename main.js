@@ -51,8 +51,8 @@ app.whenReady().then(() => {
     return result.filePaths[0]; // 返回选择的文件路径
   });
 
-  ipcMain.handle("play", (e, data) => {
-    return play(data);
+  ipcMain.handle("play",async (e, data) => {
+    await play(data);
   });
 
   ipcMain.handle("bindAccount", async (e, url) => {

@@ -76,6 +76,7 @@ import { reactive, ref, onMounted } from 'vue'
 import { deepClone } from '@/utils'
 import platforms from '@/assets/platforms'
 import { useRouter } from 'vue-router'
+import { Message } from '@arco-design/web-vue'
 
 const form = reactive({
   url: '',
@@ -98,6 +99,7 @@ const handleSubmit = async () => {
     tags: form.tags.map((tag) => tag.value),
   })
   await window.electron.invoke('play', values)
+  Message.success('发布成功')
 }
 
 const openFileDialog = async () => {
