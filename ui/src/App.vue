@@ -94,6 +94,7 @@ const onClickMenuItem = (key) => {
       border-radius: 10px;
       background: #fff;
       padding: 10px;
+      overflow: auto;
     }
   }
 }

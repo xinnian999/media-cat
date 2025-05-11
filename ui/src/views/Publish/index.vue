@@ -1,11 +1,8 @@
 <template>
-  <div class="publish-container">
-    <a-divider orientation="center" style="margin-bottom: 35px">{{
-      ing ? '发布中' : '发布视频'
-    }}</a-divider>
+  <div v-if="!ing">
+    <a-divider orientation="center" style="margin-bottom: 35px">发布视频</a-divider>
 
     <a-form
-      v-if="!ing"
       :model="form"
       :label-col-props="{ span: 6 }"
       :wrapper-col-props="{ span: 18 }"
@@ -34,7 +31,7 @@
         <a-textarea v-model="form.desc" placeholder="请输入视频描述" />
       </a-form-item>
 
-      <a-form-item field="tags" label="标签" :rules="[{ required: true, message: '请输入标签' }]">
+      <a-form-item field="tags" label="标签">
         <div>
           <a-form-item
             v-for="(tag, index) of form.tags"
@@ -95,9 +92,8 @@
         <a-button html-type="submit" long type="primary">开始分发</a-button>
       </a-form-item>
     </a-form>
-
-    <Result v-else :list="form.platforms" />
   </div>
+  <Result v-else :list="form.platforms" :done="done" :back="resultBack" />
 </template>
 
 <script setup>
@@ -111,21 +107,19 @@ import Result from './Result.vue'
 const form = reactive({
   url: '',
   desc: '',
-  tags: [
-    {
-      value: '',
-    },
-  ],
+  tags: [],
   platforms: [],
   imitate: true,
   observe: false,
 })
 
-const ing = ref(false)
-
 const platformOptions = ref(platforms)
 
 const router = useRouter()
+
+const ing = ref(false)
+
+const done = ref(false)
 
 const openFileDialog = async () => {
   const filePath = await window.electron.invoke('dialog:openFile')
@@ -156,7 +150,15 @@ const handleSubmit = async () => {
   ing.value = true
 
   await window.electron.invoke('play', values)
-  Message.success('发布成功')
+
+  Message.success('所有平台发布完成')
+
+  done.value = true
+}
+
+const resultBack = () => {
+  ing.value = false
+  done.value = false
 }
 
 onMounted(async () => {
@@ -170,31 +172,29 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
-.publish-container {
-  .video-upload {
-    width: 100%;
-    height: 150px;
-    border-radius: 4px;
-    cursor: pointer;
+.video-upload {
+  width: 100%;
+  height: 150px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  background-color: rgb(242, 243, 245);
+  justify-content: center;
+  align-items: center;
+
+  .video-upload-tip {
     display: flex;
-    background-color: rgb(242, 243, 245);
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    .video-upload-tip {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      color: #555;
-    }
+    gap: 10px;
+    color: #555;
   }
+}
 
-  .platform-item {
-    display: flex;
-    align-items: center;
-  }
+.platform-item {
+  display: flex;
+  align-items: center;
 }
 
 .custom-checkbox-card {
