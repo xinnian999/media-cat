@@ -1,29 +1,35 @@
 <template>
-  <div class="account-list">
-    <a-card v-for="item in platforms" :key="item.label" class="account-item">
-      <template #title>
-        <div class="title">
-          <img :src="item.icon" alt="icon" />
-          <span>{{ item.label }}</span>
-        </div>
-      </template>
+  <div>
+    <a-divider orientation="center" style="margin-bottom: 35px">账号管理</a-divider>
 
-      <template #extra>
-        <a-button size="small" @click="bind(item.platform)">{{ profile[item.platform] ? '切换' : '绑定' }}账号</a-button>
-      </template>
+    <div class="account-list">
+      <a-card v-for="item in platforms" :key="item.label" class="account-item">
+        <template #title>
+          <div class="title">
+            <img :src="item.icon" alt="icon" />
+            <span>{{ item.label }}</span>
+          </div>
+        </template>
 
-      <div class="content">
-        <div v-if="profile[item.platform]" class="account-info">
-          <div class="avatar">
-            <img :src="profile[item.platform].avatar" alt="avatar" />
+        <template #extra>
+          <a-button size="small" @click="bind(item.platform)"
+            >{{ profile[item.platform] ? '切换' : '绑定' }}账号</a-button
+          >
+        </template>
+
+        <div class="content">
+          <div v-if="profile[item.platform]" class="account-info">
+            <div class="avatar">
+              <img :src="profile[item.platform].avatar" alt="avatar" />
+            </div>
+            <div class="info">
+              <div class="username">{{ profile[item.platform].username }}</div>
+            </div>
           </div>
-          <div class="info">
-            <div class="username">{{ profile[item.platform].username }}</div>
-          </div>
+          <div class="empty" v-else>未绑定账号</div>
         </div>
-        <div class="empty" v-else>未绑定账号</div>
-      </div>
-    </a-card>
+      </a-card>
+    </div>
   </div>
 </template>
 
@@ -31,7 +37,6 @@
 import { Message } from '@arco-design/web-vue'
 import { ref, onMounted } from 'vue'
 import platforms from '@/assets/platforms'
-
 
 const profile = ref({})
 

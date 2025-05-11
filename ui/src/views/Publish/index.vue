@@ -1,12 +1,28 @@
 <template>
   <div class="publish-container">
-    <a-form :model="form" :style="{ width: '90%' }" @submit-success="handleSubmit">
+    <a-divider orientation="center" style="margin-bottom: 35px">{{
+      ing ? '发布中' : '发布视频'
+    }}</a-divider>
+
+    <a-form
+      v-if="!ing"
+      :model="form"
+      :label-col-props="{ span: 6 }"
+      :wrapper-col-props="{ span: 18 }"
+      :style="{ width: '90%' }"
+      @submit-success="handleSubmit"
+    >
       <a-form-item
         field="url"
         label="选择视频"
         :rules="[{ required: true, message: '请选择一个视频' }]"
       >
-        <div class="video-upload" @click="openFileDialog" v-if="!form.url">点击选择视频</div>
+        <div class="video-upload" @click="openFileDialog" v-if="!form.url">
+          <div class="video-upload-tip">
+            <icon-plus />
+            <div>点击选择视频</div>
+          </div>
+        </div>
         <video class="video-upload" :src="`file://${form.url}`" controls v-else></video>
       </a-form-item>
 
@@ -15,10 +31,10 @@
         label="视频描述"
         :rules="[{ required: true, message: '请输入视频描述' }]"
       >
-        <a-textarea v-model="form.desc" />
+        <a-textarea v-model="form.desc" placeholder="请输入视频描述" />
       </a-form-item>
 
-      <a-form-item field="post" label="标签">
+      <a-form-item field="tags" label="标签" :rules="[{ required: true, message: '请输入标签' }]">
         <div>
           <a-form-item
             v-for="(tag, index) of form.tags"
@@ -33,7 +49,10 @@
             /></a-button>
           </a-form-item>
           <div v-if="form.tags.length < 4">
-            <a-button @click="handleAdd">增加标签</a-button>
+            <a-button @click="handleAdd" size="mini">
+              <icon-plus />
+              增加标签
+            </a-button>
           </div>
         </div>
       </a-form-item>
@@ -64,10 +83,20 @@
         <a-button v-else @click="handleBindPlatform">去绑定平台</a-button>
       </a-form-item>
 
+      <a-form-item field="observe" label="可视化发布过程">
+        <a-switch v-model="form.observe" />
+      </a-form-item>
+
+      <a-form-item field="imitate" label="模拟发布">
+        <a-switch v-model="form.imitate" />
+      </a-form-item>
+
       <a-form-item>
         <a-button html-type="submit" long type="primary">开始分发</a-button>
       </a-form-item>
     </a-form>
+
+    <Result v-else :list="form.platforms" />
   </div>
 </template>
 
@@ -77,6 +106,7 @@ import { deepClone } from '@/utils'
 import platforms from '@/assets/platforms'
 import { useRouter } from 'vue-router'
 import { Message } from '@arco-design/web-vue'
+import Result from './Result.vue'
 
 const form = reactive({
   url: '',
@@ -88,24 +118,18 @@ const form = reactive({
   ],
   platforms: [],
   imitate: true,
+  observe: false,
 })
+
+const ing = ref(false)
 
 const platformOptions = ref(platforms)
 
 const router = useRouter()
 
-const handleSubmit = async () => {
-  const values = deepClone({
-    ...form,
-    tags: form.tags.map((tag) => tag.value),
-  })
-  await window.electron.invoke('play', values)
-  Message.success('发布成功')
-}
-
 const openFileDialog = async () => {
   const filePath = await window.electron.invoke('dialog:openFile')
-  console.log(filePath)
+  // console.log(filePath)
   form.url = filePath
 }
 
@@ -123,6 +147,18 @@ const handleBindPlatform = () => {
   router.push('/account')
 }
 
+const handleSubmit = async () => {
+  const values = deepClone({
+    ...form,
+    tags: form.tags.map((tag) => tag.value),
+  })
+
+  ing.value = true
+
+  await window.electron.invoke('play', values)
+  Message.success('发布成功')
+}
+
 onMounted(async () => {
   const profile = await window.electron.invoke('profile')
   platformOptions.value = platforms.filter((item) => {
@@ -135,11 +171,6 @@ onMounted(async () => {
 
 <style lang="scss">
 .publish-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
   .video-upload {
     width: 100%;
     height: 150px;
@@ -149,6 +180,15 @@ onMounted(async () => {
     background-color: rgb(242, 243, 245);
     justify-content: center;
     align-items: center;
+
+    .video-upload-tip {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #555;
+    }
   }
 
   .platform-item {

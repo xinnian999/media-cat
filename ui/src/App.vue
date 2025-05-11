@@ -1,8 +1,11 @@
 <template>
-  <a-layout class="layout-demo">
-    <a-layout-sider>
+  <a-layout class="layout">
+    <div class="drag-bar"></div>
+
+    <a-layout-sider class="layout-left" style="width: 180px;">
       <div class="logo">自媒体神器</div>
       <a-menu
+        class="menus"
         :default-selected-keys="['/']"
         :style="{ width: '100%' }"
         @menu-item-click="onClickMenuItem"
@@ -12,19 +15,13 @@
           {{ item.meta.title }}
         </a-menu-item>
       </a-menu>
-      <!-- trigger -->
-      <template #trigger="{ collapsed }">
-        <IconCaretRight v-if="collapsed"></IconCaretRight>
-        <IconCaretLeft v-else></IconCaretLeft>
-      </template>
+
     </a-layout-sider>
 
-    <a-layout>
-      <a-layout style="padding-left: 12px">
-        <a-layout-content>
-          <router-view />
-        </a-layout-content>
-      </a-layout>
+    <a-layout class="layout-right">
+      <a-layout-content class="layout-right-content">
+        <router-view />
+      </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
@@ -38,32 +35,67 @@ const onClickMenuItem = (key) => {
   router.push(key)
 }
 </script>
-<style scoped>
-.layout-demo {
+<style scoped lang="scss">
+.layout {
   height: 100%;
-  background: var(--color-fill-2);
-  border: 1px solid var(--color-border);
-}
-.layout-demo :deep(.arco-layout-sider) .logo {
-  height: 32px;
-  margin: 12px 8px;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: #511fe8;
-}
-.layout-demo :deep(.arco-layout-sider-light) .logo {
-  background: var(--color-fill-2);
+  background: #eceefe;
+  position: relative;
+
+  .drag-bar{
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    height: 30px;
+    width: 100vw;
+    -webkit-app-region: drag;
+  }
+
+  .layout-left {
+    background: #eceefe;
+    box-shadow: none;
+    padding-top: 20px;
+
+    .logo {
+      height: 32px;
+      margin: 12px 8px;
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #511fe8;
+      border-radius: 10px;
+    }
+
+    .menus {
+      background: transparent;
+
+      .arco-menu-item {
+        background: transparent;
+        border-radius: 10px;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.6);
+        }
+      }
+
+      .arco-menu-item.arco-menu-selected {
+        background: #fff;
+      }
+    }
+  }
+
+  .layout-right {
+    background: #eceefe;
+    padding: 5px;
+    .layout-right-content{
+      border-radius: 10px;
+      background: #fff;
+      padding: 10px;
+    }
+  }
 }
 
-.layout-demo :deep(.arco-layout-content) {
-  color: var(--color-text-2);
-  font-weight: 400;
-  font-size: 14px;
-  background: var(--color-bg-3);
-  padding: 12px;
-}
 </style>

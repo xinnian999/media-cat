@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/publish',
     name: 'publish',
-    component: () => import('../views/Publish.vue'),
+    component: () => import('../views/Publish/index.vue'),
     meta: {
       title: '发布',
       icon: 'icon-arrow-rise',

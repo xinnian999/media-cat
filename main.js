@@ -14,6 +14,8 @@ const startUi = require("./utils/startUi");
 
 const bindAccount = require("./script/bindAccount");
 
+const log = require("./utils/log");
+
 let win;
 
 const isDev = !app.isPackaged;
@@ -21,7 +23,10 @@ const isDev = !app.isPackaged;
 async function createWindow() {
   win = new BrowserWindow({
     width: 800,
-    height: 600, 
+    height: 600,
+    frame: false, // 隐藏默认标题栏
+    titleBarStyle: "hidden", // macOS 专用（Windows/Linux 不生效）
+    trafficLightPosition: { x: 10, y: 10 }, // 控制 macOS 红黄绿按钮位置
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true, // 开启 Node.js 集成
@@ -49,14 +54,24 @@ app.whenReady().then(() => {
     return result.filePaths[0]; // 返回选择的文件路径
   });
 
-  ipcMain.handle("play",async (e, data) => {
+  ipcMain.handle("play", async (e, data) => {
     const scripts = data.platforms.map(async (plat) => {
       const script = require(`./script/${plat}`);
-      
-      return await script(data);
+      const params = {
+        ...data,
+        send: async ({ page, ...rest }) => {
+          e.sender.send("upload-progress", {
+            ...rest,
+            platform: plat,
+          });
+          await log(page, rest.msg);
+        },
+      };
+
+      return await script(params);
     });
 
-    await Promise.all(scripts)
+    await Promise.all(scripts);
   });
 
   ipcMain.handle("bindAccount", async (e, url) => {
