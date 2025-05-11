@@ -6,13 +6,11 @@ const {
   globalShortcut,
 } = require("electron");
 
-const readJson = require("./script/readJson");
+const readJson = require("./utils/readJson");
 
 const path = require("path");
 
 const startUi = require("./utils/startUi");
-
-const play = require("./index");
 
 const bindAccount = require("./script/bindAccount");
 
@@ -52,7 +50,13 @@ app.whenReady().then(() => {
   });
 
   ipcMain.handle("play",async (e, data) => {
-    await play(data);
+    const scripts = data.platforms.map(async (plat) => {
+      const script = require(`./script/${plat}`);
+      
+      return await script(data);
+    });
+
+    await Promise.all(scripts)
   });
 
   ipcMain.handle("bindAccount", async (e, url) => {

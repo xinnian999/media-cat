@@ -39,11 +39,11 @@
       </a-form-item>
 
       <a-form-item
-        field="platform"
+        field="platforms"
         label="平台"
         :rules="[{ required: true, message: '请选择平台' }]"
       >
-        <a-checkbox-group v-model="form.platform" v-if="platformOptions.length > 0">
+        <a-checkbox-group v-model="form.platforms" v-if="platformOptions.length > 0">
           <template v-for="item in platformOptions" :key="item.platform">
             <a-checkbox :value="item.platform">
               <template #checkbox="{ checked }">
@@ -86,7 +86,8 @@ const form = reactive({
       value: '',
     },
   ],
-  platform: [],
+  platforms: [],
+  imitate: true,
 })
 
 const platformOptions = ref(platforms)
@@ -128,7 +129,7 @@ onMounted(async () => {
     return profile[item.platform]
   })
 
-  form.platform = platformOptions.value.map((item) => item.platform)
+  form.platforms = platformOptions.value.map((item) => item.platform)
 })
 </script>
 

@@ -1,8 +1,6 @@
 const { chromium } = require("playwright");
-const readJson = require("./readJson");
-const writeJson = require("./writeJson");
-const fs = require("fs");
-const path = require("path");
+const readJson = require("../utils/readJson");
+const writeJson = require("../utils/writeJson");
 
 const profileData = readJson("cache/profile.json");
 
@@ -34,39 +32,36 @@ const bindAccount = async (platform = "douyin") => {
 
   await page.goto(url);
 
-  // 等待按钮加载完成
+  // 等待登陆成功
   await page.waitForSelector(publishBtnEL, {
     timeout: 0, // 无限等待
   });
 
-  // 确保 cache 目录存在
-  const cacheDir = path.resolve(__dirname, "cache");
-  if (!fs.existsSync(cacheDir)) {
-    fs.mkdirSync(cacheDir, { recursive: true });
-  }
-
   // 保存浏览器状态
-  await context.storageState({ path: "./cache/status.json" });
+  await context.storageState({ path: `./cache/storageState/${platform}.json` });
+
+  await page.waitForSelector(nameEL, {
+    timeout: 0, // 等待用户名加载完成
+  });
+
+  await page.waitForSelector(avatarEL, {
+    timeout: 0, // 等待头像加载完成
+  });
 
   // 提取账户信息
-  const userInfo = await page.evaluate(
-    ({ nameEL, avatarEL }) => {
-      const nameEl = document.querySelector(nameEL);
-      const avatarEl = document.querySelector(avatarEL);
-      return {
-        username: nameEl?.innerText || null,
-        avatar: avatarEl?.src || null,
-      };
-    },
-    { nameEL, avatarEL }
-  );
+  const username = await page.locator(nameEL).innerText();
+  const avatar = await page.locator(avatarEL).getAttribute("src");
+
+  const userInfo = {
+    username,
+    avatar,
+  };
 
   // 更新 profileData
-  profileData[platform] = userInfo;
-
-  console.log("修改后的用户信息：", profileData); // 打印修改后的 profileData
-
-  writeJson("cache/profile.json", profileData);
+  writeJson("cache/profile.json", {
+    ...profileData,
+    [platform]: userInfo,
+  });
 
   console.log("✅ 用户信息已保存:", userInfo);
 

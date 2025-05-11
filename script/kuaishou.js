@@ -1,7 +1,19 @@
 const log = require("../utils/log");
+const { chromium } = require("playwright");
+const fs = require("fs");
 
-const sh = async ({ info, context, saveState }) => {
-  const page = await context.newPage();
+const STATE_PATH = "cache/storageState/kuaishou.json";
+
+const kuaishou = async (params) => {
+  const browser = await chromium.launch({ headless: true });
+
+  const context = fs.existsSync(STATE_PATH)
+    ? await browser.newContext({ storageState: STATE_PATH })
+    : await browser.newContext();
+
+  const page = await context.newPage({
+    storageState: STATE_PATH,
+  });
 
   await page.goto("https://cp.kuaishou.com/");
 
@@ -19,7 +31,7 @@ const sh = async ({ info, context, saveState }) => {
 
   // 导入视频
   await log(page, "导入视频");
-  await page.setInputFiles('input[type="file"]', info.url);
+  await page.setInputFiles('input[type="file"]', params.url);
 
   await page.waitForTimeout(3000);
 
@@ -34,7 +46,7 @@ const sh = async ({ info, context, saveState }) => {
   await log(page, "写入简介");
   await page.locator("#work-description-edit").click();
 
-  await page.locator("#work-description-edit").fill(info.desc);
+  await page.locator("#work-description-edit").fill(params.desc);
 
   // 写入标签
   await log(page, "写入标签");
@@ -42,7 +54,7 @@ const sh = async ({ info, context, saveState }) => {
   await input.click(); // 先 focus
   await input.type(" "); // 先 focus
   async function runSerially() {
-    for (const tag of info.tags) {
+    for (const tag of params.tags) {
       await input.type(`#${tag} `);
     }
   }
@@ -56,8 +68,9 @@ const sh = async ({ info, context, saveState }) => {
 
   await page.waitForTimeout(2000);
 
-  if (info.imitate) {
+  if (params.imitate) {
     await log(page, "快手 -- 模拟流程完毕，跳过发布步骤");
+    await browser.close();
     return;
   }
 
@@ -71,6 +84,8 @@ const sh = async ({ info, context, saveState }) => {
   });
 
   await log(page, "快手发布成功！");
+
+  await browser.close();
 };
 
-module.exports = sh;
+module.exports = kuaishou;
