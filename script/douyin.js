@@ -112,17 +112,17 @@ const douyin = async (params) => {
   await page.waitForTimeout(3000); // 等待上传完成
 
   //可能会出现风控验证，需要手动处理
-  // const hasVerify = await page
-  //   .locator('div:has-text("接收短信验证码")')
-  //   .isVisible();
+  const hasVerify = await page
+    .locator('div:has-text("接收短信验证码")')
+    .isVisible();
 
-  // if (hasVerify) {
-  //   await params.send({
-  //     msg: "出现风控验证，请手动处理",
-  //     percent: 0.9,
-  //     page,
-  //   });
-  // }
+  if (hasVerify) {
+    await params.send({
+      msg: "出现风控验证，请手动处理",
+      percent: 0.9,
+      page,
+    });
+  }
 
   // 检验是否上传成功
   await page.waitForSelector('div:has-text("作品管理")', {

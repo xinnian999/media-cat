@@ -1,8 +1,8 @@
 const { chromium } = require("playwright");
-const readJson = require("../utils/readJson");
+const { app } = require("electron");
 const writeJson = require("../utils/writeJson");
 
-const profileData = readJson("cache/profile.json");
+const userDataDir = app.getPath("userData"); // 安全可写
 
 // 配置平台映射
 const platformMap = {
@@ -38,7 +38,9 @@ const bindAccount = async (platform = "douyin") => {
   });
 
   // 保存浏览器状态
-  await context.storageState({ path: `./cache/storageState/${platform}.json` });
+  await context.storageState({
+    path: `${userDataDir}/cache/storageState/${platform}.json`,
+  });
 
   await page.waitForSelector(nameEL, {
     timeout: 0, // 等待用户名加载完成
@@ -58,9 +60,11 @@ const bindAccount = async (platform = "douyin") => {
   };
 
   // 更新 profileData
-  writeJson("cache/profile.json", {
-    ...profileData,
-    [platform]: userInfo,
+  writeJson("cache/profile.json", (profileData) => {
+    return {
+      ...profileData,
+      [platform]: userInfo,
+    };
   });
 
   console.log("✅ 用户信息已保存:", userInfo);
