@@ -28,6 +28,15 @@ const routes = [
       icon: 'icon-user-group',
     },
   },
+  {
+    path: '/data',
+    name: 'data',
+    component: () => import('../views/Data.vue'),
+    meta: {
+      title: '数据',
+      icon: 'icon-bar-chart',
+    },
+  },
 ]
 
 const router = createRouter({

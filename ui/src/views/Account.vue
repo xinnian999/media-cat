@@ -36,7 +36,7 @@
 <script setup>
 import { Message } from '@arco-design/web-vue'
 import { ref, onMounted } from 'vue'
-import platforms from '@/assets/platforms'
+import platforms from '@/assets/allPlatforms'
 
 const profile = ref({})
 

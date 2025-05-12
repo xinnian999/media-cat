@@ -48,7 +48,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import platforms from '@/assets/platforms'
+import platforms from '@/assets/allPlatforms'
 
 const props = defineProps({
   list: {

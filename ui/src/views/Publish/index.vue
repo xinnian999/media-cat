@@ -59,8 +59,8 @@
         label="平台"
         :rules="[{ required: true, message: '请选择平台' }]"
       >
-        <a-checkbox-group v-model="form.platforms" v-if="platformOptions.length > 0">
-          <template v-for="item in platformOptions" :key="item.platform">
+        <a-checkbox-group v-model="form.platforms" v-if="platforms.length > 0">
+          <template v-for="item in platforms" :key="item.platform">
             <a-checkbox :value="item.platform">
               <template #checkbox="{ checked }">
                 <a-space
@@ -99,10 +99,10 @@
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
 import { deepClone } from '@/utils'
-import platforms from '@/assets/platforms'
 import { useRouter } from 'vue-router'
 import { Message } from '@arco-design/web-vue'
 import Result from './Result.vue'
+import usePlatforms from '@/hooks/usePlatforms'
 
 const form = reactive({
   url: '',
@@ -113,7 +113,7 @@ const form = reactive({
   observe: false,
 })
 
-const platformOptions = ref(platforms)
+const platforms = usePlatforms()
 
 const router = useRouter()
 
@@ -161,14 +161,9 @@ const resultBack = () => {
   done.value = false
 }
 
-onMounted(async () => {
-  const profile = await window.electron.invoke('profile')
-  platformOptions.value = platforms.filter((item) => {
-    return profile[item.platform]
-  })
-
-  form.platforms = platformOptions.value.map((item) => item.platform)
-})
+// onMounted(async () => {
+//   form.platforms = platformOptions.value.map((item) => item.platform)
+// })
 </script>
 
 <style lang="scss">

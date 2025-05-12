@@ -52,6 +52,11 @@ app.whenReady().then(() => {
     return result.filePaths[0]; // 返回选择的文件路径
   });
 
+  ipcMain.handle("bindAccount", async (e, plat) => {
+    const bind = require(`./script/bind/${plat}`);
+    await bind();
+  });
+
   ipcMain.handle("play", async (e, data) => {
     const scripts = data.platforms.map(async (plat) => {
       const script = require(`./script/play/${plat}`);
@@ -70,11 +75,6 @@ app.whenReady().then(() => {
     });
 
     await Promise.all(scripts);
-  });
-
-  ipcMain.handle("bindAccount", async (e, url) => {
-    const bind = require(`./script/bind/${url}`);
-    await bind();
   });
 
   ipcMain.handle("profile", () => {
