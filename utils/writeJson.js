@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { app } = require("electron");
 const readJson = require("./readJson");
+
 const writeJson = (filePath, setData) => {
   const userDataDir = app.getPath("userData"); // 安全可写
 

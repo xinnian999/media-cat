@@ -1,18 +1,14 @@
 const { chromium } = require("playwright");
-const fs = require("fs");
-
-const STATE_PATH = "cache/storageState/kuaishou.json";
+const { app } = require("electron");
 
 const kuaishou = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
-  const context = fs.existsSync(STATE_PATH)
-    ? await browser.newContext({ storageState: STATE_PATH })
-    : await browser.newContext();
-
-  const page = await context.newPage({
-    storageState: STATE_PATH,
+  const context = await browser.newContext({
+    storageState: `${app.getPath("userData")}/cache/storageState/kuaishou.json`,
   });
+
+  const page = await context.newPage();
 
   await page.goto("https://cp.kuaishou.com/");
 

@@ -1,18 +1,14 @@
 const { chromium } = require("playwright");
-const fs = require("fs");
-
-const STATE_PATH = "cache/storageState/douyin.json";
+const { app } = require("electron");
 
 const douyin = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
-  const context = fs.existsSync(STATE_PATH)
-    ? await browser.newContext({ storageState: STATE_PATH })
-    : await browser.newContext();
-
-  const page = await context.newPage({
-    storageState: STATE_PATH,
+  const context = await browser.newContext({
+    storageState: `${app.getPath("userData")}/cache/storageState/douyin.json`,
   });
+
+  const page = await context.newPage();
 
   await page.goto("https://creator.douyin.com/");
 
@@ -32,7 +28,6 @@ const douyin = async (params) => {
     timeout: 0, // 无限等待
   });
 
-
   // 点击“发布视频”
   await params.send({
     msg: "点击“发布视频”按钮",
@@ -40,7 +35,6 @@ const douyin = async (params) => {
     page,
   });
   await page.getByRole("button", { name: "发布视频" }).click();
-
 
   // 导入视频
   await params.send({

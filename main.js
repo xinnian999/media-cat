@@ -12,8 +12,6 @@ const path = require("path");
 
 const startUi = require("./utils/startUi");
 
-const bindAccount = require("./script/bindAccount");
-
 const log = require("./utils/log");
 
 let win;
@@ -56,7 +54,7 @@ app.whenReady().then(() => {
 
   ipcMain.handle("play", async (e, data) => {
     const scripts = data.platforms.map(async (plat) => {
-      const script = require(`./script/${plat}`);
+      const script = require(`./script/play/${plat}`);
       const params = {
         ...data,
         send: async ({ page, ...rest }) => {
@@ -75,7 +73,8 @@ app.whenReady().then(() => {
   });
 
   ipcMain.handle("bindAccount", async (e, url) => {
-    await bindAccount(url);
+    const bind = require(`./script/bind/${url}`);
+    await bind();
   });
 
   ipcMain.handle("profile", () => {
