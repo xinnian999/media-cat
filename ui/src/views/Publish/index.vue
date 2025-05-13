@@ -106,14 +106,14 @@ import usePlatforms from '@/hooks/usePlatforms'
 
 const form = reactive({
   url: '',
-  desc: '',
-  tags: [],
+  desc: '搞笑视频',
+  tags: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
   platforms: [],
   imitate: true,
-  observe: false,
+  observe: true,
 })
 
-const {platforms} = usePlatforms()
+const { platforms } = usePlatforms()
 
 const router = useRouter()
 

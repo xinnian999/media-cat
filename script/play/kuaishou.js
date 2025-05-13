@@ -75,10 +75,12 @@ const kuaishou = async (params) => {
   });
   const input = page.locator("#work-description-edit"); // 假设是 contenteditable 区域
   await input.click(); // 先 focus
-  await input.type(" "); // 先 focus
+  await input.type(` `);
   async function runSerially() {
     for (const tag of params.tags) {
-      await input.type(`#${tag} `);
+      await input.type(`#${tag}`);
+      await page.waitForTimeout(2000);
+      await input.type(` `);
     }
   }
   await runSerially();
