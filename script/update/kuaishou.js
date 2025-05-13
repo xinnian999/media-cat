@@ -1,13 +1,16 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 const updateProfile = require("@utils/updateProfile/kuaishou");
+
 const userDataDir = app.getPath("userData"); // 安全可写
 
 // 绑定账户
 const bindKuaishou = async () => {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
 
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    storageState: `${userDataDir}/cache/storageState/kuaishou.json`,
+  });
 
   const page = await context.newPage();
 

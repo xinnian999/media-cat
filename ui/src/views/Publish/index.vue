@@ -113,7 +113,7 @@ const form = reactive({
   observe: false,
 })
 
-const platforms = usePlatforms()
+const {platforms} = usePlatforms()
 
 const router = useRouter()
 

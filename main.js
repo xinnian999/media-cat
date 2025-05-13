@@ -1,3 +1,5 @@
+require("module-alias/register");
+
 const {
   app,
   BrowserWindow,
@@ -79,6 +81,21 @@ app.whenReady().then(() => {
 
   ipcMain.handle("profile", () => {
     return readJson("cache/profile.json");
+  });
+
+  ipcMain.handle("updateProfile", async () => {
+    let profile = readJson("cache/profile.json");
+
+    const updates = Object.keys(profile).map(async (key) => {      
+      const update = require(`./script/update/${key}`);
+      await update();
+    });
+
+    await Promise.all(updates);
+
+    profile = readJson("cache/profile.json");
+
+    return profile;
   });
 
   globalShortcut.register("F12", () => {

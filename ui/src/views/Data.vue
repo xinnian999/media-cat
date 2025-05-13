@@ -2,6 +2,7 @@
   <div>
     <a-tabs default-active-key="douyin">
       <a-tab-pane v-for="plat in platforms" :title="plat.label" :key="plat.platform">
+        <div v-if="updateing" class="updateing"><a-spin /> 数据更新中</div>
         <div class="data-content">
           <div class="data-item" v-for="item in items" :key="item.value">
             <div class="data-item-label">{{ item.label }}</div>
@@ -17,8 +18,9 @@
 
 <script setup lang="jsx">
 import usePlatforms from '@/hooks/usePlatforms'
+import { onMounted } from 'vue'
 
-const platforms = usePlatforms()
+const { platforms, updateing, update } = usePlatforms()
 
 const items = [
   {
@@ -46,9 +48,18 @@ const items = [
     render: (record) => <span>{record.total_favorited}</span>,
   },
 ]
+
+onMounted(update)
 </script>
 
 <style lang="scss">
+.updateing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
 .data-content {
   width: 100%;
   height: 100%;

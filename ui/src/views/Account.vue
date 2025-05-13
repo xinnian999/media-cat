@@ -3,7 +3,7 @@
     <a-divider orientation="center" style="margin-bottom: 35px">账号管理</a-divider>
 
     <div class="account-list">
-      <a-card v-for="item in platforms" :key="item.label" class="account-item">
+      <a-card v-for="item in allPlatforms" :key="item.label" class="account-item">
         <template #title>
           <div class="title">
             <img :src="item.icon" alt="icon" />
@@ -36,7 +36,7 @@
 <script setup>
 import { Message } from '@arco-design/web-vue'
 import { ref, onMounted } from 'vue'
-import platforms from '@/assets/allPlatforms'
+import allPlatforms from '@/assets/allPlatforms'
 
 const profile = ref({})
 

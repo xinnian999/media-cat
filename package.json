@@ -15,12 +15,16 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "module-alias": "^2.2.3",
     "multer": "^1.4.5-lts.2",
     "playwright": "^1.52.0"
   },
   "devDependencies": {
     "electron": "^36.2.0",
     "electron-builder": "^26.0.12"
+  },
+  "_moduleAliases": {
+    "@utils": "utils"
   },
   "build": {
     "appId": "com.yourdomain.yourapp",
