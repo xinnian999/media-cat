@@ -79,7 +79,6 @@ const kuaishou = async (params) => {
   async function runSerially() {
     for (const tag of params.tags) {
       await input.type(`#${tag}`);
-      await page.waitForTimeout(2000);
       await input.type(` `);
     }
   }

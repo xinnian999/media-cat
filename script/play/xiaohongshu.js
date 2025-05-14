@@ -56,21 +56,17 @@ const xiaohongshu = async (params) => {
 
   await page.locator(".ql-editor").fill(params.desc);
 
-  // 写入标签
-  await params.send({
-    msg: "写入标签",
-    percent: 0.7,
-    page,
-  });
-  const input = page.locator("#work-description-edit"); // 假设是 contenteditable 区域
-  await input.click(); // 先 focus
-  await input.type(" "); // 先 focus
-  async function runSerially() {
-    for (const tag of params.tags) {
-      await input.type(`#${tag} `);
-    }
+  if (params.tags.length > 0) {
+    // 写入标签
+    await params.send({
+      msg: "写入标签",
+      percent: 0.7,
+      page,
+    });
+    const input = page.locator(".ql-editor"); // 假设是 contenteditable 区域
+    const tagText = params.tags.join(" #");
+    await input.type(` #${tagText}`); // 先 focus
   }
-  await runSerially();
 
   // 等待视频导入完成
   await params.send({
@@ -78,7 +74,7 @@ const xiaohongshu = async (params) => {
     percent: 0.8,
     page,
   });
-  await page.waitForSelector('span:has-text("预览作品")', {
+  await page.waitForSelector('div:has-text("上传成功")', {
     timeout: 0, // 无限等待
   });
 
@@ -86,7 +82,7 @@ const xiaohongshu = async (params) => {
 
   if (params.imitate) {
     await params.send({
-      msg: "快手 -- 模拟流程完毕，跳过发布步骤",
+      msg: "小红书 -- 模拟流程完毕，跳过发布步骤",
       percent: 1,
       page,
     });
@@ -99,7 +95,7 @@ const xiaohongshu = async (params) => {
     percent: 0.9,
     page,
   });
-  await page.click("._button_3a3lq_1:has-text('发布')");
+  await page.click("button:has-text('发布')");
 
   // 检验是否上传成功
   await params.send({
@@ -107,12 +103,12 @@ const xiaohongshu = async (params) => {
     percent: 0.9,
     page,
   });
-  await page.waitForSelector('h2:has-text("视频管理")', {
+  await page.waitForSelector('p:has-text("发布成功")', {
     timeout: 0, // 无限等待
   });
 
   await params.send({
-    msg: "快手发布成功！",
+    msg: "小红书发布成功！",
     percent: 1,
     page,
   });
