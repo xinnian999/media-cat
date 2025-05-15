@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!ing">
+  <div>
     <a-page-header title="发布视频" @back="onBack"> </a-page-header>
     <a-form
       :model="form"
@@ -100,15 +100,12 @@
       </a-form-item>
     </a-form>
   </div>
-  <Result v-else :list="form.platforms" :done="done" :back="resultBack" />
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
 import { deepClone } from '@/utils'
 import { useRouter } from 'vue-router'
-import { Message } from '@arco-design/web-vue'
-import Result from './Result.vue'
 import usePlatforms from '@/hooks/usePlatforms'
 
 const form = reactive({
@@ -158,19 +155,21 @@ const handleSubmit = async () => {
     tags: form.tags.map((tag) => tag.value),
   })
 
-  ing.value = true
+  router.push(`/publish-result?data=${JSON.stringify(values)}`)
 
-  await window.electron.invoke('play', values)
+  // ing.value = true
 
-  Message.success('所有平台发布完成')
+  // await window.electron.invoke('play', values)
 
-  done.value = true
+  // Message.success('所有平台发布完成')
+
+  // done.value = true
 }
 
-const resultBack = () => {
-  ing.value = false
-  done.value = false
-}
+// const resultBack = () => {
+//   ing.value = false
+//   done.value = false
+// }
 
 // onMounted(async () => {
 //   form.platforms = platformOptions.value.map((item) => item.platform)

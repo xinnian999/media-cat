@@ -48,22 +48,15 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { Message } from '@arco-design/web-vue'
 import platforms from '@/assets/allPlatforms'
 
-const props = defineProps({
-  list: {
-    type: Array,
-    default: () => [],
-  },
-  done: {
-    type: Boolean,
-    default: false,
-  },
-  back:{
-    type: Function,
-    default: ()=>{},
-  }
-})
+const route = useRoute()
+
+const done = ref(false)
+
+const list = ref([])
 
 const platformMap = platforms.reduce((acc, cur) => {
   acc[cur.platform] = cur
@@ -73,8 +66,8 @@ const platformMap = platforms.reduce((acc, cur) => {
 const progressMap = ref({})
 
 const handleBack = () => {
-  progressMap.value = {}
-  props.back()
+  // progressMap.value = {}
+  // props.back()
 }
 
 onMounted(async () => {
@@ -84,6 +77,14 @@ onMounted(async () => {
     }
     progressMap.value[data.platform].push(data)
   })
+
+  const data = JSON.parse(route.query.data)
+
+  list.value = data.platforms
+
+  await window.electron.invoke('play', data)
+
+  Message.success('所有平台发布完成')
 })
 </script>
 

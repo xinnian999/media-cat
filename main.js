@@ -20,6 +20,8 @@ const log = require("./utils/log");
 
 const { randomUUID } = require("crypto");
 
+const dayjs = require("dayjs");
+
 let win;
 
 const isDev = !app.isPackaged;
@@ -81,7 +83,11 @@ app.whenReady().then(() => {
     });
 
     writeJson("cache/publishLog.json", (source) => {
-      const newData = { ...data, id: randomUUID() };
+      const newData = {
+        ...data,
+        id: randomUUID(),
+        createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+      };
 
       if (source.list) {
         return { list: [...source.list, newData] };

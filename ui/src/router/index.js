@@ -25,6 +25,11 @@ const routes = [
     component: () => import('../views/Publish/Play.vue'),
   },
   {
+    path: '/publish-result',
+    name: 'publish-result',
+    component: () => import('../views/Publish/Result.vue'),
+  },
+  {
     path: '/account',
     name: 'account',
     component: () => import('../views/Account.vue'),
