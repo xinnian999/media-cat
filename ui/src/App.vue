@@ -10,7 +10,7 @@
         :style="{ width: '100%' }"
         @menu-item-click="onClickMenuItem"
       >
-        <a-menu-item v-for="item in routes" :key="item.path">
+        <a-menu-item v-for="item in menus" :key="item.path">
           <component :is="item.meta.icon"></component>
           {{ item.meta.title }}
         </a-menu-item>
@@ -28,6 +28,8 @@
 <script setup>
 import { routes } from './router'
 import { useRouter } from 'vue-router'
+
+const menus = routes.filter(item => item.meta)
 
 const router = useRouter()
 

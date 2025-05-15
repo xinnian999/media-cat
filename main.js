@@ -14,7 +14,11 @@ const path = require("path");
 
 const startUi = require("./utils/startUi");
 
+const writeJson = require("./utils/writeJson");
+
 const log = require("./utils/log");
+
+const { randomUUID } = require("crypto");
 
 let win;
 
@@ -76,7 +80,21 @@ app.whenReady().then(() => {
       return await script(params);
     });
 
+    writeJson("cache/publishLog.json", (source) => {
+      const newData = { ...data, id: randomUUID() };
+
+      if (source.list) {
+        return { list: [...source.list, newData] };
+      }
+
+      return { list: [newData] };
+    });
+
     await Promise.all(scripts);
+  });
+
+  ipcMain.handle("publishLog", () => {
+    return readJson("cache/publishLog.json");
   });
 
   ipcMain.handle("profile", () => {
@@ -86,7 +104,7 @@ app.whenReady().then(() => {
   ipcMain.handle("updateProfile", async () => {
     let profile = readJson("cache/profile.json");
 
-    const updates = Object.keys(profile).map(async (key) => {      
+    const updates = Object.keys(profile).map(async (key) => {
       const update = require(`./script/update/${key}`);
       await update();
     });

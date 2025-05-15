@@ -1,261 +1,110 @@
 <template>
-  <div v-if="!ing">
-    <a-divider orientation="center" style="margin-bottom: 35px">发布视频</a-divider>
-
-    <a-form
-      :model="form"
-      :label-col-props="{ span: 6 }"
-      :wrapper-col-props="{ span: 18 }"
-      :style="{ width: '90%' }"
-      @submit-success="handleSubmit"
-    >
-      <a-form-item
-        field="url"
-        label="选择视频"
-        :rules="[{ required: true, message: '请选择一个视频' }]"
-      >
-        <div class="video-upload" @click="openFileDialog" v-if="!form.url">
-          <div class="video-upload-tip">
+  <div class="publish-index">
+    <a-page-header title="发布记录" :show-back="false">
+      <template #extra>
+        <a-button type="primary" @click="goPublish">
+          <template #icon>
             <icon-plus />
-            <div>点击选择视频</div>
-          </div>
-        </div>
-        <video class="video-upload" :src="`file://${form.url}`" controls v-else></video>
-      </a-form-item>
-
-      <a-form-item
-        field="desc"
-        label="视频描述"
-        :rules="[{ required: true, message: '请输入视频描述' }]"
-      >
-        <a-textarea v-model="form.desc" placeholder="请输入视频描述" />
-      </a-form-item>
-
-      <a-form-item field="tags" label="标签">
-        <div>
-          <a-form-item
-            v-for="(tag, index) of form.tags"
-            :field="`tags[${index}].value`"
-            :key="index"
-            hide-label
-            :rules="[{ required: true, message: '请输入标签' }]"
-          >
-            <a-input v-model="tag.value" :placeholder="`标签${index + 1}`" />
-            <a-button @click="handleDelete(index)" :style="{ marginLeft: '10px' }"
-              ><icon-delete
-            /></a-button>
-          </a-form-item>
-          <div v-if="form.tags.length < 4">
-            <a-button @click="handleAdd" size="mini">
-              <icon-plus />
-              增加标签
-            </a-button>
-          </div>
-        </div>
-      </a-form-item>
-
-      <a-form-item
-        field="platforms"
-        label="平台"
-        :rules="[{ required: true, message: '请选择平台' }]"
-      >
-        <a-checkbox-group v-model="form.platforms" v-if="platforms.length > 0">
-          <template v-for="item in platforms" :key="item.platform">
-            <a-checkbox :value="item.platform">
-              <template #checkbox="{ checked }">
-                <a-space
-                  align="start"
-                  class="custom-checkbox-card"
-                  :class="{ 'custom-checkbox-card-checked': checked }"
-                >
-                  <div class="custom-checkbox-card-content">
-                    <img :src="item.icon" alt="icon" />
-                    <div className="custom-checkbox-card-title">{{ item.label }}</div>
-                  </div>
-                </a-space>
-              </template>
-            </a-checkbox>
           </template>
-        </a-checkbox-group>
-        <a-button v-else @click="handleBindPlatform">去绑定平台</a-button>
-      </a-form-item>
+          发布新视频
+        </a-button>
+      </template>
+    </a-page-header>
 
-      <a-form-item field="observe" label="可视化发布过程">
-        <a-switch v-model="form.observe" />
-      </a-form-item>
+    <a-list>
+      <a-list-item v-for="item in list" :key="item.id">
+        <a-list-item-meta title="视频标题">
+          <template #avatar>
+            <video class="item-video" :src="`file://${item.url}`"></video>
+          </template>
 
-      <a-form-item field="imitate" label="模拟发布">
-        <a-switch v-model="form.imitate" />
-      </a-form-item>
+          <template #description>
+            <div class="description">
+              <div>
+                {{ `${item.desc} #${item.tags.join(' #')}` }}
+              </div>
+              <div class="plats">
+                <img
+                  v-for="src in allPlatforms
+                    .filter((v) => item.platforms.includes(v.platform))
+                    .map((item) => item.icon)"
+                  :src="src"
+                  alt=""
+                  :key="src"
+                />
+              </div>
+            </div>
+          </template>
+        </a-list-item-meta>
 
-      <a-form-item>
-        <a-button html-type="submit" long type="primary">开始分发</a-button>
-      </a-form-item>
-    </a-form>
+        <template #actions>
+          <a-space direction="vertical" align="center" size="medium">
+            <a-button  size="mini" @click="handlePlay(item)">
+              <template #icon>
+                <icon-refresh />
+              </template>
+              重新执行
+            </a-button>
+            <a-button status="danger" size="mini" @click="()=>{}">
+              <template #icon>
+                <icon-delete />
+              </template>
+              删除
+            </a-button>
+          </a-space>
+        </template>
+      </a-list-item>
+    </a-list>
   </div>
-  <Result v-else :list="form.platforms" :done="done" :back="resultBack" />
 </template>
 
 <script setup>
-import { reactive, ref, onMounted } from 'vue'
-import { deepClone } from '@/utils'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import allPlatforms from '@/assets/allPlatforms'
 import { Message } from '@arco-design/web-vue'
-import Result from './Result.vue'
-import usePlatforms from '@/hooks/usePlatforms'
-
-const form = reactive({
-  url: '',
-  desc: '搞笑视频',
-  tags: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
-  platforms: [],
-  imitate: true,
-  observe: true,
-})
-
-const { platforms } = usePlatforms()
 
 const router = useRouter()
 
-const ing = ref(false)
+const list = ref([])
 
-const done = ref(false)
-
-const openFileDialog = async () => {
-  const filePath = await window.electron.invoke('dialog:openFile')
-  // console.log(filePath)
-  form.url = filePath
+const goPublish = () => {
+  router.push('/publish-play')
 }
 
-const handleAdd = () => {
-  form.tags.push({
-    value: '',
-  })
-}
-
-const handleDelete = (index) => {
-  form.tags.splice(index, 1)
-}
-
-const handleBindPlatform = () => {
-  router.push('/account')
-}
-
-const handleSubmit = async () => {
-  const values = deepClone({
-    ...form,
-    tags: form.tags.map((tag) => tag.value),
-  })
-
-  ing.value = true
-
-  await window.electron.invoke('play', values)
+const handlePlay = async (data) => {
+  await window.electron.invoke('play', data)
 
   Message.success('所有平台发布完成')
-
-  done.value = true
 }
 
-const resultBack = () => {
-  ing.value = false
-  done.value = false
-}
+onMounted(async () => {
+  const publishLog = await window.electron.invoke('publishLog')
 
-// onMounted(async () => {
-//   form.platforms = platformOptions.value.map((item) => item.platform)
-// })
+  list.value = publishLog.list
+})
 </script>
 
 <style lang="scss">
-.video-upload {
-  width: 100%;
-  height: 150px;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  background-color: rgb(242, 243, 245);
-  justify-content: center;
-  align-items: center;
+.publish-index {
+  padding: 0 10px;
 
-  .video-upload-tip {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: #555;
+  .item-video {
+    width: 120px;
+    height: 80px;
   }
-}
 
-.platform-item {
-  display: flex;
-  align-items: center;
-}
+  .description {
+    .plats {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
 
-.custom-checkbox-card {
-  border: 1px solid var(--color-border-2);
-  border-radius: 4px;
-  width: 90px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  img {
-    width: 40px;
-    height: 40px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
-}
-
-.custom-checkbox-card-mask {
-  height: 14px;
-  width: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  border: 1px solid var(--color-border-2);
-  box-sizing: border-box;
-}
-
-.custom-checkbox-card-mask-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-
-.custom-checkbox-card-title {
-  color: var(--color-text-1);
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.custom-checkbox-card:hover,
-.custom-checkbox-card-checked,
-.custom-checkbox-card:hover .custom-checkbox-card-mask,
-.custom-checkbox-card-checked .custom-checkbox-card-mask {
-  border-color: rgb(var(--primary-6));
-}
-
-.custom-checkbox-card-checked {
-  background-color: var(--color-primary-light-1);
-}
-
-.custom-checkbox-card:hover .custom-checkbox-card-title,
-.custom-checkbox-card-checked .custom-checkbox-card-title {
-  color: rgb(var(--primary-6));
-}
-
-.custom-checkbox-card-checked .custom-checkbox-card-mask-dot {
-  background-color: rgb(var(--primary-6));
-}
-
-.custom-checkbox-card-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 50px;
 }
 </style>
