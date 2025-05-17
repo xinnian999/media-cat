@@ -1,6 +1,12 @@
 <template>
   <div class="publish-result">
-    <a-divider orientation="center" style="margin-bottom: 35px">发布详情</a-divider>
+    <a-page-header title="发布详情" @back="onBack">
+      <template #extra>
+        <a-button type="primary" @click="onStop" :disabled="stoped">{{
+          stoped ? '已停止' : '停止发布'
+        }}</a-button>
+      </template>
+    </a-page-header>
     <a-list>
       <a-list-item v-for="plat in list" :key="plat">
         <a-list-item-meta :title="platformMap[plat].label">
@@ -37,26 +43,21 @@
         </template> -->
       </a-list-item>
     </a-list>
-
-    <div class="footer">
-      <a-button style="margin-top: 20px" :disabled="!done" @click="handleBack">{{
-        done ? '重新发布' : '发布中'
-      }}</a-button>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { Message } from '@arco-design/web-vue'
 import platforms from '@/assets/allPlatforms'
 
 const route = useRoute()
-
-const done = ref(false)
+const router = useRouter()
 
 const list = ref([])
+
+const stoped = ref(false)
 
 const platformMap = platforms.reduce((acc, cur) => {
   acc[cur.platform] = cur
@@ -65,9 +66,8 @@ const platformMap = platforms.reduce((acc, cur) => {
 
 const progressMap = ref({})
 
-const handleBack = () => {
-  // progressMap.value = {}
-  // props.back()
+const onBack = () => {
+  router.back()
 }
 
 onMounted(async () => {
@@ -85,6 +85,15 @@ onMounted(async () => {
   await window.electron.invoke('play', data)
 
   Message.success('所有平台发布完成')
+})
+
+const onStop = async () => {
+  await window.electron.invoke('stop')
+  stoped.value = true
+}
+
+onUnmounted(() => {
+  window.electron.invoke('stop')
 })
 </script>
 

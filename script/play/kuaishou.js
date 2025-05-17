@@ -4,6 +4,8 @@ const { app } = require("electron");
 const kuaishou = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
+  params.addBrowser(browser)
+
   const context = await browser.newContext({
     storageState: `${app.getPath("userData")}/cache/storageState/kuaishou.json`,
   });

@@ -4,6 +4,8 @@ const { app } = require("electron");
 const douyin = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
+  params.addBrowser(browser)
+
   const context = await browser.newContext({
     storageState: `${app.getPath("userData")}/cache/storageState/douyin.json`,
   });
@@ -24,7 +26,7 @@ const douyin = async (params) => {
     page,
   });
 
-  await page.waitForSelector('button:has-text("发布视频")', {
+  await page.waitForSelector('button:has-text("高清发布")', {
     timeout: 0, // 无限等待
   });
 
@@ -34,7 +36,7 @@ const douyin = async (params) => {
     percent: 0.3,
     page,
   });
-  await page.getByRole("button", { name: "发布视频" }).click();
+  await page.getByRole("button", { name: "高清发布" }).click();
 
   // 导入视频
   await params.send({

@@ -26,6 +26,8 @@ let win;
 
 const isDev = !app.isPackaged;
 
+const browsers = [];
+
 async function createWindow() {
   win = new BrowserWindow({
     width: 800,
@@ -47,10 +49,6 @@ async function createWindow() {
   } else {
     win.loadFile(path.join(__dirname, "ui/dist/index.html"));
   }
-}
-
-app.whenReady().then(() => {
-  createWindow();
 
   ipcMain.handle("dialog:openFile", async () => {
     const result = await dialog.showOpenDialog(win, {
@@ -77,6 +75,9 @@ app.whenReady().then(() => {
           });
           await log(page, rest.msg);
         },
+        addBrowser: (browser) => {
+          browsers.push(browser);
+        },
       };
 
       return await script(params);
@@ -90,7 +91,7 @@ app.whenReady().then(() => {
       };
 
       if (source.list) {
-        return { list: [...source.list, newData] };
+        return { list: [newData, ...source.list] };
       }
 
       return { list: [newData] };
@@ -122,11 +123,21 @@ app.whenReady().then(() => {
     return profile;
   });
 
+  ipcMain.handle("stop", () => {
+    browsers.forEach((browser) => {
+      browser.close();
+    });
+  });
+
   globalShortcut.register("F12", () => {
     if (!win.webContents.isDevToolsOpened()) {
       win.webContents.openDevTools();
     }
   });
+}
+
+app.whenReady().then(() => {
+  createWindow();
 });
 
 app.on("window-all-closed", () => {
