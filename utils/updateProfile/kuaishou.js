@@ -10,7 +10,7 @@ module.exports = async (response) => {
     return {
       ...profileData,
       kuaishou: {
-        username: info.userName,
+        nickname: info.userName,
         avatar: info.headUrl,
         uid: info.userId,
         follower_count: info.fansNum,

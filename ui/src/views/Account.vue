@@ -23,7 +23,7 @@
               <img :src="profile[item.platform].avatar" alt="avatar" />
             </div>
             <div class="info">
-              <div class="username">{{ profile[item.platform].username }}</div>
+              <div class="username">{{ profile[item.platform].nickname }}</div>
             </div>
           </div>
           <div class="empty" v-else>未绑定账号</div>

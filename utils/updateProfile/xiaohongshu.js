@@ -1,16 +1,20 @@
 const writeJson = require("@utils/writeJson");
 
-module.exports = async (response) => {
-  const {
-    data: info,
-  } = await response.json();
+module.exports = async (page) => {
+  // 等待请求用户信息，代表登录成功
+  const response = await page.waitForResponse(
+    (res) => res.url().includes("/galaxy/creator/home/personal_info"),
+    { timeout: 0 }
+  );
+
+  const { data: info } = await response.json();
 
   // 更新 profileData
   writeJson("cache/profile.json", (profileData) => {
     return {
       ...profileData,
       xiaohongshu: {
-        username: info.name,
+        nickname: info.name,
         avatar: info.avatar,
         uid: info.userId,
         follower_count: info.fans_count,

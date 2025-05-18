@@ -8,7 +8,7 @@ module.exports = async (response) => {
     return {
       ...source,
       douyin: {
-        username: info.nick_name,
+        nickname: info.nick_name,
         avatar: info.avatar_url,
         uid: info.douyin_unique_id,
         follower_count: info.follower_count,

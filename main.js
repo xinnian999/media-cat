@@ -8,6 +8,9 @@ const {
   globalShortcut,
 } = require("electron");
 
+console.log(app.getPath("userData"));
+
+
 const readJson = require("./utils/readJson");
 
 const path = require("path");

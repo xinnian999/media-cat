@@ -29,7 +29,7 @@ const items = [
   },
   {
     label: '用户名',
-    render: (record) => <span>{record.username}</span>,
+    render: (record) => <span>{record.nickname}</span>,
   },
   {
     label: '头像',
