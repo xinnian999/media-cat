@@ -22,11 +22,7 @@
         <video class="video-upload" :src="`file://${form.url}`" controls v-else></video>
       </a-form-item>
 
-      <a-form-item
-        field="title"
-        label="视频标题"
-        :rules="[{ required: true, message: '请输入视频标题' }]"
-      >
+      <a-form-item field="title" label="视频标题">
         <a-input v-model="form.title" placeholder="请输入视频标题" />
       </a-form-item>
 
@@ -103,7 +99,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { deepClone } from '@/utils'
 import { useRouter } from 'vue-router'
 import usePlatforms from '@/hooks/usePlatforms'
@@ -120,10 +116,6 @@ const form = reactive({
 const { platforms } = usePlatforms()
 
 const router = useRouter()
-
-const ing = ref(false)
-
-const done = ref(false)
 
 const onBack = () => {
   router.push('/publish')
@@ -156,24 +148,7 @@ const handleSubmit = async () => {
   })
 
   router.push(`/publish-result?data=${JSON.stringify(values)}`)
-
-  // ing.value = true
-
-  // await window.electron.invoke('play', values)
-
-  // Message.success('所有平台发布完成')
-
-  // done.value = true
 }
-
-// const resultBack = () => {
-//   ing.value = false
-//   done.value = false
-// }
-
-// onMounted(async () => {
-//   form.platforms = platformOptions.value.map((item) => item.platform)
-// })
 </script>
 
 <style lang="scss">

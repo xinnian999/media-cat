@@ -85,6 +85,8 @@ onMounted(async () => {
   await window.electron.invoke('play', data)
 
   Message.success('所有平台发布完成')
+
+  stoped.value = true
 })
 
 const onStop = async () => {

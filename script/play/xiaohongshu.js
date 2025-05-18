@@ -4,8 +4,8 @@ const { app } = require("electron");
 const xiaohongshu = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
-  params.addBrowser(browser)
-  
+  params.addBrowser(browser);
+
   const context = await browser.newContext({
     storageState: `${app.getPath("userData")}/cache/storageState/xiaohongshu.json`,
   });
@@ -62,12 +62,23 @@ const xiaohongshu = async (params) => {
     // 写入标签
     await params.send({
       msg: "写入标签",
-      percent: 0.7,
+      percent: 0.6,
       page,
     });
     const input = page.locator(".ql-editor"); // 假设是 contenteditable 区域
-    const tagText = params.tags.join(" #");
-    await input.type(` #${tagText}`); // 先 focus
+    await input.click(); // 先 focus
+    await input.type(` `);
+
+    async function runSerially() {
+      for (const tag of params.tags) {
+        await input.type(`#${tag}`);
+        await page.waitForSelector(".ql-mention-list", {
+          timeout: 0, // 无限等待
+        });
+        await page.keyboard.press("Enter");
+      }
+    }
+    await runSerially();
   }
 
   // 等待视频导入完成
@@ -88,7 +99,7 @@ const xiaohongshu = async (params) => {
       percent: 1,
       page,
     });
-    await browser.close();
+    // await browser.close();
     return;
   }
 
