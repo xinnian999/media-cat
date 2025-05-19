@@ -49,15 +49,13 @@ module.exports = async (url, savePath) => {
 
   const page = await context.newPage();
 
-  // 拿 cookies
-  const cookiesArray = await context.cookies();
-  const cookieHeader = cookiesArray
-    .map((c) => `${c.name}=${c.value}`)
-    .join("; ");
+  let lastUrl = "";
+  let lastSize = 0;
 
   page.on("response", async (response) => {
     const url = response.url();
     const contentType = response.headers()["content-type"] || "";
+    const contentLength = parseInt(response.headers()["content-length"] || "0");
 
     if (
       contentType.includes("video") ||
@@ -65,9 +63,12 @@ module.exports = async (url, savePath) => {
       url.endsWith(".mp4") ||
       url.endsWith(".ts")
     ) {
-      const fileName = `${Date.now()}.mp4`;
-      const outputPath = path.join(savePath, fileName);
-      downloadVideo(url, outputPath, cookieHeader);
+      console.log(contentType, contentLength);
+
+      if (contentLength > lastSize) {
+        lastUrl = url;
+        lastSize = contentLength;
+      }
     }
   });
 
@@ -77,6 +78,17 @@ module.exports = async (url, savePath) => {
 
   // 播放器懒加载，需要等一会加载真实视频
   await page.waitForTimeout(15000);
+
+  // 拿 cookies
+  const cookiesArray = await context.cookies();
+  const cookieHeader = cookiesArray
+    .map((c) => `${c.name}=${c.value}`)
+    .join("; ");
+
+  const fileName = `${Date.now()}.mp4`;
+  const outputPath = path.join(savePath, fileName);
+
+  downloadVideo(lastUrl, outputPath, cookieHeader);
 
   // await browser.close(); // 可选
 };
