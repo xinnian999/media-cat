@@ -22,10 +22,13 @@
   },
   "devDependencies": {
     "electron": "^36.2.0",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "^26.0.12",
+    "eslint": "^8.56.0"
   },
   "_moduleAliases": {
-    "@utils": "utils"
+    "@utils": "utils",
+    "@core": "core",
+    "@script": "script"
   },
   "build": {
     "appId": "com.yourdomain.yourapp",
