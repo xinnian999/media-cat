@@ -47,6 +47,15 @@ const routes = [
       icon: 'icon-bar-chart',
     },
   },
+  {
+    path: '/download',
+    name: 'download',
+    component: () => import('../views/Download.vue'),
+    meta: {
+      title: '抖音视频提取',
+      icon: 'icon-download',
+    },
+  },
 ]
 
 const router = createRouter({

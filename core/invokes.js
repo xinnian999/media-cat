@@ -21,6 +21,13 @@ module.exports = (win) => {
 
       return result.filePaths[0]; // 返回选择的文件路径
     },
+    "dialog:openFolder": async () => {
+      const result = await dialog.showOpenDialog(win, {
+        properties: ["openDirectory"],
+      });
+
+      return result.filePaths[0]; // 返回选择的文件路径
+    },
     bindAccount: async (e, plat) => {
       const bind = require(`@script/bind/${plat}`);
       await bind();
@@ -85,6 +92,10 @@ module.exports = (win) => {
       browsers.forEach((browser) => {
         browser.close();
       });
+    },
+    download: async (e, data) => {
+      const download = require("@script/download");
+      await download(data.url, data.savePath);
     },
   };
 
