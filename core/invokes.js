@@ -94,7 +94,7 @@ module.exports = (win) => {
       });
     },
     download: async (e, data) => {
-      const download = require("@script/download");
+      const download = require("@script/download/index");
       await download(data.url, data.savePath);
     },
   };

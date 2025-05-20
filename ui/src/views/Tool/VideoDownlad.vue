@@ -38,7 +38,7 @@ const form = useTemplateRef('form')
 const router = useRouter()
 
 const values = reactive({
-  url: 'https://www.douyin.com/video/7492014665493499193',
+  url: 'https://www.douyin.com/discover?modal_id=7501935378689969462',
   savePath: '',
 })
 
