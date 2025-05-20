@@ -1,6 +1,7 @@
 const { chromium } = require("playwright");
 const path = require("path");
-const downloadVideo = require("./downloadVideo");
+const fs = require("fs");
+const https = require("https");
 
 module.exports = async (url, savePath) => {
   const browser = await chromium.launch({
@@ -15,6 +16,8 @@ module.exports = async (url, savePath) => {
 
   let lastUrl = "";
   let lastSize = 0;
+  let s = 0;
+  let timer = null;
 
   page.on("response", async (response) => {
     const url = response.url();
@@ -24,6 +27,8 @@ module.exports = async (url, savePath) => {
     if (contentType.includes("video")) {
       console.log(contentLength);
       // console.log(url);
+
+      s = 0;
 
       if (contentLength > lastSize) {
         lastUrl = url;
@@ -36,19 +41,46 @@ module.exports = async (url, savePath) => {
     waitUntil: "load",
   });
 
-  // 播放器懒加载，需要等一会加载真实视频
-  await page.waitForTimeout(15000);
+  // 轮询等待最高画质视频出现
+  await new Promise((resolve) => {
+    timer = setInterval(() => {
+      if (s === 10) {
+        clearInterval(timer);
+        resolve();
+        return;
+      }
+      s++;
+      console.log(s);
+    }, 1000);
+  });
 
-  // 拿 cookies
-  const cookiesArray = await context.cookies();
-  const cookieHeader = cookiesArray
-    .map((c) => `${c.name}=${c.value}`)
-    .join("; ");
+  const outputPath = path.join(savePath, `${Date.now()}.mp4`);
 
-  const fileName = `${Date.now()}.mp4`;
-  const outputPath = path.join(savePath, fileName);
+  const file = fs.createWriteStream(outputPath);
 
-  downloadVideo(lastUrl, outputPath, cookieHeader);
+  const options = new URL(lastUrl);
+
+  options.headers = {
+    Referer: url,
+  };
+
+  https
+    .get(options, (res) => {
+      if (res.statusCode !== 200) {
+        console.error(`❌ 请求失败，状态码: ${res.statusCode}`);
+        return;
+      }
+
+      res.pipe(file);
+      file.on("finish", () => {
+        file.close();
+        console.log("✅ 下载完成:", outputPath);
+      });
+    })
+    .on("error", (err) => {
+      fs.unlink(outputPath, () => {});
+      console.error("❌ 下载出错:", err.message);
+    });
 
   await browser.close(); // 可选
 };
