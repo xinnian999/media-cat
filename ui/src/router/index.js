@@ -48,13 +48,22 @@ const routes = [
     },
   },
   {
-    path: '/download',
-    name: 'download',
-    component: () => import('../views/Download.vue'),
+    path: '/tool',
+    name: 'tool',
+    component: () => import('../views/Tool/index.vue'),
     meta: {
-      title: '抖音视频提取',
-      icon: 'icon-download',
+      title: '小工具',
+      icon: 'icon-tool',
     },
+  },
+  {
+    path: '/tool/videoDownlad',
+    name: 'videoDownlad',
+    component: () => import('../views/Tool/VideoDownlad.vue'),
+    // meta: {
+    //   title: '抖音视频提取',
+    //   icon: 'icon-download',
+    // },
   },
 ]
 

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <a-divider>抖音视频提取</a-divider>
-
+    <a-page-header title="视频提取" @back="onBack"> </a-page-header>
     <div class="download-form">
       <a-form :model="values" layout="vertical" ref="form" @submit="handleSubmit">
         <a-form-item
@@ -32,8 +31,11 @@
 <script setup>
 import { deepClone } from '@/utils'
 import { reactive, useTemplateRef } from 'vue'
+import { useRouter } from 'vue-router'
 
 const form = useTemplateRef('form')
+
+const router = useRouter()
 
 const values = reactive({
   url: 'https://www.douyin.com/video/7492014665493499193',
@@ -48,6 +50,10 @@ const handleSubmit = async () => {
 const handleOpenFolder = async () => {
   const path = await window.electron.invoke('dialog:openFolder')
   values.savePath = path
+}
+
+const onBack = () => {
+  router.back()
 }
 </script>
 
