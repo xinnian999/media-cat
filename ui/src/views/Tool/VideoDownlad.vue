@@ -2,13 +2,7 @@
   <div class="video-downloa-page">
     <a-page-header title="视频提取" @back="onBack"> </a-page-header>
     <div class="download-form">
-      <a-form
-        :model="values"
-        layout="vertical"
-        ref="form"
-        :disabled="loading"
-        @submit="handleSubmit"
-      >
+      <a-form :model="values" layout="vertical" ref="form" :disabled="loading">
         <a-form-item
           field="url"
           label="链接"
@@ -26,12 +20,14 @@
             <a-button type="primary" @click="handleOpenFolder">选择路径</a-button>
           </div>
         </a-form-item>
-        <a-form-item>
-          <a-button html-type="submit" :loading="loading">{{
-            loading ? '提取中' : '开始提取'
-          }}</a-button>
-        </a-form-item>
       </a-form>
+
+      <div class="button-group">
+        <a-button type="primary" :loading="loading" @click="handleSubmit">{{
+          loading ? '提取中' : '开始提取'
+        }}</a-button>
+        <a-button v-if="loading" @click="handleCancel">取消</a-button>
+      </div>
 
       <div class="progress-bar" v-if="loading">
         <div>{{ progressData.msg }}</div>
@@ -68,9 +64,9 @@ const progressData = reactive({
 const handleSubmit = async () => {
   await form.value.validate()
 
-  progressData.msg = ''
+  progressData.msg = '准备中...'
 
-  progressData.percent = 0
+  progressData.percent = 0.01
 
   loading.value = true
 
@@ -79,6 +75,12 @@ const handleSubmit = async () => {
   loading.value = false
 
   Message.success('提取完成')
+}
+
+const handleCancel = () => {
+  window.electron.invoke('stop')
+  loading.value = false
+  Message.warning('取消提取')
 }
 
 const handleOpenFolder = async () => {
@@ -111,12 +113,18 @@ onMounted(async () => {
     }
   }
 
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+
   .progress-bar {
     padding: 15px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-top: 20px;
   }
 }
 </style>

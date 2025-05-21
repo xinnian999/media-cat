@@ -1,10 +1,12 @@
 const { chromium } = require("playwright");
 const path = require("path");
 
-module.exports = async ({ url, savePath, send }) => {
+module.exports = async ({ url, savePath, send, addBrowser }) => {
   const browser = await chromium.launch({
     headless: true,
   });
+
+  addBrowser(browser);
 
   const context = await browser.newContext({
     acceptDownloads: true,
@@ -49,6 +51,12 @@ module.exports = async ({ url, savePath, send }) => {
   const finalDownloadUrl = download.url();
   console.log("✅ 获取到真实下载链接:", finalDownloadUrl);
 
+  await send({
+    msg: "正在下载",
+    percent: 0.7,
+    page,
+  });
+
   const outputPath = path.join(savePath, `${Date.now()}.mp4`);
   await download.saveAs(outputPath); // ✅ 直接保存到目标目录
 
@@ -59,6 +67,8 @@ module.exports = async ({ url, savePath, send }) => {
   });
 
   console.log("✅ 下载完成:", outputPath);
+
+  await page.waitForTimeout(1000);
 
   await browser.close();
 };

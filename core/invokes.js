@@ -103,6 +103,9 @@ module.exports = (win) => {
           e.sender.send("download-progress", rest);
           await log(page, rest.msg);
         },
+        addBrowser: (browser) => {
+          browsers.push(browser);
+        },
       });
     },
   };
