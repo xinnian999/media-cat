@@ -52,8 +52,8 @@ const router = useRouter()
 const loading = ref(false)
 
 const values = reactive({
-  url: '3.00 ATl:/ 06/27 N@j.pq 我真不爱骂人，除非忍不住！ # 英雄联盟 # lol  https://v.douyin.com/f_gQK2ZS3xg/ 复制此链接，打开Dou音搜索，直接观看视频！',
-  savePath: '/Users/v_huyilin/Documents/dy/影视剪辑素材',
+  url: '',
+  savePath: '',
 })
 
 const progressData = reactive({

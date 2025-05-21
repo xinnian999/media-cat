@@ -95,6 +95,7 @@ module.exports = (win) => {
       });
     },
     download: async (e, data) => {
+      console.log(data);
       const downloadVideo = require("@script/tool/downloadVideo");
       await downloadVideo({
         url: data.url,
@@ -108,15 +109,10 @@ module.exports = (win) => {
         },
       });
     },
-    dyAutherDownload: async (e, data) => {
-      const dyAutherDownload = require("@script/tool/dyAutherDownload");
-      await dyAutherDownload({
+    fetchDyAutherPosts: async (e, data) => {
+      const fetchDyAutherPosts = require("@script/tool/fetchDyAutherPosts");
+      return await fetchDyAutherPosts({
         url: data.url,
-        savePath: data.savePath,
-        send: async ({ page, ...rest }) => {
-          e.sender.send("download-progress", rest);
-          await log(page, rest.msg);
-        },
         addBrowser: (browser) => {
           browsers.push(browser);
         },

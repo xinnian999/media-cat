@@ -15,7 +15,7 @@ module.exports = async ({ url, addBrowser }) => {
     { timeout: 0 }
   );
 
-  const {aweme_list} = await response.json();
+  const { aweme_list } = await response.json();
 
-  console.log(aweme_list);
+  return aweme_list;
 };
