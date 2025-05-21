@@ -60,10 +60,11 @@ const routes = [
     path: '/tool/videoDownlad',
     name: 'videoDownlad',
     component: () => import('../views/Tool/VideoDownlad.vue'),
-    // meta: {
-    //   title: '抖音视频提取',
-    //   icon: 'icon-download',
-    // },
+  },
+  {
+    path: '/tool/dyAutherDownload',
+    name: 'dyAutherDownload',
+    component: () => import('../views/Tool/DyAutherDownload.vue'),
   },
 ]
 

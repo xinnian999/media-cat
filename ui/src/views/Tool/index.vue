@@ -24,7 +24,7 @@ const tools = [
   },
   {
     title: '抖音博主全视频提取',
-    path: '/tool/video',
+    path: '/tool/dyAutherDownload',
     icon: dyUserDownload,
   },
 ]

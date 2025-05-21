@@ -95,8 +95,22 @@ module.exports = (win) => {
       });
     },
     download: async (e, data) => {
-      const download = require("@script/download/index");
-      await download({
+      const downloadVideo = require("@script/tool/downloadVideo");
+      await downloadVideo({
+        url: data.url,
+        savePath: data.savePath,
+        send: async ({ page, ...rest }) => {
+          e.sender.send("download-progress", rest);
+          await log(page, rest.msg);
+        },
+        addBrowser: (browser) => {
+          browsers.push(browser);
+        },
+      });
+    },
+    dyAutherDownload: async (e, data) => {
+      const dyAutherDownload = require("@script/tool/dyAutherDownload");
+      await dyAutherDownload({
         url: data.url,
         savePath: data.savePath,
         send: async ({ page, ...rest }) => {
