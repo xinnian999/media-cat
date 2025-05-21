@@ -43,6 +43,7 @@ module.exports = (win) => {
               platform: plat,
             });
             await log(page, rest.msg);
+            await page.waitForTimeout(3000);
           },
           addBrowser: (browser) => {
             browsers.push(browser);
@@ -95,7 +96,14 @@ module.exports = (win) => {
     },
     download: async (e, data) => {
       const download = require("@script/download/index");
-      await download(data.url, data.savePath);
+      await download({
+        url: data.url,
+        savePath: data.savePath,
+        send: async ({ page, ...rest }) => {
+          e.sender.send("download-progress", rest);
+          await log(page, rest.msg);
+        },
+      });
     },
   };
 

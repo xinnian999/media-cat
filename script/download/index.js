@@ -1,86 +1,64 @@
 const { chromium } = require("playwright");
 const path = require("path");
-const fs = require("fs");
-const https = require("https");
 
-module.exports = async (url, savePath) => {
+module.exports = async ({ url, savePath, send }) => {
   const browser = await chromium.launch({
     headless: true,
-    executablePath:
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // macOS 可改为 "" 使用默认
   });
 
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    acceptDownloads: true,
+  });
 
   const page = await context.newPage();
 
-  let lastUrl = "";
-  let lastSize = 0;
-  let s = 0;
-  let timer = null;
+  await send({
+    msg: "开始提取",
+    percent: 0.2,
+    page,
+  });
 
-  page.on("response", async (response) => {
-    const url = response.url();
-    const contentType = response.headers()["content-type"] || "";
-    const contentLength = parseInt(response.headers()["content-length"] || "0");
+  await page.goto("https://tiktokio.com/zh/");
+  await page.locator(".tiktok-url").fill(url);
+  await page.click("#search-btn");
 
-    if (contentType.includes("video")) {
-      console.log(contentLength);
-      // console.log(url);
+  await send({
+    msg: "解析视频链接",
+    percent: 0.4,
+    page,
+  });
 
-      s = 0;
-
-      if (contentLength > lastSize) {
-        lastUrl = url;
-        lastSize = contentLength;
-      }
+  const downloadBtn = await page.waitForSelector(
+    'a:has-text("Download without watermark")',
+    {
+      timeout: 0,
     }
+  );
+
+  await send({
+    msg: "解析成功，开始下载",
+    percent: 0.6,
+    page,
   });
 
-  await page.goto(url, {
-    waitUntil: "load",
-  });
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    downloadBtn.click(),
+  ]);
 
-  // 轮询等待最高画质视频出现
-  await new Promise((resolve) => {
-    timer = setInterval(() => {
-      if (s === 10) {
-        clearInterval(timer);
-        resolve();
-        return;
-      }
-      s++;
-      console.log(s);
-    }, 1000);
-  });
+  const finalDownloadUrl = download.url();
+  console.log("✅ 获取到真实下载链接:", finalDownloadUrl);
 
   const outputPath = path.join(savePath, `${Date.now()}.mp4`);
+  await download.saveAs(outputPath); // ✅ 直接保存到目标目录
 
-  const file = fs.createWriteStream(outputPath);
+  await send({
+    msg: "下载完成",
+    percent: 1,
+    page,
+  });
 
-  const options = new URL(lastUrl);
+  console.log("✅ 下载完成:", outputPath);
 
-  options.headers = {
-    Referer: url,
-  };
-
-  https
-    .get(options, (res) => {
-      if (res.statusCode !== 200) {
-        console.error(`❌ 请求失败，状态码: ${res.statusCode}`);
-        return;
-      }
-
-      res.pipe(file);
-      file.on("finish", () => {
-        file.close();
-        console.log("✅ 下载完成:", outputPath);
-      });
-    })
-    .on("error", (err) => {
-      fs.unlink(outputPath, () => {});
-      console.error("❌ 下载出错:", err.message);
-    });
-
-  await browser.close(); // 可选
+  await browser.close();
 };

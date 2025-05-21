@@ -1,14 +1,20 @@
 <template>
-  <div>
+  <div class="video-downloa-page">
     <a-page-header title="视频提取" @back="onBack"> </a-page-header>
     <div class="download-form">
-      <a-form :model="values" layout="vertical" ref="form" @submit="handleSubmit">
+      <a-form
+        :model="values"
+        layout="vertical"
+        ref="form"
+        :disabled="loading"
+        @submit="handleSubmit"
+      >
         <a-form-item
           field="url"
           label="链接"
           :rules="[{ required: true, message: '请输入抖音博主主页链接' }]"
         >
-          <a-input v-model="values.url" placeholder="请输入抖音博主主页链接" />
+          <a-textarea v-model="values.url" placeholder="请输入抖音博主主页链接" auto-size />
         </a-form-item>
         <a-form-item
           field="savePath"
@@ -21,30 +27,58 @@
           </div>
         </a-form-item>
         <a-form-item>
-          <a-button html-type="submit">开始提取</a-button>
+          <a-button html-type="submit" :loading="loading">{{
+            loading ? '提取中' : '开始提取'
+          }}</a-button>
         </a-form-item>
       </a-form>
+
+      <div class="progress-bar" v-if="loading">
+        <div>{{ progressData.msg }}</div>
+        <a-progress :percent="progressData.percent">
+          <template v-slot:text="scope"> {{ scope.percent * 100 }}% </template>
+        </a-progress>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { deepClone } from '@/utils'
-import { reactive, useTemplateRef } from 'vue'
+import { reactive, useTemplateRef, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { Message } from '@arco-design/web-vue'
 
 const form = useTemplateRef('form')
 
 const router = useRouter()
 
+const loading = ref(false)
+
 const values = reactive({
-  url: 'https://www.douyin.com/discover?modal_id=7501935378689969462',
-  savePath: '',
+  url: '3.00 ATl:/ 06/27 N@j.pq 我真不爱骂人，除非忍不住！ # 英雄联盟 # lol  https://v.douyin.com/f_gQK2ZS3xg/ 复制此链接，打开Dou音搜索，直接观看视频！',
+  savePath: '/Users/v_huyilin/Documents/dy/影视剪辑素材',
+})
+
+const progressData = reactive({
+  msg: '',
+  percent: 0,
 })
 
 const handleSubmit = async () => {
   await form.value.validate()
+
+  progressData.msg = ''
+
+  progressData.percent = 0
+
+  loading.value = true
+
   await window.electron.invoke('download', deepClone(values))
+
+  loading.value = false
+
+  Message.success('提取完成')
 }
 
 const handleOpenFolder = async () => {
@@ -55,15 +89,32 @@ const handleOpenFolder = async () => {
 const onBack = () => {
   router.back()
 }
+
+onMounted(async () => {
+  window.electron.on('download-progress', (event, data) => {
+    progressData.msg = data.msg
+    progressData.percent = data.percent
+  })
+})
 </script>
 
 <style lang="scss" scoped>
-.download-form {
-  padding: 15px 30px;
+.video-downloa-page {
+  .download-form {
+    padding: 15px 30px;
 
-  .save-path {
-    width: 100%;
+    .save-path {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .progress-bar {
+    padding: 15px 30px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
   }
