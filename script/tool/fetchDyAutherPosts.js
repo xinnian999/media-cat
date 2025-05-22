@@ -3,7 +3,7 @@ const { app } = require("electron");
 const path = require("path");
 
 module.exports = async ({ url, addBrowser }) => {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
   addBrowser(browser);
 
   const context = await browser.newContext({
