@@ -26,12 +26,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { deepClone } from '@/utils'
 import { reactive, useTemplateRef, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Message } from '@arco-design/web-vue'
-
+import dayjs from 'dayjs'
 const form = useTemplateRef('form')
 
 const router = useRouter()
@@ -39,7 +39,7 @@ const router = useRouter()
 const loading = ref(false)
 
 const values = reactive({
-  url: 'https://www.douyin.com/user/MS4wLjABAAAAbiKQaCZ6amzyUroBELXH15J0xfDFEWMwkpgnpLhdh7E?from_tab_name=main',
+  url: 'https://www.douyin.com/user/MS4wLjABAAAAdWO3vnAe7PchdNcPcvBKw1JUZh18LlOMQJSI1HcCqas?from_tab_name=main',
   savePath: '/Users/v_huyilin/Documents/dy/影视剪辑素材',
 })
 
@@ -47,8 +47,6 @@ const progressData = reactive({
   msg: '',
   percent: 0,
 })
-
-
 
 const handleCancel = () => {
   window.electron.invoke('stop')
@@ -68,16 +66,22 @@ const columns = [
     dataIndex: 'desc',
   },
   {
-    title: 'Salary',
-    dataIndex: 'salary',
+    title: '点赞量',
+    dataIndex: 'digg_count',
+    width: 120,
+    render: ({ record }) => {
+      const count = record.statistics.digg_count
+      return count > 10000 ? `${(count / 10000).toFixed(1)}w` : count
+    },
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
+    title: '时长',
+    dataIndex: 'duration',
+    width: 120,
+    render: ({ record }) => {
+      const duration = record.duration
+      return dayjs(duration).format('mm:ss')
+    },
   },
 ]
 
@@ -91,8 +95,9 @@ const handleSubmit = async () => {
   loading.value = true
 
   const res = await window.electron.invoke('fetchDyAutherPosts', deepClone(values))
-
+  console.log(res)
   data.value = res
+
   loading.value = false
 
   Message.success('提取完成')
