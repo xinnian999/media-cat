@@ -1,21 +1,29 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 const path = require("path");
-const { writeJson } = require("../utils");
+const writeJson = require("@utils/writeJson");
 const { randomUUID } = require("crypto");
 const dayjs = require("dayjs");
 
 module.exports = async ({ url, addBrowser }) => {
+  // const browser = await chromium.launch({ headless: false, devtools: true });
   const browser = await chromium.launch({ headless: true });
+
   addBrowser(browser);
 
   const context = await browser.newContext({
-    storageState: path.join(app.getPath("userData"), "cache/storageState/douyin.json"),
+    storageState: path.join(
+      app.getPath("userData"),
+      "cache/storageState/douyin.json"
+    ),
   });
   const page = await context.newPage();
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
+  const profile = {};
+
   const awemeList = [];
+
   const collectedAwemeIds = new Set();
 
   // 监听 /aweme/post 响应，去重收集数据
@@ -36,6 +44,11 @@ module.exports = async ({ url, addBrowser }) => {
       } catch (e) {
         console.warn("解析失败:", e.message);
       }
+    }
+
+    if (response.url().includes("/user/profile")) {
+      const json = await response.json();
+      Object.assign(profile, json.user);
     }
   });
 
@@ -61,20 +74,20 @@ module.exports = async ({ url, addBrowser }) => {
     await page.waitForTimeout(2500);
   }
 
-  // writeJson("cache/dyAutherPosts.json", (source) => {
-  //   const newData = {
-  //     list: awemeList,
-  //     title: '',
-  //     id: randomUUID(),
-  //     createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-  //   };
+  writeJson("cache/dyAutherPosts.json", (source) => {
+    const newData = {
+      ...profile,
+      awemeList,
+      id: randomUUID(),
+      createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+    };
 
-  //   if (source.list) {
-  //     return { list: [newData, ...source.list] };
-  //   }
+    if (source.list) {
+      return { list: [newData, ...source.list] };
+    }
 
-  //   return { list: [newData] };
-  // });
+    return { list: [newData] };
+  });
 
   return awemeList;
 };

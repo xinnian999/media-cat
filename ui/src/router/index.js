@@ -67,10 +67,16 @@ const routes = [
     component: () => import('../views/Tool/DyAutherBatchDownload/index.vue'),
   },
   {
+    path: '/tool/dyAutherBatchDownload/add',
+    name: 'dyAutherBatchDownloadAdd',
+    component: () => import('../views/Tool/DyAutherBatchDownload/Add.vue'),
+  },
+  {
     path: '/tool/findHttp',
     name: 'findHttp',
     component: () => import('../views/Tool/FindHttp.vue'),
   },
+  
 ]
 
 const router = createRouter({

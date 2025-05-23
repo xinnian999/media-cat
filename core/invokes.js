@@ -118,6 +118,9 @@ module.exports = (win) => {
         },
       });
     },
+    dyAutherPosts: () => {
+      return readJson("cache/dyAutherPosts.json");
+    },
     findHttp: async (e, data) => {
       const findHttp = require("@script/tool/findHttp");
       return await findHttp({
