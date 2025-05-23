@@ -14,6 +14,7 @@
 <script setup>
 import videoDownload from '@/assets/tools/video-download.jpeg'
 import dyUserDownload from '@/assets/tools/dy-user-download.jpeg'
+import findHttp from '@/assets/tools/findHttp.png'
 import { useRouter } from 'vue-router'
 
 const tools = [
@@ -24,8 +25,13 @@ const tools = [
   },
   {
     title: '抖音博主全视频提取',
-    path: '/tool/dyAutherDownload',
+    path: '/tool/dyAutherBatchDownload',
     icon: dyUserDownload,
+  },
+  {
+    title: '查找http',
+    path: '/tool/findHttp',
+    icon: findHttp,
   },
 ]
 
@@ -52,11 +58,15 @@ const handleClick = (path) => {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    gap: 5px;
+    gap: 10px;
 
     .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       img {
-        width: 100%;
+        width: 80%;
       }
     }
 

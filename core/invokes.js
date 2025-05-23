@@ -118,6 +118,13 @@ module.exports = (win) => {
         },
       });
     },
+    findHttp: async (e, data) => {
+      const findHttp = require("@script/tool/findHttp");
+      return await findHttp({
+        url: data.url,
+        keyword: data.keyword,
+      });
+    },
   };
 
   Object.keys(handles).forEach((key) => {

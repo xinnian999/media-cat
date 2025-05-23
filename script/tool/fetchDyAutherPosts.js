@@ -1,6 +1,9 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 const path = require("path");
+const { writeJson } = require("../utils");
+const { randomUUID } = require("crypto");
+const dayjs = require("dayjs");
 
 module.exports = async ({ url, addBrowser }) => {
   const browser = await chromium.launch({ headless: true });
@@ -57,6 +60,21 @@ module.exports = async ({ url, addBrowser }) => {
 
     await page.waitForTimeout(2500);
   }
+
+  // writeJson("cache/dyAutherPosts.json", (source) => {
+  //   const newData = {
+  //     list: awemeList,
+  //     title: '',
+  //     id: randomUUID(),
+  //     createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+  //   };
+
+  //   if (source.list) {
+  //     return { list: [newData, ...source.list] };
+  //   }
+
+  //   return { list: [newData] };
+  // });
 
   return awemeList;
 };

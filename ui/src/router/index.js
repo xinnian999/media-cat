@@ -62,9 +62,14 @@ const routes = [
     component: () => import('../views/Tool/VideoDownlad.vue'),
   },
   {
-    path: '/tool/dyAutherDownload',
-    name: 'dyAutherDownload',
-    component: () => import('../views/Tool/DyAutherDownload.vue'),
+    path: '/tool/dyAutherBatchDownload',
+    name: 'dyAutherBatchDownload',
+    component: () => import('../views/Tool/DyAutherBatchDownload/index.vue'),
+  },
+  {
+    path: '/tool/findHttp',
+    name: 'findHttp',
+    component: () => import('../views/Tool/FindHttp.vue'),
   },
 ]
 
