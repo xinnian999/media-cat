@@ -2,6 +2,12 @@
   <a-page-header title="抖音博主全视频提取" @back="onBack"> </a-page-header>
 
   <div class="main">
+    <div class="save-path">
+      <a-input v-model="savePath" />
+      <a-button class="change-btn" type="text" size="mini" @click="handleOpenFolder"
+        >更换位置</a-button
+      >
+    </div>
     <div class="add">
       <a-textarea v-model="url" placeholder="请输入抖音博主主页链接" auto-size rows="5" />
 
@@ -16,10 +22,13 @@
     </div>
 
     <a-list class="list">
-      <a-list-item v-for="item in dyAutherPosts" :key="item.id" class="list-item" @click="onItemClick(item)">
-        <a-list-item-meta
-          :title="item.nickname"
-        >
+      <a-list-item
+        v-for="item in dyAutherPosts"
+        :key="item.id"
+        class="list-item"
+        @click="onItemClick(item)"
+      >
+        <a-list-item-meta :title="item.nickname">
           <template #avatar>
             <a-avatar shape="square">
               <img alt="avatar" :src="item.avatar" />
@@ -28,9 +37,7 @@
 
           <template #description>
             <a-space>
-              <a-tag color="blue">
-                {{ item.aweme_count }}个视频
-              </a-tag>
+              <a-tag color="blue"> {{ item.aweme_count }}个视频 </a-tag>
               <a-tag color="green">
                 {{
                   item.follower_count < 10000
@@ -54,6 +61,8 @@ import { useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue'
 
 const router = useRouter()
+
+const savePath = ref('')
 
 const url = ref('')
 
@@ -82,12 +91,33 @@ const onItemClick = (item) => {
   router.push(`/tool/dyAutherBatchDownload/detail?id=${item.id}`)
 }
 
-onMounted(refreshList)
+const handleOpenFolder = async () => {
+  const path = await window.electron.invoke('dialog:openFolder')
+  savePath.value = path
+}
+
+onMounted(async () => {
+  refreshList()
+  const defaultDownloadPath = await window.electron.invoke('defaultDownloadPath')
+  savePath.value = defaultDownloadPath
+})
 </script>
 
 <style lang="scss" scoped>
 .main {
   padding: 0 20px;
+
+  .save-path {
+    margin-bottom: 20px;
+    position: relative;
+
+    .change-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 
   .add {
     display: flex;
@@ -107,7 +137,7 @@ onMounted(refreshList)
       cursor: pointer;
       &:hover {
         background-color: #f0f0f0;
-      } 
+      }
     }
   }
 }

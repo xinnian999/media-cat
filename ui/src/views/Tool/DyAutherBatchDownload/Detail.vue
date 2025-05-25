@@ -87,11 +87,6 @@ const dyAutherData = computed(() => {
   ]
 })
 
-const progressData = reactive({
-  msg: '',
-  percent: 0,
-})
-
 const onBack = () => {
   router.back()
 }
@@ -122,10 +117,6 @@ const columns = [
 ]
 
 onMounted(async () => {
-  window.electron.on('download-progress', (event, data) => {
-    progressData.msg = data.msg
-    progressData.percent = data.percent
-  })
 
   refreshDyAuther()
 })

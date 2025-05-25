@@ -1,4 +1,4 @@
-const { dialog, ipcMain } = require("electron");
+const { dialog, ipcMain, app } = require("electron");
 
 const readJson = require("@utils/readJson");
 
@@ -14,6 +14,9 @@ const browsers = [];
 
 module.exports = (win) => {
   const handles = {
+    defaultDownloadPath: () => {
+      return app.getPath("downloads");
+    },
     "dialog:openFile": async () => {
       const result = await dialog.showOpenDialog(win, {
         properties: ["openFile"],
