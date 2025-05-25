@@ -5,7 +5,7 @@ const writeJson = require("@utils/writeJson");
 const { randomUUID } = require("crypto");
 const dayjs = require("dayjs");
 
-module.exports = async ({ url, addBrowser }) => {
+module.exports = async ({ autherUrl, addBrowser }) => {
   // const browser = await chromium.launch({ headless: false, devtools: true });
   const browser = await chromium.launch({ headless: true });
 
@@ -18,7 +18,7 @@ module.exports = async ({ url, addBrowser }) => {
     ),
   });
   const page = await context.newPage();
-  await page.goto(url, { waitUntil: "domcontentloaded" });
+  await page.goto(autherUrl, { waitUntil: "domcontentloaded" });
 
   const profile = {};
 
@@ -74,20 +74,18 @@ module.exports = async ({ url, addBrowser }) => {
     await page.waitForTimeout(2500);
   }
 
-  writeJson("cache/dyAutherPosts.json", (source) => {
-    const newData = {
-      ...profile,
-      awemeList,
-      id: randomUUID(),
-      createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-    };
+  writeJson("cache/dyAuthers.json", (source) => {
+    const list = source.list.map((item) => {
+      if (item.autherUrl === autherUrl) {
+        return {
+          ...item,
+          ...profile,
+          awemeList,
+        };
+      }
+      return item;
+    });
 
-    if (source.list) {
-      return { list: [newData, ...source.list] };
-    }
-
-    return { list: [newData] };
+    return { list };
   });
-
-  return awemeList;
 };

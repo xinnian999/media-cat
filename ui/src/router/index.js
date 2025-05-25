@@ -67,9 +67,9 @@ const routes = [
     component: () => import('../views/Tool/DyAutherBatchDownload/index.vue'),
   },
   {
-    path: '/tool/dyAutherBatchDownload/add',
-    name: 'dyAutherBatchDownloadAdd',
-    component: () => import('../views/Tool/DyAutherBatchDownload/Add.vue'),
+    path: '/tool/dyAutherBatchDownload/detail',
+    name: 'dyAutherBatchDownloadDetail',
+    component: () => import('../views/Tool/DyAutherBatchDownload/Detail.vue'),
   },
   {
     path: '/tool/findHttp',

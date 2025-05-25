@@ -109,10 +109,30 @@ module.exports = (win) => {
         },
       });
     },
-    fetchDyAutherPosts: async (e, data) => {
-      const fetchDyAutherPosts = require("@script/tool/fetchDyAutherPosts");
-      return await fetchDyAutherPosts({
-        url: data.url,
+    dyAuthers: () => {
+      return readJson("cache/dyAuthers.json");
+    },
+    getDyAuther: async (e, id) => {
+      const dyAuthers = readJson("cache/dyAuthers.json");
+      const dyAuther = dyAuthers.list.find((item) => item.id === id);
+      if (dyAuther) {
+        return dyAuther;
+      }
+      return null;
+    },
+    addDyAuther: async (e, autherUrl) => {
+      const addDyAuther = require("@script/tool/addDyAuther");
+      return await addDyAuther({
+        autherUrl,
+        addBrowser: (browser) => {
+          browsers.push(browser);
+        },
+      });
+    },
+    updateDyAuther: async (e, autherUrl) => {
+      const updateDyAuther = require("@script/tool/updateDyAuther");
+      return await updateDyAuther({
+        autherUrl,
         addBrowser: (browser) => {
           browsers.push(browser);
         },

@@ -10,6 +10,8 @@ const invokes = require("./core/invokes");
 
 const isDev = !app.isPackaged;
 
+console.log(app.getPath("userData"));
+
 async function createWindow() {
   const win = new BrowserWindow({
     width: 800,
