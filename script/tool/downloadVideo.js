@@ -1,7 +1,13 @@
 const { chromium } = require("playwright");
 const path = require("path");
 
-module.exports = async ({ url, savePath, send, addBrowser }) => {
+module.exports = async ({
+  url,
+  filename = Date.now(),
+  savePath,
+  send,
+  addBrowser,
+}) => {
   const browser = await chromium.launch({
     headless: true,
   });
@@ -57,7 +63,7 @@ module.exports = async ({ url, savePath, send, addBrowser }) => {
     page,
   });
 
-  const outputPath = path.join(savePath, `${Date.now()}.mp4`);
+  const outputPath = path.join(savePath, `${filename}.mp4`);
   await download.saveAs(outputPath); // ✅ 直接保存到目标目录
 
   await send({

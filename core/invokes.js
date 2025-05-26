@@ -31,6 +31,10 @@ module.exports = (win) => {
 
       return result.filePaths[0]; // 返回选择的文件路径
     },
+    openFile: async (e, path) => {
+      const { shell } = require("electron");
+      shell.showItemInFolder(path);
+    },
     bindAccount: async (e, plat) => {
       const bind = require(`@script/bind/${plat}`);
       await bind();
@@ -101,8 +105,7 @@ module.exports = (win) => {
       console.log(data);
       const downloadVideo = require("@script/tool/downloadVideo");
       await downloadVideo({
-        url: data.url,
-        savePath: data.savePath,
+        ...data,
         send: async ({ page, ...rest }) => {
           e.sender.send("download-progress", rest);
           await log(page, rest.msg);
@@ -141,6 +144,13 @@ module.exports = (win) => {
         },
       });
     },
+    deleteDyAuther: async (e, id) => {
+      const dyAuthers = readJson("cache/dyAuthers.json");
+      const newDyAuthers = dyAuthers.list.filter((item) => item.id !== id);
+      writeJson("cache/dyAuthers.json", () => {
+        return { list: newDyAuthers };
+      });
+    },
     dyAutherPosts: () => {
       return readJson("cache/dyAutherPosts.json");
     },
@@ -150,6 +160,11 @@ module.exports = (win) => {
         url: data.url,
         keyword: data.keyword,
       });
+    },
+    readDirNames: async (e, path) => {
+      const fs = require("fs");
+      const dirNames = fs.readdirSync(path);
+      return dirNames;
     },
   };
 

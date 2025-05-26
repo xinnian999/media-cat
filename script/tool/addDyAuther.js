@@ -33,6 +33,7 @@ module.exports = async ({ autherUrl, addBrowser }) => {
     total_favorited: user.total_favorited,
     id: randomUUID(),
     createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+    savePath: `${app.getPath("downloads")}/dyAuthers/${user.nickname}`,
   };
 
   writeJson("cache/dyAuthers.json", (source) => {

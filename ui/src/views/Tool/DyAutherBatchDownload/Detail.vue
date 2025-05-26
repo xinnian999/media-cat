@@ -27,15 +27,25 @@
           </a-descriptions-item>
         </a-descriptions>
       </a-card>
+
+      <div class="save-path">
+        <a-input v-model="dyAuther.savePath" readonly />
+        <a-button class="change-btn" type="text" size="mini" @click="handleOpenFolder"
+          >更换保存位置</a-button
+        >
+      </div>
       <a-table :columns="columns" :data="dyAuther.awemeList" />
     </div>
   </div>
 </template>
 
 <script setup lang="jsx">
-import { reactive, ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import dayjs from 'dayjs'
+import { useStore } from '@/store'
+
+const store = useStore()
 
 const router = useRouter()
 
@@ -47,10 +57,13 @@ const dyAuther = ref({})
 
 const loading = ref(false)
 
+// const downloading = ref([])
+
+const dirNames = ref([])
+
 const refreshDyAuther = async () => {
   dyAuther.value = await window.electron.invoke('getDyAuther', id)
-
-  console.log(dyAuther.value)
+  dirNames.value = await window.electron.invoke('readDirNames', dyAuther.value.savePath)
 }
 
 const onUpdate = async () => {
@@ -91,7 +104,7 @@ const onBack = () => {
   router.back()
 }
 
-const columns = [
+const columns = computed(() => [
   {
     title: '作品描述',
     dataIndex: 'desc',
@@ -114,10 +127,69 @@ const columns = [
       return dayjs(duration).format('mm:ss')
     },
   },
-]
+  {
+    title: '操作',
+    dataIndex: 'action',
+    width: 120,
+    render: ({ record }) => {
+      // console.log(record)
+
+      const digg_count = record.statistics.digg_count
+
+      const digg_count_parse =
+        digg_count > 10000 ? `${(digg_count / 10000).toFixed(1)}w` : digg_count
+
+      const filename = `${record.desc.split('#')[0]}__${record.aweme_id}__${digg_count_parse}.mp4`
+
+      const isDownloading = store.downloading.includes(record.aweme_id)
+
+      if (dirNames.value.some((names) => names.includes(record.aweme_id))) {
+        return (
+          <a-button
+            type="primary"
+            size="mini"
+            status="success"
+            onClick={() => {
+              window.electron.invoke('openFile', `${dyAuther.value.savePath}/${filename}.mp4`)
+            }}
+          >
+            打开文件位置
+          </a-button>
+        )
+      }
+
+      return (
+        <a-button
+          type="primary"
+          size="mini"
+          loading={isDownloading}
+          onClick={async () => {
+            store.addDownloading(record.aweme_id)
+            await window.electron.invoke('download', {
+              url: `https://www.douyin.com/video/${record.aweme_id}`,
+              savePath: dyAuther.value.savePath,
+              filename,
+            })
+            store.removeDownloading(record.aweme_id)
+            refreshDyAuther()
+          }}
+        >
+          {isDownloading ? '下载中' : '下载'}
+        </a-button>
+      )
+    },
+  },
+])
+
+const handleOpenFolder = async () => {
+  const path = await window.electron.invoke('dialog:openFolder')
+
+  if (path) {
+    savePath.value = path
+  }
+}
 
 onMounted(async () => {
-
   refreshDyAuther()
 })
 </script>
@@ -157,6 +229,18 @@ onMounted(async () => {
         border-spacing: 10px;
         border-collapse: separate;
       }
+    }
+  }
+
+  .save-path {
+    margin-bottom: 20px;
+    position: relative;
+
+    .change-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }

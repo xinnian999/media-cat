@@ -2,12 +2,6 @@
   <a-page-header title="抖音博主全视频提取" @back="onBack"> </a-page-header>
 
   <div class="main">
-    <div class="save-path">
-      <a-input v-model="savePath" />
-      <a-button class="change-btn" type="text" size="mini" @click="handleOpenFolder"
-        >更换位置</a-button
-      >
-    </div>
     <div class="add">
       <a-textarea v-model="url" placeholder="请输入抖音博主主页链接" auto-size rows="5" />
 
@@ -49,7 +43,11 @@
           </template>
         </a-list-item-meta>
         <template #actions>
-          <icon-delete />
+          <a-popconfirm content="确定删除?" @ok="onDelete(item)">
+            <a-button status="danger" @click.stop>
+              <icon-delete />
+            </a-button>
+          </a-popconfirm>
         </template>
       </a-list-item>
     </a-list>
@@ -61,8 +59,6 @@ import { useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue'
 
 const router = useRouter()
-
-const savePath = ref('')
 
 const url = ref('')
 
@@ -91,33 +87,19 @@ const onItemClick = (item) => {
   router.push(`/tool/dyAutherBatchDownload/detail?id=${item.id}`)
 }
 
-const handleOpenFolder = async () => {
-  const path = await window.electron.invoke('dialog:openFolder')
-  savePath.value = path
+const onDelete = async (item) => {
+  await window.electron.invoke('deleteDyAuther', item.id)
+  refreshList()
 }
 
 onMounted(async () => {
   refreshList()
-  const defaultDownloadPath = await window.electron.invoke('defaultDownloadPath')
-  savePath.value = defaultDownloadPath
 })
 </script>
 
 <style lang="scss" scoped>
 .main {
   padding: 0 20px;
-
-  .save-path {
-    margin-bottom: 20px;
-    position: relative;
-
-    .change-btn {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
 
   .add {
     display: flex;
