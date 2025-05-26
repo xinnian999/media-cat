@@ -63,18 +63,22 @@ module.exports = async ({
     page,
   });
 
-  const outputPath = path.join(savePath, `${filename}.mp4`);
-  await download.saveAs(outputPath); // ✅ 直接保存到目标目录
+  try {
+    const outputPath = path.join(savePath, `${filename}.mp4`);
+    await download.saveAs(outputPath); // ✅ 直接保存到目标目录
 
-  await send({
-    msg: "下载完成",
-    percent: 1,
-    page,
-  });
+    await send({
+      msg: "下载完成",
+      percent: 1,
+      page,
+    });
 
-  console.log("✅ 下载完成:", outputPath);
+    console.log("✅ 下载完成:", outputPath);
 
-  await page.waitForTimeout(1000);
+    await page.waitForTimeout(1000);
+  } catch (error) {
+    console.log('❌ download error', error);
+  }
 
   await browser.close();
 };

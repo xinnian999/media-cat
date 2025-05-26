@@ -37,7 +37,11 @@
 
       <div class="post-table-header">
         <b>共{{ dyAuther.awemeList?.length || 0 }}个作品</b>
-        <a-button type="primary" size="mini" @click="handleDownloadAll"
+        <a-button
+          type="primary"
+          size="mini"
+          :loading="downloadAllLoading"
+          @click="handleDownloadAll"
           ><template #icon>
             <icon-download />
           </template>
@@ -134,6 +138,20 @@ const downloadPost = async (record) => {
   refreshDyAuther()
 }
 
+const handleDownloadAll = async () => {
+  const awemeList = dyAuther.value.awemeList
+
+  const prepareList = awemeList.filter(
+    (item) => !dirNames.value.some((name) => name.includes(item.aweme_id)),
+  )
+
+  downloadAllLoading.value = true
+  for (const item of prepareList) {
+    await downloadPost(item)
+  }
+  downloadAllLoading.value = false
+}
+
 const columns = computed(() => [
   {
     title: '作品描述',
@@ -210,18 +228,6 @@ const handleOpenFolder = async () => {
   if (path) {
     savePath.value = path
   }
-}
-
-const handleDownloadAll = async () => {
-  const awemeList = dyAuther.value.awemeList
-
-  const prepareList = awemeList.filter((item) => !dirNames.value.some((name) => name.includes(item.aweme_id)))
-
-  downloadAllLoading.value = true
-  for (const item of prepareList) {
-    await downloadPost(item)
-  }
-  downloadAllLoading.value = false
 }
 
 onMounted(async () => {
