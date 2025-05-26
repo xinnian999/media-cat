@@ -57,6 +57,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue'
+import { Message } from '@arco-design/web-vue'
 
 const router = useRouter()
 
@@ -77,10 +78,16 @@ const onBack = () => {
 
 const onAdd = async () => {
   loading.value = true
-  await window.electron.invoke('addDyAuther', url.value)
-  url.value = ''
-  loading.value = false
-  refreshList()
+
+  try {
+    await window.electron.invoke('addDyAuther', url.value)
+    url.value = ''
+    refreshList()
+  } catch{
+    Message.error('链接不合法，请重新输入')
+  } finally {
+    loading.value = false
+  }
 }
 
 const onItemClick = (item) => {

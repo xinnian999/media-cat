@@ -2,11 +2,8 @@ const { chromium } = require("playwright");
 const { app } = require("electron");
 const path = require("path");
 const writeJson = require("@utils/writeJson");
-const { randomUUID } = require("crypto");
-const dayjs = require("dayjs");
 
 module.exports = async ({ autherUrl, addBrowser }) => {
-  // const browser = await chromium.launch({ headless: false, devtools: true });
   const browser = await chromium.launch({ headless: true });
 
   addBrowser(browser);
@@ -58,7 +55,9 @@ module.exports = async ({ autherUrl, addBrowser }) => {
   // 自动滚动局部容器
   const scrollSelector = ".route-scroll-container"; // ✅ 根据实际页面调整
 
-  for (let i = 0; i < 10; i++) {
+  const scrollCount = Math.ceil(profile.aweme_count / 18);
+
+  for (let i = 0; i < scrollCount; i++) {
     const hasContainer = await page.$(scrollSelector);
     if (!hasContainer) {
       throw new Error(`找不到可滚动容器: ${scrollSelector}`);

@@ -4,6 +4,10 @@ import { defineStore } from 'pinia'
 export const useStore = defineStore('globals', () => {
   const downloading = ref([])
 
+  function setDownloading(ids) {
+    downloading.value = ids
+  }
+
   function addDownloading(id) {
     downloading.value.push(id)
   }
@@ -12,5 +16,5 @@ export const useStore = defineStore('globals', () => {
     downloading.value = downloading.value.filter((item) => item !== id)
   }
 
-  return { downloading, addDownloading, removeDownloading }
+  return { downloading, addDownloading, removeDownloading, setDownloading }
 })

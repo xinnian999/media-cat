@@ -1,6 +1,6 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
-const path = require("path");
+const fs = require("fs");
 const writeJson = require("@utils/writeJson");
 const { randomUUID } = require("crypto");
 const dayjs = require("dayjs");
@@ -17,12 +17,18 @@ module.exports = async ({ autherUrl, addBrowser }) => {
 
   const response = await page.waitForResponse(
     (res) => res.url().includes("/user/profile"),
-    { timeout: 0 }
+    { timeout: 10000 }
   );
 
   const { user } = await response.json();
 
   //   console.log(user);
+
+  const savePath = `${app.getPath("downloads")}/dyAuthers/${user.nickname}`;
+
+  if (!fs.existsSync(savePath)) {
+    fs.mkdirSync(savePath, { recursive: true });
+  }
 
   const profile = {
     autherUrl,
@@ -33,7 +39,7 @@ module.exports = async ({ autherUrl, addBrowser }) => {
     total_favorited: user.total_favorited,
     id: randomUUID(),
     createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-    savePath: `${app.getPath("downloads")}/dyAuthers/${user.nickname}`,
+    savePath,
   };
 
   writeJson("cache/dyAuthers.json", (source) => {

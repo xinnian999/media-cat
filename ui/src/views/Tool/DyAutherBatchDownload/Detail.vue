@@ -34,7 +34,21 @@
           >更换保存位置</a-button
         >
       </div>
-      <a-table :columns="columns" :data="dyAuther.awemeList" />
+
+      <div class="post-table-header">
+        <b>共{{ dyAuther.awemeList?.length || 0 }}个作品</b>
+        <a-button type="primary" size="mini" @click="handleDownloadAll"
+          ><template #icon>
+            <icon-download />
+          </template>
+          全部下载</a-button
+        >
+      </div>
+      <a-table
+        :columns="columns"
+        :data="dyAuther.awemeList"
+        :pagination="{ 'show-page-size': true, 'page-size-options': [10, 100, 500, 1000, 10000] }"
+      />
     </div>
   </div>
 </template>
@@ -57,7 +71,7 @@ const dyAuther = ref({})
 
 const loading = ref(false)
 
-// const downloading = ref([])
+const downloadAllLoading = ref(false)
 
 const dirNames = ref([])
 
@@ -102,6 +116,22 @@ const dyAutherData = computed(() => {
 
 const onBack = () => {
   router.back()
+}
+
+const downloadPost = async (record) => {
+  const { aweme_id, desc, statistics } = record
+
+  store.addDownloading(aweme_id)
+
+  const filename = `${desc.split('#')[0]}__${aweme_id}__${statistics.digg_count}.mp4`
+
+  await window.electron.invoke('download', {
+    url: `https://www.douyin.com/video/${aweme_id}`,
+    savePath: dyAuther.value.savePath,
+    filename,
+  })
+  store.removeDownloading(aweme_id)
+  refreshDyAuther()
 }
 
 const columns = computed(() => [
@@ -164,14 +194,7 @@ const columns = computed(() => [
           size="mini"
           loading={isDownloading}
           onClick={async () => {
-            store.addDownloading(record.aweme_id)
-            await window.electron.invoke('download', {
-              url: `https://www.douyin.com/video/${record.aweme_id}`,
-              savePath: dyAuther.value.savePath,
-              filename,
-            })
-            store.removeDownloading(record.aweme_id)
-            refreshDyAuther()
+            await downloadPost(record)
           }}
         >
           {isDownloading ? '下载中' : '下载'}
@@ -189,8 +212,23 @@ const handleOpenFolder = async () => {
   }
 }
 
+const handleDownloadAll = async () => {
+  const awemeList = dyAuther.value.awemeList
+
+  const prepareList = awemeList.filter((item) => !dirNames.value.some((name) => name.includes(item.aweme_id)))
+
+  downloadAllLoading.value = true
+  for (const item of prepareList) {
+    await downloadPost(item)
+  }
+  downloadAllLoading.value = false
+}
+
 onMounted(async () => {
-  refreshDyAuther()
+  await refreshDyAuther()
+  if (!dyAuther.value.awemeList) {
+    onUpdate()
+  }
 })
 </script>
 
@@ -242,6 +280,13 @@ onMounted(async () => {
       top: 50%;
       transform: translateY(-50%);
     }
+  }
+
+  .post-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
   }
 }
 </style>

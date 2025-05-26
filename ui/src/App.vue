@@ -21,6 +21,7 @@
     <a-layout class="layout-right">
       <a-layout-content class="layout-right-content">
         <router-view />
+        <a-back-top target-container=".layout-right-content" :style="{position:'fixed'}" />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -97,6 +98,7 @@ const onClickMenuItem = (key) => {
       background: #fff;
       padding: 10px;
       overflow: auto;
+      position: relative;
     }
   }
 }
