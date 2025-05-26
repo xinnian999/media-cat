@@ -62,6 +62,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import dayjs from 'dayjs'
 import { useStore } from '@/store'
+import pLimit from 'p-limit'
 
 const store = useStore()
 
@@ -122,17 +123,23 @@ const onBack = () => {
   router.back()
 }
 
-const downloadPost = async (record) => {
+const getFilename = (record) => {
   const { aweme_id, desc, statistics } = record
+  const filename = `${statistics.digg_count}__${desc.split('#')[0].slice(0, 15)}__${aweme_id}`
+  return filename
+}
+
+const downloadPost = async (record) => {
+  const { aweme_id } = record
 
   store.addDownloading(aweme_id)
 
-  const filename = `${desc.split('#')[0]}__${aweme_id}__${statistics.digg_count}.mp4`
+  // const filename = `${desc.split('#')[0]}__${aweme_id}__${statistics.digg_count}`
 
   await window.electron.invoke('download', {
     url: `https://www.douyin.com/video/${aweme_id}`,
     savePath: dyAuther.value.savePath,
-    filename,
+    filename: getFilename(record),
   })
   store.removeDownloading(aweme_id)
   refreshDyAuther()
@@ -145,10 +152,12 @@ const handleDownloadAll = async () => {
     (item) => !dirNames.value.some((name) => name.includes(item.aweme_id)),
   )
 
+  const limit = pLimit(3) // 最多并发 3 个任务
+
   downloadAllLoading.value = true
-  for (const item of prepareList) {
-    await downloadPost(item)
-  }
+
+  await Promise.all(prepareList.map((item) => limit(() => downloadPost(item))))
+
   downloadAllLoading.value = false
 }
 
@@ -182,13 +191,6 @@ const columns = computed(() => [
     render: ({ record }) => {
       // console.log(record)
 
-      const digg_count = record.statistics.digg_count
-
-      const digg_count_parse =
-        digg_count > 10000 ? `${(digg_count / 10000).toFixed(1)}w` : digg_count
-
-      const filename = `${record.desc.split('#')[0]}__${record.aweme_id}__${digg_count_parse}.mp4`
-
       const isDownloading = store.downloading.includes(record.aweme_id)
 
       if (dirNames.value.some((names) => names.includes(record.aweme_id))) {
@@ -198,7 +200,10 @@ const columns = computed(() => [
             size="mini"
             status="success"
             onClick={() => {
-              window.electron.invoke('openFile', `${dyAuther.value.savePath}/${filename}.mp4`)
+              window.electron.invoke(
+                'openFile',
+                `${dyAuther.value.savePath}/${getFilename(record)}.mp4`,
+              )
             }}
           >
             打开文件位置

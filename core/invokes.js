@@ -33,6 +33,7 @@ module.exports = (win) => {
     },
     openFile: async (e, path) => {
       const { shell } = require("electron");
+      console.log(path);
       shell.showItemInFolder(path);
     },
     bindAccount: async (e, plat) => {

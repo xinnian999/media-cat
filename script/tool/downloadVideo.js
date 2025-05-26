@@ -26,44 +26,43 @@ module.exports = async ({
     page,
   });
 
-  await page.goto("https://tiktokio.com/zh/");
-  await page.locator(".tiktok-url").fill(url);
-  await page.click("#search-btn");
-
-  await send({
-    msg: "解析视频链接",
-    percent: 0.4,
-    page,
-  });
-
-  const downloadBtn = await page.waitForSelector(
-    'a:has-text("Download without watermark")',
-    {
-      timeout: 0,
-    }
-  );
-
-  await send({
-    msg: "解析成功，开始下载",
-    percent: 0.6,
-    page,
-  });
-
-  const [download] = await Promise.all([
-    page.waitForEvent("download"),
-    downloadBtn.click(),
-  ]);
-
-  const finalDownloadUrl = download.url();
-  console.log("✅ 获取到真实下载链接:", finalDownloadUrl);
-
-  await send({
-    msg: "正在下载",
-    percent: 0.7,
-    page,
-  });
-
   try {
+    await page.goto("https://tiktokio.com/zh/");
+    await page.locator(".tiktok-url").fill(url);
+    await page.click("#search-btn");
+
+    await send({
+      msg: "解析视频链接",
+      percent: 0.4,
+      page,
+    });
+
+    const downloadBtn = await page.waitForSelector(
+      'a:has-text("Download without watermark")',
+      {
+        timeout: 15000,
+      }
+    );
+
+    await send({
+      msg: "解析成功，开始下载",
+      percent: 0.6,
+      page,
+    });
+
+    const [download] = await Promise.all([
+      page.waitForEvent("download"),
+      downloadBtn.click(),
+    ]);
+
+    const finalDownloadUrl = download.url();
+    console.log("✅ 获取到真实下载链接:", finalDownloadUrl);
+
+    await send({
+      msg: "正在下载",
+      percent: 0.7,
+      page,
+    });
     const outputPath = path.join(savePath, `${filename}.mp4`);
     await download.saveAs(outputPath); // ✅ 直接保存到目标目录
 
@@ -77,7 +76,7 @@ module.exports = async ({
 
     await page.waitForTimeout(1000);
   } catch (error) {
-    console.log('❌ download error', error);
+    console.log("❌ download error", error);
   }
 
   await browser.close();
