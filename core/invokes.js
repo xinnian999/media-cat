@@ -82,20 +82,7 @@ module.exports = (win) => {
     profile: () => {
       return readJson("cache/profile.json");
     },
-    updateProfile: async () => {
-      let profile = readJson("cache/profile.json");
-
-      const updates = Object.keys(profile).map(async (key) => {
-        const update = require(`@script/update/${key}`);
-        await update();
-      });
-
-      await Promise.all(updates);
-
-      profile = readJson("cache/profile.json");
-
-      return profile;
-    },
+    updateProfile: require("@script/updateProfile"),
     downloadVideo: require("@script/tool/downloadVideo"),
     dyAuthers: () => {
       return readJson("cache/dyAuthers.json");

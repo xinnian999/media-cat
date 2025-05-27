@@ -20,23 +20,24 @@ const usePlatforms = () => {
       })
   }
 
+  const refreshPlatforms = async () => {
+    const profile = await window.electron.invoke('profile')
+    platforms.value = parseByProfile(profile)
+  }
+
   const updatePlatforms = async () => {
     updateing.value = true
-    
-    const lastestProfile = await window.electron.invoke('updateProfile')
 
-    platforms.value = parseByProfile(lastestProfile)
+    await window.electron.invoke('updateProfile')
+
+    refreshPlatforms()
 
     updateing.value = false
   }
 
-  onMounted(async () => {
-    const profile = await window.electron.invoke('profile')
+  onMounted(refreshPlatforms)
 
-    platforms.value = parseByProfile(profile)
-  })
-
-  return { platforms, updateing, update: updatePlatforms }
+  return { platforms, updateing, update: updatePlatforms, refreshPlatforms }
 }
 
 export default usePlatforms

@@ -12,8 +12,6 @@ const bindXiaohongshu = async () => {
 
   const page = await context.newPage();
 
-  await page.goto("https://creator.xiaohongshu.com/");
-
   // 更新 profileData
   await updateProfile(page);
 

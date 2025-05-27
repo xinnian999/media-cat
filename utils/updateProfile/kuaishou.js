@@ -1,6 +1,15 @@
 const writeJson = require("@utils/writeJson");
 
-module.exports = async (response) => {
+module.exports = async (page) => {
+  await page.evaluate(() => {
+    window.location.href = "https://creator.kuaishou.com/";
+  });
+
+  // 等待请求用户信息，代表登录成功
+  const response = await page.waitForResponse((res) =>
+    res.url().includes("/rest/cp/creator/pc/home/userInfo")
+  );
+
   const {
     data: { coreUserInfo: info },
   } = await response.json();

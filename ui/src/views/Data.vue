@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a-tabs default-active-key="douyin">
+    <a-tabs default-active-key="douyin" @change="refreshPlatforms">
       <a-tab-pane v-for="plat in platforms" :title="plat.label" :key="plat.platform">
-        <div v-if="updateing" class="updateing"><a-spin /> 数据更新中</div>
+        <!-- <div v-if="updateing" class="updateing"><a-spin /> 数据更新中</div> -->
         <div class="data-content">
           <div class="data-item" v-for="item in items" :key="item.value">
             <div class="data-item-label">{{ item.label }}</div>
@@ -18,9 +18,9 @@
 
 <script setup lang="jsx">
 import usePlatforms from '@/hooks/usePlatforms'
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 
-const { platforms, updateing, update } = usePlatforms()
+const { platforms, update, refreshPlatforms } = usePlatforms()
 
 const items = [
   {
@@ -50,6 +50,10 @@ const items = [
 ]
 
 onMounted(update)
+
+onUnmounted(() => {
+  window.electron.invoke('stop', 'updateProfile')
+})
 </script>
 
 <style lang="scss">

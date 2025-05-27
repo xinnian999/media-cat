@@ -1,6 +1,16 @@
 const writeJson = require("@utils/writeJson");
 
-module.exports = async (response) => {
+module.exports = async (page) => {
+  await page.evaluate(() => {
+    window.location.href = "https://creator.douyin.com/";
+  });
+
+  // 等待请求用户信息，代表登录成功
+  const response = await page.waitForResponse(
+    (res) => res.url().includes("/aweme/v1/creator/user/info/"),
+    { timeout: 0 }
+  );
+
   const { douyin_user_verify_info: info } = await response.json();
 
   // 更新 profileData
