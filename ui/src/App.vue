@@ -3,7 +3,7 @@
     <div class="drag-bar"></div>
 
     <a-layout-sider class="layout-left" style="width: 180px;">
-      <div class="logo">自媒体神器</div>
+      <div class="logo">​​媒力猫</div>
       <a-menu
         class="menus"
         :default-selected-keys="['/']"

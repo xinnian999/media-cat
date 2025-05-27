@@ -3,9 +3,8 @@
     <a-page-header title="发布视频" @back="onBack"> </a-page-header>
     <a-form
       :model="form"
-      :label-col-props="{ span: 6 }"
-      :wrapper-col-props="{ span: 18 }"
       class="play-form"
+      layout="vertical"
       @submit-success="handleSubmit"
     >
       <a-form-item
@@ -245,7 +244,9 @@ const handleSubmit = async () => {
 }
 
 .play-form {
-  width: 90%;
+  // width: 90%;
   margin-top: 10px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 </style>

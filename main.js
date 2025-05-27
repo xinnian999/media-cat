@@ -14,8 +14,8 @@ console.log(app.getPath("userData"));
 
 async function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 700,
     frame: false, // 隐藏默认标题栏
     titleBarStyle: "hidden", // macOS 专用（Windows/Linux 不生效）
     trafficLightPosition: { x: 10, y: 10 }, // 控制 macOS 红黄绿按钮位置

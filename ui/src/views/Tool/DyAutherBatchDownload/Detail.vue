@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="jsx">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import dayjs from 'dayjs'
 import { useStore } from '@/store'
@@ -266,6 +266,10 @@ onMounted(async () => {
   if (!dyAuther.value.awemeList) {
     onUpdate()
   }
+})
+
+onUnmounted(() => {
+  handleStopDownloadAll()
 })
 </script>
 
