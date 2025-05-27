@@ -6,7 +6,7 @@ const userDataDir = app.getPath("userData"); // 安全可写
 
 // 绑定账户
 const bindDouyin = async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true });  
 
   const context = await browser.newContext({
     storageState: `${userDataDir}/cache/storageState/douyin.json`,

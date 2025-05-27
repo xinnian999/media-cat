@@ -1,18 +1,13 @@
 const { chromium } = require("playwright");
 const path = require("path");
+const log = require("@utils/log");
 
-module.exports = async ({
-  url,
-  filename = Date.now(),
-  savePath,
-  send,
-  addBrowser,
-}) => {
+module.exports = async (e, { url, filename = Date.now(), savePath }) => {
   const browser = await chromium.launch({
     headless: true,
   });
 
-  addBrowser(browser);
+  global.addBrowser("downloadVideo", browser);
 
   const context = await browser.newContext({
     acceptDownloads: true,
@@ -20,22 +15,19 @@ module.exports = async ({
 
   const page = await context.newPage();
 
-  await send({
-    msg: "开始提取",
-    percent: 0.2,
-    page,
-  });
+  const send = async (msg, percent) => {
+    e.sender.send("download-progress", { msg, percent });
+    await log(page, msg);
+  };
+
+  await send("开始提取", 0.2);
 
   try {
     await page.goto("https://tiktokio.com/zh/");
     await page.locator(".tiktok-url").fill(url);
     await page.click("#search-btn");
 
-    await send({
-      msg: "解析视频链接",
-      percent: 0.4,
-      page,
-    });
+    await send("解析视频链接", 0.4);
 
     const downloadBtn = await page.waitForSelector(
       'a:has-text("Download without watermark")',
@@ -44,11 +36,7 @@ module.exports = async ({
       }
     );
 
-    await send({
-      msg: "解析成功，开始下载",
-      percent: 0.6,
-      page,
-    });
+    await send("解析成功，开始下载", 0.6);
 
     const [download] = await Promise.all([
       page.waitForEvent("download"),
@@ -58,26 +46,22 @@ module.exports = async ({
     const finalDownloadUrl = download.url();
     console.log("✅ 获取到真实下载链接:", finalDownloadUrl);
 
-    await send({
-      msg: "正在下载",
-      percent: 0.7,
-      page,
-    });
+    await send("正在下载", 0.7);
+
     const outputPath = path.join(savePath, `${filename}.mp4`);
+
     await download.saveAs(outputPath); // ✅ 直接保存到目标目录
 
-    await send({
-      msg: "下载完成",
-      percent: 1,
-      page,
-    });
+    await send("下载完成", 1);
 
     console.log("✅ 下载完成:", outputPath);
 
     await page.waitForTimeout(1000);
   } catch (error) {
-    console.log("❌ download error", error);
-  }
+    await send(`下载出错: ${error.message}`, 1);
 
-  await browser.close();
+    throw error;
+  } finally {
+    await global.clearBrowser("downloadVideo");
+  }
 };

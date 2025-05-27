@@ -40,6 +40,17 @@ async function createWindow() {
     }
   });
 
+  Object.assign(global, {
+    browsers: {},
+    addBrowser: (name, browser) => {
+      global.browsers[name] = browser;
+    },
+    clearBrowser: async (name) => {
+      await global.browsers[name].close();
+      delete global.browsers[name];
+    },
+  });
+
   invokes(win);
 }
 

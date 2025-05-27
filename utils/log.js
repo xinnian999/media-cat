@@ -1,5 +1,5 @@
 const log = async (page, msg) => {
-  console.log(msg);
+  console.log('\x1b[32m%s\x1b[0m', msg);
 
   await page.evaluate((msg) => {
     const id = "__my_logger__";

@@ -52,7 +52,7 @@ const router = useRouter()
 const loading = ref(false)
 
 const values = reactive({
-  url: '',
+  url: 'https://www.douyin.com/user/MS4wLjABAAAAK0PTUpXF-EOGhnysbv1YYbEk5aVJjkTOXIpBNgENHK8?from_tab_name=main&modal_id=7493588401447308553',
   savePath: '',
 })
 
@@ -70,15 +70,18 @@ const handleSubmit = async () => {
 
   loading.value = true
 
-  await window.electron.invoke('download', deepClone(values))
-
-  loading.value = false
-
-  Message.success('提取完成')
+  try {
+    await window.electron.invoke('downloadVideo', deepClone(values))
+    Message.success('提取完成')
+  } catch {
+    Message.error('提取失败')
+  } finally {
+    loading.value = false
+  }
 }
 
 const handleCancel = () => {
-  window.electron.invoke('stop')
+  window.electron.invoke('stop', 'downloadVideo')
   loading.value = false
   Message.warning('取消提取')
 }

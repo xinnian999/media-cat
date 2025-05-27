@@ -33,7 +33,6 @@ module.exports = (win) => {
     },
     openFile: async (e, path) => {
       const { shell } = require("electron");
-      console.log(path);
       shell.showItemInFolder(path);
     },
     bindAccount: async (e, plat) => {
@@ -97,25 +96,7 @@ module.exports = (win) => {
 
       return profile;
     },
-    stop: () => {
-      browsers.forEach((browser) => {
-        browser.close();
-      });
-    },
-    download: async (e, data) => {
-      console.log(data);
-      const downloadVideo = require("@script/tool/downloadVideo");
-      await downloadVideo({
-        ...data,
-        send: async ({ page, ...rest }) => {
-          e.sender.send("download-progress", rest);
-          await log(page, rest.msg);
-        },
-        addBrowser: (browser) => {
-          browsers.push(browser);
-        },
-      });
-    },
+    downloadVideo: require("@script/tool/downloadVideo"),
     dyAuthers: () => {
       return readJson("cache/dyAuthers.json");
     },
@@ -166,6 +147,9 @@ module.exports = (win) => {
       const fs = require("fs");
       const dirNames = fs.readdirSync(path);
       return dirNames;
+    },
+    stop: async (e, name) => {
+      await global.clearBrowser(name);
     },
   };
 

@@ -149,7 +149,7 @@ const downloadPost = async (record) => {
 
   store.addDownloading(aweme_id)
 
-  await window.electron.invoke('download', {
+  await window.electron.invoke('downloadVideo', {
     url: `https://www.douyin.com/video/${aweme_id}`,
     savePath: dyAuther.value.savePath,
     filename: getFilename(record),
