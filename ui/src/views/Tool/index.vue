@@ -1,25 +1,24 @@
 <template>
-  <a-divider orientation="center" style="margin-bottom: 35px">小工具</a-divider>
+  <div class="tool-page">
+    <a-divider orientation="center" style="margin-bottom: 35px">小工具</a-divider>
 
-  <a-list>
-    <a-list-item v-for="tool in tools" :key="tool.title">
-      <a-list-item-meta
-      
-        :description="tool.description"
-      >
-        <template #avatar>
-          <icon-font :type="tool.icon" :size="32" />
-        </template>
-        <template #title>
-          <div class="tool-title" @click="handleClick(tool.path)">{{ tool.title }}</div>
-        </template>
-      </a-list-item-meta>
+    <a-list>
+      <a-list-item v-for="tool in tools" :key="tool.title">
+        <a-list-item-meta :description="tool.description">
+          <template #avatar>
+            <icon-font :type="tool.icon" :size="32" />
+          </template>
+          <template #title>
+            <div class="tool-title" @click="handleClick(tool.path)">{{ tool.title }}</div>
+          </template>
+        </a-list-item-meta>
 
-      <template #actions>
-        <a-button type="primary" size="mini" @click="handleClick(tool.path)"> 使用 </a-button>
-      </template>
-    </a-list-item>
-  </a-list>
+        <template #actions>
+          <a-button type="primary" size="mini" @click="handleClick(tool.path)"> 使用 </a-button>
+        </template>
+      </a-list-item>
+    </a-list>
+  </div>
 </template>
 
 <script setup>
@@ -54,6 +53,9 @@ const handleClick = (path) => {
 </script>
 
 <style lang="scss" scoped>
+.tool-page {
+  padding: 15px;
+}
 .tool-title {
   cursor: pointer;
 

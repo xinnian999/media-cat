@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="data-page">
     <a-tabs default-active-key="douyin" @change="refreshPlatforms">
       <a-tab-pane v-for="plat in platforms" :title="plat.label" :key="plat.platform">
         <!-- <div v-if="updateing" class="updateing"><a-spin /> 数据更新中</div> -->
@@ -57,6 +57,10 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
+.data-page {
+  padding: 15px;
+}
+
 .updateing {
   display: flex;
   align-items: center;

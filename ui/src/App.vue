@@ -3,7 +3,10 @@
     <div class="drag-bar"></div>
 
     <a-layout-sider class="layout-left" style="width: 180px;">
-      <div class="logo">​​媒力猫</div>
+      <div class="logo">
+        <icon-font type="icon-jumao" :size="24" />
+        <span>媒力猫</span>
+      </div>
       <a-menu
         class="menus"
         :default-selected-keys="['/']"
@@ -70,6 +73,7 @@ const onClickMenuItem = (key) => {
       font-weight: 600;
       color: #511fe8;
       border-radius: 10px;
+      gap: 5px;
     }
 
     .menus {
@@ -96,7 +100,7 @@ const onClickMenuItem = (key) => {
     .layout-right-content{
       border-radius: 10px;
       background: #fff;
-      padding: 10px;
+      // padding: 10px;
       overflow: auto;
       position: relative;
     }

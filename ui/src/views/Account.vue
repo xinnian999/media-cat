@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="account-page">
     <a-divider orientation="center" style="margin-bottom: 35px">账号管理</a-divider>
 
     <div class="account-list">
@@ -55,6 +55,9 @@ onMounted(refreshProfile)
 </script>
 
 <style lang="scss">
+.account-page{
+  padding: 15px;
+}
 .account-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
