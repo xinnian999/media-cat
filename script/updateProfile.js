@@ -2,7 +2,7 @@ const { chromium } = require("playwright");
 const getMergeStorageState = require("@utils/getMergeStorageState");
 const readJson = require("@utils/readJson");
 
-const updateProfile = async () => {
+module.exports = async () => {
   const browser = await chromium.launch({ headless: true });
 
   global.addBrowser("updateProfile", browser);
@@ -27,5 +27,3 @@ const updateProfile = async () => {
 
   await global.clearBrowser("updateProfile");
 };
-
-module.exports = updateProfile;

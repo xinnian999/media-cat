@@ -35,10 +35,7 @@ module.exports = (win) => {
       const { shell } = require("electron");
       shell.showItemInFolder(path);
     },
-    bindAccount: async (e, plat) => {
-      const bind = require(`@script/bind/${plat}`);
-      await bind();
-    },
+    bindAccount: require("@script/bindAccout"),
     play: async (e, data) => {
       const scripts = data.platforms.map(async (plat) => {
         const script = require(`@script/play/${plat}`);
