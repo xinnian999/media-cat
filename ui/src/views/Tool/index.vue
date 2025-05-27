@@ -1,37 +1,48 @@
 <template>
   <a-divider orientation="center" style="margin-bottom: 35px">小工具</a-divider>
 
-  <div class="tool-list">
-    <div class="tool-item" v-for="tool in tools" :key="tool.name" @click="handleClick(tool.path)">
-      <div class="icon">
-        <img :src="tool.icon" alt="icon" />
-      </div>
-      <div>{{ tool.title }}</div>
-    </div>
-  </div>
+  <a-list>
+    <a-list-item v-for="tool in tools" :key="tool.title">
+      <a-list-item-meta
+      
+        :description="tool.description"
+      >
+        <template #avatar>
+          <icon-font :type="tool.icon" :size="32" />
+        </template>
+        <template #title>
+          <div class="tool-title" @click="handleClick(tool.path)">{{ tool.title }}</div>
+        </template>
+      </a-list-item-meta>
+
+      <template #actions>
+        <a-button type="primary" size="mini" @click="handleClick(tool.path)"> 使用 </a-button>
+      </template>
+    </a-list-item>
+  </a-list>
 </template>
 
 <script setup>
-import videoDownload from '@/assets/tools/video-download.jpeg'
-import dyUserDownload from '@/assets/tools/dy-user-download.jpeg'
-import findHttp from '@/assets/tools/findHttp.png'
 import { useRouter } from 'vue-router'
 
 const tools = [
   {
     title: '视频提取',
     path: '/tool/videoDownlad',
-    icon: videoDownload,
+    icon: 'icon-shipintiqu',
+    description: '根据视频链接，提取出最高画质的视频文件，支持绝大多数平台',
   },
   {
     title: '抖音博主全视频提取',
     path: '/tool/dyAutherBatchDownload',
-    icon: dyUserDownload,
+    icon: 'icon-douyin',
+    description: '根据抖音博主主页链接，提取出所有作品，并批量下载到本地',
   },
   {
     title: '查找http',
     path: '/tool/findHttp',
-    icon: findHttp,
+    icon: 'icon-http',
+    description: '输入网站链接和关键词。查找该网站中包含该关键词的http响应，便于开发',
   },
 ]
 
@@ -43,37 +54,11 @@ const handleClick = (path) => {
 </script>
 
 <style lang="scss" scoped>
-.tool-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
+.tool-title {
+  cursor: pointer;
 
-  .tool-item {
-    width: 150px;
-    // height: 100px;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    gap: 10px;
-
-    .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 80%;
-      }
-    }
-
-    &:hover {
-      background-color: #f0f0f0;
-      cursor: pointer;
-    }
+  &:hover {
+    color: #647ef0;
   }
 }
 </style>
