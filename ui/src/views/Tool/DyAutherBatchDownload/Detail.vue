@@ -37,6 +37,8 @@
 
       <div class="post-table-header">
         <b>共{{ dyAuther.awemeList?.length || 0 }}个作品</b>
+
+        <a-space>
         <a-button
           type="primary"
           size="mini"
@@ -47,6 +49,13 @@
           </template>
           全部下载</a-button
         >
+        <a-button v-if="downloadAllLoading" size="mini" @click="handleStopDownloadAll"
+          ><template #icon>
+            <icon-stop />
+          </template>
+          停止</a-button
+        >
+      </a-space>
       </div>
       <a-table
         :columns="columns"
@@ -125,7 +134,13 @@ const onBack = () => {
 
 const getFilename = (record) => {
   const { aweme_id, desc, statistics } = record
-  const filename = `${statistics.digg_count}__${desc.split('#')[0].slice(0, 15)}__${aweme_id}`
+
+  const digg_count =
+    statistics.digg_count > 10000
+      ? `${(statistics.digg_count / 10000).toFixed(1).replace('.0', '')}w`
+      : statistics.digg_count
+
+  const filename = `${desc.split('#')[0].slice(0, 15)}_${aweme_id}_${digg_count}`
   return filename
 }
 
@@ -133,8 +148,6 @@ const downloadPost = async (record) => {
   const { aweme_id } = record
 
   store.addDownloading(aweme_id)
-
-  // const filename = `${desc.split('#')[0]}__${aweme_id}__${statistics.digg_count}`
 
   await window.electron.invoke('download', {
     url: `https://www.douyin.com/video/${aweme_id}`,
@@ -156,8 +169,21 @@ const handleDownloadAll = async () => {
 
   downloadAllLoading.value = true
 
-  await Promise.all(prepareList.map((item) => limit(() => downloadPost(item))))
+  await Promise.all(
+    prepareList.map((item) =>
+      limit(() => {
+        if (!downloadAllLoading.value) {
+          return
+        }
+        return downloadPost(item)
+      }),
+    ),
+  )
 
+  downloadAllLoading.value = false
+}
+
+const handleStopDownloadAll = () => {
   downloadAllLoading.value = false
 }
 
