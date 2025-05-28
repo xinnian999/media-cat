@@ -4,25 +4,32 @@
     <div class="bar">
       <div class="welcome-box">
         <div class="welcome">🎉 {{ period }}好！</div>
-        <div class="day">今天是你使用媒力猫的第<span class="day-count">{{ day }}</span>天</div>
+        <div class="day">
+          今天是你使用媒力猫的第<span class="day-count">{{ day }}</span
+          >天
+        </div>
       </div>
     </div>
 
     <div class="bar">
-        <div class="bar-title">
-            数据概览
+      <div class="bar-title">数据概览</div>
+      <div class="summary">
+        <div class="summary-item" v-for="item in summary" :key="item.title">
+          <div class="summary-item-title">{{ item.title }}</div>
+          <div class="summary-item-value">{{ item.value }}</div>
         </div>
-        <div class="bar-content">
-            
-        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import usePlatforms from '@/hooks/usePlatforms'
 
 const day = ref(1)
+
+const { platforms } = usePlatforms()
 
 const period = computed(() => {
   const hour = new Date().getHours()
@@ -32,6 +39,27 @@ const period = computed(() => {
   return '晚上'
 })
 
+const summary = computed(() => {
+  console.log(platforms.value)
+  return [
+    {
+      title: '已绑定平台数',
+      value: platforms.value.length,
+    },
+    {
+      title: '总粉丝数',
+      value: platforms.value.reduce((acc, item) => acc + item.follower_count, 0),
+    },
+    {
+      title: '总获赞量',
+      value: platforms.value.reduce((acc, item) => acc + item.total_favorited, 0),
+    },
+    {
+      title: '总播放量',
+      value: 21311221,
+    },
+  ]
+})
 </script>
 
 <style lang="scss" scoped>
@@ -75,6 +103,33 @@ const period = computed(() => {
         color: #511fe8;
         font-weight: 700;
         padding: 0 5px;
+      }
+    }
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+
+    .summary-item {
+      background-color: #f8f8f9;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+
+      .summary-item-title {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .summary-item-value {
+        font-size: 20px;
+        font-weight: 700;
       }
     }
   }

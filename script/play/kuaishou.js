@@ -1,10 +1,10 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 
-const kuaishou = async (params) => {
+module.exports = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
-  params.addBrowser(browser)
+  global.addBrowser("kuaishou", browser);
 
   const context = await browser.newContext({
     storageState: `${app.getPath("userData")}/cache/storageState/kuaishou.json`,
@@ -131,7 +131,5 @@ const kuaishou = async (params) => {
     page,
   });
 
-  await browser.close();
+  await global.clearBrowser("kuaishou");
 };
-
-module.exports = kuaishou;

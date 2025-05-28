@@ -2,17 +2,21 @@ require("module-alias/register");
 
 const { app, BrowserWindow, globalShortcut } = require("electron");
 
+const onBeforeSendHeaders = require("@core/onBeforeSendHeaders");
+
+const invokes = require("@core/invokes");
+
 const path = require("path");
 
 const startUi = require("./utils/startUi");
 
-const invokes = require("./core/invokes");
-
 const isDev = !app.isPackaged;
 
-console.log(app.getPath("userData"));
+console.log("缓存位置：", app.getPath("userData"));
 
 async function createWindow() {
+  onBeforeSendHeaders();
+
   const win = new BrowserWindow({
     width: 1000,
     height: 700,

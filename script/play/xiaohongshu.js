@@ -1,10 +1,10 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 
-const xiaohongshu = async (params) => {
+module.exports = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
 
-  params.addBrowser(browser);
+  global.addBrowser("xiaohongshu", browser);
 
   const context = await browser.newContext({
     storageState: `${app.getPath("userData")}/cache/storageState/xiaohongshu.json`,
@@ -126,7 +126,5 @@ const xiaohongshu = async (params) => {
     page,
   });
 
-  await browser.close();
+  await global.clearBrowser("xiaohongshu");
 };
-
-module.exports = xiaohongshu;

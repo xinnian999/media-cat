@@ -1,4 +1,5 @@
 const { chromium } = require("playwright");
+const { app } = require("electron");
 
 module.exports = async (e, platform) => {
   const browser = await chromium.launch({ headless: false });
@@ -14,6 +15,10 @@ module.exports = async (e, platform) => {
   const update = require(`@utils/updateProfile/${platform}`);
 
   await update(page);
+
+  await context.storageState({
+    path: `${app.getPath("userData")}/cache/storageState/${platform}.json`,
+  });
 
   await global.clearBrowser("bindAccout");
 };

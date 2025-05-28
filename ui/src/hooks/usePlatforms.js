@@ -22,6 +22,7 @@ const usePlatforms = () => {
 
   const refreshPlatforms = async () => {
     const profile = await window.electron.invoke('profile')
+
     platforms.value = parseByProfile(profile)
   }
 

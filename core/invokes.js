@@ -48,10 +48,7 @@ module.exports = (win) => {
             });
             await log(page, rest.msg);
             await page.waitForTimeout(3000);
-          },
-          addBrowser: (browser) => {
-            browsers.push(browser);
-          },
+          }
         };
 
         return await script(params);
