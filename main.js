@@ -45,6 +45,7 @@ async function createWindow() {
   });
 
   Object.assign(global, {
+    win,
     browsers: {},
     addBrowser: (name, browser) => {
       global.browsers[name] = browser;

@@ -21,9 +21,9 @@
         <video class="video-upload" :src="`file://${form.url}`" controls v-else></video>
       </a-form-item>
 
-      <a-form-item field="title" label="视频标题">
+      <!-- <a-form-item field="title" label="视频标题">
         <a-input v-model="form.title" placeholder="请输入视频标题" />
-      </a-form-item>
+      </a-form-item> -->
 
       <a-form-item
         field="desc"
@@ -106,7 +106,7 @@ import usePlatforms from '@/hooks/usePlatforms'
 const form = reactive({
   url: '',
   desc: '搞笑视频',
-  tags: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
+  tags: [{ value: '搞笑' }, { value: '娱乐' }, { value: '看完不笑算我数' }],
   platforms: [],
   imitate: true,
   observe: true,

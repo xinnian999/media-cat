@@ -10,7 +10,7 @@
         >
           <a-textarea v-model="values.url" placeholder="请输入抖音博主主页链接" auto-size />
         </a-form-item>
-        <a-form-item
+        <!-- <a-form-item
           field="savePath"
           label="保存至"
           :rules="[{ required: true, message: '请输入保存路径' }]"
@@ -19,7 +19,7 @@
             <a-input v-model="values.savePath" placeholder="请输入保存路径" />
             <a-button type="primary" @click="handleOpenFolder">选择路径</a-button>
           </div>
-        </a-form-item>
+        </a-form-item> -->
       </a-form>
 
       <div class="button-group">
