@@ -3,10 +3,17 @@ const writeJson = require("@utils/writeJson");
 module.exports = async (page) => {
   const infoDatas = [];
 
+  let statData = {};
+
   page.on("response", async (response) => {
     if (response.url().includes("/web-interface/nav")) {
       const data = await response.json();
       infoDatas.push(data.data);
+    }
+
+    if (response.url().includes("/data/index/stat")) {
+      const data = await response.json();
+      statData = data.data;
     }
   });
 
@@ -26,9 +33,10 @@ module.exports = async (page) => {
         nickname: info.uname,
         avatar: info.face,
         uid: info.mid,
-        follower_count: 0,
+        follower_count: statData.total_fans,
         following_count: 0,
-        total_favorited: 0,
+        total_favorited: statData.total_like,
+        total_play: statData.total_click,
       },
     };
   });

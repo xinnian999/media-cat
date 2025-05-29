@@ -100,7 +100,9 @@ module.exports = async (params) => {
       percent: 1,
       page,
     });
-    // await browser.close();
+
+    await global.clearBrowser("bilibili");
+
     return;
   }
 
@@ -121,4 +123,6 @@ module.exports = async (params) => {
     percent: 1,
     page,
   });
+
+  await global.clearBrowser("bilibili");
 };

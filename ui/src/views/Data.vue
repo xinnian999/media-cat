@@ -40,12 +40,16 @@ const items = [
     render: (record) => <span>{record.follower_count}</span>,
   },
   {
-    label: '关注数',
-    render: (record) => <span>{record.following_count}</span>,
-  },
-  {
     label: '获赞数',
     render: (record) => <span>{record.total_favorited}</span>,
+  },
+  {
+    label: '总收入',
+    render: (record) => <span>0</span>,
+  },
+  {
+    label: '可提现余额',
+    render: (record) => <span>0</span>,
   },
 ]
 

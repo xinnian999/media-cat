@@ -30,6 +30,7 @@ module.exports = async (page) => {
         uid: info.userId,
         follower_count: info.fansNum,
         total_favorited: info2.likeCnt,
+        total_play: 0,
       },
     };
   });

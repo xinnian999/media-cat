@@ -24,6 +24,7 @@ module.exports = async (page) => {
         follower_count: info.fans_count,
         following_count: info.follow_count,
         total_favorited: info.faved_count,
+        total_play: 0,
       },
     };
   });
