@@ -26,7 +26,7 @@ module.exports = async (params) => {
     page,
   });
 
-  await page.waitForSelector('a:has-text("发布笔记")', {
+  await page.waitForSelector('.publish-video .btn', {
     timeout: 0, // 无限等待
   });
 
@@ -76,6 +76,7 @@ module.exports = async (params) => {
           timeout: 0, // 无限等待
         });
         await page.keyboard.press("Enter");
+        await page.waitForTimeout(2000);
       }
     }
     await runSerially();
@@ -99,7 +100,7 @@ module.exports = async (params) => {
       percent: 1,
       page,
     });
-    // await browser.close();
+    await global.clearBrowser("xiaohongshu");
     return;
   }
 
