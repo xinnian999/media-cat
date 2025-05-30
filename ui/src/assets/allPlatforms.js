@@ -2,6 +2,7 @@ import douyin from './ico/douyin.ico'
 import kuaishou from './ico/kuaishou.ico'
 import xiaohongshu from './ico/xiaohongshu.ico'
 import bilibili from './ico/bilibili.ico'
+import shipinhao from './ico/shipinhao.ico'
 
 const platforms = [
   {
@@ -19,11 +20,11 @@ const platforms = [
     icon: xiaohongshu,
     platform: 'xiaohongshu',
   },
-  // {
-  //   label: '视频号',
-  //   icon: shipinhao,
-  //   platform: 'shipinhao',
-  // },
+  {
+    label: '视频号',
+    icon: shipinhao,
+    platform: 'shipinhao',
+  },
   {
     label: 'B站',
     icon: bilibili,

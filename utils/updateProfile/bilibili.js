@@ -24,6 +24,8 @@ module.exports = async (page) => {
 
   await page.waitForSelector("div:has-text('投稿')", { timeout: 0 });
 
+  await page.waitForSelector("div:has-text('粉丝总数')", { timeout: 0 });
+
   const info = infoDatas.find((item) => item.isLogin);
 
   writeJson("cache/profile.json", (source) => {
