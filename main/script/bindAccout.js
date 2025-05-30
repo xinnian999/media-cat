@@ -20,5 +20,5 @@ module.exports = async (e, platform) => {
     path: `${app.getPath("userData")}/cache/storageState/${platform}.json`,
   });
 
-  await global.clearBrowser("bindAccout");
+  await global.removeBrowser("bindAccout");
 };

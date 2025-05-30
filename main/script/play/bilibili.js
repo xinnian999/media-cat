@@ -101,7 +101,7 @@ module.exports = async (params) => {
       page,
     });
 
-    await global.clearBrowser("bilibili");
+    await global.removeBrowser("bilibili");
 
     return;
   }
@@ -124,5 +124,5 @@ module.exports = async (params) => {
     page,
   });
 
-  await global.clearBrowser("bilibili");
+  await global.removeBrowser("bilibili");
 };

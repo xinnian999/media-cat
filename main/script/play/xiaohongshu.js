@@ -100,7 +100,7 @@ module.exports = async (params) => {
       percent: 1,
       page,
     });
-    await global.clearBrowser("xiaohongshu");
+    await global.removeBrowser("xiaohongshu");
     return;
   }
 
@@ -127,5 +127,5 @@ module.exports = async (params) => {
     page,
   });
 
-  await global.clearBrowser("xiaohongshu");
+  await global.removeBrowser("xiaohongshu");
 };

@@ -86,6 +86,6 @@ module.exports = async (e, { url, filename = Date.now(), savePath }) => {
 
     throw error;
   } finally {
-    await global.clearBrowser("downloadVideo");
+    await global.removeBrowser("downloadVideo");
   }
 };

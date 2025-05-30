@@ -125,5 +125,5 @@ module.exports = async (params) => {
     page,
   });
 
-  await global.clearBrowser("kuaishou");
+  await global.removeBrowser("kuaishou");
 };

@@ -131,7 +131,7 @@ module.exports = (win) => {
     },
     stop: async (e, name) => {
       console.log(name);
-      await global.clearBrowser(name);
+      await global.removeBrowser(name);
     },
   };
 

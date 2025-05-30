@@ -61,7 +61,7 @@ module.exports = async (params) => {
   // 如果 imitate 为 true，则不发布
   if (params.imitate) {
     await logger("抖音 -- 模拟流程完毕，跳过发布步骤", 1);
-    await browser.close();
+    await global.removeBrowser("douyin");
     return;
   }
 
@@ -75,5 +75,5 @@ module.exports = async (params) => {
 
   await logger("抖音发布成功！", 1);
 
-  await global.clearBrowser("douyin");
+  await global.removeBrowser("douyin");
 };

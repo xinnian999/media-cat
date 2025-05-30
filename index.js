@@ -53,7 +53,7 @@ async function createWindow() {
     addBrowser: (name, browser) => {
       global.browsers[name] = browser;
     },
-    clearBrowser: async (name) => {
+    removeBrowser: async (name) => {
       await global.browsers[name].close();
       delete global.browsers[name];
     },

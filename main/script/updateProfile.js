@@ -25,5 +25,5 @@ module.exports = async () => {
 
   await Promise.all(updates);
 
-  await global.clearBrowser("updateProfile");
+  await global.removeBrowser("updateProfile");
 };
