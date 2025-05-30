@@ -90,7 +90,9 @@ onMounted(async () => {
 })
 
 const onStop = async () => {
-  await window.electron.invoke('stop')
+  list.value.forEach((platform) => {
+    window.electron.invoke('stop', platform)
+  })
   stoped.value = true
 }
 

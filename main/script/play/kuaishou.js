@@ -20,12 +20,6 @@ module.exports = async (params) => {
     page,
   });
 
-  await params.send({
-    msg: "等待页面完全渲染",
-    percent: 0.2,
-    page,
-  });
-
   await page.waitForSelector('div:has-text("发布作品")', {
     timeout: 0, // 无限等待
   });

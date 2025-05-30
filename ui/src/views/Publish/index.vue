@@ -38,8 +38,9 @@
               />
             </div>
 
-            <div class="createTime">
-              {{ item.createTime }}
+            <div class="footer">
+              {{ item.createTime }} <a-tag color="green" v-if="item.observe">可视化</a-tag>
+              <a-tag color="blue" v-if="item.imitate">模拟发布</a-tag>
             </div>
           </div>
 
@@ -84,7 +85,6 @@ const handlePlay = async (data) => {
 
 onMounted(async () => {
   const publishLog = await window.electron.invoke('publishLog')
-
   list.value = publishLog.list
 })
 </script>
@@ -158,8 +158,11 @@ onMounted(async () => {
             }
           }
 
-          .createTime {
+          .footer {
             color: #999;
+            display: flex;
+            align-items: center;
+            gap: 5px;
           }
         }
 

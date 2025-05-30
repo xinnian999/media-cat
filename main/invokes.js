@@ -130,6 +130,7 @@ module.exports = (win) => {
       return dirNames;
     },
     stop: async (e, name) => {
+      console.log(name);
       await global.clearBrowser(name);
     },
   };

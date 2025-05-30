@@ -1,5 +1,6 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
+const createLogger = require("@/utils/createLogger");
 
 module.exports = async (params) => {
   const browser = await chromium.launch({ headless: !params.observe });
@@ -12,20 +13,17 @@ module.exports = async (params) => {
 
   const page = await context.newPage();
 
+  const logger = createLogger({
+    page,
+    sendFlag: "upload-progress",
+    sendExtra: {
+      platform: "douyin",
+    },
+  });
+
   await page.goto("https://creator.douyin.com/");
 
-  await params.send({
-    msg: "开始分发抖音",
-    percent: 0.1,
-    page,
-  });
-
-  await params.send({
-    msg: "等待页面完全渲染",
-    percent: 0.2,
-    page,
-  });
-
+  await logger("开始分发抖音", 0.1);
   await page.waitForSelector(
     ':is(button:has-text("发布视频"), button:has-text("高清发布"))',
     {
@@ -33,96 +31,49 @@ module.exports = async (params) => {
     }
   );
 
-  // 点击“发布视频”
-  await params.send({
-    msg: "点击“发布视频”按钮",
-    percent: 0.3,
-    page,
-  });
-  // await page.getByRole("button", { name: "发布视频" }).click();
+  await logger("点击“发布视频”按钮", 0.2);
   await page
     .locator(':is(button:has-text("发布视频"), button:has-text("高清发布"))')
     .click();
 
-  // 导入视频
-  await params.send({
-    msg: "导入视频",
-    percent: 0.4,
-    page,
-  });
+  await logger("导入视频", 0.4);
   await page.setInputFiles('input[type="file"]', params.url);
 
-  // 写入简介
-  await params.send({
-    msg: "写入简介",
-    percent: 0.5,
-    page,
-  });
+  await logger("写入简介", 0.5);
   await page.locator(".zone-container").click();
   await page.locator(".zone-container").fill(params.desc);
 
-  // 写入标签
-  await params.send({
-    msg: "写入标签",
-    percent: 0.6,
-    page,
-  });
+  await logger("写入标签", 0.6);
   const input = page.locator(".zone-container"); // 假设是 contenteditable 区域
   await input.click(); // 先 focus
-  async function runSerially() {
-    for (const tag of params.tags) {
-      await input.type(`#${tag} `);
-    }
+  for (const tag of params.tags) {
+    await input.type(`#${tag} `);
   }
-  await runSerially();
 
-  // 发布
-  await params.send({
-    msg: "等待视频导入完成",
-    percent: 0.7,
-    page,
-  });
+  await logger("等待视频导入完成", 0.7);
   await page.waitForSelector('div:has-text("重新上传")', {
     timeout: 0, // 无限等待
   });
 
-  await params.send({
-    msg: "视频导入完成！即将点击发布按钮",
-    percent: 0.8,
-    page,
-  });
+  await logger("视频导入完成！即将点击发布按钮", 0.8);
   await page.waitForTimeout(2000);
 
   // 如果 imitate 为 true，则不发布
   if (params.imitate) {
-    await params.send({
-      msg: "抖音 -- 模拟流程完毕，跳过发布步骤",
-      percent: 1,
-      page,
-    });
+    await logger("抖音 -- 模拟流程完毕，跳过发布步骤", 1);
     await browser.close();
     return;
   }
 
-  await params.send({
-    msg: "点击发布按钮，开始发布",
-    percent: 0.9,
-    page,
-  });
+  await logger("点击发布按钮，开始发布", 0.9);
   await page.getByRole("button", { name: "发布", exact: true }).click();
-
-  await page.waitForTimeout(3000); // 等待上传完成
 
   // 检验是否上传成功
   await page.waitForSelector('div:has-text("作品管理")', {
     timeout: 0, // 无限等待
   });
 
-  await params.send({
-    msg: "抖音发布成功！",
-    percent: 1,
-    page,
-  });
+  await logger("抖音发布成功！", 1);
 
   await global.clearBrowser("douyin");
 };
