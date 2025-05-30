@@ -106,7 +106,7 @@ import usePlatforms from '@/hooks/usePlatforms'
 const form = reactive({
   url: '',
   desc: '搞笑视频',
-  tags: [{ value: '搞笑' }, { value: '娱乐' }, { value: '看完不笑算我数' }],
+  tags: [{ value: '搞笑' }, { value: '娱乐' }, { value: '看完不笑算我输' }],
   platforms: [],
   imitate: true,
   observe: true,

@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import allPlatforms from '@/assets/allPlatforms'
 
 // 自动读取后台的 profile 数据，返回已绑定的平台数据
@@ -36,9 +36,9 @@ const usePlatforms = () => {
     updateing.value = false
   }
 
-  onMounted(refreshPlatforms)
+  onBeforeMount(refreshPlatforms)
 
-  return { platforms, updateing, update: updatePlatforms, refreshPlatforms }
+  return { platforms, updateing, updatePlatforms, refreshPlatforms }
 }
 
 export default usePlatforms

@@ -1,4 +1,8 @@
-require("module-alias/register");
+const path = require("path");
+
+const moduleAlias = require("module-alias");
+
+moduleAlias.addAlias("@", path.join(__dirname, "main"));
 
 const { app, BrowserWindow, globalShortcut } = require("electron");
 
@@ -6,7 +10,6 @@ const onBeforeSendHeaders = require("@/onBeforeSendHeaders");
 
 const invokes = require("@/invokes");
 
-const path = require("path");
 
 const startUi = require("@/utils/startUi");
 
@@ -24,7 +27,7 @@ async function createWindow() {
     titleBarStyle: "hidden", // macOS 专用（Windows/Linux 不生效）
     trafficLightPosition: { x: 10, y: 10 }, // 控制 macOS 红黄绿按钮位置
     webPreferences: {
-      preload: path.join(__dirname, "core/preload.js"),
+      preload: path.join(__dirname, "main/preload.js"),
       nodeIntegration: true, // 开启 Node.js 集成
       webSecurity: false, // 禁用 Web 安全策略，允许加载本地文件
     },

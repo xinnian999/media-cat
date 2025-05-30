@@ -1,6 +1,6 @@
 <template>
   <div class="data-page">
-    <a-tabs default-active-key="douyin" @change="refreshPlatforms">
+    <a-tabs v-model:activeKey="activeKey" @change="refreshPlatforms">
       <a-tab-pane v-for="plat in platforms" :title="plat.label" :key="plat.platform">
         <!-- <div v-if="updateing" class="updateing"><a-spin /> 数据更新中</div> -->
         <div class="data-content">
@@ -18,9 +18,11 @@
 
 <script setup lang="jsx">
 import usePlatforms from '@/hooks/usePlatforms'
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
-const { platforms, update, refreshPlatforms } = usePlatforms()
+const { platforms, updatePlatforms, refreshPlatforms } = usePlatforms()
+
+const activeKey = ref('douyin')
 
 const items = [
   {
@@ -44,16 +46,20 @@ const items = [
     render: (record) => <span>{record.total_favorited}</span>,
   },
   {
-    label: '总收入',
-    render: (record) => <span>0</span>,
-  },
-  {
     label: '可提现余额',
     render: (record) => <span>0</span>,
   },
 ]
 
-onMounted(update)
+onMounted(updatePlatforms)
+
+onMounted(() => {
+  updatePlatforms()
+
+  setTimeout(() => {
+    activeKey.value = platforms.value[0].platform
+  })
+})
 
 onUnmounted(() => {
   window.electron.invoke('stop', 'updateProfile')

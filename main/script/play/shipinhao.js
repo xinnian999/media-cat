@@ -2,17 +2,16 @@ const { chromium } = require("playwright");
 const { app } = require("electron");
 
 module.exports = async (params) => {
-  const browser = await chromium.launch({ headless: !params.observe });
+  const browser = await chromium.launch({
+    headless: !params.observe,
+    channel: "chrome",
+  });
 
-  params.addBrowser(browser);
+  global.addBrowser("shipinhao", browser);
 
   const context = await browser.newContext({
     storageState: `${app.getPath("userData")}/cache/storageState/shipinhao.json`,
   });
-
-  const storageState = await context.storageState();
-
-  console.log(storageState);
 
   const page = await context.newPage();
 
@@ -56,30 +55,19 @@ module.exports = async (params) => {
     percent: 0.5,
     page,
   });
-  await page.locator(".post-desc-box").fill(params.desc);
+  await page
+    .locator(".post-desc-box .input-editor")
+    .fill(
+      params.desc +
+        (params.tags.length > 0 ? ` #${params.tags.join(" #")}` : "")
+    );
 
-  // 写入标签
-  await params.send({
-    msg: "写入标签",
-    percent: 0.6,
-    page,
-  });
-  const input = page.locator(".zone-container"); // 假设是 contenteditable 区域
-  await input.click(); // 先 focus
-  async function runSerially() {
-    for (const tag of params.tags) {
-      await input.type(`#${tag} `);
-    }
-  }
-  await runSerially();
-
-  // 发布
   await params.send({
     msg: "等待视频导入完成",
     percent: 0.7,
     page,
   });
-  await page.waitForSelector('div:has-text("重新上传")', {
+  await page.waitForSelector('.tag-inner:has-text("删除")', {
     timeout: 0, // 无限等待
   });
 
@@ -93,11 +81,11 @@ module.exports = async (params) => {
   // 如果 imitate 为 true，则不发布
   if (params.imitate) {
     await params.send({
-      msg: "抖音 -- 模拟流程完毕，跳过发布步骤",
+      msg: "视频号 -- 模拟流程完毕，跳过发布步骤",
       percent: 1,
       page,
     });
-    await browser.close();
+    await global.removeBrowser("shipinhao");
     return;
   }
 
@@ -106,33 +94,20 @@ module.exports = async (params) => {
     percent: 0.9,
     page,
   });
-  await page.getByRole("button", { name: "发布", exact: true }).click();
+  await page.getByRole("button", { name: "发表", exact: true }).click();
 
-  await page.waitForTimeout(3000); // 等待上传完成
-
-  //可能会出现风控验证，需要手动处理
-  const hasVerify = await page
-    .locator('div:has-text("接收短信验证码")')
-    .isVisible();
-
-  if (hasVerify) {
-    await params.send({
-      msg: "出现风控验证，请手动处理",
-      percent: 0.9,
-      page,
-    });
-  }
+  await page.waitForTimeout(3000); // 等待发布完成
 
   // 检验是否上传成功
-  await page.waitForSelector('div:has-text("作品管理")', {
+  await page.waitForSelector('span:has-text("视频管理")', {
     timeout: 0, // 无限等待
   });
 
   await params.send({
-    msg: "抖音发布成功！",
+    msg: "视频号发布成功！",
     percent: 1,
     page,
   });
 
-  await browser.close();
+  await global.removeBrowser("shipinhao");
 };

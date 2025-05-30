@@ -6,7 +6,7 @@
     "dev": "nodemon --watch index.js --watch main/ --exec electron .",
     "dev:ui": "pnpm -C ui dev",
     "build": "pnpm build:ui && pnpm dist",
-    "dist": "electron-builder",
+    "dist": "rm -rf dist && electron-builder",
     "build:ui": "pnpm -C ui build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,9 +27,6 @@
     "electron": "^36.2.0",
     "electron-builder": "^26.0.12",
     "eslint": "^8.56.0"
-  },
-  "_moduleAliases": {
-    "@": "main"
   },
   "build": {
     "appId": "com.yourdomain.yourapp",
