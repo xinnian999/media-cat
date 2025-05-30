@@ -1,9 +1,11 @@
 const writeJson = require("@/utils/writeJson");
 
+const url = "https://channels.weixin.qq.com";
+
 module.exports = async (page) => {
-  await page.evaluate(() => {
-    window.location.href = "https://channels.weixin.qq.com";
-  });
+  await page.evaluate((url) => {
+    window.location.href = url;
+  }, url);
 
   // 等待请求用户信息，代表登录成功
   const res = await page.waitForResponse(
@@ -21,6 +23,7 @@ module.exports = async (page) => {
     return {
       ...source,
       shipinhao: {
+        url,
         nickname: info.nickname,
         avatar: info.headImgUrl,
         uid: info.uniqId,

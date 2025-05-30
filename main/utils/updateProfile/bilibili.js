@@ -1,5 +1,8 @@
 const writeJson = require("@/utils/writeJson");
 
+const url =
+  "https://member.bilibili.com/platform/home?spm_id_from=333.1007.0.0";
+
 module.exports = async (page) => {
   const infoDatas = [];
 
@@ -17,10 +20,9 @@ module.exports = async (page) => {
     }
   });
 
-  await page.evaluate(() => {
-    window.location.href =
-      "https://member.bilibili.com/platform/home?spm_id_from=333.1007.0.0";
-  });
+  await page.evaluate((url) => {
+    window.location.href = url;
+  }, url);
 
   await page.waitForSelector("div:has-text('投稿')", { timeout: 0 });
 
@@ -32,6 +34,7 @@ module.exports = async (page) => {
     return {
       ...source,
       bilibili: {
+        url,
         nickname: info.uname,
         avatar: info.face,
         uid: info.mid,

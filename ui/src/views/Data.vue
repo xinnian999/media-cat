@@ -2,7 +2,12 @@
   <div class="data-page">
     <a-tabs v-model:activeKey="activeKey" @change="refreshPlatforms">
       <a-tab-pane v-for="plat in platforms" :title="plat.label" :key="plat.platform">
-        <!-- <div v-if="updateing" class="updateing"><a-spin /> 数据更新中</div> -->
+        <template #title>
+          <div class="tab-item">
+            <img class="icon" :src="plat.icon" alt="avatar" />
+            <span>{{ plat.label }}</span>
+          </div>
+        </template>
         <div class="data-content">
           <div class="data-item" v-for="item in items" :key="item.value">
             <div class="data-item-label">{{ item.label }}</div>
@@ -26,8 +31,8 @@ const activeKey = ref('douyin')
 
 const items = [
   {
-    label: '平台',
-    render: (record) => <img class="icon" src={record.icon} alt="avatar" />,
+    label: '创作中心',
+    render: (record) => <a-link href={record.url} target="_blank">打开</a-link>,
   },
   {
     label: '用户名',
@@ -69,6 +74,17 @@ onUnmounted(() => {
 <style lang="scss">
 .data-page {
   padding: 15px;
+
+  .tab-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 
 .updateing {
