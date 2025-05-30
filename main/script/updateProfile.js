@@ -1,6 +1,6 @@
 const { chromium } = require("playwright");
-const getMergeStorageState = require("@utils/getMergeStorageState");
-const readJson = require("@utils/readJson");
+const getMergeStorageState = require("@/utils/getMergeStorageState");
+const readJson = require("@/utils/readJson");
 
 module.exports = async () => {
   const browser = await chromium.launch({ headless: true });
@@ -14,7 +14,7 @@ module.exports = async () => {
   const profile = readJson("cache/profile.json");
 
   const updates = Object.keys(profile).map(async (key) => {
-    const update = require(`@utils/updateProfile/${key}`);
+    const update = require(`@/utils/updateProfile/${key}`);
 
     const page = await context.newPage();
 

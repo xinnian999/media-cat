@@ -1,7 +1,7 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 const fs = require("fs");
-const writeJson = require("@utils/writeJson");
+const writeJson = require("@/utils/writeJson");
 const { randomUUID } = require("crypto");
 const dayjs = require("dayjs");
 

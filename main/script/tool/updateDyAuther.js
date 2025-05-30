@@ -1,7 +1,7 @@
 const { chromium } = require("playwright");
 const { app } = require("electron");
 const path = require("path");
-const writeJson = require("@utils/writeJson");
+const writeJson = require("@/utils/writeJson");
 
 module.exports = async ({ autherUrl, addBrowser }) => {
   const browser = await chromium.launch({ headless: true });

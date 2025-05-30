@@ -1,10 +1,10 @@
 const { dialog, ipcMain, app } = require("electron");
 
-const readJson = require("@utils/readJson");
+const readJson = require("@/utils/readJson");
 
-const writeJson = require("@utils/writeJson");
+const writeJson = require("@/utils/writeJson");
 
-const log = require("@utils/log");
+const log = require("@/utils/log");
 
 const { randomUUID } = require("crypto");
 
@@ -35,10 +35,10 @@ module.exports = (win) => {
       const { shell } = require("electron");
       shell.showItemInFolder(path);
     },
-    bindAccount: require("@script/bindAccout"),
+    bindAccount: require("@/script/bindAccout"),
     play: async (e, data) => {
       const scripts = data.platforms.map(async (plat) => {
-        const script = require(`@script/play/${plat}`);
+        const script = require(`@/script/play/${plat}`);
         const params = {
           ...data,
           send: async ({ page, ...rest }) => {
@@ -76,8 +76,8 @@ module.exports = (win) => {
     profile: () => {
       return readJson("cache/profile.json");
     },
-    updateProfile: require("@script/updateProfile"),
-    downloadVideo: require("@script/tool/downloadVideo"),
+    updateProfile: require("@/script/updateProfile"),
+    downloadVideo: require("@/script/tool/downloadVideo"),
     dyAuthers: () => {
       return readJson("cache/dyAuthers.json");
     },
@@ -90,7 +90,7 @@ module.exports = (win) => {
       return null;
     },
     addDyAuther: async (e, autherUrl) => {
-      const addDyAuther = require("@script/tool/addDyAuther");
+      const addDyAuther = require("@/script/tool/addDyAuther");
       return await addDyAuther({
         autherUrl,
         addBrowser: (browser) => {
@@ -99,7 +99,7 @@ module.exports = (win) => {
       });
     },
     updateDyAuther: async (e, autherUrl) => {
-      const updateDyAuther = require("@script/tool/updateDyAuther");
+      const updateDyAuther = require("@/script/tool/updateDyAuther");
       return await updateDyAuther({
         autherUrl,
         addBrowser: (browser) => {
@@ -118,7 +118,7 @@ module.exports = (win) => {
       return readJson("cache/dyAutherPosts.json");
     },
     findHttp: async (e, data) => {
-      const findHttp = require("@script/tool/findHttp");
+      const findHttp = require("@/script/tool/findHttp");
       return await findHttp({
         url: data.url,
         keyword: data.keyword,

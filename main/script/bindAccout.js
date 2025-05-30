@@ -12,7 +12,7 @@ module.exports = async (e, platform) => {
 
   await page.goto("about:blank");
 
-  const update = require(`@utils/updateProfile/${platform}`);
+  const update = require(`@/utils/updateProfile/${platform}`);
 
   await update(page);
 

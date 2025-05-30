@@ -1,9 +1,9 @@
 {
   "name": "auto-media",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch main.js --watch script/ --exec electron main.js",
+    "dev": "nodemon --watch index.js --watch main/ --exec electron .",
     "dev:ui": "pnpm -C ui dev",
     "build": "pnpm build:ui && pnpm dist",
     "dist": "electron-builder",
@@ -29,9 +29,7 @@
     "eslint": "^8.56.0"
   },
   "_moduleAliases": {
-    "@utils": "utils",
-    "@core": "core",
-    "@script": "script"
+    "@": "main"
   },
   "build": {
     "appId": "com.yourdomain.yourapp",

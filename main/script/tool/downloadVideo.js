@@ -1,7 +1,7 @@
 const { chromium } = require("playwright");
 const { dialog } = require("electron");
 const path = require("path");
-const log = require("@utils/log");
+const log = require("@/utils/log");
 
 module.exports = async (e, { url, filename = Date.now(), savePath }) => {
   const browser = await chromium.launch({

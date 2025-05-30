@@ -1,4 +1,4 @@
-const writeJson = require("@utils/writeJson");
+const writeJson = require("@/utils/writeJson");
 
 module.exports = async (page) => {
   await page.evaluate(() => {

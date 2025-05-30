@@ -2,13 +2,13 @@ require("module-alias/register");
 
 const { app, BrowserWindow, globalShortcut } = require("electron");
 
-const onBeforeSendHeaders = require("@core/onBeforeSendHeaders");
+const onBeforeSendHeaders = require("@/onBeforeSendHeaders");
 
-const invokes = require("@core/invokes");
+const invokes = require("@/invokes");
 
 const path = require("path");
 
-const startUi = require("./utils/startUi");
+const startUi = require("@/utils/startUi");
 
 const isDev = !app.isPackaged;
 

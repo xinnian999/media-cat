@@ -1,5 +1,5 @@
 const { chromium } = require("playwright");
-const getMergeStorageState = require("@utils/getMergeStorageState");
+const getMergeStorageState = require("@/utils/getMergeStorageState");
 
 module.exports = async ({ url, keyword }) => {
   const browser = await chromium.launch({ headless: true });
