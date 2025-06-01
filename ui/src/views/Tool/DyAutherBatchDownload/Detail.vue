@@ -39,23 +39,23 @@
         <b>共{{ dyAuther.awemeList?.length || 0 }}个作品</b>
 
         <a-space>
-        <a-button
-          type="primary"
-          size="mini"
-          :loading="downloadAllLoading"
-          @click="handleDownloadAll"
-          ><template #icon>
-            <icon-download />
-          </template>
-          全部下载</a-button
-        >
-        <a-button v-if="downloadAllLoading" size="mini" @click="handleStopDownloadAll"
-          ><template #icon>
-            <icon-stop />
-          </template>
-          停止</a-button
-        >
-      </a-space>
+          <a-button
+            type="primary"
+            size="mini"
+            :loading="downloadAllLoading"
+            @click="handleDownloadAll"
+            ><template #icon>
+              <icon-download />
+            </template>
+            全部下载</a-button
+          >
+          <a-button v-if="downloadAllLoading" size="mini" @click="handleStopDownloadAll"
+            ><template #icon>
+              <icon-stop />
+            </template>
+            停止</a-button
+          >
+        </a-space>
       </div>
       <a-table
         :columns="columns"
@@ -149,13 +149,16 @@ const downloadPost = async (record) => {
 
   store.addDownloading(aweme_id)
 
-  await window.electron.invoke('downloadVideo', {
-    url: `https://www.douyin.com/video/${aweme_id}`,
-    savePath: dyAuther.value.savePath,
-    filename: getFilename(record),
-  })
-  store.removeDownloading(aweme_id)
-  refreshDyAuther()
+  try {
+    await window.electron.invoke('downloadVideo', {
+      url: `https://www.douyin.com/video/${aweme_id}`,
+      savePath: dyAuther.value.savePath,
+      filename: getFilename(record),
+    })
+  } finally {
+    store.removeDownloading(aweme_id)
+    refreshDyAuther()
+  }
 }
 
 const handleDownloadAll = async () => {

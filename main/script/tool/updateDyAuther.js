@@ -1,19 +1,16 @@
 const { chromium } = require("playwright");
-const { app } = require("electron");
-const path = require("path");
 const writeJson = require("@/utils/writeJson");
+const { app } = require("electron");
 
 module.exports = async ({ autherUrl, addBrowser }) => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: false, channel: "chrome" });
 
-  addBrowser(browser);
+  global.addBrowser("updateDyAuther", browser);
 
   const context = await browser.newContext({
-    storageState: path.join(
-      app.getPath("userData"),
-      "cache/storageState/douyin.json"
-    ),
+    storageState: `${app.getPath("userData")}/cache/storageState/douyin.json`,
   });
+
   const page = await context.newPage();
   await page.goto(autherUrl, { waitUntil: "domcontentloaded" });
 
@@ -87,4 +84,6 @@ module.exports = async ({ autherUrl, addBrowser }) => {
 
     return { list };
   });
+
+  await global.removeBrowser("updateDyAuther");
 };

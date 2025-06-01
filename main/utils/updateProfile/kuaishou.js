@@ -9,10 +9,13 @@ module.exports = async (page) => {
 
   // 等待请求用户信息，代表登录成功
   const infoResponses = [
-    page.waitForResponse((res) =>
-      res.url().includes("/rest/cp/creator/pc/home/userInfo")
+    page.waitForResponse(
+      (res) => res.url().includes("/rest/cp/creator/pc/home/userInfo"),
+      { timeout: 0 }
     ),
-    page.waitForResponse((res) => res.url().includes("/pc/home/infoV2")),
+    page.waitForResponse((res) => res.url().includes("/pc/home/infoV2"), {
+      timeout: 0,
+    }),
   ];
 
   const [infoResponse1, infoResponse2] = await Promise.all(infoResponses);

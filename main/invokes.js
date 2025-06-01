@@ -133,6 +133,7 @@ module.exports = (win) => {
       console.log(name);
       await global.removeBrowser(name);
     },
+    goCreateCenter: require("@/script/goCreateCenter"),
   };
 
   Object.keys(handles).forEach((key) => {

@@ -30,6 +30,7 @@ module.exports = async (page) => {
 
   const info = infoDatas.find((item) => item.isLogin);
 
+
   writeJson("cache/profile.json", (source) => {
     return {
       ...source,

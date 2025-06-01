@@ -28,8 +28,7 @@ module.exports = async (page) => {
         avatar: info.headImgUrl,
         uid: info.uniqId,
         follower_count: info.fansCount,
-        // following_count: info.following_count,
-        // total_favorited: info.total_favorited,
+        total_favorited: 0,
       },
     };
   });

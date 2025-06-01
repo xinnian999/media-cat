@@ -32,7 +32,16 @@ const activeKey = ref('douyin')
 const items = [
   {
     label: '创作中心',
-    render: (record) => <a-link href={record.url} target="_blank">打开</a-link>,
+    render: (record) => (
+      <a-button
+        type="primary"
+        onClick={() =>
+          window.electron.invoke('goCreateCenter', { platform: record.platform, url: record.url })
+        }
+      >
+        打开
+      </a-button>
+    ),
   },
   {
     label: '用户名',
@@ -56,7 +65,6 @@ const items = [
   },
 ]
 
-onMounted(updatePlatforms)
 
 onMounted(() => {
   updatePlatforms()
