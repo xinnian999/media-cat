@@ -3,14 +3,41 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon --watch index.js --watch main/ --exec electron .",
+    "dev:ui": "pnpm -C ui dev",
+    "build": "pnpm build:ui && pnpm dist",
+    "dist": "rm -rf dist && electron-builder",
+    "build:ui": "pnpm -C ui build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dayjs": "^1.11.13",
     "express": "^5.1.0",
+    "module-alias": "^2.2.3",
     "multer": "^1.4.5-lts.2",
-    "playwright": "^1.52.0"
+    "nodemon": "^3.1.10",
+    "p-limit": "^6.2.0",
+    "playwright": "^1.52.0",
+    "vue-json-viewer": "3"
+  },
+  "devDependencies": {
+    "electron": "^36.2.0",
+    "electron-builder": "^26.0.12",
+    "eslint": "^8.56.0"
+  },
+  "build": {
+    "appId": "com.yourdomain.yourapp",
+    "productName": "​​媒力猫",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png"
+    }
   }
 }

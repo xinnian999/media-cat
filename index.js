@@ -1,52 +1,73 @@
-const { chromium } = require("playwright");
-const fs = require("fs");
 const path = require("path");
-const createServer = require("./server");
 
-const ready = require("./script/ready");
-const douyin = require("./script/douyin");
-const kuaishou = require("./script/kuaishou");
+const moduleAlias = require("module-alias");
 
-const STATE_PATH = "./cache.json";
+moduleAlias.addAlias("@", path.join(__dirname, "main"));
 
-(async () => {
-  const browser = await chromium.launch({ headless: false });
+const { app, BrowserWindow, globalShortcut } = require("electron");
 
-  const context = fs.existsSync(STATE_PATH)
-    ? await browser.newContext({ storageState: STATE_PATH })
-    : await browser.newContext();
+const onBeforeSendHeaders = require("@/onBeforeSendHeaders");
 
-  const params = {
-    context,
-    info: {
-      title: "",
-      desc: "",
-      filePath: path.join(__dirname, "./server/public/demo.mp4"),
-      imitate: true,
-      tags: [],
+const invokes = require("@/invokes");
+
+
+const startUi = require("@/utils/startUi");
+
+const isDev = !app.isPackaged;
+
+console.log("缓存位置：", app.getPath("userData"));
+
+async function createWindow() {
+  onBeforeSendHeaders();
+
+  const win = new BrowserWindow({
+    width: 1000,
+    height: 700,
+    frame: false, // 隐藏默认标题栏
+    titleBarStyle: "hidden", // macOS 专用（Windows/Linux 不生效）
+    trafficLightPosition: { x: 10, y: 10 }, // 控制 macOS 红黄绿按钮位置
+    webPreferences: {
+      preload: path.join(__dirname, "main/preload.js"),
+      nodeIntegration: true, // 开启 Node.js 集成
+      webSecurity: false, // 禁用 Web 安全策略，允许加载本地文件
     },
-    saveState: async () => {
-      await context.storageState({ path: STATE_PATH });
-      console.log("浏览器状态已保存");
-    },
-    setInfo: (data) => {
-      Object.assign(params.info, data);
-    },
-  };
-
-  await createServer({
-    port: 3000,
-    info: params.info,
-    setInfo: params.setInfo,
   });
 
-  await ready(params);
+  if (isDev) {
+    await startUi();
 
-  await douyin(params);
+    win.loadURL("http://localhost:5173");
+  } else {
+    win.loadFile(path.join(__dirname, "ui/dist/index.html"));
+  }
 
-  await kuaishou(params);
+  globalShortcut.register("F12", () => {
+    if (!win.webContents.isDevToolsOpened()) {
+      win.webContents.openDevTools();
+    }
+  });
 
-  console.log("所有平台分发完毕！");
+  Object.assign(global, {
+    win,
+    browsers: {},
+    addBrowser: (name, browser) => {
+      global.browsers[name] = browser;
+    },
+    removeBrowser: async (name) => {
+      await global.browsers[name].close();
+      delete global.browsers[name];
+    },
+  });
 
-  // await browser.close();
-})();
+  invokes(win);
+}
+
+app.whenReady().then(() => {
+  createWindow();
+});
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+});

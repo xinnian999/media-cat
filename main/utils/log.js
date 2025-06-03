@@ -1,0 +1,39 @@
+const log = async (page, msg) => {
+  console.log('\x1b[32m%s\x1b[0m', msg);
+
+  await page.evaluate((msg) => {
+    const id = "__my_logger__";
+    
+    let box = document.getElementById(id);
+
+    if (!box) {
+      box = document.createElement("div");
+      box.id = id;
+      box.style.cssText = `
+          position: fixed;
+          top: 10px;
+          right: 10px;
+          z-index: 99999;
+          background: rgba(0,0,0,0.8);
+          color: #0f0;
+          padding: 10px;
+          font-size: 14px;
+          font-family: monospace;
+          max-width: 300px;
+          white-space: pre-wrap;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        `;
+      document.body.appendChild(box);
+    }
+
+    const line = document.createElement("div");
+    line.textContent = msg;
+    box.appendChild(line);
+  }, msg);
+
+  // await page.waitForTimeout(3000);
+};
+
+module.exports = log;
