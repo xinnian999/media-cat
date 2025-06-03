@@ -1,7 +1,7 @@
 <template>
   <div class="data-page">
-    <a-tabs v-model:activeKey="activeKey" @change="refreshPlatforms">
-      <a-tab-pane v-for="plat in platforms" :title="plat.label" :key="plat.platform">
+    <a-tabs v-model:activeKey="activeKey" @change="platforms.update">
+      <a-tab-pane v-for="plat in platforms.accountList" :title="plat.label" :key="plat.platform">
         <template #title>
           <div class="tab-item">
             <img class="icon" :src="plat.icon" alt="avatar" />
@@ -25,7 +25,7 @@
 import usePlatforms from '@/hooks/usePlatforms'
 import { onMounted, onUnmounted, ref } from 'vue'
 
-const { platforms, updatePlatforms, refreshPlatforms } = usePlatforms()
+const platforms = usePlatforms()
 
 const activeKey = ref('douyin')
 
@@ -67,10 +67,10 @@ const items = [
 
 
 onMounted(() => {
-  updatePlatforms()
+  platforms.update()
 
   setTimeout(() => {
-    activeKey.value = platforms.value[0].platform
+    activeKey.value = platforms.accountList[0].platform
   })
 })
 

@@ -1,11 +1,11 @@
 const writeJson = require("@/utils/writeJson");
 
-const url = "https://creator.xiaohongshu.com/";
+const platform = require("@/platforms").map.xiaohongshu;
 
 module.exports = async (page) => {
   await page.evaluate((url) => {
     window.location.href = url;
-  }, url);
+  }, platform.url);
 
   // 等待请求用户信息，代表登录成功
   const response = await page.waitForResponse(
@@ -20,7 +20,6 @@ module.exports = async (page) => {
     return {
       ...profileData,
       xiaohongshu: {
-        url,
         nickname: info.name,
         avatar: info.avatar,
         uid: info.userId,

@@ -1,7 +1,6 @@
 const writeJson = require("@/utils/writeJson");
 
-const url =
-  "https://member.bilibili.com/platform/home?spm_id_from=333.1007.0.0";
+const platform = require("@/platforms").map.bilibili;
 
 module.exports = async (page) => {
   const infoDatas = [];
@@ -22,7 +21,7 @@ module.exports = async (page) => {
 
   await page.evaluate((url) => {
     window.location.href = url;
-  }, url);
+  }, platform.url);
 
   await page.waitForSelector("div:has-text('投稿')", { timeout: 0 });
 

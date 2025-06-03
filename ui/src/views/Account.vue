@@ -3,7 +3,7 @@
     <a-divider orientation="center" style="margin-bottom: 35px">账号管理</a-divider>
 
     <div class="account-list">
-      <a-card v-for="item in allPlatforms" :key="item.label" class="account-item">
+      <a-card v-for="item in platforms.list" :key="item.label" class="account-item">
         <template #title>
           <div class="title">
             <img :src="item.icon" alt="icon" />
@@ -13,17 +13,17 @@
 
         <template #extra>
           <a-button size="small" @click="bind(item.platform)"
-            >{{ profile[item.platform] ? '切换' : '绑定' }}账号</a-button
+            >{{ platforms.accountMap[item.platform] ? '切换' : '绑定' }}账号</a-button
           >
         </template>
 
         <div class="content">
-          <div v-if="profile[item.platform]" class="account-info">
+          <div v-if="platforms.accountMap[item.platform]" class="account-info">
             <div class="avatar">
-              <img :src="profile[item.platform].avatar" alt="avatar" />
+              <img :src="platforms.accountMap[item.platform].avatar" alt="avatar" />
             </div>
             <div class="info">
-              <div class="username">{{ profile[item.platform].nickname }}</div>
+              <div class="username">{{ platforms.accountMap[item.platform].nickname }}</div>
             </div>
           </div>
           <div class="empty" v-else>未绑定账号</div>
@@ -35,27 +35,19 @@
 
 <script setup>
 import { Message } from '@arco-design/web-vue'
-import { ref, onMounted } from 'vue'
-import allPlatforms from '@/assets/allPlatforms'
+import usePlatforms from '@/hooks/usePlatforms'
 
-const profile = ref({})
-
-const refreshProfile = async () => {
-  const res = await window.electron.invoke('profile')
-  profile.value = res
-}
+const platforms = usePlatforms()
 
 const bind = async (platform) => {
   await window.electron.invoke('bindAccount', platform)
   Message.success('绑定成功')
-  refreshProfile()
+  platforms.refresh()
 }
-
-onMounted(refreshProfile)
 </script>
 
 <style lang="scss">
-.account-page{
+.account-page {
   padding: 15px;
 }
 .account-list {

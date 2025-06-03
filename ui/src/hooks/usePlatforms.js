@@ -1,14 +1,16 @@
-import { ref, onBeforeMount } from 'vue'
-import allPlatforms from '@/assets/allPlatforms'
+import { onBeforeMount, reactive } from 'vue'
 
-// 自动读取后台的 profile 数据，返回已绑定的平台数据
+// 自动管理平台数据的hooks
 const usePlatforms = () => {
-  const platforms = ref(allPlatforms)
+  const platforms = reactive({
+    list: [],
+    accountList: [],
+    accountMap: {},
+  })
 
-  const updateing = ref(false)
-
+  // 根据profile数据，解析出已绑定的平台数据
   const parseByProfile = (profile) => {
-    return allPlatforms
+    return platforms.list
       .filter((item) => {
         return profile[item.platform]
       })
@@ -20,25 +22,34 @@ const usePlatforms = () => {
       })
   }
 
-  const refreshPlatforms = async () => {
+  const refresh = async () => {
     const profile = await window.electron.invoke('profile')
 
-    platforms.value = parseByProfile(profile)
+    platforms.accountList = parseByProfile(profile)
+    platforms.accountMap = platforms.accountList.reduce((acc, item) => {
+      acc[item.platform] = item
+      return acc
+    }, {})
   }
 
-  const updatePlatforms = async () => {
-    updateing.value = true
-
+  const update = async () => {
     await window.electron.invoke('updateProfile')
 
-    refreshPlatforms()
-
-    updateing.value = false
+    refresh()
   }
 
-  onBeforeMount(refreshPlatforms)
+  onBeforeMount(async () => {
+    platforms.list = await window.electron.invoke('platformList')
 
-  return { platforms, updateing, updatePlatforms, refreshPlatforms }
+    refresh()
+  })
+
+  Object.assign(platforms, {
+    refresh,
+    update,
+  })
+
+  return platforms
 }
 
 export default usePlatforms

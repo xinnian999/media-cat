@@ -62,7 +62,7 @@
         :rules="[{ required: true, message: '请选择平台' }]"
       >
         <a-checkbox-group v-model="form.platforms" v-if="platforms.length > 0">
-          <template v-for="item in platforms" :key="item.platform">
+          <template v-for="item in platforms.accountList" :key="item.platform">
             <a-checkbox :value="item.platform">
               <template #checkbox="{ checked }">
                 <a-space
@@ -112,7 +112,7 @@ const form = reactive({
   observe: true,
 })
 
-const { platforms } = usePlatforms()
+const platforms = usePlatforms()
 
 const router = useRouter()
 

@@ -10,6 +10,8 @@ const { randomUUID } = require("crypto");
 
 const dayjs = require("dayjs");
 
+const platforms = require("@/platforms");
+
 const browsers = [];
 
 module.exports = (win) => {
@@ -134,6 +136,8 @@ module.exports = (win) => {
       await global.removeBrowser(name);
     },
     goCreateCenter: require("@/script/goCreateCenter"),
+    platformList: () => platforms.list,
+    platformMap: () => platforms.map,
   };
 
   Object.keys(handles).forEach((key) => {

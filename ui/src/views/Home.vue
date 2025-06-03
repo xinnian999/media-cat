@@ -29,7 +29,7 @@ import usePlatforms from '@/hooks/usePlatforms'
 
 const day = ref(1)
 
-const { platforms } = usePlatforms()
+const platforms = usePlatforms()
 
 const period = computed(() => {
   const hour = new Date().getHours()
@@ -40,19 +40,20 @@ const period = computed(() => {
 })
 
 const summary = computed(() => {
-  console.log(platforms.value)
+  const accountList = platforms.accountList
+
   return [
     {
       title: '已绑定平台数',
-      value: platforms.value.length,
+      value: accountList.length,
     },
     {
       title: '总粉丝数',
-      value: platforms.value.reduce((acc, item) => acc + item.follower_count, 0),
+      value: accountList.reduce((acc, item) => acc + item.follower_count, 0),
     },
     {
       title: '总获赞量',
-      value: platforms.value.reduce((acc, item) => acc + item.total_favorited, 0),
+      value: accountList.reduce((acc, item) => acc + item.total_favorited, 0),
     },
     {
       title: '总播放量',

@@ -1,11 +1,11 @@
 const writeJson = require("@/utils/writeJson");
 
-const url = "https://creator.kuaishou.com/";
+const platform = require("@/platforms").map.kuaishou;
 
 module.exports = async (page) => {
   await page.evaluate((url) => {
     window.location.href = url;
-  }, url);
+  }, platform.url);
 
   // 等待请求用户信息，代表登录成功
   const infoResponses = [
@@ -30,7 +30,6 @@ module.exports = async (page) => {
     return {
       ...profileData,
       kuaishou: {
-        url,
         nickname: info.userName,
         avatar: info.headUrl,
         uid: info.userId,

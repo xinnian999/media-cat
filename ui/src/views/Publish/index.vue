@@ -29,7 +29,7 @@
 
             <div class="plats">
               <img
-                v-for="src in allPlatforms
+                v-for="src in platforms.list
                   .filter((v) => item.platforms.includes(v.platform))
                   .map((item) => item.icon)"
                 :src="src"
@@ -69,9 +69,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import allPlatforms from '@/assets/allPlatforms'
+import usePlatforms from '@/hooks/usePlatforms'
 
 const router = useRouter()
+
+const platforms = usePlatforms()
 
 const list = ref([])
 
