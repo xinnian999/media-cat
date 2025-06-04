@@ -61,7 +61,7 @@
         label="平台"
         :rules="[{ required: true, message: '请选择平台' }]"
       >
-        <a-checkbox-group v-model="form.platforms" v-if="platforms.length > 0">
+        <a-checkbox-group v-model="form.platforms" v-if="platforms.accountList.length > 0">
           <template v-for="item in platforms.accountList" :key="item.platform">
             <a-checkbox :value="item.platform">
               <template #checkbox="{ checked }">
@@ -145,6 +145,8 @@ const handleSubmit = async () => {
     ...form,
     tags: form.tags.map((tag) => tag.value),
   })
+
+  window.electron.invoke('addPublishLog', values)
 
   router.push(`/publish-result?data=${JSON.stringify(values)}`)
 }

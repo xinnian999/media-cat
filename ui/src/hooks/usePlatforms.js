@@ -1,4 +1,5 @@
 import { onBeforeMount, reactive } from 'vue'
+import { useStore } from '@/store'
 
 // 自动管理平台数据的hooks
 const usePlatforms = () => {
@@ -7,6 +8,8 @@ const usePlatforms = () => {
     accountList: [],
     accountMap: {},
   })
+
+  const store = useStore()
 
   // 根据profile数据，解析出已绑定的平台数据
   const parseByProfile = (profile) => {
@@ -33,9 +36,16 @@ const usePlatforms = () => {
   }
 
   const update = async () => {
+    if (store.updateProfileing) {
+      return
+    }
+
+    store.setUpdateProfileing(true)
     await window.electron.invoke('updateProfile')
 
     refresh()
+
+    store.setUpdateProfileing(false)
   }
 
   onBeforeMount(async () => {

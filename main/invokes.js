@@ -38,43 +38,6 @@ module.exports = (win) => {
       shell.showItemInFolder(path);
     },
     bindAccount: require("@/script/bindAccout"),
-    play: async (e, data) => {
-      const scripts = data.platforms.map(async (plat) => {
-        const script = require(`@/script/play/${plat}`);
-        const params = {
-          ...data,
-          send: async ({ page, ...rest }) => {
-            e.sender.send("upload-progress", {
-              ...rest,
-              platform: plat,
-            });
-            await log(page, rest.msg);
-            await page.waitForTimeout(3000);
-          }
-        };
-
-        return await script(params);
-      });
-
-      writeJson("cache/publishLog.json", (source) => {
-        const newData = {
-          ...data,
-          id: randomUUID(),
-          createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-        };
-
-        if (source.list) {
-          return { list: [newData, ...source.list] };
-        }
-
-        return { list: [newData] };
-      });
-
-      await Promise.all(scripts);
-    },
-    publishLog: () => {
-      return readJson("cache/publishLog.json");
-    },
     profile: () => {
       return readJson("cache/profile.json");
     },
@@ -138,6 +101,25 @@ module.exports = (win) => {
     goCreateCenter: require("@/script/goCreateCenter"),
     platformList: () => platforms.list,
     platformMap: () => platforms.map,
+    publish: require("@/script/publish"),
+    publishLog: () => {
+      return readJson("cache/publishLog.json");
+    },
+    addPublishLog: (e, data) => {
+      writeJson("cache/publishLog.json", (source) => {
+        const newData = {
+          ...data,
+          id: randomUUID(),
+          createTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+        };
+
+        if (source.list) {
+          return { list: [newData, ...source.list] };
+        }
+
+        return { list: [newData] };
+      });
+    },
   };
 
   Object.keys(handles).forEach((key) => {

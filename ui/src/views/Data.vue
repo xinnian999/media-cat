@@ -1,6 +1,6 @@
 <template>
   <div class="data-page">
-    <a-tabs v-model:activeKey="activeKey" @change="platforms.update">
+    <a-tabs v-if="platforms.accountList.length > 0" v-model:activeKey="activeKey" @change="platforms.update">
       <a-tab-pane v-for="plat in platforms.accountList" :title="plat.label" :key="plat.platform">
         <template #title>
           <div class="tab-item">
@@ -18,12 +18,15 @@
         </div>
       </a-tab-pane>
     </a-tabs>
+    <div v-else class="empty">
+      <a-empty description="请先绑定账号" />
+    </div>
   </div>
 </template>
 
 <script setup lang="jsx">
 import usePlatforms from '@/hooks/usePlatforms'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const platforms = usePlatforms()
 
@@ -65,17 +68,14 @@ const items = [
   },
 ]
 
-
 onMounted(() => {
   platforms.update()
 
   setTimeout(() => {
-    activeKey.value = platforms.accountList[0].platform
+    if (platforms.accountList.length > 0) {
+      activeKey.value = platforms.accountList[0].platform
+    }
   })
-})
-
-onUnmounted(() => {
-  window.electron.invoke('stop', 'updateProfile')
 })
 </script>
 
@@ -92,6 +92,13 @@ onUnmounted(() => {
       width: 20px;
       height: 20px;
     }
+  }
+
+  .empty {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

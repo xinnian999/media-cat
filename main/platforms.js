@@ -24,7 +24,7 @@ const list = [
     label: "视频号",
     icon: imageToBase64Sync(path.join(__dirname, "assets/shipinhao.ico")),
     platform: "shipinhao",
-    url: "https://mp.weixin.qq.com/",
+    url: "https://channels.weixin.qq.com/",
   },
   {
     label: "B站",

@@ -11,7 +11,7 @@ module.exports = async (page) => {
   const res = await page.waitForResponse(
     (res) =>
       res.url().includes("/cgi-bin/mmfinderassistant-bin/auth/auth_data"),
-    { timeout: 0 }
+    { timeout: 30000 }
   );
 
   const {

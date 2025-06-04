@@ -7,12 +7,13 @@
         }}</a-button>
       </template>
     </a-page-header>
-    <a-list>
+
+    <a-list style="padding: 0 20px">
       <a-list-item v-for="plat in list" :key="plat">
-        <a-list-item-meta :title="platformMap[plat].label">
+        <a-list-item-meta :title="accountMap[plat]?.label">
           <template #avatar>
             <a-avatar shape="square">
-              <img alt="avatar" :src="platformMap[plat].icon" />
+              <img alt="avatar" :src="accountMap[plat]?.icon" />
             </a-avatar>
           </template>
 
@@ -47,24 +48,23 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, toRef } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { Message } from '@arco-design/web-vue'
-import platforms from '@/assets/allPlatforms'
+import usePlatforms from '@/hooks/usePlatforms'
 
 const route = useRoute()
 const router = useRouter()
 
 const list = ref([])
 
-const stoped = ref(false)
+const platforms = usePlatforms()
 
-const platformMap = platforms.reduce((acc, cur) => {
-  acc[cur.platform] = cur
-  return acc
-}, {})
+const accountMap = toRef(platforms, 'accountMap')
 
 const progressMap = ref({})
+
+const stoped = ref(false)
 
 const onBack = () => {
   router.back()
@@ -72,17 +72,26 @@ const onBack = () => {
 
 onMounted(async () => {
   window.electron.on('upload-progress', (event, data) => {
-    if (!progressMap.value[data.platform]) {
+    // console.log(progressMap.value)
+
+    const platformProgress = progressMap.value[data.platform]
+
+    if (!platformProgress) {
       progressMap.value[data.platform] = []
     }
-    progressMap.value[data.platform].push(data)
+    platformProgress.push(data)
   })
 
   const data = JSON.parse(route.query.data)
 
   list.value = data.platforms
 
-  await window.electron.invoke('play', data)
+  for (const platform of data.platforms) {
+    await window.electron.invoke('publish', {
+      ...data,
+      platform,
+    })
+  }
 
   Message.success('所有平台发布完成')
 
