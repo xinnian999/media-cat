@@ -1,7 +1,19 @@
+const { getVideoDurationInSeconds } = require("get-video-duration");
+
 module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
   await logger("开始发布到微视", 0.1);
 
   await logger("等待页面完全渲染", 0.2);
+
+  // 检查视频时长（单位：秒）
+  const duration = await getVideoDurationInSeconds(url);
+
+  // 验证时长是否超过3分钟（180秒）
+  if (duration > 180) {
+    throw new Error(
+      `视频时长超过3分钟（当前: ${duration}秒），微视不支持发布超过3分钟的视频`
+    );
+  }
 
   await page.waitForSelector("span:has-text('视频上传')", {
     timeout: 0, // 无限等待
@@ -28,13 +40,12 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
   await page.waitForTimeout(2000);
 
   if (imitate) {
-    await logger("微视 -- 模拟流程完毕，跳过发布步骤", 1);
+    await logger("微视 -- 模拟流程完毕，跳过发布步骤", 1, "success");
     return;
   }
 
   await logger("发布视频", 0.9);
   await page.getByRole("button", { name: "发 布", exact: false }).click();
-  
 
   // 检验是否上传成功
   await logger("等待视频发布完成", 0.9);

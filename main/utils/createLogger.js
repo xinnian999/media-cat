@@ -7,10 +7,11 @@ module.exports = ({
   sendFlag = "global",
   sendExtra = {},
 }) => {
-  return async (msg, percent) => {
+  return async (msg, percent, status) => {
     global.win.webContents.send(sendFlag, {
       msg,
       percent,
+      status,
       ...sendExtra,
     });
 

@@ -20,10 +20,11 @@
           <template #description>
             <a-progress
               :percent="progressMap[plat]?.[progressMap[plat].length - 1]?.percent || 0"
+              :status="progressMap[plat]?.[progressMap[plat].length - 1]?.status"
               :style="{ width: '50%', marginBottom: '10px' }"
             >
               <template v-slot:text="scope">
-                {{ scope.percent === 1 ? '发布完成' : `${scope.percent * 100}%` }}
+                {{ scope.percent === 1 ? statusMap[progressMap[plat]?.[progressMap[plat].length - 1]?.status] : `${scope.percent * 100}%` }}
               </template>
             </a-progress>
 
@@ -68,6 +69,11 @@ const stoped = ref(false)
 
 const onBack = () => {
   router.back()
+}
+
+const statusMap = {
+  danger: '发布失败',
+  success: '发布成功',
 }
 
 onMounted(async () => {

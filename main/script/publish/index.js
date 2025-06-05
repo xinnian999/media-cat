@@ -32,7 +32,7 @@ module.exports = async (e, { platform, observe, ...data }) => {
 
     await publish({ page, logger, ...data });
   } catch (error) {
-    console.error(error);
+    logger(error.message, 1, "danger");
   } finally {
     await global.removeBrowser(platform);
   }
