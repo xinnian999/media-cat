@@ -91,6 +91,10 @@
         </div>
       </a-form-item>
 
+      <a-form-item field="original" label="声明原创">
+        <a-switch v-model="form.original" />
+      </a-form-item>
+
       <a-form-item field="observe" label="可视化发布过程">
         <a-switch v-model="form.observe" />
       </a-form-item>
@@ -119,6 +123,7 @@ const form = reactive({
   platforms: [],
   imitate: true,
   observe: true,
+  original: false,
 })
 
 const platforms = usePlatforms()

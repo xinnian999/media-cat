@@ -38,6 +38,12 @@ const list = [
     platform: "weishi",
     url: "https://media.weishi.qq.com/",
   },
+  {
+    label: "微博",
+    icon: imageToBase64Sync(path.join(__dirname, "assets/weibo.ico")),
+    platform: "weibo",
+    url: "https://weibo.com/upload/channel",
+  },
 ];
 
 module.exports = {

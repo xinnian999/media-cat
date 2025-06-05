@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import usePlatforms from '@/hooks/usePlatforms'
 
 const day = ref(1)
@@ -60,6 +60,10 @@ const summary = computed(() => {
       value: 21311221,
     },
   ]
+})
+
+onMounted(() => {
+  platforms.update()
 })
 </script>
 

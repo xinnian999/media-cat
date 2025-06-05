@@ -39,7 +39,9 @@
             </div>
 
             <div class="footer">
-              {{ item.createTime }} <a-tag color="green" v-if="item.observe">可视化</a-tag>
+              <span>{{ item.createTime }}</span>
+              <a-tag color="green" v-if="item.original">声明原创</a-tag>
+              <a-tag color="green" v-if="item.observe">可视化</a-tag>
               <a-tag color="blue" v-if="item.imitate">模拟发布</a-tag>
             </div>
           </div>

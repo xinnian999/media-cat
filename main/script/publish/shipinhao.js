@@ -1,4 +1,12 @@
-module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
+module.exports = async ({
+  page,
+  logger,
+  url,
+  desc,
+  tags,
+  imitate,
+  original,
+}) => {
   await logger("开始发布到视频号", 0.1);
 
   await page.waitForSelector('button:has-text("发表视频")', {
@@ -18,6 +26,20 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
   await page
     .locator(".post-desc-box .input-editor")
     .fill(desc + (tags.length > 0 ? ` #${tags.join(" #")}` : ""));
+
+  if (original) {
+    await logger("声明原创", 0.6);
+    await page
+      .locator(".declare-original-checkbox input")
+      .check({ force: true });
+    await page.waitForTimeout(1000);
+    await page
+      .locator(".declare-original-dialog .original-proto-wrapper input")
+      .first()
+      .check({ force: true });
+    await page.waitForTimeout(1000);
+    await page.getByRole("button", { name: "声明原创" }).click();
+  }
 
   await logger("等待视频导入完成", 0.7);
   await page.waitForSelector('.tag-inner:has-text("删除")', {

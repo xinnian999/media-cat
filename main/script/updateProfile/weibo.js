@@ -1,13 +1,15 @@
 const writeJson = require("@/utils/writeJson");
 
-const platform = require("@/platforms").map.weishi;
+const platform = require("@/platforms").map.weibo;
 
 module.exports = async (page) => {
   await page.evaluate((url) => {
     window.location.href = url;
   }, platform.url);
 
-  // await page.waitForTimeout(30000);
+  await page.waitForTimeout(30000);
+
+  return
 
   // 等待请求用户信息，代表登录成功
   const response = await page.waitForResponse(
