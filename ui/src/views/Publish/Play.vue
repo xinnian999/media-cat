@@ -1,12 +1,7 @@
 <template>
   <div>
     <a-page-header title="发布视频" @back="onBack"> </a-page-header>
-    <a-form
-      :model="form"
-      class="play-form"
-      layout="vertical"
-      @submit-success="handleSubmit"
-    >
+    <a-form :model="form" class="play-form" layout="vertical" @submit-success="handleSubmit">
       <a-form-item
         field="url"
         label="选择视频"
@@ -61,25 +56,39 @@
         label="平台"
         :rules="[{ required: true, message: '请选择平台' }]"
       >
-        <a-checkbox-group v-model="form.platforms" v-if="platforms.accountList.length > 0">
-          <template v-for="item in platforms.accountList" :key="item.platform">
-            <a-checkbox :value="item.platform">
-              <template #checkbox="{ checked }">
-                <a-space
-                  align="start"
-                  class="custom-checkbox-card"
-                  :class="{ 'custom-checkbox-card-checked': checked }"
-                >
-                  <div class="custom-checkbox-card-content">
-                    <img :src="item.icon" alt="icon" />
-                    <div className="custom-checkbox-card-title">{{ item.label }}</div>
-                  </div>
-                </a-space>
-              </template>
+        <div class="platform-select">
+          <p>
+            <a-checkbox
+              :model-value="checkedAll"
+              :indeterminate="indeterminate"
+              @change="handleChangeAll"
+              >全选
             </a-checkbox>
-          </template>
-        </a-checkbox-group>
-        <a-button v-else @click="handleBindPlatform">去绑定平台</a-button>
+          </p>
+          <a-checkbox-group
+            v-model="form.platforms"
+            v-if="platforms.accountList.length > 0"
+            @change="handleChangePlatform"
+          >
+            <template v-for="item in platforms.accountList" :key="item.platform">
+              <a-checkbox :value="item.platform">
+                <template #checkbox="{ checked }">
+                  <a-space
+                    align="start"
+                    class="custom-checkbox-card"
+                    :class="{ 'custom-checkbox-card-checked': checked }"
+                  >
+                    <div class="custom-checkbox-card-content">
+                      <img :src="item.icon" alt="icon" />
+                      <div className="custom-checkbox-card-title">{{ item.label }}</div>
+                    </div>
+                  </a-space>
+                </template>
+              </a-checkbox>
+            </template>
+          </a-checkbox-group>
+          <a-button v-else @click="handleBindPlatform">去绑定平台</a-button>
+        </div>
       </a-form-item>
 
       <a-form-item field="observe" label="可视化发布过程">
@@ -98,7 +107,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { deepClone } from '@/utils'
 import { useRouter } from 'vue-router'
 import usePlatforms from '@/hooks/usePlatforms'
@@ -114,10 +123,38 @@ const form = reactive({
 
 const platforms = usePlatforms()
 
+const checkedAll = ref(false)
+
+const indeterminate = ref(false)
+
 const router = useRouter()
 
 const onBack = () => {
   router.push('/publish')
+}
+
+const handleChangeAll = (value) => {
+  indeterminate.value = false
+  if (value) {
+    checkedAll.value = true
+    form.platforms = platforms.accountKeys
+  } else {
+    checkedAll.value = false
+    form.platforms = []
+  }
+}
+
+const handleChangePlatform = (values) => {
+  if (values.length === platforms.accountKeys.length) {
+    checkedAll.value = true
+    indeterminate.value = false
+  } else if (values.length === 0) {
+    checkedAll.value = false
+    indeterminate.value = false
+  } else {
+    checkedAll.value = false
+    indeterminate.value = true
+  }
 }
 
 const openFileDialog = async () => {
@@ -236,19 +273,30 @@ const handleSubmit = async () => {
   background-color: rgb(var(--primary-6));
 }
 
-.custom-checkbox-card-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 50px;
-}
-
 .play-form {
   // width: 90%;
   margin-top: 10px;
   padding: 0 40px;
   box-sizing: border-box;
+
+  .platform-select {
+    background-color: rgb(242, 243, 245);;
+    padding: 10px;
+    padding-bottom: 30px;
+    border-radius: 4px;
+
+    .custom-checkbox-card {
+      background-color: #fff;
+    }
+
+    .custom-checkbox-card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 60px;
+    }
+  }
 }
 </style>

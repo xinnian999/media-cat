@@ -5,7 +5,9 @@ import { useStore } from '@/store'
 const usePlatforms = () => {
   const platforms = reactive({
     list: [],
+    listMap: {},
     accountList: [],
+    accountKeys: [],
     accountMap: {},
   })
 
@@ -33,6 +35,7 @@ const usePlatforms = () => {
       acc[item.platform] = item
       return acc
     }, {})
+    platforms.accountKeys = Object.keys(profile)
   }
 
   const update = async () => {
@@ -50,7 +53,11 @@ const usePlatforms = () => {
 
   onBeforeMount(async () => {
     platforms.list = await window.electron.invoke('platformList')
-
+    platforms.listMap = platforms.list.reduce((acc, item) => {
+      acc[item.platform] = item
+      return acc
+    }, {})
+    
     refresh()
   })
 

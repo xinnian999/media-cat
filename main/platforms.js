@@ -32,6 +32,12 @@ const list = [
     platform: "bilibili",
     url: "https://member.bilibili.com",
   },
+  {
+    label: "腾讯微视",
+    icon: imageToBase64Sync(path.join(__dirname, "assets/weishi.ico")),
+    platform: "weishi",
+    url: "https://media.weishi.qq.com/",
+  },
 ];
 
 module.exports = {

@@ -34,7 +34,6 @@ module.exports = async (page) => {
     return {
       ...source,
       bilibili: {
-        url,
         nickname: info.uname,
         avatar: info.face,
         uid: info.mid,

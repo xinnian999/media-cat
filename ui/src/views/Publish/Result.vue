@@ -79,19 +79,21 @@ onMounted(async () => {
     if (!platformProgress) {
       progressMap.value[data.platform] = []
     }
-    platformProgress.push(data)
+    progressMap.value[data.platform].push(data)
   })
 
   const data = JSON.parse(route.query.data)
 
   list.value = data.platforms
 
-  for (const platform of data.platforms) {
+  const publishs = data.platforms.map(async (platform) => {
     await window.electron.invoke('publish', {
       ...data,
       platform,
     })
-  }
+  })
+
+  await Promise.all(publishs)
 
   Message.success('所有平台发布完成')
 
