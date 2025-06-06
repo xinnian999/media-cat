@@ -7,34 +7,33 @@ module.exports = async (page) => {
     window.location.href = url;
   }, platform.url);
 
-  await page.waitForTimeout(30000);
-
-  return
-
   // 等待请求用户信息，代表登录成功
   const response = await page.waitForResponse(
-    (res) => res.url().includes("/media-api/getPersonalInfo"),
-    { timeout: 30000 }
+    (res) => res.url().includes("/multimedia/publish_display_config"),
+    { timeout: 60000 }
   );
 
-  const { personDetail:info } = await response.json();
+  const {
+    data: { user: info },
+  } = await response.json();
 
+  console.log(info);
 
   // 更新 profileData
   writeJson("cache/profile.json", (source) => {
     return {
       ...source,
-      weishi: {
-        nickname: info.nickName,
-        avatar: info.avatar,
-        uid: info.personId,
-        follower_count: info.fansNum,
-        following_count: info.interestNum,
-        total_favorited: info.receivePraiseNum,
+      weibo: {
+        nickname: info.name,
+        avatar: info.avatar_large,
+        uid: info.idstr,
+        follower_count: info.followers_count,
+        following_count: info.friends_count,
+        total_favorited: info.status_total_counter.total_cnt,
         total_play: 0,
       },
     };
   });
 
-  console.log("✅ 微视，profile已更新");
+  console.log("✅ 微博，profile已更新");
 };

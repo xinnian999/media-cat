@@ -23,7 +23,7 @@ module.exports = async ({ url, keyword }) => {
           httpList.push({
             url: response.url(),
             origin: response.url().split("?")[0],
-            data: json
+            data: json,
           });
         }
       } catch (err) {

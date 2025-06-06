@@ -48,11 +48,17 @@
 
           <div class="actions">
             <a-space direction="vertical" align="center" size="medium">
-              <a-button size="mini" status="warning" @click="handlePlay(item)">
+              <a-button size="mini" status="success" @click="handlePlay(item)">
                 <template #icon>
                   <icon-refresh />
                 </template>
                 重新执行
+              </a-button>
+              <a-button size="mini" status="success" @click="handleCopy(item)">
+                <template #icon>
+                  <icon-copy />
+                </template>
+                复制
               </a-button>
               <a-button status="danger" size="mini" @click="() => {}">
                 <template #icon>
@@ -120,6 +126,10 @@ const handlePlay = async (data) => {
   } else {
     router.push(`/publish-result?data=${JSON.stringify(data)}`)
   }
+}
+
+const handleCopy = (data) => {
+  router.push(`/publish-play?data=${JSON.stringify(data)}`)
 }
 
 onMounted(async () => {

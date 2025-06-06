@@ -111,18 +111,20 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import { deepClone } from '@/utils'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import usePlatforms from '@/hooks/usePlatforms'
+
+const route = useRoute()
 
 const form = reactive({
   url: '',
-  desc: '搞笑视频',
-  tags: [{ value: '搞笑' }, { value: '娱乐' }, { value: '看完不笑算我输' }],
+  desc: '',
+  tags: [],
   platforms: [],
-  imitate: true,
-  observe: true,
+  imitate: false,
+  observe: false,
   original: false,
 })
 
@@ -192,6 +194,17 @@ const handleSubmit = async () => {
 
   router.push(`/publish-result?data=${JSON.stringify(values)}`)
 }
+
+onMounted(() => {
+  const data = route.query.data
+  if (data) {
+    const dataParse = JSON.parse(data)
+    Object.assign(form, {
+      ...dataParse,
+      tags: dataParse.tags.map((tag) => ({ value: tag })),
+    })
+  }
+})
 </script>
 
 <style lang="scss">
@@ -292,6 +305,7 @@ const handleSubmit = async () => {
 
     .custom-checkbox-card {
       background-color: #fff;
+      margin-bottom: 20px;
     }
 
     .custom-checkbox-card-content {

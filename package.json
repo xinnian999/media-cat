@@ -8,7 +8,8 @@
     "build": "pnpm build:ui && pnpm dist",
     "dist": "rm -rf dist && electron-builder",
     "build:ui": "pnpm -C ui build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "npx playwright codegen https://weibo.com/upload/channel"
   },
   "author": "",
   "license": "ISC",
