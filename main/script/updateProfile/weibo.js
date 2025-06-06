@@ -17,7 +17,7 @@ module.exports = async (page) => {
     data: { user: info },
   } = await response.json();
 
-  console.log(info);
+  // console.log(info);
 
   // 更新 profileData
   writeJson("cache/profile.json", (source) => {

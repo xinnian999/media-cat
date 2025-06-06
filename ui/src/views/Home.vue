@@ -20,16 +20,40 @@
         </div>
       </div>
     </div>
+
+    <div class="bar">
+      <div class="bar-title">快速入口</div>
+      <div class="summary">
+        <a-button
+          v-for="item in quickEntry"
+          :style="{ backgroundColor: item.color }"
+          type="primary"
+          :key="item.title"
+          @click="router.push(item.path)"
+        >
+          <template #icon>
+            <component :is="item.icon"></component>
+          </template>
+          {{ item.title }}
+        </a-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import usePlatforms from '@/hooks/usePlatforms'
+import { useRouter } from 'vue-router'
+import useFetchList from '@/hooks/useFetchList'
 
 const day = ref(1)
 
+const router = useRouter()
+
 const platforms = usePlatforms()
+
+const publishList = useFetchList('publishLog')
 
 const period = computed(() => {
   const hour = new Date().getHours()
@@ -48,22 +72,52 @@ const summary = computed(() => {
       value: accountList.length,
     },
     {
+      title: '总发布量',
+      value: publishList.value.length,
+    },
+    {
       title: '总粉丝数',
       value: accountList.reduce((acc, item) => acc + item.follower_count, 0),
     },
     {
       title: '总获赞量',
       value: accountList.reduce((acc, item) => acc + item.total_favorited, 0),
-    },
-    {
-      title: '总播放量',
-      value: 21311221,
-    },
+    }
   ]
 })
 
+const quickEntry = [
+  {
+    title: '发布视频',
+    icon: 'icon-arrow-rise',
+    path: '/publish-play',
+  },
+  {
+    title: '绑定账号',
+    icon: 'icon-user-group',
+    path: '/account',
+    color: '#511fe8',
+  },
+  {
+    title: '提取视频',
+    icon: 'icon-plus',
+    path: '/tool/videoDownlad',
+    color: '#11a0d9',
+  },
+]
+
 onMounted(() => {
   platforms.update()
+
+  if (!localStorage.getItem('initTime')) {
+    localStorage.setItem('initTime', Date.now())
+  } else {
+    const initTime = localStorage.getItem('initTime')
+    const now = Date.now()
+    const diff = now - initTime
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+    day.value = days + 1
+  }
 })
 </script>
 
