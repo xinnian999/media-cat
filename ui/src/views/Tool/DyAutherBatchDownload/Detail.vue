@@ -168,7 +168,7 @@ const handleDownloadAll = async () => {
     (item) => !dirNames.value.some((name) => name.includes(item.aweme_id)),
   )
 
-  const limit = pLimit(3) // 最多并发 3 个任务
+  const limit = pLimit(1) // 最多并发 3 个任务
 
   downloadAllLoading.value = true
 

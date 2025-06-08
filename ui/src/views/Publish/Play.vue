@@ -13,7 +13,12 @@
             <div>点击选择视频</div>
           </div>
         </div>
-        <video class="video-upload" :src="`file://${form.url}`" controls v-else></video>
+        <div v-else>
+          <video class="video-upload" :src="`file://${form.url}`" controls></video>
+          <div class="video-upload-tip">
+            <a-button type="primary" @click="openFileDialog">重新选择</a-button>
+          </div>
+        </div>
       </a-form-item>
 
       <!-- <a-form-item field="title" label="视频标题">
@@ -298,7 +303,7 @@ onMounted(() => {
   box-sizing: border-box;
 
   .platform-select {
-    background-color: rgb(242, 243, 245);;
+    background-color: rgb(242, 243, 245);
     padding: 10px;
     padding-bottom: 30px;
     border-radius: 4px;
