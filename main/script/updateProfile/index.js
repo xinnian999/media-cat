@@ -35,5 +35,7 @@ module.exports = async () => {
 
   await Promise.all(updates);
 
+  console.log("所有平台数据更新完成");
+
   await global.removeBrowser("updateProfile");
 };

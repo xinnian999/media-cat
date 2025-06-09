@@ -24,7 +24,11 @@
               :style="{ width: '50%', marginBottom: '10px' }"
             >
               <template v-slot:text="scope">
-                {{ scope.percent === 1 ? statusMap[progressMap[plat]?.[progressMap[plat].length - 1]?.status] : `${scope.percent * 100}%` }}
+                {{
+                  scope.percent === 1
+                    ? statusMap[progressMap[plat]?.[progressMap[plat].length - 1]?.status]
+                    : `${scope.percent * 100}%`
+                }}
               </template>
             </a-progress>
 
@@ -114,7 +118,9 @@ const onStop = async () => {
 }
 
 onUnmounted(() => {
-  window.electron.invoke('stop')
+  list.value.forEach((platform) => {
+    window.electron.invoke('stop', platform)
+  })
 })
 </script>
 

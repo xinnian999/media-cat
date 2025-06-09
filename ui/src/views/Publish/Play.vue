@@ -13,8 +13,8 @@
             <div>点击选择视频</div>
           </div>
         </div>
-        <div v-else>
-          <video class="video-upload" :src="`file://${form.url}`" controls></video>
+        <div v-else class="video">
+          <video :src="`file://${form.url}`" controls></video>
           <div class="video-upload-tip">
             <a-button type="primary" @click="openFileDialog">重新选择</a-button>
           </div>
@@ -208,31 +208,13 @@ onMounted(() => {
       ...dataParse,
       tags: dataParse.tags.map((tag) => ({ value: tag })),
     })
+
+    handleChangePlatform(dataParse.platforms)
   }
 })
 </script>
 
 <style lang="scss">
-.video-upload {
-  width: 100%;
-  height: 150px;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  background-color: rgb(242, 243, 245);
-  justify-content: center;
-  align-items: center;
-
-  .video-upload-tip {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: #555;
-  }
-}
-
 .platform-item {
   display: flex;
   align-items: center;
@@ -301,6 +283,41 @@ onMounted(() => {
   margin-top: 10px;
   padding: 0 40px;
   box-sizing: border-box;
+
+  .video-upload {
+    width: 100%;
+    height: 150px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    background-color: rgb(242, 243, 245);
+    justify-content: center;
+    align-items: center;
+
+    .video-upload-tip {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #555;
+    }
+  }
+
+  .video {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+
+    video {
+      width: 100%;
+      height: 200px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #eee;
+    }
+  }
 
   .platform-select {
     background-color: rgb(242, 243, 245);
