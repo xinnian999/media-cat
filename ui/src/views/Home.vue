@@ -66,6 +66,8 @@ const period = computed(() => {
 const summary = computed(() => {
   const accountList = platforms.accountList
 
+  console.log(accountList);
+
   return [
     {
       title: '已绑定平台数',

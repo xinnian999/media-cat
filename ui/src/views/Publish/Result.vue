@@ -41,7 +41,11 @@
                 </a-collapse-item>
               </a-collapse>
             </div>
+
+          <!-- <a-button>重新发布</a-button> -->
+
           </template>
+
         </a-list-item-meta>
 
         <!-- <template #actions>
