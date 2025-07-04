@@ -46,7 +46,7 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
   await page.waitForTimeout(2000);
 
   if (imitate) {
-    await logger("快手 -- 模拟流程完毕，跳过发布步骤", 1);
+    await logger("快手 -- 模拟流程完毕，跳过发布步骤", 1, "success");
     return;
   }
 
@@ -59,5 +59,5 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
     timeout: 0, // 无限等待
   });
 
-  await logger("快手发布成功！", 1);
+  await logger("快手发布成功！", 1, "success");
 };

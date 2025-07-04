@@ -42,7 +42,7 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
 
   // 如果 imitate 为 true，则不发布
   if (imitate) {
-    await logger("B站 -- 模拟流程完毕，跳过发布步骤", 1);
+    await logger("B站 -- 模拟流程完毕，跳过发布步骤", 1, "success");
     return;
   }
 
@@ -54,5 +54,5 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
     timeout: 0, // 无限等待
   });
 
-  await logger("B站发布成功！", 1);
+  await logger("B站发布成功！", 1, "success");
 };

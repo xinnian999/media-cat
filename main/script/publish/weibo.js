@@ -41,5 +41,5 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
     timeout: 0, // 无限等待
   });
 
-  await logger("微视发布成功！", 1);
+  await logger("微视发布成功！", 1, "success");
 };

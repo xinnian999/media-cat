@@ -21,7 +21,7 @@ module.exports = async (e, { platform, observe, ...data }) => {
 
   const logger = createLogger({
     page,
-    sendFlag: "upload-progress",
+    sendFlag: "publish-progress",
     sendExtra: {
       platform,
     },

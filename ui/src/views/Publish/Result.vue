@@ -8,49 +8,39 @@
       </template>
     </a-page-header>
 
-    <a-list style="padding: 0 20px">
-      <a-list-item v-for="plat in list" :key="plat">
-        <a-list-item-meta :title="accountMap[plat]?.label">
+    <a-list class="publish-result-list">
+      <a-list-item v-for="{ platform, percent, status, statusText, logs } in list" :key="platform">
+        <a-list-item-meta :title="accountMap[platform]?.label">
           <template #avatar>
             <a-avatar shape="square">
-              <img alt="avatar" :src="accountMap[plat]?.icon" />
+              <img alt="avatar" :src="accountMap[platform]?.icon" />
             </a-avatar>
           </template>
 
           <template #description>
-            <a-progress
-              :percent="progressMap[plat]?.[progressMap[plat].length - 1]?.percent || 0"
-              :status="progressMap[plat]?.[progressMap[plat].length - 1]?.status"
-              :style="{ width: '50%', marginBottom: '10px' }"
-            >
-              <template v-slot:text="scope">
-                {{
-                  scope.percent === 1
-                    ? statusMap[progressMap[plat]?.[progressMap[plat].length - 1]?.status]
-                    : `${scope.percent * 100}%`
-                }}
-              </template>
-            </a-progress>
+            <div class="description">
+              <a-progress :percent="percent" :status="status" class="progress">
+                <template v-slot:text="scope">
+                  {{ scope.percent * 100 }}% - {{ statusText }}
+                </template>
+              </a-progress>
 
-            <div style="flex: 1">
-              <a-collapse>
-                <a-collapse-item header="执行日志" key="1">
-                  <div v-for="log in progressMap[plat]" :key="log.msg">
-                    <div>{{ log.msg }}</div>
-                  </div>
-                </a-collapse-item>
-              </a-collapse>
+              <div v-if="status === 'danger'">
+                <a-button @click="handleRestart(platform)">重新发布</a-button>
+              </div>
+
+              <div style="flex: 1">
+                <a-collapse>
+                  <a-collapse-item header="执行日志" key="1">
+                    <div v-for="log in logs" :key="log">
+                      <div>{{ log }}</div>
+                    </div>
+                  </a-collapse-item>
+                </a-collapse>
+              </div>
             </div>
-
-          <!-- <a-button>重新发布</a-button> -->
-
           </template>
-
         </a-list-item-meta>
-
-        <!-- <template #actions>
-          <icon-delete />
-        </template> -->
       </a-list-item>
     </a-list>
   </div>
@@ -71,34 +61,68 @@ const platforms = usePlatforms()
 
 const accountMap = toRef(platforms, 'accountMap')
 
-const progressMap = ref({})
-
 const stoped = ref(false)
 
 const onBack = () => {
   router.back()
 }
 
+const onStop = async () => {
+  list.value.forEach((platform) => {
+    window.electron.invoke('stop', platform)
+  })
+  stoped.value = true
+}
+
 const statusMap = {
+  ing: '执行中',
   danger: '发布失败',
   success: '发布成功',
 }
 
+const handleRestart = (platform) => {
+  const item = list.value.find((item) => item.platform === platform)
+
+  item.percent = 0
+  item.status = 'ing'
+  item.statusText = statusMap.ing
+  item.logs = []
+
+  window.electron.invoke('publish', {
+    ...JSON.parse(route.query.data),
+    platform,
+  })
+}
+
 onMounted(async () => {
-  window.electron.on('upload-progress', (event, data) => {
-    // console.log(progressMap.value)
+  // 监听发布进度
+  window.electron.on('publish-progress', (event, data) => {
+    const item = list.value.find((item) => item.platform === data.platform)
 
-    const platformProgress = progressMap.value[data.platform]
+    if (!item) return
 
-    if (!platformProgress) {
-      progressMap.value[data.platform] = []
+    // 更新进度和消息
+    item.percent = data.percent
+    item.logs.push(data.msg)
+
+    // 如果状态存在，更新状态
+    if (data.status) {
+      item.status = data.status
+      item.statusText = statusMap[data.status]
     }
-    progressMap.value[data.platform].push(data)
   })
 
   const data = JSON.parse(route.query.data)
 
-  list.value = data.platforms
+  list.value = data.platforms.map((plat) => {
+    return {
+      platform: plat,
+      percent: 0,
+      status: 'ing',
+      statusText: statusMap.ing,
+      logs: [],
+    }
+  })
 
   const publishs = data.platforms.map(async (platform) => {
     await window.electron.invoke('publish', {
@@ -114,15 +138,8 @@ onMounted(async () => {
   stoped.value = true
 })
 
-const onStop = async () => {
-  list.value.forEach((platform) => {
-    window.electron.invoke('stop', platform)
-  })
-  stoped.value = true
-}
-
 onUnmounted(() => {
-  list.value.forEach((platform) => {
+  list.value.forEach(({ platform }) => {
     window.electron.invoke('stop', platform)
   })
 })
@@ -130,17 +147,28 @@ onUnmounted(() => {
 
 <style lang="scss">
 .publish-result {
-  .arco-list-item-meta {
-    align-items: start;
-  }
-  .arco-list-item-meta-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+  .publish-result-list {
+    padding: 0 20px;
 
-  .footer {
-    text-align: center;
+    .description {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .progress {
+      width: 50%;
+    }
+
+    .arco-list-item-meta {
+      align-items: start;
+    }
+    .arco-list-item-meta-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 </style>

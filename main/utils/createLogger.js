@@ -7,7 +7,7 @@ module.exports = ({
   sendFlag = "global",
   sendExtra = {},
 }) => {
-  return async (msg, percent, status) => {
+  const logger = async (msg, percent, status) => {
     global.win.webContents.send(sendFlag, {
       msg,
       percent,
@@ -51,4 +51,6 @@ module.exports = ({
 
     await page.waitForTimeout(speed);
   };
+
+  return logger
 };
