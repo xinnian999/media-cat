@@ -1,4 +1,12 @@
-module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
+module.exports = async ({
+  page,
+  logger,
+  url,
+  desc,
+  tags,
+  imitate,
+  original,
+}) => {
   await logger("开始发布到小红书", 0.1);
 
   await logger("等待页面完全渲染", 0.2);
@@ -37,6 +45,20 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
       await page.keyboard.press("Enter");
       await page.waitForTimeout(2000);
     }
+  }
+
+  if(original){
+    await logger("声明原创", 0.7);
+    await page
+      .locator("span:has-text('去声明')")
+      .first()
+      .click()
+    await page.waitForTimeout(2000);
+    await page
+      .locator(".originalContainer input")
+      .check({ force: true });
+    await page.waitForTimeout(1000);
+    await page.getByRole("button", { name: "声明原创" }).click();
   }
 
   // 等待视频导入完成

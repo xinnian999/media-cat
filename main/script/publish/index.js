@@ -34,6 +34,6 @@ module.exports = async (e, { platform, observe, ...data }) => {
   } catch (error) {
     logger(error.message, 1, "danger");
   } finally {
-    await global.removeBrowser(platform);
+    // await global.removeBrowser(platform);
   }
 };
