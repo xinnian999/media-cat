@@ -54,11 +54,8 @@ module.exports = async ({
       .first()
       .click()
     await page.waitForTimeout(2000);
-    await page
-      .locator(".originalContainer input")
-      .check({ force: true });
-    await page.waitForTimeout(1000);
-    await page.getByRole("button", { name: "声明原创" }).click();
+    await page.locator('.d-checkbox-indicator').click();
+    await page.getByRole('button', { name: '声明原创' }).click();
   }
 
   // 等待视频导入完成
