@@ -11,10 +11,10 @@ module.exports = async (page) => {
   const infoResponses = [
     page.waitForResponse(
       (res) => res.url().includes("/rest/cp/creator/pc/home/userInfo"),
-      { timeout: 0 }
+      { timeout: 60000 }
     ),
     page.waitForResponse((res) => res.url().includes("/pc/home/infoV2"), {
-      timeout: 0,
+      timeout: 60000,
     }),
   ];
 

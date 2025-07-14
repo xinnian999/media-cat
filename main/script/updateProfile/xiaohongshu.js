@@ -10,7 +10,7 @@ module.exports = async (page) => {
   // 等待请求用户信息，代表登录成功
   const response = await page.waitForResponse(
     (res) => res.url().includes("/galaxy/creator/home/personal_info"),
-    { timeout: 0 }
+    { timeout: 60000 }
   );
 
   const { data: info } = await response.json();

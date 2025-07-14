@@ -23,7 +23,7 @@ module.exports = async (page) => {
     window.location.href = url;
   }, platform.url);
 
-  await page.waitForSelector("div:has-text('投稿')", { timeout: 0 });
+  await page.waitForSelector("div:has-text('投稿')", { timeout: 120000 });
 
   await page.waitForSelector("div:has-text('粉丝总数')", { timeout: 0 });
 

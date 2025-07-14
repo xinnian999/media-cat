@@ -10,7 +10,7 @@ module.exports = async (page) => {
   const getInfo = async () => {
     const response = await page.waitForResponse(
       (res) => res.url().includes("/media/user/info/"),
-      { timeout: 0 }
+      { timeout: 60000 }
     );
 
     const { user } = await response.json();

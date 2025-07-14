@@ -4,7 +4,7 @@ const readJson = require("@/utils/readJson");
 const writeJson = require("@/utils/writeJson");
 
 module.exports = async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, channel: "chrome" });
 
   global.addBrowser("updateProfile", browser);
 
