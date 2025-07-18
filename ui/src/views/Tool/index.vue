@@ -43,6 +43,12 @@ const tools = [
     icon: 'icon-http',
     description: '输入网站链接和关键词。查找该网站中包含该关键词的http响应，便于开发',
   },
+  {
+    title: '剧本分镜生图',
+    path: '/tool/scriptScene',
+    icon: 'icon-tupianshengcheng',
+    description: '输入剧本，将调用豆包【图片生成】功能，批量生成分镜图',
+  },
 ]
 
 const router = useRouter()

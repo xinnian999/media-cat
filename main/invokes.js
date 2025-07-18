@@ -89,6 +89,7 @@ module.exports = (win) => {
         keyword: data.keyword,
       });
     },
+    scriptScene: require("@/script/tool/scriptScene"),
     readDirNames: async (e, path) => {
       const fs = require("fs");
       const dirNames = fs.readdirSync(path);

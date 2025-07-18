@@ -76,7 +76,11 @@ const routes = [
     name: 'findHttp',
     component: () => import('../views/Tool/FindHttp.vue'),
   },
-  
+  {
+    path: '/tool/scriptScene',
+    name: 'scriptScene',
+    component: () => import('../views/Tool/ScriptScene.vue'),
+  },  
 ]
 
 const router = createRouter({
