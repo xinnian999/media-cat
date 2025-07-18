@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch index.js --watch main/ --exec electron .",
-    "dev:ui": "pnpm -C ui dev",
-    "build": "pnpm build:ui && pnpm dist",
+    "dev:ui": "cd ui && yarn dev",
+    "build": "yarn build:ui && yarn dist",
     "dist": "rm -rf dist && electron-builder",
-    "build:ui": "pnpm -C ui build",
+    "build:ui": "cd ui && yarn build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "codegen": "npx playwright codegen $1"
   },
@@ -41,6 +41,14 @@
     "mac": {
       "target": "dmg",
       "icon": "build/icon.png"
-    }
+    },
+    "asar": false,
+    "files": [
+      "index.js",
+      "main/**/*",
+      "ui/dist/**/*",
+      "node_modules",
+      "package.json"
+    ]
   }
 }
