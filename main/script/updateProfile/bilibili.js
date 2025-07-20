@@ -3,14 +3,16 @@ const writeJson = require("@/utils/writeJson");
 const platform = require("@/platforms").map.bilibili;
 
 module.exports = async (page) => {
-  const infoDatas = [];
+  let infoData = {};
 
   let statData = {};
 
   page.on("response", async (response) => {
     if (response.url().includes("/web-interface/nav")) {
       const data = await response.json();
-      infoDatas.push(data.data);
+      if (data.data.isLogin) {
+        infoData = data.data;
+      }
     }
 
     if (response.url().includes("/data/index/stat")) {
@@ -27,16 +29,15 @@ module.exports = async (page) => {
 
   await page.waitForSelector("div:has-text('粉丝总数')", { timeout: 0 });
 
-  const info = infoDatas.find((item) => item.isLogin);
-
+  await page.waitForTimeout(3000);
 
   writeJson("cache/profile.json", (source) => {
     return {
       ...source,
       bilibili: {
-        nickname: info.uname,
-        avatar: info.face,
-        uid: info.mid,
+        nickname: infoData.uname,
+        avatar: infoData.face,
+        uid: infoData.mid,
         follower_count: statData.total_fans,
         following_count: 0,
         total_favorited: statData.total_like,
