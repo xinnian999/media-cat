@@ -1,4 +1,4 @@
-module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
+module.exports = async ({ page, logger, url, desc, tags, imitate, isAI }) => {
   await logger("开始分发快手", 0.1);
   await page.waitForSelector('div:has-text("发布作品")', {
     timeout: 0, // 无限等待
@@ -44,6 +44,13 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
   });
 
   await page.waitForTimeout(2000);
+
+  if (isAI) {
+    await logger("声明AI", 0.75);
+
+    await page.locator("#rc_select_0").click();
+    await page.getByText("内容为AI生成").click();
+  }
 
   if (imitate) {
     await logger("快手 -- 模拟流程完毕，跳过发布步骤", 1, "success");

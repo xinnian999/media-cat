@@ -1,4 +1,4 @@
-module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
+module.exports = async ({ page, logger, url, desc, tags, imitate, isAI }) => {
   await logger("开始分发B站", 0.1);
 
   await logger("点击投稿", 0.2);
@@ -39,6 +39,14 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
     timeout: 0, // 无限等待
   });
   await logger("视频导入完成！即将点击发布按钮", 0.8);
+
+  // if (isAI) {
+  //   await logger("声明AI", 0.75);
+
+  //   await page.locator('span').filter({ hasText: '更多设置 （含声明与权益、视频元素、互动管理等）' }).click();
+  //   await page.getByText('请选择符合您视频内容的创作声明').click();
+  //   await page.getByText('作者声明：该视频使用人工智能合成技术').click();
+  // }
 
   // 如果 imitate 为 true，则不发布
   if (imitate) {

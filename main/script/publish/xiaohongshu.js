@@ -6,6 +6,7 @@ module.exports = async ({
   tags,
   imitate,
   original,
+  isAI,
 }) => {
   await logger("开始发布到小红书", 0.1);
 
@@ -47,15 +48,23 @@ module.exports = async ({
     }
   }
 
-  if(original){
+  if (original) {
     await logger("声明原创", 0.7);
-    await page
-      .locator("span:has-text('去声明')")
-      .first()
-      .click()
+    await page.locator("span:has-text('去声明')").first().click();
     await page.waitForTimeout(2000);
-    await page.locator('.d-checkbox-indicator').click();
-    await page.getByRole('button', { name: '声明原创' }).click();
+    await page.locator(".d-checkbox-indicator").click();
+    await page.getByRole("button", { name: "声明原创" }).click();
+  }
+
+  if (isAI) {
+    await logger("声明AI", 0.75);
+    await page
+      .locator(
+        ".wrapper > .d-select-wrapper > .d-select > .d-grid > .d-select-content"
+      )
+      .first()
+      .click();
+    await page.locator("span").filter({ hasText: "笔记含AI合成内容" }).click();
   }
 
   // 等待视频导入完成

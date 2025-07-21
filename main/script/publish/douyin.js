@@ -1,4 +1,4 @@
-module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
+module.exports = async ({ page, logger, url, desc, tags, imitate, isAI }) => {
   await logger("开始分发抖音", 0.1);
   await page.waitForSelector(
     ':is(button:has-text("发布视频"), button:has-text("高清发布"))',
@@ -33,6 +33,18 @@ module.exports = async ({ page, logger, url, desc, tags, imitate }) => {
 
   await logger("视频导入完成！即将点击发布按钮", 0.8);
   await page.waitForTimeout(2000);
+
+  if (isAI) {
+    await logger("声明AI", 0.75);
+
+    await page.getByText("添加声明").click();
+
+    await page.waitForTimeout(1000);
+
+    await page.locator("label").filter({ hasText: "内容由AI生成" }).click();
+
+    await page.getByRole("button", { name: "确定" }).click();
+  }
 
   // 如果 imitate 为 true，则不发布
   if (imitate) {

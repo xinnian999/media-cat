@@ -100,6 +100,10 @@
         <a-switch v-model="form.original" />
       </a-form-item>
 
+      <a-form-item field="isAI" label="声明AI生成">
+        <a-switch v-model="form.isAI" />
+      </a-form-item>
+
       <a-form-item field="observe" label="可视化发布过程">
         <a-switch v-model="form.observe" />
       </a-form-item>
@@ -131,6 +135,7 @@ const form = reactive({
   imitate: false,
   observe: false,
   original: false,
+  isAI: false,
 })
 
 const platforms = usePlatforms()
