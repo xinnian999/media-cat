@@ -25,8 +25,9 @@
                 </template>
               </a-progress>
 
-              <div v-if="status === 'danger'">
+              <div v-if="status === 'danger'" style="display: flex; gap: 20px">
                 <a-button @click="handleRestart(platform)">重新发布</a-button>
+                <a-button @click="handleRestart(platform, true)">可视化重新发布</a-button>
               </div>
 
               <div style="flex: 1">
@@ -80,7 +81,7 @@ const statusMap = {
   success: '发布成功',
 }
 
-const handleRestart = (platform) => {
+const handleRestart = (platform, observe = false) => {
   const item = list.value.find((item) => item.platform === platform)
 
   item.percent = 0
@@ -91,6 +92,7 @@ const handleRestart = (platform) => {
   window.electron.invoke('publish', {
     ...JSON.parse(route.query.data),
     platform,
+    observe,
   })
 }
 
