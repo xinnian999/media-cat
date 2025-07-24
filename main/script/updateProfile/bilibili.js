@@ -3,45 +3,37 @@ const writeJson = require("@/utils/writeJson");
 const platform = require("@/platforms").map.bilibili;
 
 module.exports = async (page) => {
-  let infoData = {};
+  await page.goto(platform.url);
 
-  let statData = {};
-
-  page.on("response", async (response) => {
-    if (response.url().includes("/web-interface/nav")) {
-      const data = await response.json();
-      if (data.data.isLogin) {
-        infoData = data.data;
-      }
-    }
-
-    if (response.url().includes("/data/index/stat")) {
-      const data = await response.json();
-      statData = data.data;
-    }
-  });
-
-  await page.evaluate((url) => {
-    window.location.href = url;
-  }, platform.url);
-
-  await page.waitForSelector("div:has-text('投稿')", { timeout: 120000 });
+  await page.waitForSelector("div:has-text('投稿')", { timeout: 0 });
 
   await page.waitForSelector("div:has-text('粉丝总数')", { timeout: 0 });
 
-  await page.waitForTimeout(3000);
+  const info = await page.evaluate(async () => {
+    const res = await fetch("https://api.bilibili.com/x/web-interface/nav",{
+      credentials: "include",
+    });
+    const data = await res.json();
+    return data.data;
+  });
+
+  const stat = await page.evaluate(async () => {
+    const res = await fetch("/x/web/data/index/stat?tmid=NaN");
+    const data = await res.json();
+    return data.data;
+  });
 
   writeJson("cache/profile.json", (source) => {
     return {
       ...source,
       bilibili: {
-        nickname: infoData.uname,
-        avatar: infoData.face,
-        uid: infoData.mid,
-        follower_count: statData.total_fans,
+        nickname: info.uname,
+        avatar: info.face,
+        uid: info.mid,
+        follower_count: stat.total_fans,
         following_count: 0,
-        total_favorited: statData.total_like,
-        total_play: statData.total_click,
+        total_favorited: stat.total_like,
+        total_play: stat.total_click,
       },
     };
   });

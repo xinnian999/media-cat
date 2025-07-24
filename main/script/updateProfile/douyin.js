@@ -3,26 +3,23 @@ const writeJson = require("@/utils/writeJson");
 const platform = require("@/platforms").map.douyin;
 
 module.exports = async (page) => {
-  await page.evaluate((url) => {
-    window.location.href = url;
-  }, platform.url);
+  await page.goto(platform.url);
 
-  const getInfo = async () => {
-    const response = await page.waitForResponse(
-      (res) => res.url().includes("/media/user/info/"),
-      { timeout: 60000 }
-    );
-
-    const { user } = await response.json();
-
-    if (user) {
-      return user;
-    } else {
-      return await getInfo(page);
+  // 等待登录成功
+  await page.waitForSelector(
+    ':is(button:has-text("发布视频"), button:has-text("高清发布"))',
+    {
+      timeout: 0, // 无限等待
     }
-  };
+  );
 
-  const info = await getInfo(page);
+  const info = await page.evaluate(async () => {
+    const res = await fetch("/web/api/media/user/info/");
+    const data = await res.json();
+    return data?.user;
+  });
+
+  // console.log("info", info);
 
   // 更新 profileData
   writeJson("cache/profile.json", (source) => {

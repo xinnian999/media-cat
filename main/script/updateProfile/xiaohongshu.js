@@ -3,17 +3,19 @@ const writeJson = require("@/utils/writeJson");
 const platform = require("@/platforms").map.xiaohongshu;
 
 module.exports = async (page) => {
-  await page.evaluate((url) => {
-    window.location.href = url;
-  }, platform.url);
+  await page.goto(platform.url);
 
-  // 等待请求用户信息，代表登录成功
-  const response = await page.waitForResponse(
-    (res) => res.url().includes("/galaxy/creator/home/personal_info"),
-    { timeout: 60000 }
-  );
+  // 等待登录成功
+  await page.waitForSelector(".publish-video .btn", {
+    timeout: 0, // 无限等待
+  });
 
-  const { data: info } = await response.json();
+  // 获取用户信息
+  const info = await page.evaluate(async () => {
+    const res = await fetch("/api/galaxy/creator/home/personal_info");
+    const data = await res.json();
+    return data.data;
+  });
 
   // 更新 profileData
   writeJson("cache/profile.json", (profileData) => {
