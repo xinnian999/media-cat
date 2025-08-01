@@ -2,12 +2,12 @@ const writeJson = require("@/utils/writeJson");
 
 const platform = require("@/platforms").map.xiaohongshu;
 
-module.exports = async (page) => {
+module.exports = async (page, timeout = 30000) => {
   await page.goto(platform.url);
 
   // 等待登录成功
   await page.waitForSelector(".publish-video .btn", {
-    timeout: 0, // 无限等待
+    timeout,
   });
 
   // 获取用户信息

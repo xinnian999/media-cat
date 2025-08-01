@@ -2,14 +2,15 @@ const writeJson = require("@/utils/writeJson");
 
 const platform = require("@/platforms").map.douyin;
 
-module.exports = async (page) => {
+// timeout 校验登录状态的等待时间。登录调用时传 0（无限等待），不传则默认 10s
+module.exports = async (page, timeout = 30000) => {
   await page.goto(platform.url);
 
   // 等待登录成功
   await page.waitForSelector(
     ':is(button:has-text("发布视频"), button:has-text("高清发布"))',
     {
-      timeout: 0, // 无限等待
+      timeout,
     }
   );
 

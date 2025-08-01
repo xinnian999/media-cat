@@ -2,15 +2,13 @@ const writeJson = require("@/utils/writeJson");
 
 const platform = require("@/platforms").map.bilibili;
 
-module.exports = async (page) => {
+module.exports = async (page, timeout = 10000) => {
   await page.goto(platform.url);
 
-  await page.waitForSelector("div:has-text('投稿')", { timeout: 0 });
-
-  await page.waitForSelector("div:has-text('粉丝总数')", { timeout: 0 });
+  await page.waitForSelector("div:has-text('投稿')", { timeout });
 
   const info = await page.evaluate(async () => {
-    const res = await fetch("https://api.bilibili.com/x/web-interface/nav",{
+    const res = await fetch("https://api.bilibili.com/x/web-interface/nav", {
       credentials: "include",
     });
     const data = await res.json();

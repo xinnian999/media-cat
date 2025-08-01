@@ -20,7 +20,7 @@ module.exports = async (e, platform) => {
 
   const update = require(`@/script/updateProfile/${platform}`);
 
-  await update(page);
+  await update(page, 0);
 
   // 保存登录状态
   await context.storageState({
