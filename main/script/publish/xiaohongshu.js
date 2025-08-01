@@ -58,13 +58,9 @@ module.exports = async ({
 
   if (isAI) {
     await logger("声明AI", 0.75);
-    await page
-      .locator(
-        ".wrapper > .d-select-wrapper > .d-select > .d-grid > .d-select-content"
-      )
-      .first()
-      .click();
-    await page.locator("span").filter({ hasText: "笔记含AI合成内容" }).click();
+    await page.getByText("添加内容类型声明").click();
+    await page.waitForTimeout(2000);
+    await page.getByText("笔记含AI合成内容").click();
   }
 
   // 等待视频导入完成

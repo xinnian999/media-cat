@@ -4,8 +4,6 @@ const readJson = require("@/utils/readJson");
 
 const writeJson = require("@/utils/writeJson");
 
-const log = require("@/utils/log");
-
 const { randomUUID } = require("crypto");
 
 const dayjs = require("dayjs");
