@@ -3,16 +3,18 @@ const { app } = require("electron");
 const createLogger = require("@/utils/createLogger");
 const platforms = require("@/platforms");
 
-module.exports = async (e, { platform, observe, ...data }) => {
+module.exports = async (e, { platform, ...data }) => {
   const browser = await chromium.launch({
-    headless: !observe,
+    headless: !data.observe,
     channel: "chrome",
   });
 
   global.addBrowser(platform, browser);
 
   const context = await browser.newContext({
-    storageState: `${app.getPath("userData")}/cache/storageState/${platform}.json`,
+    storageState: `${app.getPath(
+      "userData"
+    )}/cache/storageState/${platform}.json`,
   });
 
   const page = await context.newPage();

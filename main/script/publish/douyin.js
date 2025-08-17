@@ -1,4 +1,13 @@
-module.exports = async ({ page, logger, url, desc, tags, imitate, isAI }) => {
+module.exports = async ({
+  page,
+  logger,
+  url,
+  desc,
+  tags,
+  imitate,
+  isAI,
+  observe,
+}) => {
   await logger("开始分发抖音", 0.1);
   await page.waitForSelector(
     ':is(button:has-text("发布视频"), button:has-text("高清发布"))',
@@ -54,6 +63,17 @@ module.exports = async ({ page, logger, url, desc, tags, imitate, isAI }) => {
 
   await logger("点击发布按钮，开始发布", 0.9);
   await page.getByRole("button", { name: "发布", exact: true }).click();
+
+  await page.waitForTimeout(1000);
+
+  const hasVerify = await page
+    .locator('p:has-text("获取验证码")')
+    .first()
+    .isVisible();
+
+  if (hasVerify && !observe) {
+    throw new Error("抖音 -- 出现风控验证，请可视化重新发布");
+  }
 
   // 检验是否上传成功
   await page.waitForSelector('div:has-text("作品管理")', {
